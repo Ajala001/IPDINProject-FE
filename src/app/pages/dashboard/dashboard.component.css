@@ -1,0 +1,20 @@
+
+.main-content {
+    padding: 20px;
+    flex-grow: 1;
+    background-color: #f8f9fa;
+}
+.card {
+    margin-bottom: 20px;
+}
+.card-header {
+    background-color: darkblue; /* Blue background color */
+    color: white; /* White text color */
+    border-bottom: 1px solid #dee2e6;
+}
+.card-body {
+    background-color: #ffffff; /* White background for card body */
+}
+.table th, .table td {
+    vertical-align: middle;
+}

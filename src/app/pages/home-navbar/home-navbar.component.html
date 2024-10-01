@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-dark navbar-dark-custom">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24"
+                class="d-inline-block align-text-top">
+            <b> IPDIN</b>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+            aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{'active': isActive('home')}" (click)="setActive('home')"
+                    (click)="scrollTo('home-section')">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{'active': isActive('about')}" (click)="setActive('about')"
+                    (click)="scrollTo('about-us-section')">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{'active': isActive('contact')}" (click)="setActive('contact')"
+                    (click)="scrollTo('contact-us-section')">Contact</a>
+                </li>
+                <!-- Dropdown menu with improved design -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false"  (click)="setActive('Options')">
+                        Options
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarScrollingDropdown">
+                        <li><a class="dropdown-item" [ngClass]="{'active': isActive('signup')}"
+                                (click)="setActive('signup')" [routerLink]="['/sign-up']">Sign Up</a></li>
+                        <li><a class="dropdown-item" [ngClass]="{'active': isActive('signup')}"
+                                (click)="setActive('signup')" href="#">Another Action</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" [ngClass]="{'active': isActive('signup')}"
+                                (click)="setActive('signup')" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled Link</a>
+                </li>
+            </ul>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a type="button" class="btn btn-outline-light" [routerLink]="['/sign-up']">Sign Up</a>
+                <a type="button" class="btn btn-outline-light" [routerLink]="['/sign-in']">Sign In</a>
+
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</nav>

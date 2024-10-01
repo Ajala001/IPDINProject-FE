@@ -1,0 +1,63 @@
+.navbar-dark-custom {
+    background-color: darkblue; /* Dark blue color */
+    position: fixed; /* Make navbar fixed */
+    top: 0;
+    left: 0;
+    width: 100%; /* Make it span the full width */
+    z-index: 1000; /* Ensure it's on top of other elements */
+}
+
+/* Apply padding to the main content to avoid overlap with the fixed navbar */
+
+
+/* Dropdown menu styles */
+.dropdown-menu-dark {
+    background-color: #007bff !important;
+    border-color: #0056b3;
+}
+
+.dropdown-menu-dark .dropdown-item {
+    color: white;
+}
+
+.dropdown-menu-dark .dropdown-item:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+/* Active link styling */
+.nav-link.active {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.dropdown-item.active {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+/* Link styling */
+.navbar-nav .nav-link {
+    color: white;
+    position: relative;
+    background-color: transparent;
+}
+
+.navbar-nav .nav-link.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.navbar-nav .nav-link.active {
+    color: white;
+}
+
+.navbar-nav .nav-link:not(.active):hover {
+    color: #ccc;
+}

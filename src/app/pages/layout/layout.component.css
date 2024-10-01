@@ -1,0 +1,58 @@
+/* Layout
+/* .layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full viewport height */
+*/
+
+/* Header */
+.header {
+    height: 60px; /* Adjust to match your header */
+    width: 100%; /* Full width of the viewport */
+    background-color: #f8f9fa; /* Example background color */
+    position: fixed; /* Fix the header at the top */
+    top: 0;
+    left: 0;
+    z-index: 1001; /* Make sure the header is above other elements */
+    display: flex;
+    align-items: center; /* Vertically center the content */
+    padding: 0 20px; /* Optional padding */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
+/* Main container */
+.main-container {
+    display: flex;
+    margin-top: -5px; /* Offset for the fixed header */
+    flex: 1; /* Allow the content to grow */
+}
+
+/* Sidebar */
+.side-nav {
+    width: 280px;
+    background-color: #f8f9fa;
+    position: fixed;
+    top: 60px; /* Sidebar starts below the header */
+    left: 0;
+    height: calc(100vh - 60px); /* Full height minus header */
+    overflow-y: auto; /* Scroll if content overflows */
+    padding: 10px;
+    z-index: 1000; /* Ensure it's below the header but above the main content */
+}
+
+/* Main content */
+.main {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 280px; /* Offset for the fixed sidebar */
+    overflow-y: auto;
+    height: calc(100vh - 60px); /* Full height minus header */
+}
+
+
+
+/* .main {
+    flex-grow: 1; /* Make content area grow to fill space 
+    padding: 20px;
+} */
+
