@@ -1,0 +1,22 @@
+<div class="parent">
+  <div class="container">
+    <div class="left">
+      <div class="header">
+        <h2 class="animation a1">Create New Course</h2>
+        <h4 class="animation a2">Fill In The Following Details</h4>
+      </div>
+      <div class="form">
+        <input type="text" class="form-field animation a3" placeholder="Course Title" [(ngModel)]="courseObj.courseTitle" name="courseTitle">
+        <input type="text" class="form-field animation a4" placeholder="Course Code" [(ngModel)]="courseObj.courseCode" name="courseCode">
+        <input type="text" class="form-field animation a4" placeholder="Course Unit" [(ngModel)]="courseObj.courseUnit" name="courseUnit">
+        <select class="form-field animation a4"  [(ngModel)]="courseObj.status" name="status" required>
+          <option value="Select your gender" disabled selected>Select your status</option>
+          <option *ngFor="let status of courseStatus" [value]="status.id">{{ status.label }}
+          </option>
+      </select>
+        <button class="animation a6" (click)="createCourse()">Create Course</button>
+      </div>
+    </div>
+    <div class="right"></div>
+  </div>
+</div>

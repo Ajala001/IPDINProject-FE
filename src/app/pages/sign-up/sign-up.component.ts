@@ -7,7 +7,7 @@ import { AcademicQualificationModel } from '../../models/classes/academicQualifi
 import { apiResponse } from '../../models/interfaces/apiResponse';
 import { FormsModule } from '@angular/forms';
 import { RegistrationTypeService } from '../../services/registrationType_service/registration-type.service';
-import { RegistrationTypeModel } from '../../models/classes/registrationType';
+import { RegistrationTypeResponse } from '../../models/classes/registrationType';
 
 
 
@@ -46,7 +46,7 @@ export class SignUpComponent implements OnInit {
   ];
 
   years: number[] = [];
-  registarationTypes: RegistrationTypeModel[] = []
+  registarationTypes: RegistrationTypeResponse[] = []
 
 
   ngOnInit(): void {
@@ -139,7 +139,7 @@ export class SignUpComponent implements OnInit {
 
 
 getAllRegistrationTypes(){
-  this.registrationTypeService.getRegistrationType().subscribe((res: apiResponse)=>{
+  this.registrationTypeService.getRegistrationTypes().subscribe((res: apiResponse)=>{
     if (res.isSuccessful) {
       alert(res.message)
       this.registarationTypes = res.data

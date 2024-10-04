@@ -1,18 +1,7 @@
-export interface Examination {
-    id: string
+export interface ExaminationModel {
     examTitle: string
-    examDate: string
-    examTime: string
+    examDateAndTime: string
     examYear: number
     fee: number
-    courses: Course[]
+    courses: string[]
   }
-  
-  export interface Course {
-    id: string
-    courseCode: string
-    courseTitle: string
-    courseUnit: string
-    status: number
-  }
-  

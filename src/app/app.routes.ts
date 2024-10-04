@@ -7,16 +7,40 @@ import { ForgetPasswordComponent } from './pages/forget-password/forget-password
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ConfirmationPageComponent } from './pages/confirmation-page/confirmation-page.component';
-import { UserComponent } from './pages/user/user.component';
-import { ApplicationComponent } from './pages/application/application.component';
-import { CourseComponent } from './pages/course/course.component';
-import { ExaminationComponent } from './pages/examination/examination.component';
-import { PaymentComponent } from './pages/payment/payment.component';
-import { QualificationComponent } from './pages/qualification/qualification.component';
-import { ResultComponent } from './pages/result/result.component';
-import { RoleComponent } from './pages/role/role.component';
-import { TrainingComponent } from './pages/training/training.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { CourseListComponent } from './pages/course/course-list/course-list.component';
+import { CreateCourseComponent } from './pages/course/create-course/create-course.component';
+import { EditCourseComponent } from './pages/course/edit-course/edit-course.component';
+import { DeleteCourseComponent } from './pages/course/delete-course/delete-course.component';
+import { CourseDetailComponent } from './pages/course/course-detail/course-detail.component';
+import { ApplicationListComponent } from './pages/application/application-list/application-list.component';
+import { CreateApplicationComponent } from './pages/application/create-application/create-application.component';
+import { EditApplicationComponent } from './pages/application/edit-application/edit-application.component';
+import { DeleteApplicationComponent } from './pages/application/delete-application/delete-application.component';
+import { ApplicationDetailComponent } from './pages/application/application-detail/application-detail.component';
+import { ExaminationListComponent } from './pages/examination/examination-list/examination-list.component';
+import { CreateExaminationComponent } from './pages/examination/create-examination/create-examination.component';
+import { EditExaminationComponent } from './pages/examination/edit-examination/edit-examination.component';
+import { DeleteExaminationComponent } from './pages/examination/delete-examination/delete-examination.component';
+import { ExaminationDetailComponent } from './pages/examination/examination-detail/examination-detail.component';
+import { PaymentListComponent } from './pages/payment/payment-list/payment-list.component';
+import { InitiatePaymentComponent } from './pages/payment/initiate-payment/initiate-payment.component';
+import { DeletePaymentComponent } from './pages/payment/delete-payment/delete-payment.component';
+import { PaymentDetailComponent } from './pages/payment/payment-detail/payment-detail.component';
+import { UploadResultComponent } from './pages/result/upload-result/upload-result.component';
+import { EditResultComponent } from './pages/result/edit-result/edit-result.component';
+import { DeleteResultComponent } from './pages/result/delete-result/delete-result.component';
+import { ResultDetailComponent } from './pages/result/result-detail/result-detail.component';
+import { TrainingListComponent } from './pages/training/training-list/training-list.component';
+import { CreateTrainingComponent } from './pages/training/create-training/create-training.component';
+import { EditTrainingComponent } from './pages/training/edit-training/edit-training.component';
+import { DeleteTrainingComponent } from './pages/training/delete-training/delete-training.component';
+import { QualificationListComponent } from './pages/qualification/qualification-list/qualification-list.component';
+import { DeleteQualificationComponent } from './pages/qualification/delete-qualification/delete-qualification.component';
+import { EditQualificationComponent } from './pages/qualification/edit-qualification/edit-qualification.component';
+import { CreateQualificationComponent } from './pages/qualification/create-qualification/create-qualification.component';
+import { QualificationDetailComponent } from './pages/qualification/qualification-detail/qualification-detail.component';
+import { TrainingDetailComponent } from './pages/training/training-detail/training-detail.component';
 
 export const routes: Routes = [
     {
@@ -57,15 +81,63 @@ export const routes: Routes = [
         component: LayoutComponent,
         children: [
             { path: 'dashboard', component: DashboardComponent },
-            { path: 'application', component: ApplicationComponent },
-            { path: 'course', component: CourseComponent },
-            { path: 'examination', component: ExaminationComponent },
-            { path: 'payment', component: PaymentComponent },
-            { path: 'qualification', component: QualificationComponent },
-            { path: 'result', component: ResultComponent },
-            { path: 'role', component: RoleComponent },
-            { path: 'training', component: TrainingComponent },
-            { path: 'user', component: UserComponent },
+            
+            // Course Routes
+            { path: 'courses', component: CourseListComponent }, // List all courses
+            { path: 'courses/create', component: CreateCourseComponent }, // Create a new course
+            { path: 'courses/:id/edit', component: EditCourseComponent }, // Edit a course
+            { path: 'courses/:id/delete', component: DeleteCourseComponent }, // Delete a course
+            { path: 'courses/:id', component: CourseDetailComponent }, // View course details
+
+            // AppApplication Routes
+            { path: 'applications', component: ApplicationListComponent }, // List all applications
+            { path: 'applications/create', component: CreateApplicationComponent }, // Create an application
+            { path: 'applications/:id/edit', component: EditApplicationComponent }, // Edit an application
+            { path: 'applications/:id/delete', component: DeleteApplicationComponent }, // Delete an application
+            { path: 'applications/:id', component: ApplicationDetailComponent }, // View application details
+
+            // Examination Routes
+            { path: 'examinations', component: ExaminationListComponent }, // List all examinations
+            { path: 'examinations/create', component: CreateExaminationComponent }, // Create an examination
+            { path: 'examinations/:id/edit', component: EditExaminationComponent }, // Edit an examination
+            { path: 'examinations/:id/delete', component: DeleteExaminationComponent }, // Delete an examination
+            { path: 'examinations/:id', component: ExaminationDetailComponent }, // View examination details
+
+            // Payment Routes
+            { path: 'payments', component: PaymentListComponent }, // List all payments
+            { path: 'payments/initiate', component: InitiatePaymentComponent }, // Initiate a payment
+            // { path: 'payments/:id/edit', component: EditPaymentComponent }, // Edit a payment
+            { path: 'payments/:id/delete', component: DeletePaymentComponent }, // Delete a payment
+            { path: 'payments/:id', component: PaymentDetailComponent }, // View payment details
+
+            // Result Routes
+            // { path: 'results', component: ResultListComponent }, // List all results
+            { path: 'results/upload', component: UploadResultComponent }, // Create a result
+            { path: 'results/:id/edit', component: EditResultComponent }, // Edit a result
+            { path: 'results/:id/delete', component: DeleteResultComponent }, // Delete a result
+            { path: 'results/:id', component: ResultDetailComponent }, // View result details
+
+            // Training Routes
+            { path: 'trainings', component: TrainingListComponent }, // List all trainings
+            { path: 'trainings/create', component: CreateTrainingComponent }, // Create a training
+            { path: 'trainings/:id/edit', component: EditTrainingComponent }, // Edit a training
+            { path: 'trainings/:id/delete', component: DeleteTrainingComponent }, // Delete a training
+            { path: 'trainings/:id', component: TrainingDetailComponent }, // View training details
+
+            // RegistrationType Routes
+            // { path: 'registration-types', component: RegistrationTypeListComponent }, // List all registration types
+            // { path: 'registration-types/create', component: CreateRegistrationTypeComponent }, // Create a registration type
+            // { path: 'registration-types/:id/edit', component: EditRegistrationTypeComponent }, // Edit a registration type
+            // { path: 'registration-types/:id/delete', component: DeleteRegistrationTypeComponent }, // Delete a registration type
+            // { path: 'registration-types/:id', component: RegistrationTypeDetailComponent }, // View registration type details
+
+            // AcademicQualification Routes
+            { path: 'qualifications', component: QualificationListComponent }, // List all academic qualifications
+            { path: 'qualifications/create', component: CreateQualificationComponent }, // Create an academic qualification
+            { path: 'qualifications/:id/edit', component: EditQualificationComponent }, // Edit an academic qualification
+            { path: 'qualifications/:id/delete', component: DeleteQualificationComponent }, // Delete an academic qualification
+            { path: 'qualifications/:id/detail', component: QualificationDetailComponent }, // View academic qualification details
+
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' }     // default route for the LayoutComponent
         ]
     },
