@@ -11,3 +11,11 @@ export class CourseModel {
         this.status = 0
     }
   }
+
+  export interface CourseResponseModel {
+    id: string
+    courseCode: string
+    courseTitle: string
+    courseUnit: string
+    status: number
+  }

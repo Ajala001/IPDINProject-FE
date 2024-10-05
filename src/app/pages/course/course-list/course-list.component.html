@@ -1,1 +1,53 @@
-<p>course-list works!</p>
+<div class="container">
+  <h1 class="header">Courses</h1>
+  
+  <!-- Controls Section -->
+  <div class="controls-section">
+      <!-- Dropdown for selecting page size -->
+      <div class="page-size">
+          <label for="pageSize"><b>Select Page Size:</b></label>
+          <select [(ngModel)]="pageSize" (change)="onPageSizeChange()">
+              <option *ngFor="let size of pageSizes" [value]="size">{{size}}</option>
+          </select>
+      </div>
+
+      <!-- Filtering Section -->
+      <div class="filter-section">
+          <label for="filter"><b>Filter Courses:</b></label>
+          <input type="text" [(ngModel)]="params.searchQuery" placeholder="Enter search keyword" />
+          <button class="btn btn-primary" (click)="searchCourses()">Search</button>
+      </div>
+
+      <!-- Pagination controls -->
+      <div class="pagination-controls">
+          <button (click)="previousPage()" [disabled]="pageNumber === 1">Previous</button>
+          <span><b>{{ pageNumber }}</b></span>
+          <button (click)="nextPage()" [disabled]="(pageNumber * pageSize) >= totalCourses">Next</button>
+      </div>
+  </div>
+
+  <table id="example" class="table table-striped table-bordered">
+      <thead>
+          <tr>
+              <th>Sr No</th>
+              <th>Course Title</th>
+              <th>Course Code</th>
+              <th>Course Unit</th>
+              <th>Course Status</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of paginatedData; let i = index">
+              <td>{{ (pageNumber - 1) * pageSize + i + 1 }}</td>
+              <td>{{ item.courseTitle }}</td>
+              <td>{{ item.courseCode }}</td>
+              <td>{{ item.courseUnit }}</td>
+              <td>{{ courseStatusMap[item.status] }}</td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+
+
+
+<!-- [(ngModel)]="filterText" (input)="onFilterChange()" -->

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CourseModel } from '../../models/classes/course';
 import { Observable } from 'rxjs';
@@ -6,6 +6,7 @@ import { apiResponse } from '../../models/interfaces/apiResponse';
 import { environment } from '../../environments/environment';
 import { apiEndpoints } from '../../constants/constant';
 import { CourseUpdateModel } from '../../models/interfaces/courseUpdate';
+import { pagedResponse } from '../../models/interfaces/pagedResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,14 @@ export class CourseServiceService {
     return this.http.post<apiResponse>(environment.apiUrl + apiEndpoints.createCourseUrl, course);
   }
 
-  getCourses() : Observable<apiResponse>{
-    return this.http.get<apiResponse>(environment.apiUrl + apiEndpoints.getCoursesUrl)
+  getCourses(params: { [key: string]: any }) : Observable<pagedResponse>{
+    let queryParams = new HttpParams(); 
+    for (const key in params) {
+      if (params.hasOwnProperty(key)) {
+        queryParams = queryParams.append(key, params[key]);
+      }
+    }
+    return this.http.get<pagedResponse>(environment.apiUrl + apiEndpoints.getCoursesUrl, { params: queryParams })
   }
 
   getCourseById(courseId: string): Observable<apiResponse>{
@@ -34,8 +41,26 @@ export class CourseServiceService {
     return this.http.delete<apiResponse>(`${environment.apiUrl}${apiEndpoints.deleteCourseUrl(courseId)}`);
   }
   
-  searchCourses(params: { [key: string]: any }): Observable<apiResponse> {
-    const queryString = apiEndpoints.searchCoursesUrl(params); // Use the function from constants
-    return this.http.get<apiResponse>(`${environment.apiUrl}/courses/search?${queryString}`);
-  }
+  // searchCourses(params: { [key: string]: any }): Observable<pagedResponse> {
+  //   let queryParams = new HttpParams(); // Creating an instance of HttpParams and append all query parameters
+  //   for (const key in params) {
+  //     if (params.hasOwnProperty(key)) {
+  //       queryParams = queryParams.append(key, params[key]);
+  //     }
+  //   }
+  //   return this.http.get<pagedResponse>(`${environment.apiUrl}/${apiEndpoints.searchCoursesUrl}`, { params: queryParams });
+  // }
+
+  searchCourses(params: { [key: string]: any }): Observable<pagedResponse> {
+    let queryParams = new HttpParams();
+
+    // Create query parameters
+    for (const key in params) {
+        if (params.hasOwnProperty(key)) {
+            queryParams = queryParams.append(key, params[key].toString());
+        }
+    }
+
+    return this.http.get<pagedResponse>(`${environment.apiUrl}${apiEndpoints.searchCoursesUrl}`, { params: queryParams });
+}
 }

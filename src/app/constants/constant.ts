@@ -22,12 +22,7 @@ export const apiEndpoints =
     //Course
     createCourseUrl: '/courses',
     getCoursesUrl: '/courses',
-    searchCoursesUrl: (params: { [key: string]: any }) => {
-      return Object.entries(params)
-        .filter(([key, value]) => value) // Exclude empty or null values
-        .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
-        .join('&'); // Join with '&'
-    },
+    searchCoursesUrl: '/courses/search',
     getCourseByIdUrl: (id: string) => `/courses/${id}`,
     updateCourseUrl(id: string) : string {
       return `/courses/${id}`
@@ -92,3 +87,13 @@ export const apiEndpoints =
     updateUserUrl: (email: string) => `/users/${email}`,
     deleteUserUrl: (email: string) => `/users/${email}`,
 };
+
+
+
+
+// (params: { [key: string]: any }) => {
+//   return Object.entries(params)
+//     .filter(([key, value]) => value) // Exclude empty or null values
+//     .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+//     .join('&'); // Join with '&'
+// },

@@ -33,7 +33,7 @@ export class CreateCourseComponent {
     this.courseService.createCourse(this.courseObj).subscribe((response: apiResponse) => {
       if (response.isSuccessful) {
         alert(response.message)
-        this.router.navigateByUrl("home");
+        this.router.navigateByUrl("courses");
       } else {
         alert(response.message)
         this.router.navigateByUrl("dashboard")
