@@ -1,11 +1,12 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { apiResponse } from '../../models/interfaces/apiResponse';
 import { environment } from '../../environments/environment';
 import { apiEndpoints } from '../../constants/constant';
-import { ExaminationModel } from '../../models/interfaces/examination';
+import { ExaminationModel } from '../../models/classes/examination';
 import { ExaminationUpdateModel } from '../../models/interfaces/examinationUpdate';
+import { pagedResponse } from '../../models/interfaces/pagedResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,14 @@ export class ExaminationService {
     return this.http.post<apiResponse>(environment.apiUrl + apiEndpoints.createExaminationUrl, examination);
   }
 
-  getExaminations(): Observable<apiResponse>{
-    return this.http.get<apiResponse>(environment.apiUrl + apiEndpoints.getExaminationsUrl)
+  getExaminations(params: { [key: string]: any }) : Observable<pagedResponse>{
+    let queryParams = new HttpParams(); 
+    for (const key in params) {
+      if (params.hasOwnProperty(key)) {
+        queryParams = queryParams.append(key, params[key]);
+      }
+    }
+    return this.http.get<pagedResponse>(environment.apiUrl + apiEndpoints.getExaminationsUrl, { params: queryParams })
   }
 
   getExaminationById(examinationId: string): Observable<apiResponse>{
@@ -34,8 +41,16 @@ export class ExaminationService {
     return this.http.delete<apiResponse>(`${environment.apiUrl}${apiEndpoints.deleteExaminationUrl(examinationId)}`);
   }
   
-  searchExaminations(): Observable<apiResponse>{
-    return this.http.get<apiResponse>(environment.apiUrl + apiEndpoints.searchExaminationUrl);
+  searchExaminations(params: { [key: string]: any }): Observable<pagedResponse> {
+    let queryParams = new HttpParams();
+
+    // Create query parameters
+    for (const key in params) {
+        if (params.hasOwnProperty(key)) {
+            queryParams = queryParams.append(key, params[key].toString());
+        }
+    }
+    return this.http.get<pagedResponse>(`${environment.apiUrl}${apiEndpoints.searchExaminationUrl}`, { params: queryParams });
   }
 
 }

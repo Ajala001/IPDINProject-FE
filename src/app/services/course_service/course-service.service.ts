@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CourseModel } from '../../models/classes/course';
+import { CourseModel, CourseResponseModel } from '../../models/classes/course';
 import { Observable } from 'rxjs';
 import { apiResponse } from '../../models/interfaces/apiResponse';
 import { environment } from '../../environments/environment';
@@ -33,7 +33,7 @@ export class CourseServiceService {
     return this.http.get<apiResponse>(`${environment.apiUrl}${apiEndpoints.getCourseByIdUrl(courseId)}`);
   }
 
-  updateCourseById(courseId: string, updateRequest: CourseUpdateModel): Observable<apiResponse>{
+  updateCourseById(courseId: string, updateRequest: CourseResponseModel): Observable<apiResponse>{
     return this.http.put<apiResponse>(`${environment.apiUrl}${apiEndpoints.updateCourseUrl(courseId)}`, updateRequest);
   }
 
@@ -41,15 +41,6 @@ export class CourseServiceService {
     return this.http.delete<apiResponse>(`${environment.apiUrl}${apiEndpoints.deleteCourseUrl(courseId)}`);
   }
   
-  // searchCourses(params: { [key: string]: any }): Observable<pagedResponse> {
-  //   let queryParams = new HttpParams(); // Creating an instance of HttpParams and append all query parameters
-  //   for (const key in params) {
-  //     if (params.hasOwnProperty(key)) {
-  //       queryParams = queryParams.append(key, params[key]);
-  //     }
-  //   }
-  //   return this.http.get<pagedResponse>(`${environment.apiUrl}/${apiEndpoints.searchCoursesUrl}`, { params: queryParams });
-  // }
 
   searchCourses(params: { [key: string]: any }): Observable<pagedResponse> {
     let queryParams = new HttpParams();
@@ -62,5 +53,5 @@ export class CourseServiceService {
     }
 
     return this.http.get<pagedResponse>(`${environment.apiUrl}${apiEndpoints.searchCoursesUrl}`, { params: queryParams });
-}
+  }
 }

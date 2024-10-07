@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CourseServiceService } from '../../../services/course_service/course-service.service';
 import { CourseResponseModel } from '../../../models/classes/course';
 import { apiResponse } from '../../../models/interfaces/apiResponse';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { pagedResponse } from '../../../models/interfaces/pagedResponse';
@@ -11,7 +11,7 @@ import { CourseSearchModel } from '../../../models/classes/courseSearch';
 @Component({
   selector: 'app-course-list',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './course-list.component.html',
   styleUrl: './course-list.component.css'
 })
@@ -92,7 +92,6 @@ export class CourseListComponent implements OnInit {
   }
 
 
-
   params: CourseSearchModel = new CourseSearchModel
   searchCourses() {
     this.params.pageNumber = this.pageNumber;
@@ -113,6 +112,8 @@ export class CourseListComponent implements OnInit {
       this.getCourses();
     }
   }
+
+
 }
 
 

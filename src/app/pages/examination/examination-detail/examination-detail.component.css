@@ -1,0 +1,159 @@
+/* Styling for the parent container */
+.parent {
+    background-color: darkblue; /* Set background color */
+    margin: 0;
+    height: 100vh; /* Full height */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    font-family: Arial, sans-serif;
+    padding: 20px; /* Add some padding to avoid content sticking to the edges */
+  }
+  
+  /* Center the container and make it flexible */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Full height for centering */
+  }
+  
+  /* Style the card for a more polished look */
+  .card {
+    width: 80%; /* Make the card responsive */
+    max-width: 500px; /* Maximum width */
+    padding: 20px;
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Add a deeper shadow */
+    background-color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add a smooth transition */
+  }
+  
+  /* Add hover effect to the card */
+  .card:hover {
+    transform: translateY(-5px); /* Slight elevation effect on hover */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+  }
+  
+  /* Adjusting card height and making the image responsive */
+  .card img {
+    width: 100%; /* Full width */
+    height: auto; /* Keep the aspect ratio */
+    max-height: 250px; /* Set a maximum height */
+    object-fit: cover; /* Fit image nicely without stretching */
+    border-radius: 10px; /* Slightly rounded image corners */
+    margin-bottom: 15px; /* Add space below the image */
+  }
+  
+  /* Ensure card text is styled */
+  .card-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 10px; /* Add space below the title */
+    color: darkblue; /* Match the background with a nice contrast */
+  }
+  
+  /* Styling for the card content */
+  .card-text {
+    font-size: 1rem;
+    line-height: 1.5; /* Improve readability with better line height */
+    color: #333;
+  }
+  
+  /* Style the list of course details */
+  .list-group-item {
+    background-color: transparent; /* Keep list item background transparent */
+    border: none; /* Remove borders from list items */
+    padding: 8px 0; /* Add some padding for space */
+  }
+  
+  /* Add a small separator between list items */
+  .list-group-item:not(:last-child) {
+    border-bottom: 1px solid #ccc; /* Subtle separator line */
+  }
+  
+  /* Styling for the courses list */
+  .course-list {
+    list-style-type: disc; /* Use disc-style bullets */
+    margin-left: 20px; /* Add space for the bullets */
+    padding-left: 10px; /* Create space inside the list */
+  }
+  
+  .course-item {
+    font-size: 1rem;
+    color: #555; /* Lighter color for the course list */
+    padding: 5px 0; /* Add some padding for space between courses */
+  }
+  
+  /* Add some style to the card links */
+  .card-link {
+    color: #007bff; /* Blue color for the links */
+    text-decoration: none;
+    margin-right: 10px;
+    font-weight: bold; /* Bold links for emphasis */
+  }
+  
+  .card-link:hover {
+    text-decoration: underline;
+    color: #0056b3; /* Darken the link color on hover */
+  }
+  
+  /* Style the button links with hover effects */
+  .card-body a {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    display: inline-block;
+  }
+  
+  .card-body a:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Styling for the courses section */
+  .course-section {
+    margin-top: 15px; /* Add some space above the course list */
+  }
+  
+  .course-section-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: darkblue; /* Match the theme with the card title */
+    margin-bottom: 10px; /* Space below the title */
+  }
+  
+  .course-list .course-item::before {
+    content: '•'; /* Custom bullet point */
+    color: #007bff; /* Match the bullet color with link */
+    font-weight: bold;
+    display: inline-block;
+    width: 1em; /* Space for the bullet */
+    margin-left: -1em; /* Align bullet with the text */
+  }
+  
+  /* Styling for responsive breakpoints */
+  @media (max-width: 600px) {
+    .card {
+      width: 95%; /* Increase card width for smaller screens */
+      padding: 15px;
+    }
+  
+    .card-title {
+      font-size: 1.4rem; /* Reduce font size for smaller screens */
+    }
+  
+    .card-link {
+      font-size: 0.85rem; /* Reduce font size for links on small screens */
+    }
+  
+    .course-item {
+      font-size: 0.9rem; /* Adjust course item font size for small screens */
+    }
+  }
+  

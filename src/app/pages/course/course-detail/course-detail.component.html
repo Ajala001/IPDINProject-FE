@@ -1,1 +1,20 @@
-<p>course-detail works!</p>
+<div class="parent">
+    <div class="container">
+        <div *ngIf="course" class="card">
+          <h2>Course Details</h2>
+          <img src="assets/images/pexels-brettjordan-917832.jpg" class="card-img-top course-image" alt="Course-image">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>Course Title: </b> {{ course.courseTitle }}</li>
+            <li class="list-group-item"><b>Course Code: </b> {{ course.courseCode }}</li>
+            <li class="list-group-item"><b>Course Unit: </b> {{ course.courseUnit }}</li>
+            <li class="list-group-item"><b>Course Status: </b> {{ courseStatusMap[course.status] }}</li>
+          </ul>
+          <div class="card-body">
+            <a [routerLink]="['/courses']" class="card-link">Back</a>
+            <a [routerLink]="['/courses', course.id, 'edit']" class="card-link">Edit</a>
+          </div>
+        </div>
+      </div>
+</div>
+
+  

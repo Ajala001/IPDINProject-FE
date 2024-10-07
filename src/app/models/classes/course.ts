@@ -19,3 +19,12 @@ export class CourseModel {
     courseUnit: string
     status: number
   }
+
+  export interface CourseResponseModel2 {
+    id: string
+    courseCode: string
+    courseTitle: string
+    courseUnit: string
+    status: number
+    selected: boolean;
+  }

@@ -1,1 +1,21 @@
-<p>delete-course works!</p>
+<div class="parent">
+    <div class="container">
+        <div *ngIf="course" class="card">
+            <h2>Confirm Deletion</h2>
+            <p style="color: red;">Are you sure you want to delete the following course?</p>
+          <img src="assets/images/pexels-brettjordan-917832.jpg" class="card-img-top course-image" alt="Course-image">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>Course Title: </b> {{ course.courseTitle }}</li>
+            <li class="list-group-item"><b>Course Code: </b> {{ course.courseCode }}</li>
+            <li class="list-group-item"><b>Course Unit: </b> {{ course.courseUnit }}</li>
+            <li class="list-group-item"><b>Course Status: </b> {{ courseStatusMap[course.status] }}</li>
+          </ul>
+          <div class="card-body">
+            <button (click)="confirmDelete()" class="btn btn-danger">Delete Course</button>
+            <button (click)="cancelDelete()" class="btn btn-secondary">Cancel</button>
+          </div>
+        </div>
+      </div>
+</div>
+
+  

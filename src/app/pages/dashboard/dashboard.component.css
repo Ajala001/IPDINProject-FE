@@ -18,3 +18,14 @@
 .table th, .table td {
     vertical-align: middle;
 }
+button {
+    padding: 5px 10px;
+    margin: 0 3px;
+    border: none;
+    border-radius: 3px;
+    
+    color: white;
+    cursor: pointer;
+    font-size: 10px; /* Slightly smaller font size */
+    transition: background-color 0.3s;
+  }

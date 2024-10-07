@@ -20,9 +20,9 @@
 
       <!-- Pagination controls -->
       <div class="pagination-controls">
-          <button (click)="previousPage()" [disabled]="pageNumber === 1">Previous</button>
+          <button class="btn btn-primary" (click)="previousPage()" [disabled]="pageNumber === 1">Previous</button>
           <span><b>{{ pageNumber }}</b></span>
-          <button (click)="nextPage()" [disabled]="(pageNumber * pageSize) >= totalCourses">Next</button>
+          <button class="btn btn-primary" (click)="nextPage()" [disabled]="(pageNumber * pageSize) >= totalCourses">Next</button>
       </div>
   </div>
 
@@ -33,7 +33,7 @@
               <th>Course Title</th>
               <th>Course Code</th>
               <th>Course Unit</th>
-              <th>Course Status</th>
+              <th>Actions</th>
           </tr>
       </thead>
       <tbody>
@@ -42,7 +42,10 @@
               <td>{{ item.courseTitle }}</td>
               <td>{{ item.courseCode }}</td>
               <td>{{ item.courseUnit }}</td>
-              <td>{{ courseStatusMap[item.status] }}</td>
+              <td>
+                <button class="btn btn-primary" [routerLink]="['/courses', item.id]">Detail</button>
+                <button class="btn btn-danger" [routerLink]="['/courses', item.id, 'delete']">Delete</button>
+              </td>
           </tr>
       </tbody>
   </table>

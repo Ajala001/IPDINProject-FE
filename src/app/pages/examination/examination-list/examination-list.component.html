@@ -1,1 +1,57 @@
-<p>examination-list works!</p>
+<div class="container">
+    <h1 class="header">Examinations</h1>
+    
+    <!-- Controls Section -->
+    <div class="controls-section">
+        <!-- Dropdown for selecting page size -->
+        <div class="page-size">
+            <label for="pageSize"><b>Select Page Size:</b></label>
+            <select [(ngModel)]="pageSize" (change)="onPageSizeChange()">
+                <option *ngFor="let size of pageSizes" [value]="size">{{size}}</option>
+            </select>
+        </div>
+  
+        <!-- Filtering Section -->
+        <div class="filter-section">
+            <label for="filter"><b>Filter Examinations:</b></label>
+            <input type="text" [(ngModel)]="params.searchQuery" placeholder="Enter search keyword" />
+            <button class="btn btn-primary" (click)="searchExams()">Search</button>
+        </div>
+  
+        <!-- Pagination controls -->
+        <div class="pagination-controls">
+            <button class="btn btn-primary" (click)="previousPage()" [disabled]="pageNumber === 1">Previous</button>
+            <span><b>{{ pageNumber }}</b></span>
+            <button class="btn btn-primary" (click)="nextPage()" [disabled]="(pageNumber * pageSize) >= totalExams">Next</button>
+        </div>
+    </div>
+  
+    <table id="example" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Sr No</th>
+                <th>Examination Title</th>
+                <th>Examination Date</th>
+                <th>Examination Time</th>
+                <th>Examination Fee</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of paginatedData; let i = index">
+                <td>{{ (pageNumber - 1) * pageSize + i + 1 }}</td>
+                <td>{{ item.examTitle}}</td>
+                <td>{{ item.examDate }}</td>
+                <td>{{ item.examTime }}</td>
+                <td>{{ item.fee }}</td>
+                <td>
+                  <button class="btn btn-primary" [routerLink]="['/examinations', item.id]">Detail</button>
+                  <button class="btn btn-danger" [routerLink]="['/examinations', item.id, 'delete']">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+  
+  
+  

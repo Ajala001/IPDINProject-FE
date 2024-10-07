@@ -75,7 +75,7 @@ button {
   margin: 0 3px;
   border: none;
   border-radius: 3px;
-  background-color: blue; /* Bootstrap primary color */
+  
   color: white;
   cursor: pointer;
   font-size: 10px; /* Slightly smaller font size */

@@ -1,1 +1,27 @@
-<p>edit-course works!</p>
+<!-- edit-course.component.html -->
+<div class="parent">
+    <div class="container">
+        <div class="left">
+            <div class="header">
+                <h2 class="animation a1">Edit Course</h2>
+                <h4 class="animation a2">Fill In The Following Details</h4>
+            </div>
+            <div class="form">
+                <input type="text" class="form-field animation a3" placeholder="Course Title"
+                    [(ngModel)]="course.courseTitle" name="courseTitle" required>
+                <input type="text" class="form-field animation a4" placeholder="Course Code"
+                    [(ngModel)]="course.courseCode" name="courseCode" required>
+                <input type="number" class="form-field animation a4" placeholder="Course Unit"
+                    [(ngModel)]="course.courseUnit" name="courseUnit" required>
+                <select class="form-field animation a4" [(ngModel)]="course.status" name="status" required>
+                    <option value="" disabled selected>Select your status</option>
+                    <option *ngFor="let status of courseStatus" [value]="status.id">
+                        {{ status.label }}
+                    </option>
+                </select>
+                <button class="animation a6" (click)="updateCourse()">Save</button>
+            </div>
+        </div>
+        <div class="right"></div>
+    </div>
+</div>

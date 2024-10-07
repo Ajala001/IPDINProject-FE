@@ -1,0 +1,75 @@
+/* Style the body for full-page background */
+.parent {
+    background-color: darkblue; /* Set page background color to blue */
+    margin: 0;
+    height: 100vh; /* Full height */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    font-family: Arial, sans-serif;
+}
+
+/* Center container and make the card responsive */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Full height for centering */
+}
+
+/* Style for the card */
+.card {
+    width: 80%; /* Make the card responsive */
+    max-width: 500px; /* Maximum width */
+    padding: 10px; /* Reduced padding */
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add some shadow */
+    background-color: white;
+    transition: width 0.3s ease, height 0.3s ease; /* Smooth transition */
+}
+
+/* Adjusting card height for responsiveness */
+.card img {
+    width: 100%; /* Make image fill the card */
+    height: auto; /* Adjust height automatically */
+}
+
+/* Ensure card text is styled nicely */
+.card-title {
+    font-size: 1.25rem; /* Slightly smaller font size */
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 0.9rem; /* Slightly smaller font size */
+}
+
+/* Add some style to the links */
+.card-link {
+    color: #007bff;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.card-link:hover {
+    text-decoration: underline;
+}
+
+.course-image {
+    width: 100%; /* Adjust the image to the width of the card */
+    height: auto; /* Keep the aspect ratio */
+    max-height: 150px; /* Set a maximum height to reduce overall height */
+    object-fit: cover; /* Ensures the image fits nicely without distortion */
+}
+
+button {
+    padding: 5px 10px;
+    margin: 0 3px;
+    border: none;
+    border-radius: 3px;
+    
+    color: white;
+    cursor: pointer;
+    font-size: 10px; /* Slightly smaller font size */
+    transition: background-color 0.3s;
+}
