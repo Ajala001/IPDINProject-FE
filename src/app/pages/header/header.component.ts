@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from '../../services/auth_service/auth.service';
 import { CommonModule } from '@angular/common';
-import { SidebarComponent } from '../sidebar/sidebar.component';
+import { SidebarComponent } from '../sidebars/sidebar/sidebar.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 
 @Component({

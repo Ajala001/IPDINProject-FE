@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { apiResponse } from '../../models/interfaces/apiResponse';
@@ -7,6 +7,7 @@ import { apiEndpoints } from '../../constants/constant';
 import { ApplicationModel } from '../../models/classes/application';
 import { ApplicationUpdateModel } from '../../models/interfaces/applicationUpdate';
 import { ApplicationRejectionModel } from '../../models/interfaces/applicationRejection';
+import { pagedResponse } from '../../models/interfaces/pagedResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,14 @@ export class ApplicationServiceService {
     return this.http.post<apiResponse>(environment.apiUrl + apiEndpoints.createApplicationUrl, application);
   }
 
-  getApplications() : Observable<apiResponse>{
-    return this.http.get<apiResponse>(environment.apiUrl + apiEndpoints.getApplicationsUrl)
+  getApplications(params: { [key: string]: any }) : Observable<pagedResponse>{
+    let queryParams = new HttpParams(); 
+    for (const key in params) {
+      if (params.hasOwnProperty(key)) {
+        queryParams = queryParams.append(key, params[key]);
+      }
+    }
+    return this.http.get<pagedResponse>(environment.apiUrl + apiEndpoints.getApplicationsUrl, { params: queryParams })
   }
 
   getApplicationById(applicationId: string): Observable<apiResponse>{
@@ -47,5 +54,17 @@ export class ApplicationServiceService {
     return this.http.post<apiResponse>(`${environment.apiUrl}${apiEndpoints.acceptApplicationUrl(applicationId)}`, rejectionReason);
   }
 
+  searchApplications(params: { [key: string]: any }): Observable<pagedResponse> {
+    let queryParams = new HttpParams();
+
+    // Create query parameters
+    for (const key in params) {
+        if (params.hasOwnProperty(key)) {
+            queryParams = queryParams.append(key, params[key].toString());
+        }
+    }
+
+    return this.http.get<pagedResponse>(`${environment.apiUrl}${apiEndpoints.searchApplicationsUrl}`, { params: queryParams });
+  }
 
 }

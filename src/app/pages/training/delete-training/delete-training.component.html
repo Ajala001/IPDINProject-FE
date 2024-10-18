@@ -1,1 +1,29 @@
-<p>delete-training works!</p>
+<div class="parent">
+    <div class="container d-flex justify-content-center align-items-center mt-5">
+      <div *ngIf="training" class="card shadow-lg" style="max-width: 600px; border-radius: 12px;">
+        <div class="card-header bg-danger text-white text-center" style="border-radius: 12px 12px 0 0;">
+          <h2>Confirm Deletion</h2>
+        </div>
+        <div class="card-body text-center">
+          <p class="text-danger font-weight-bold">Are you sure you want to delete the following training?</p>
+          <img src="assets/images/pexels-brettjordan-917832.jpg" class="card-img-top mb-3 course-image" alt="Course-image" style="border-radius: 8px; max-height: 200px; object-fit: cover;">
+          <ul class="list-group list-group-flush text-left">
+            <li class="list-group-item"><b>Training Title: </b> {{ training.title }}</li>
+            <li class="list-group-item"><b>Training Starting Date And Time: </b> {{ training.startingDateAndTime }}</li>
+            <li class="list-group-item"><b>Training Ending Date And Time: </b> {{ training.endingDateAndTime }}</li>
+            <li class="list-group-item"><b>Training Registration Deadline: </b> {{ training.registrationDeadline }}</li>
+            <li class="list-group-item"><b>Training Duration: </b> {{ training.duration }} Days</li>
+            <li class="list-group-item"><b>Training Fee: </b> {{ training.fee }}</li>
+            <li class="list-group-item"><b>Training Capacity: </b> {{ training.capacity }} participants</li>
+            <li class="list-group-item"><b>Training Category: </b> {{ trainingCategoryMap[training.category] }}</li>
+            <li class="list-group-item"><b>Training Status: </b> {{ trainingStatusMap[training.status] }}</li>
+          </ul>
+        </div>
+        <div class="card-footer d-flex justify-content-around py-3" style="border-radius: 0 0 12px 12px;">
+          <button (click)="confirmDelete()" class="btn btn-danger px-4">Delete</button>
+          <button (click)="cancelDelete()" class="btn btn-secondary px-4">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

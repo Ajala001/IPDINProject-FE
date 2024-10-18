@@ -1,1 +1,41 @@
-<p>edit-examination works!</p>
+<form (ngSubmit)="updateExamination()" class="form-container">
+    <div class="form-group">
+        <label for="examTitle">Exam Title:</label>
+        <input id="examTitle" type="text" [(ngModel)]="exam.examTitle" name="examTitle" required />
+    </div>
+
+    <div class="form-group">
+        <label for="examDate">Exam Date & Time:</label>
+        <input id="examDate" type="datetime-local" [(ngModel)]="exam.examDateAndTime" name="examDateAndTime" required
+            class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="examYear">Exam Year:</label>
+        <select id="examYear" [(ngModel)]="exam.examYear" name="examYear" class="form-control" required>
+            <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+        </select>
+    </div>
+
+
+    <div class="form-group">
+        <label for="fee">Fee:</label>
+        <input id="fee" type="text" [(ngModel)]="examResponse.fee" name="fee" required />
+    </div>
+
+    <div class="form-group">
+        <label>Courses:</label>
+        <div *ngFor="let course of allCourses" class="course-checkbox">
+            <input type="checkbox" 
+            [value]="course.id"
+                   [checked]="exam.courses.includes(course.id)"
+                   (change)="toggleCourseSelection(course.id, $event)" />
+            {{ course.courseTitle }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button type="submit">Update Examination</button>
+        <button type="button" class="btn cancel" (click)="router.navigate(['/examinations'])">Cancel</button>
+    </div>
+</form>

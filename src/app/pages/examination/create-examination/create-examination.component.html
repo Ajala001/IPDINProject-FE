@@ -1,47 +1,49 @@
 <div class="container register">
-    <div class="row">
-      <div class="col-md-3 register-left">
-        <img src="assets/images/pexels-brettjordan-917832.jpg" alt=""/>
-        <h3>Welcome</h3>
-        <p>You are 30 seconds away from earning your own money!</p>
-      </div>
-      <div class="col-md-9 register-right">
-        <h3 class="register-heading">Create Examination</h3>
-        <div class="row register-form">
-          <div class="col-md-6 form-group">
-            <input type="text" class="form-control" [(ngModel)]="examObj.examTitle" name="examTitle" placeholder="Exam Title" />
-          </div>
-          <div class="col-md-6 form-group">
-            <input type="datetime-local" class="form-control" [(ngModel)]="examObj.examDateAndTime" name="examDateAndTime" placeholder="Exam Date & Time" />
-          </div>
-          <div class="col-md-6 form-group">
-            <select class="form-control" [(ngModel)]="examObj.examYear" name="examYear">
-              <option class="hidden" selected disabled>Select Exam Year</option>
-              <option *ngFor="let year of years" [value]="year">{{ year }}</option>
-            </select>
-          </div>
-          <div class="col-md-6 form-group">
-            <input type="number" class="form-control" [(ngModel)]="examObj.fee" name="fee" placeholder="Fee" />
-          </div>
-          <!-- Full width for Select Courses -->
-          <div class="col-md-12 form-group">
-            <label>Select Courses</label>
-            <div *ngFor="let course of courses">
-                <input 
-                    type="checkbox" 
-                    [(ngModel)]="course.selected" 
-                    (change)="onCourseChange(course.id, course.selected)" 
-                />
-                {{ course.courseTitle }} - {{ course.courseCode }}
-            </div>
+  <div class="row">
+    <div class="col-md-3 register-left">
+      <img src="assets/images/pexels-brettjordan-917832.jpg" alt="Welcome Image" class="img-fluid" />
+      <h3>Welcome</h3>
+      <p>You are 30 seconds away from earning your own money!</p>
+    </div>
+    <div class="col-md-9 register-right">
+      <h3 class="register-heading">Create Examination</h3>
+      <div class="row register-form">
+        <div class="col-md-6 form-group">
+          <label for="examTitle" class="font-weight-bold">Exam Title</label>
+          <input type="text" class="form-control" id="examTitle" [(ngModel)]="examObj.examTitle" name="examTitle"
+            placeholder="Enter Exam Title" required />
         </div>
-        
-          <!-- Centered Register Button -->
-          <div class="col-md-12 text-center">
-            <input type="submit" class="btnRegister" value="Create" (click)="createExam()"/>
+        <div class="col-md-6 form-group">
+          <label for="examDateAndTime" class="font-weight-bold">Exam Date & Time</label>
+          <input type="datetime-local" class="form-control" id="examDateAndTime" [(ngModel)]="examObj.examDateAndTime"
+            name="examDateAndTime" required />
+        </div>
+        <div class="col-md-6 form-group">
+          <label for="examYear" class="font-weight-bold">Select Exam Year</label>
+          <select class="form-control" id="examYear" [(ngModel)]="examObj.examYear" name="examYear" required>
+            <option class="hidden" selected disabled>Select Exam Year</option>
+            <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+          </select>
+        </div>
+        <div class="col-md-6 form-group">
+          <label for="fee" class="font-weight-bold">Fee</label>
+          <input type="number" class="form-control" id="fee" [(ngModel)]="examObj.fee" name="fee"
+            placeholder="Enter Fee" required />
+        </div>
+        <div class="col-md-12 form-group">
+          <label class="font-weight-bold">Select Courses</label>
+          <div *ngFor="let course of courses" class="form-check">
+            <input type="checkbox" [(ngModel)]="course.selected" (change)="onCourseChange(course.id, course.selected)"
+              class="form-check-input" id="course-{{course.id}}" />
+            <label class="form-check-label" for="course-{{course.id}}">
+              {{ course.courseTitle }} - {{ course.courseCode }}
+            </label>
           </div>
+        </div>
+        <div class="col-md-12 text-center">
+          <input type="submit" class="button" value="Create" (click)="createExam()" />
         </div>
       </div>
     </div>
   </div>
-  
+</div>

@@ -1,1 +1,44 @@
-<p>initiate-payment works!</p>
+<!-- <form class="payment-form" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="reason">Reason for Payment</label>
+    <select [(ngModel)]="paymentReason" name="reason" (change)="onReasonChange()" class="form-control">
+      <option value="">Select Reason</option>
+      <option *ngFor="let reason of reasons" [value]="reason.value">
+        {{ reason.label }}
+      </option>
+    </select>
+  </div>
+
+  <div *ngIf="paymentReason === 'Training'" class="form-group">
+    <label for="training">Select Training</label>
+    <select [(ngModel)]="selectedItemId" name="training" class="form-control">
+      <option value="">Select Training</option>
+      <option *ngFor="let training of trainings" [value]="training.id">
+        {{ training.title }}
+      </option>
+    </select>
+  </div>
+
+  <div *ngIf="paymentReason === 'Examination'" class="form-group">
+    <label for="exam">Select Exam</label>
+    <select [(ngModel)]="selectedItemId" name="exam" class="form-control">
+      <option value="">Select Exam</option>
+      <option *ngFor="let exam of exams" [value]="exam.id">
+        {{ exam.examTitle }}
+      </option>
+    </select>
+  </div>
+
+  <div *ngIf="paymentReason === 'Dues'" class="form-group">
+    <label for="registrationType">Select Registration Type</label>
+    <select [(ngModel)]="selectedItemId" name="registrationType" class="form-control">
+      <option value="">Select Registration Type</option>
+      <option *ngFor="let regType of registrationTypes" [value]="regType.id">
+        {{ regType.name }}
+      </option>
+    </select>
+  </div>
+
+
+  <button type="submit" class="btn btn-primary">Initiate Payment</button>
+</form> -->

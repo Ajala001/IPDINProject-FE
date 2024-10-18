@@ -1,7 +1,8 @@
 <div class="container">
     <h1 class="header">Examinations</h1>
-    
-    <!-- Controls Section -->
+    <div *ngIf="paginatedData && paginatedData.length > 0; else noExaminations">
+
+        <!-- Controls Section -->
     <div class="controls-section">
         <!-- Dropdown for selecting page size -->
         <div class="page-size">
@@ -25,6 +26,7 @@
             <button class="btn btn-primary" (click)="nextPage()" [disabled]="(pageNumber * pageSize) >= totalExams">Next</button>
         </div>
     </div>
+
   
     <table id="example" class="table table-striped table-bordered">
         <thead>
@@ -47,10 +49,19 @@
                 <td>
                   <button class="btn btn-primary" [routerLink]="['/examinations', item.id]">Detail</button>
                   <button class="btn btn-danger" [routerLink]="['/examinations', item.id, 'delete']">Delete</button>
+                  <button class="btn btn-primary" [routerLink]="['/examinations', item.id]">Apply</button>
                 </td>
             </tr>
         </tbody>
     </table>
+    </div>
+
+    <ng-template #noExaminations>
+        <p class="no-examinations-message">
+            <b>No examinations available at the moment.</b>
+        </p>
+    </ng-template>
+    
   </div>
   
   

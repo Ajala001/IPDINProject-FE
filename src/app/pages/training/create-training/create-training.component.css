@@ -1,0 +1,96 @@
+.container.register {
+    background-color: #e9ecef;
+    padding: 20px; /* Reduced padding */
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .register-left {
+    background-color: darkblue;
+    color: white;
+    padding: 15px; /* Reduced padding */
+    border-radius: 10px 0 0 10px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .register-left img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px; /* Reduced space below image */
+  }
+  
+  .register-heading {
+    margin-bottom: 15px; /* Reduced margin below heading */
+    color: darkblue;
+    font-weight: bold;
+  }
+  
+  .form-group {
+    margin-bottom: 10px; /* Reduced margin between form groups */
+  }
+  
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 8px; /* Reduced padding inside inputs */
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: #80bdff;
+  }
+  
+  .btn {
+    width: 180px; /* Reduced button width */
+    border-radius: 20px;
+  }
+  
+  .form-check {
+    margin-bottom: 8px; /* Reduced space between checkbox items */
+  }
+  
+  .form-check-input {
+    margin-right: 8px; /* Reduced space between checkbox and label */
+  }
+  
+  .form-check-label {
+    font-weight: 500;
+    color: darkblue;
+  }
+  
+  input::placeholder {
+    color: #999;
+  }
+  
+  .button {
+    background-color: darkblue;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 18px; /* Reduced padding inside button */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #00509e;
+    color: #ffffff;
+  }
+  
+  @media (max-width: 768px) {
+    .register-left {
+      border-radius: 10px;
+    }
+  }
+  
+  label {
+    font-weight: bold;
+    color: darkblue;
+    margin-bottom: 3px; /* Reduced spacing between label and input */
+  }
+  

@@ -1,1 +1,32 @@
-<p>delete-examination works!</p>
+<div class="parent">
+  <div class="container">
+      <div *ngIf="exam" class="card">
+          <h2>Confirm Deletion</h2>
+          <p style="color: red;">Are you sure you want to delete the following examination?</p>
+          <img src="assets/images/pexels-brettjordan-917832.jpg" class="card-img-top course-image" alt="Course-image">
+          <ul class="list-group list-group-flush">
+              <li class="list-group-item"><b>Exam Title: </b> {{ exam.examTitle }}</li>
+              <li class="list-group-item"><b>Exam Date: </b> {{ exam.examDate }}</li>
+              <li class="list-group-item"><b>Exam Year: </b> {{ exam.examYear }}</li>
+              <li class="list-group-item"><b>Exam Time: </b> {{ exam.examTime }}</li>
+              <li class="list-group-item"><b>Exam Fee: </b> {{ exam.fee }}</li>
+          </ul>
+
+          <div class="course-section">
+              <h3 class="course-section-title">Exam Courses</h3>
+              <ul class="course-list">
+                <li class="course-item" *ngFor="let course of exam.courses">
+                  {{ course.courseTitle }} - {{course.courseCode}}
+                </li>
+              </ul>
+          </div>
+
+          <div class="card-body">
+              <div class="button-container">
+                  <button (click)="confirmDelete()" class="btn btn-danger">Delete Exam</button>
+                  <button (click)="cancelDelete()" class="btn btn-secondary">Cancel</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

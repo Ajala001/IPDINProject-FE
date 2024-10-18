@@ -24,7 +24,6 @@ import { EditExaminationComponent } from './pages/examination/edit-examination/e
 import { DeleteExaminationComponent } from './pages/examination/delete-examination/delete-examination.component';
 import { ExaminationDetailComponent } from './pages/examination/examination-detail/examination-detail.component';
 import { PaymentListComponent } from './pages/payment/payment-list/payment-list.component';
-import { InitiatePaymentComponent } from './pages/payment/initiate-payment/initiate-payment.component';
 import { DeletePaymentComponent } from './pages/payment/delete-payment/delete-payment.component';
 import { PaymentDetailComponent } from './pages/payment/payment-detail/payment-detail.component';
 import { UploadResultComponent } from './pages/result/upload-result/upload-result.component';
@@ -41,6 +40,12 @@ import { EditQualificationComponent } from './pages/qualification/edit-qualifica
 import { CreateQualificationComponent } from './pages/qualification/create-qualification/create-qualification.component';
 import { QualificationDetailComponent } from './pages/qualification/qualification-detail/qualification-detail.component';
 import { TrainingDetailComponent } from './pages/training/training-detail/training-detail.component';
+import { VerifyPaymentComponent } from './pages/payment/verify-payment/verify-payment.component';
+import { InitiatePaymentComponent } from './pages/payment/initiate-payment/initiate-payment.component';
+import { UserListComponent } from './pages/user/user-list/user-list.component';
+import { DeteleAccountComponent } from './pages/user/detele-account/detele-account.component';
+import { UserProfileComponent } from './pages/user/user-profile/user-profile.component';
+import { EditProfileComponent } from './pages/user/edit-profile/edit-profile.component';
 
 export const routes: Routes = [
     {
@@ -92,9 +97,10 @@ export const routes: Routes = [
             // AppApplication Routes
             { path: 'applications', component: ApplicationListComponent }, // List all applications
             { path: 'applications/create', component: CreateApplicationComponent }, // Create an application
+            { path: 'applications/:id', component: ApplicationDetailComponent }, // View application details
             { path: 'applications/:id/edit', component: EditApplicationComponent }, // Edit an application
             { path: 'applications/:id/delete', component: DeleteApplicationComponent }, // Delete an application
-            { path: 'applications/:id', component: ApplicationDetailComponent }, // View application details
+           
 
             // Examination Routes
             { path: 'examinations', component: ExaminationListComponent }, // List all examinations
@@ -105,10 +111,11 @@ export const routes: Routes = [
 
             // Payment Routes
             { path: 'payments', component: PaymentListComponent }, // List all payments
-            { path: 'payments/initiate', component: InitiatePaymentComponent }, // Initiate a payment
-            // { path: 'payments/:id/edit', component: EditPaymentComponent }, // Edit a payment
-            { path: 'payments/:id/delete', component: DeletePaymentComponent }, // Delete a payment
-            { path: 'payments/:id', component: PaymentDetailComponent }, // View payment details
+            { path: 'payments/initiate/:id', component: InitiatePaymentComponent }, // Initiate a payment
+            { path: 'payments/verify', component: VerifyPaymentComponent },
+            { path: 'payments/:refNo', component: PaymentDetailComponent }, // View payment details
+            { path: 'payments/:refNo/delete', component: DeletePaymentComponent }, // Delete a payment
+            
 
             // Result Routes
             // { path: 'results', component: ResultListComponent }, // List all results
@@ -137,6 +144,13 @@ export const routes: Routes = [
             { path: 'qualifications/:id/edit', component: EditQualificationComponent }, // Edit an academic qualification
             { path: 'qualifications/:id/delete', component: DeleteQualificationComponent }, // Delete an academic qualification
             { path: 'qualifications/:id/detail', component: QualificationDetailComponent }, // View academic qualification details
+
+            // User Routes
+            { path: 'users', component: UserListComponent },
+            { path: 'users/create', component: CreateQualificationComponent }, 
+            { path: 'users/:email/edit', component: EditProfileComponent }, 
+            { path: 'users/:email/delete', component: DeteleAccountComponent }, 
+            { path: 'users/:email/detail', component: UserProfileComponent },
 
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' }     // default route for the LayoutComponent
         ]

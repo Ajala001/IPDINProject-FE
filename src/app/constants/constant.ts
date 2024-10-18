@@ -10,6 +10,7 @@ export const apiEndpoints =
     //Application
     createApplicationUrl: '/applications',
     getApplicationsUrl: '/applications',
+    searchApplicationsUrl: '/applications/search',
     getApplicationByIdUrl: (id: string) => `/applications/${id}`,
     updateApplicationUrl(id: string) : string {
       return `/applications/${id}`
@@ -41,6 +42,7 @@ export const apiEndpoints =
     getPaymentsUrl: '/payments',
     initiatePaymentUrl: '/payments/initiatePayment',
     verifyPaymentUrl: '/payments/verify',
+    searchPaymentsUrl: '/payments/search',
     getPaymentsByRefNoUrl: (refNo: string) => `/payments/${refNo}`,
     deletePaymentUrl: (refNo: string) => `/payments/${refNo}`,
     updatePaymentUrl: (refNo: string) => `/payments/${refNo}`,
@@ -52,12 +54,12 @@ export const apiEndpoints =
     updateQualificationUrl: (id: string) => `/qualifications/${id}`,
     deleteQualificationUrl: (id: string) => `/qualifications/${id}`,
 
-    //RegistrationType
-    createRegistrationTypeUrl: '/registrationTypes',
-    getRegistrationTypesUrl: '/registrationTypes',
-    getRegistrationTypeByIdUrl: (id: string) => `/registrationTypes/${id}`,
-    updateRegistrationTypeUrl: (id: string) => `/registrationTypes/${id}`,
-    deleteRegistrationTypeUrl: (id: string) => `/registrationTypes/${id}`,
+    //Level
+    createLevelUrl: '/levels',
+    getLevelsUrl: '/levels',
+    getLevelByIdUrl: (id: string) => `/levels/${id}`,
+    updateLevelUrl: (id: string) => `/levels/${id}`,
+    deleteLevelUrl: (id: string) => `/levels/${id}`,
 
     //Result
     getResultsUrl: '/results',
@@ -83,6 +85,7 @@ export const apiEndpoints =
 
     //User
     getUsersUrl: '/users',
+    searchUsersUrl: '/users/search',
     getUserByEmailUrl: (email: string) => `/users/${email}`,
     updateUserUrl: (email: string) => `/users/${email}`,
     deleteUserUrl: (email: string) => `/users/${email}`,

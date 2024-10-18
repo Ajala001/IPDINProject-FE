@@ -1,30 +1,33 @@
 <div class="parent">
-    <div class="container">
-      <div *ngIf="exam" class="card">
-        <h2>Course Details</h2>
-        <img src="assets/images/pexels-brettjordan-917832.jpg" class="card-img-top course-image" alt="Course-image">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><b>Exam Title: </b> {{ exam.examTitle }}</li>
-          <li class="list-group-item"><b>Exam Date: </b> {{ exam.examDate }}</li>
-          <li class="list-group-item"><b>Exam Year: </b> {{ exam.examYear }}</li>
-          <li class="list-group-item"><b>Exam Time: </b> {{ exam.examTime }}</li>
+  <div class="container">
+    <div *ngIf="exam" class="card shadow-lg border-primary">
+      <h2 class="card-title text-center text-white py-3">{{ exam.examTitle }}</h2>
+      <img src="assets/images/pexels-brettjordan-917832.jpg" class="card-img-top course-image" alt="Course-image">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><b>Exam Title: </b> {{ exam.examTitle }}</li>
+        <li class="list-group-item"><b>Exam Date: </b> {{ exam.examDate }}</li>
+        <li class="list-group-item"><b>Exam Year: </b> {{ exam.examYear }}</li>
+        <li class="list-group-item"><b>Exam Time: </b> {{ exam.examTime }}</li>
+        <li class="list-group-item"><b>Exam Fee: </b> {{ exam.fee }}</li>
+      </ul>
+
+      <!-- Add a section for the courses -->
+      <div class="course-section">
+        <h3 class="course-section-title" style="color: darkblue;"><b>Exam Courses</b></h3>
+        <ul class="course-list">
+          <li class="course-item" *ngFor="let course of exam.courses">
+            {{ course.courseTitle }} - {{course.courseCode}}
+          </li>
         </ul>
-  
-        <!-- Add a section for the courses -->
-        <div class="course-section">
-          <h3 class="course-section-title">Exam Courses</h3>
-          <ul class="course-list">
-            <li class="course-item" *ngFor="let course of exam.courses">
-              {{ course.courseTitle }} - {{course.courseCode}}
-            </li>
-          </ul>
-        </div>
-  
-        <div class="card-body">
-          <a [routerLink]="['/examinations']" class="card-link">Back</a>
-          <a [routerLink]="['/examinations', exam.id]" class="card-link">Edit</a>
-        </div>
+      </div>
+
+      <div class="card-body text-center">
+        <button class="btn btn-primary mx-2" [routerLink]="['/examinations']">Back</button>
+        <button class="btn btn-primary mx-2" [routerLink]="['/examinations', exam.id, 'edit']">Edit</button>
+        <button class="btn btn-primary mx-2" [routerLink]="['/payments/initiate', exam.id]" [queryParams]="{ reason: 'Examination' }">
+          Proceed to Payment
+        </button>
       </div>
     </div>
   </div>
-  
+</div>

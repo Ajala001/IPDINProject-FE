@@ -1,0 +1,107 @@
+
+<div class="d-flex flex-column flex-shrink-0 p-3 bg-light sidebar" style="width: 280px;">
+    <a class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+        <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+        <span class="fs-5 fw-semibold dashboard-title" >Admin Dashboard</span>
+    </a>
+    <ul class="list-unstyled ps-0">
+      <!-- Applications Management Section -->
+      <li class="mb-1">
+        <a class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#applications-collapse" aria-expanded="false">
+          Applications Management
+          <i class="bi bi-caret-down-fill ms-2"></i> <!-- Dropdown icon -->
+        </a>
+        <div class="collapse" id="applications-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/applications/create']">Add New Course</a></li>
+            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/applications']">Manage Applications</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <!-- Courses Management Section -->
+      <li class="mb-1">
+        <a class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#courses-collapse" aria-expanded="false">
+          Courses Management
+          <i class="bi bi-caret-down-fill ms-2"></i> <!-- Dropdown icon -->
+        </a>
+        <div class="collapse" id="courses-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/courses/create']">Add New Course</a></li>
+            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/courses']">Manage Courses</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <!-- Payments Management Section -->
+      <li class="mb-1">
+        <a href="#" class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#payments-collapse" aria-expanded="false">
+          Payments Management
+          <i class="bi bi-caret-down-fill ms-2"></i> <!-- Dropdown icon -->
+        </a>
+        <div class="collapse" id="payments-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/payments']">Manage Payments</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <!-- Examinations Management Section -->
+      <li class="mb-1">
+        <a href="#" class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#examinations-collapse" aria-expanded="false">
+          Exams Management
+          <i class="bi bi-caret-down-fill ms-2"></i> <!-- Dropdown icon -->
+        </a>
+        <div class="collapse" id="examinations-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/examinations/create']">Add New Exam</a></li>
+            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/examinations']">Manage Exams</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <!-- Training Management Section -->
+      <li class="mb-1">
+        <a href="#" class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#training-collapse" aria-expanded="false">
+          Trainings Management
+          <i class="bi bi-caret-down-fill ms-2"></i> <!-- Dropdown icon -->
+        </a>
+        <div class="collapse" id="training-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/trainings/create']">Add New Training</a></li>
+            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/trainings']">Manage Training</a></li>
+           
+          </ul>
+        </div>
+      </li>
+
+      <!-- Results Management Section -->
+      <li class="mb-1">
+        <a href="#" class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#results-collapse" aria-expanded="false">
+          Results Management
+          <i class="bi bi-caret-down-fill ms-2"></i> <!-- Dropdown icon -->
+        </a>
+        <div class="collapse" id="results-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/results/upload']">Upload Results</a></li>
+            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/results']">Manage Results</a></li>
+          </ul>
+        </div>
+      </li>
+
+       <!-- Users Management Section -->
+      <li class="mb-1">
+        <a href="#" class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#users-collapse" aria-expanded="false">
+          Users Management
+          <i class="bi bi-caret-down-fill ms-2"></i> <!-- Dropdown icon -->
+        </a>
+        <div class="collapse" id="users-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/users/add-admin']">Add Admin</a></li>
+            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/users']">Manage Users</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+</div>
+

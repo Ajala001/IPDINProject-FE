@@ -1,0 +1,25 @@
+.parent {
+  background-color: #f8f9fa; /* Light background for the parent container */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.card {
+  border-radius: 8px; /* Rounded corners for the card */
+}
+
+.card-header {
+  border-bottom: 1px solid darkblue; /* Blue border under the header */
+}
+
+.list-group-item {
+  font-size: 1.1em; /* Slightly larger text for better readability */
+}
+
+.btn {
+  width: 48%; /* Button width for even spacing */
+}
+.bg-dark-blue {
+  background-color: darkblue !important; /* Dark blue color */
+}
+

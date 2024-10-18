@@ -1,0 +1,88 @@
+.parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: 20px;
+  }
+  
+  .card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.02);
+  }
+  
+  h2 {
+    font-family: 'Merriweather', serif;
+    font-size: 24px;
+    color: #dc3545;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  p {
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    color: #dc3545;
+    text-align: center;
+  }
+  
+  .list-group-item {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #495057;
+    padding: 12px;
+    border: none;
+    background-color: #f9f9f9;
+  }
+  
+  .list-group-item b {
+    color: #212529;
+  }
+  
+  .card-body {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+  }
+  
+  .btn {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+  }
+  
+  .btn-danger:hover {
+    background-color: #c82333;
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+  

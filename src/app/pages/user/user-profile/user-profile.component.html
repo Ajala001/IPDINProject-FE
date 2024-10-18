@@ -1,0 +1,38 @@
+<div class="parent">
+    <div class="profile-container">
+        <div *ngIf="user" class="profile-header">
+            <img [src]="user.profilePic" alt="Profile Picture" class="profile-pic">
+            <h1 class="full-name">{{ user.fullName }}</h1>
+            <p class="membership-number">Membership Number: {{ user.membershipNumber }}</p>
+        </div>
+
+        <div *ngIf="user" class="profile-info">
+            <h2>Personal Information</h2>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Gender:</strong> {{ genderMap[user.gender] }}</p>
+            <p><strong>Date of Birth:</strong> {{ user.dateOfBirth | date }}</p>
+            <p><strong>Address:</strong> {{ user.address }}</p>
+            <p><strong>Local Government:</strong> {{ user.localGovt }}</p>
+            <p><strong>State of Origin:</strong> {{ user.stateOfOrigin }}</p>
+            <p><strong>Driver License No:</strong> {{ user.driverLicenseNo }}</p>
+            <p><strong>Year Issued:</strong> {{ user.yearIssued }}</p>
+            <p><strong>Expiring Date:</strong> {{ user.expiringDate | date }}</p>
+        </div>
+
+        <div *ngIf="user" class="profile-experience">
+            <h2>Experience</h2>
+            <p><strong>Years of Experience:</strong> {{ user.yearsOfExperience }}</p>
+            <p><strong>Name of Current Driving School:</strong> {{ user.nameOfCurrentDrivingSchool }}</p>
+        </div>
+
+        <div *ngIf="user" class="profile-qualifications">
+            <h2>Academic Qualifications</h2>
+            <ul>
+                <li *ngFor="let qualification of user.academicQualifications">
+                    <strong>Degree:</strong> {{ qualification.degree }}<br />
+                    <strong>Field of Study:</strong> {{ qualification.fieldOfStudy }}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

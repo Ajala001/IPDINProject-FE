@@ -23,3 +23,31 @@ export class TrainingModel {
         this.status = 0
     }
   }
+
+
+  export interface TrainingResponseModel{
+    id: string;          
+    title: string;
+    description: string;   
+    fee: string;    
+    startingDateAndTime: string;    
+    endingDateAndTime: string; 
+    registrationDeadline: string;
+    duration: number;  
+    capacity: number;
+    category: number    
+    status: number;
+  }
+
+  export interface TrainingUpdateModel{       
+    title: string;
+    description: string;   
+    fee: number;    
+    startingDateAndTime: string;    
+    endingDateAndTime: string; 
+    registrationDeadline: string;
+    duration: number;  
+    capacity: number;
+    category: number    
+    status: number;
+  }

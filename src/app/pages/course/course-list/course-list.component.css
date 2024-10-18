@@ -110,6 +110,17 @@ button:hover:not(:disabled) {
 .table tbody tr:hover {
   background-color: #f9f9f9; /* Light grey on hover */
 }
+.no-courses-message {
+  text-align: center;
+  font-size: 1.5rem;
+  color: red; /* Choose a color that suits your design */
+  background-color: darkblue; /* Light background to match the text color */
+  border: 1px solid #ffccbc; /* Optional: to give it a bordered appearance */
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  font-weight: bold;
+}
 
 
 

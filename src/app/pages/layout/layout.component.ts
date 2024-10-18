@@ -1,10 +1,10 @@
-import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
-import { SidebarComponent } from '../sidebar/sidebar.component';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { SidebarComponent } from '../sidebars/sidebar/sidebar.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { HeaderComponent } from "../header/header.component";
 import { HomeComponent } from '../home/home.component';
+
 
 
 @Component({

@@ -1,0 +1,125 @@
+.container {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header {
+    background-color: darkblue; /* Dark blue background */
+    color: white; /* White text color */
+    padding: 6px; /* Reduced padding */
+    text-align: center; /* Center text */
+    font-weight: bold; /* Bold text */
+    font-size: 18px; /* Slightly smaller font size */
+    margin: -5px -5px 10px -5px; /* Adjusted margin */
+    border-radius: 5px 5px 0 0; /* Rounded corners at the top */
+  }
+  
+  
+  .controls-section {
+    display: flex;
+    justify-content: space-between; /* Spread items across the row */
+    align-items: center; /* Vertically center items */
+    margin-bottom: 15px; /* Space below the controls section */
+  }
+  
+  .label {
+    font-weight: bold;
+    margin-right: 5px;
+    font-size: 14px; /* Slightly smaller font size */
+  }
+  
+  .page-size {
+    display: flex;
+    align-items: center;
+  }
+  
+  select {
+    padding: 5px; /* Increased padding for better appearance */
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    margin-left: 5px; /* Space between label and select */
+    font-size: 14px; /* Slightly smaller font size */
+  }
+  
+  .filter-section {
+    display: flex;
+    align-items: center; /* Align filter elements vertically */
+  }
+  
+  .filter-section label {
+    margin-right: 5px;
+  }
+  
+  .filter-section input {
+    padding: 5px; /* Increased padding for better appearance */
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font-size: 14px; /* Consistent font size */
+    width: 200px; /* Fixed width for consistency */
+  }
+  
+  .pagination-controls {
+    display: flex;
+    align-items: center;
+  }
+  
+  .pagination-controls button {
+    margin-left: 10px; /* Spacing between buttons */
+  }
+  
+  button {
+    padding: 5px 10px;
+    margin: 0 3px;
+    border: none;
+    border-radius: 3px;
+    
+    color: white;
+    cursor: pointer;
+    font-size: 10px; /* Slightly smaller font size */
+    transition: background-color 0.3s;
+  }
+  
+  button:disabled {
+    background-color: #ccc; /* Grey out disabled buttons */
+    cursor: not-allowed;
+  }
+  
+  button:hover:not(:disabled) {
+    background-color: #0056b3; /* Darken button on hover */
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th, .table td {
+    padding: 8px 10px; /* Reduced padding */
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px; /* Slightly smaller font size */
+  }
+  
+  .table th {
+    background-color: #f2f2f2; /* Light grey background for headers */
+  }
+  
+  .table tbody tr:hover {
+    background-color: #f9f9f9; /* Light grey on hover */
+  }
+  
+  
+  .no-users-message {
+    text-align: center;
+    font-size: 1.5rem;
+    color: red; /* Choose a color that suits your design */
+    background-color: darkblue; /* Light background to match the text color */
+    border: 1px solid #ffccbc; /* Optional: to give it a bordered appearance */
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    font-weight: bold;
+  }

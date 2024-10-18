@@ -112,8 +112,6 @@ export class CourseListComponent implements OnInit {
       this.getCourses();
     }
   }
-
-
 }
 
 

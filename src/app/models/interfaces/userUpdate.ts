@@ -1,7 +1,7 @@
 export interface UserUpdateModel {
     phoneNumber: string
     dateOfBirth: string
-    profilePic: string
+    profilePic: File | null
     streetNo: number
     streetName: string
     city: string
@@ -15,3 +15,29 @@ export interface UserUpdateModel {
     yearsOfExperience: number
     nameOfCurrentDrivingSchool: string
   }
+
+
+
+  export interface UserResponseModel {
+    id: string;
+    fullName: string;
+    membershipNumber: string;
+    email: string
+    gender: number;
+    dateOfBirth: string; // Use 'Date' if working with Date objects
+    profilePic: string;
+    address: string;
+    localGovt: string;
+    stateOfOrigin: string;
+    driverLicenseNo: string;
+    yearIssued: number;
+    expiringDate: string; // Use 'Date' if working with Date objects
+    yearsOfExperience: number;
+    nameOfCurrentDrivingSchool: string;
+    academicQualifications: AcademicQualificationInfo[];
+}
+
+interface AcademicQualificationInfo {
+    degree: string;
+    fieldOfStudy: string;
+}

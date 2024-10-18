@@ -1,0 +1,55 @@
+/* create-application.component.css */
+
+.application-confirmation {
+    max-width: 600px;  /* Centering the component with a max width */
+    margin: 20px auto; /* Centering horizontally */
+    padding: 20px;     /* Adding padding for inner space */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    background-color: #f9f9f9; /* Light background color */
+  }
+  
+  /* Loading message styles */
+  .loading-message {
+    text-align: center; /* Centering the loading message */
+    font-size: 18px;    /* Slightly larger font for visibility */
+    color: #007bff;     /* Bootstrap primary color */
+  }
+  
+  /* Success message styles */
+  .success-message {
+    text-align: center; /* Centering the success message */
+    font-size: 18px;    /* Slightly larger font for visibility */
+    color: #28a745;     /* Bootstrap success color */
+    margin-top: 20px;   /* Space above */
+  }
+  
+  /* Error message styles */
+  .error-message {
+    text-align: center; /* Centering the error message */
+    font-size: 18px;    /* Slightly larger font for visibility */
+    color: #dc3545;     /* Bootstrap danger color */
+    margin-top: 20px;   /* Space above */
+  }
+  
+  /* Optional: Additional styling for headings */
+  h2 {
+    font-size: 24px;    /* Larger font size for the heading */
+    margin-bottom: 10px; /* Space below the heading */
+  }
+  
+  h3 {
+    font-size: 20px;    /* Medium font size for error heading */
+    margin-bottom: 10px; /* Space below the heading */
+  }
+  
+  /* Optional: Style for the link */
+  a {
+    color: #007bff; /* Link color */
+    text-decoration: none; /* Removing underline */
+  }
+  
+  a:hover {
+    text-decoration: underline; /* Underline on hover for better UX */
+  }
+  

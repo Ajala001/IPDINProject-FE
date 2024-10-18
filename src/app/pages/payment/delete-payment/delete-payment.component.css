@@ -1,0 +1,27 @@
+.parent {
+  background-color: #f8f9fa; /* Light background for the parent container */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.card {
+  border-radius: 8px; /* Rounded corners for the card */
+}
+
+.card-header {
+  border-bottom: 2px solid #c82333; /* Darker red border under the header */
+}
+
+.text-danger {
+  font-weight: bold; /* Bold text for warning messages */
+}
+
+.card-footer {
+  padding: 1rem; /* Extra padding for the footer */
+}
+
+.btn {
+  width: 48%; /* Button width for even spacing */
+}
+
+  

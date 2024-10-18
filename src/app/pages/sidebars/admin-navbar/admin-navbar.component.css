@@ -1,0 +1,82 @@
+
+   .sidebar {
+    height: 100vh; /* Full height */
+    position: fixed; /* Stay in place while scrolling */
+    top: 60px;
+    height: calc(100vh - 60px); /* Sidebar height adjusted for the header */
+    left: 0;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+    background-color: #f8f9fa; /* Light background */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+.sidebar a {
+    color: darkblue; /* Dark blue text */
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    background-color: darkblue; /* Change background on hover */
+    color: white; /* Change text color on hover */
+    padding-left: 10px; /* Smooth animation on hover */
+    transition: 0.2s ease-in-out; /* Smooth hover transition */
+}
+
+.btn-toggle {
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+    color: #333; /* Dark text */
+    font-weight: 600;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between; /* Add space between text and icon */
+}
+
+.btn-toggle:hover {
+    color: darkblue; /* Hover color */
+    background-color: #e9ecef; /* Light background on hover */
+}
+
+.btn-toggle-nav a {
+    padding-left: 20px;
+    font-size: 14px;
+    color: #495057;
+}
+
+.collapse ul {
+    background-color: #f8f9fa;
+}
+
+.bi-caret-down-fill {
+    margin-left: auto;
+    font-size: 1rem; /* Adjust size of dropdown icon */
+    color: white;
+}
+
+.collapse ul a {
+    padding-left: 30px;
+    color: darkblue; /* Dark blue links */
+}
+
+.collapse ul a:hover {
+    color: white;
+    background-color: darkblue; /* Bootstrap primary blue */
+}
+
+.dashboard-title {
+    color: darkblue; /* Default color */
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.dashboard-title:hover {
+    color: white; /* Change to white on hover */
+}
+
+
+
+

@@ -1,1 +1,26 @@
-<p>delete-payment works!</p>
+<div class="parent">
+  <div class="container mt-5">
+      <div *ngIf="payment" class="card border-danger shadow-lg">
+          <div class="card-header bg-danger text-white">
+              <h2 class="mb-0">Confirm Deletion</h2>
+          </div>
+          <div class="card-body">
+              <p class="text-danger">Are you sure you want to delete the following payment?</p>
+              <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><b>Payer Fullname: </b> {{ payment.payerFullName }}</li>
+                  <li class="list-group-item"><b>Payment Purpose: </b> {{ payment.paymentFor }}</li>
+                  <li class="list-group-item"><b>Payment RefNumber: </b> {{ payment.paymentRef }}</li>
+                  <li class="list-group-item"><b>Amount Paid: </b> {{ payment.amount }}</li>
+                  <li class="list-group-item"><b>Payment Status: </b> {{ paymentStatusMap[payment.status] }}</li>
+                  <li class="list-group-item"><b>Payment Date: </b> {{ payment.createdAt | date:'medium' }}</li>
+              </ul>
+          </div>
+          <div class="card-footer d-flex justify-content-between">
+              <button (click)="confirmDelete()" class="btn btn-danger">Delete</button>
+              <button (click)="cancelDelete()" class="btn btn-secondary">Cancel</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+

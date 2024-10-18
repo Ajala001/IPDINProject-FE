@@ -1,1 +1,19 @@
-<p>application-detail works!</p>
+<div class="parent">
+    <div class="container">
+        <div *ngIf="application" class="card">
+          <h2>Application Details</h2>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>Applicant Fullname: </b> {{ application.applicantfullName }}</li>
+            <li class="list-group-item"><b>Application Purpose: </b> {{ application.applicationPurpose }}</li>
+            <li class="list-group-item"><b>Application Date: </b> {{ application.date }}</li>
+            <li class="list-group-item"><b>Application Status: </b> {{ applicationStatusMap[application.status] }}</li>
+          </ul>
+          <div class="card-body">
+            <a [routerLink]="['/applications']" class="card-link">Back</a>
+            <a [routerLink]="['/applications', application.id, 'edit']" class="card-link">Edit</a>
+          </div>
+        </div>
+      </div>
+</div>
+
+  

@@ -1,1 +1,85 @@
-<p>edit-training works!</p>
+<div class="container register">
+  <div class="row">
+    <div class="col-md-3 register-left">
+      <img src="assets/images/pexels-brettjordan-917832.jpg" alt=""/>
+      <h3>Welcome</h3>
+      <p>You are 30 seconds away from earning your own money!</p>
+    </div>
+    <div class="col-md-9 register-right">
+      <h3 class="register-heading">Update Training</h3>
+      <div class="row register-form">
+        <!-- Training Title -->
+        <div class="col-md-6 form-group">
+          <label for="title">Training Title</label>
+          <input type="text" class="form-control" [(ngModel)]="trainingUpdateModel.title" name="title" placeholder="Training Title" />
+        </div>
+
+        <!-- Training Description -->
+        <div class="col-md-6 form-group">
+          <label for="description">Training Description</label>
+          <input type="text" class="form-control" [(ngModel)]="trainingUpdateModel.description" name="description" placeholder="Training Description" />
+        </div>
+
+        <!-- Fee -->
+        <div class="col-md-6 form-group">
+          <label for="fee">Fee</label>
+          <input type="text" class="form-control" [(ngModel)]="training.fee" name="fee" placeholder="Fee" />
+        </div>
+
+        <!-- Starting Date and Time -->
+        <div class="col-md-6 form-group">
+          <label for="startingDateAndTime">Starting Date and Time</label>
+          <input type="datetime-local" class="form-control" [(ngModel)]="trainingUpdateModel.startingDateAndTime" name="startingDateAndTime" />
+        </div>
+
+        <!-- Ending Date and Time -->
+        <div class="col-md-6 form-group">
+          <label for="endingDateAndTime">Ending Date and Time</label>
+          <input type="datetime-local" class="form-control" [(ngModel)]="trainingUpdateModel.endingDateAndTime" name="endingDateAndTime" />
+        </div>
+
+        <!-- Registration Deadline -->
+        <div class="col-md-6 form-group">
+          <label for="registrationDeadline">Registration Deadline</label>
+          <input type="datetime-local" class="form-control" [(ngModel)]="trainingUpdateModel.registrationDeadline" name="registrationDeadline" />
+        </div>
+
+        <!-- Duration -->
+        <div class="col-md-6 form-group">
+          <label for="duration">Duration (in days)</label>
+          <input type="number" class="form-control" [(ngModel)]="trainingUpdateModel.duration" name="duration" placeholder="Duration (in hours)" />
+        </div>
+
+        <!-- Capacity -->
+        <div class="col-md-6 form-group">
+          <label for="capacity">Capacity</label>
+          <input type="number" class="form-control" [(ngModel)]="trainingUpdateModel.capacity" name="capacity" placeholder="Capacity" />
+        </div>
+
+        <!-- Category -->
+        <div class="col-md-6 form-group">
+          <label for="category">Select Category</label>
+          <select class="form-control" [(ngModel)]="trainingUpdateModel.category" name="category">
+            <option class="hidden" selected disabled>Select Category</option>
+            <option *ngFor="let category of trainingCategory" [ngValue]="category.id">{{ category.label }}</option>
+          </select>
+        </div>
+
+        <!-- Status -->
+        <div class="col-md-6 form-group">
+          <label for="status">Select Status</label>
+          <select class="form-control" [(ngModel)]="trainingUpdateModel.status" name="status">
+            <option class="hidden" selected disabled>Select Status</option>
+            <option *ngFor="let status of trainingStatus" [ngValue]="status.id">{{ status.label }}</option>
+          </select>
+        </div>
+
+        <!-- Centered Create Button -->
+        <div class="col-md-12 text-center">
+          <input type="submit" class="button" value="Update" (click)="updatTraining()" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

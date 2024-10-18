@@ -1,0 +1,71 @@
+/* Container Styling for the Form */
+.payment-form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style for Form Groups */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  /* Styling for Labels */
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #333;
+  }
+  
+  /* Styling for Select Fields */
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: darkblue;
+  }
+  
+  /* Hover Effect for Select Fields */
+  .form-control:hover {
+    border-color: #999;
+  }
+  
+  /* Submit Button Styling */
+  .btn-primary {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Button Hover Effect */
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Focus Effect for Form Controls */
+  .form-control:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Media Query for Mobile Devices */
+  @media (max-width: 768px) {
+    .payment-form {
+      padding: 15px;
+    }
+  }
+  

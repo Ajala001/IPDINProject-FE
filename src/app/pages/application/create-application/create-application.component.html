@@ -1,1 +1,23 @@
-<p>create-application works!</p>
+<!-- create-application.component.html -->
+<div class="application-confirmation">
+    <p *ngIf="!submissionInProgress && !submissionSuccess && !submissionError">
+      Processing your application...
+    </p>
+    
+    <div *ngIf="submissionInProgress" class="loading-message">
+      <p>Processing your application, please wait...</p>
+    </div>
+  
+    <div *ngIf="!submissionInProgress && submissionSuccess" class="success-message">
+      <h2>Success!</h2>
+      <p>Your application has been submitted successfully.</p>
+      <p>Application ID: {{ applicationId }}</p>
+      <p>You can view your application <a [routerLink]="['/applications', applicationId]">here</a>.</p>
+    </div>
+    
+    <div *ngIf="submissionError" class="error-message">
+      <h3>Application Submission Failed</h3>
+      <p>{{apiMessage}}</p>
+    </div>
+  </div>
+  
