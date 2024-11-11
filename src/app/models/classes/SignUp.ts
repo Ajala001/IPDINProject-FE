@@ -3,7 +3,7 @@ import { AcademicQualificationModel } from "./academicQualification"
 
 
 export class SignUpModel {
-  registrationTypeId: string
+  levelId: string
   lastName: string
   firstName: string
   email: string
@@ -22,7 +22,7 @@ export class SignUpModel {
   academicQualifications: AcademicQualificationModel[]
 
   constructor() {
-    this.registrationTypeId = "";
+    this.levelId = "";
     this.firstName = "";
     this.lastName = "";
     this.email = "";

@@ -5,6 +5,7 @@ import { ApplicationResponseModel, ApplicationSearchModel } from '../../../model
 import { pagedResponse } from '../../../models/interfaces/pagedResponse';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../../services/auth_service/auth.service';
 
 @Component({
   selector: 'app-application-list',
@@ -17,6 +18,14 @@ export class ApplicationListComponent implements OnInit{
   applicationService = inject(ApplicationServiceService);
   router = inject(Router);
 
+  isAdmin: boolean = false;
+  authService = inject(AuthService)
+  userDetails: any;
+  role: string = "";
+
+  constructor(){
+    this.checkUserRole();
+  }
 
   totalApplications: number = 0;
   pageSizes: number[] = [3, 5, 10, 25, 50]; // Options for page size
@@ -44,11 +53,9 @@ export class ApplicationListComponent implements OnInit{
   }
 
   applicationStatusMap: { [key: number]: string } = {
-    1: 'Active',
-    2: 'Inactive',
-    3: 'Upcoming',
-    4: 'Completed',
-    5: 'Cancelled'
+    1: 'Pending',
+    2: 'Accepted',
+    3: 'Rejected',
   };
 
   getStatusLabel(status: number): string {
@@ -109,5 +116,11 @@ export class ApplicationListComponent implements OnInit{
       // If search query is empty, fetch all courses
       this.getApplications();
     }
+  }
+
+  checkUserRole() {
+    this.userDetails = this.authService.getUserDetailsFromToken();
+    const role = this.userDetails["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+    this.isAdmin = role === 'Admin';
   }
 }

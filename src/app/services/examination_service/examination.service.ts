@@ -29,6 +29,17 @@ export class ExaminationService {
     return this.http.get<pagedResponse>(environment.apiUrl + apiEndpoints.getExaminationsUrl, { params: queryParams })
   }
 
+  getUserExaminations(params: { [key: string]: any }) : Observable<pagedResponse>{
+    let queryParams = new HttpParams(); 
+    for (const key in params) {
+      if (params.hasOwnProperty(key)) {
+        queryParams = queryParams.append(key, params[key]);
+      }
+    }
+    return this.http.get<pagedResponse>(environment.apiUrl + apiEndpoints.getUserExaminationsUrl, { params: queryParams })
+  }
+
+
   getExaminationById(examinationId: string): Observable<apiResponse>{
     return this.http.get<apiResponse>(`${environment.apiUrl}${apiEndpoints.getExaminationByIdUrl(examinationId)}`);
   }

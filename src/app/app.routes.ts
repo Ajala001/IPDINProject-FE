@@ -15,7 +15,6 @@ import { DeleteCourseComponent } from './pages/course/delete-course/delete-cours
 import { CourseDetailComponent } from './pages/course/course-detail/course-detail.component';
 import { ApplicationListComponent } from './pages/application/application-list/application-list.component';
 import { CreateApplicationComponent } from './pages/application/create-application/create-application.component';
-import { EditApplicationComponent } from './pages/application/edit-application/edit-application.component';
 import { DeleteApplicationComponent } from './pages/application/delete-application/delete-application.component';
 import { ApplicationDetailComponent } from './pages/application/application-detail/application-detail.component';
 import { ExaminationListComponent } from './pages/examination/examination-list/examination-list.component';
@@ -26,7 +25,7 @@ import { ExaminationDetailComponent } from './pages/examination/examination-deta
 import { PaymentListComponent } from './pages/payment/payment-list/payment-list.component';
 import { DeletePaymentComponent } from './pages/payment/delete-payment/delete-payment.component';
 import { PaymentDetailComponent } from './pages/payment/payment-detail/payment-detail.component';
-import { UploadResultComponent } from './pages/result/upload-result/upload-result.component';
+import { UploadResultComponent } from './pages/batch-result/upload-result/upload-result.component';
 import { EditResultComponent } from './pages/result/edit-result/edit-result.component';
 import { DeleteResultComponent } from './pages/result/delete-result/delete-result.component';
 import { ResultDetailComponent } from './pages/result/result-detail/result-detail.component';
@@ -46,6 +45,13 @@ import { UserListComponent } from './pages/user/user-list/user-list.component';
 import { DeteleAccountComponent } from './pages/user/detele-account/detele-account.component';
 import { UserProfileComponent } from './pages/user/user-profile/user-profile.component';
 import { EditProfileComponent } from './pages/user/edit-profile/edit-profile.component';
+import { RejectApplicationComponent } from './pages/application/rejectApplication/reject-application/reject-application.component';
+import { UserApplicationListComponent } from './pages/application/user-application-list/user-application-list.component';
+import { UserExaminationListComponent } from './pages/examination/user-examination-list/user-examination-list.component';
+import { UserPaymentListComponent } from './pages/payment/user-payment-list/user-payment-list.component';
+import { UserTrainingListComponent } from './pages/training/user-training-list/user-training-list.component';
+import { ResultListComponent } from './pages/result/result-list/result-list.component';
+import { BatchResultListComponent } from './pages/batch-result/batch-result-list/batch-result-list.component';
 
 export const routes: Routes = [
     {
@@ -96,14 +102,16 @@ export const routes: Routes = [
 
             // AppApplication Routes
             { path: 'applications', component: ApplicationListComponent }, // List all applications
+            { path: 'applications-user', component: UserApplicationListComponent }, // List user all applications
             { path: 'applications/create', component: CreateApplicationComponent }, // Create an application
             { path: 'applications/:id', component: ApplicationDetailComponent }, // View application details
-            { path: 'applications/:id/edit', component: EditApplicationComponent }, // Edit an application
             { path: 'applications/:id/delete', component: DeleteApplicationComponent }, // Delete an application
+            { path: 'applications/reject/:id', component: RejectApplicationComponent},
            
 
             // Examination Routes
             { path: 'examinations', component: ExaminationListComponent }, // List all examinations
+            { path: 'examinations-user', component: UserExaminationListComponent }, // List all examinations
             { path: 'examinations/create', component: CreateExaminationComponent }, // Create an examination
             { path: 'examinations/:id/edit', component: EditExaminationComponent }, // Edit an examination
             { path: 'examinations/:id/delete', component: DeleteExaminationComponent }, // Delete an examination
@@ -111,6 +119,7 @@ export const routes: Routes = [
 
             // Payment Routes
             { path: 'payments', component: PaymentListComponent }, // List all payments
+            { path: 'payments-user', component: UserPaymentListComponent }, // List all payments
             { path: 'payments/initiate/:id', component: InitiatePaymentComponent }, // Initiate a payment
             { path: 'payments/verify', component: VerifyPaymentComponent },
             { path: 'payments/:refNo', component: PaymentDetailComponent }, // View payment details
@@ -118,14 +127,23 @@ export const routes: Routes = [
             
 
             // Result Routes
-            // { path: 'results', component: ResultListComponent }, // List all results
-            { path: 'results/upload', component: UploadResultComponent }, // Create a result
+            { path: 'results/:batchId', component: ResultListComponent }, // List all results
             { path: 'results/:id/edit', component: EditResultComponent }, // Edit a result
             { path: 'results/:id/delete', component: DeleteResultComponent }, // Delete a result
             { path: 'results/:id', component: ResultDetailComponent }, // View result details
 
+
+            // Batch Result Routes
+            { path: 'batchResults', component: BatchResultListComponent }, // List all results
+            { path: 'batchResults/upload', component: UploadResultComponent }, // Create a result
+            { path: 'batchResults/:id/edit', component: EditResultComponent }, // Edit a result
+            { path: 'batchResults/:id/delete', component: DeleteResultComponent }, // Delete a result
+            { path: 'batchResults/:id', component: ResultDetailComponent }, // View result details
+
+
             // Training Routes
             { path: 'trainings', component: TrainingListComponent }, // List all trainings
+            { path: 'trainings-user', component: UserTrainingListComponent }, // List all trainings
             { path: 'trainings/create', component: CreateTrainingComponent }, // Create a training
             { path: 'trainings/:id/edit', component: EditTrainingComponent }, // Edit a training
             { path: 'trainings/:id/delete', component: DeleteTrainingComponent }, // Delete a training
@@ -140,7 +158,7 @@ export const routes: Routes = [
 
             // AcademicQualification Routes
             { path: 'qualifications', component: QualificationListComponent }, // List all academic qualifications
-            { path: 'qualifications/create', component: CreateQualificationComponent }, // Create an academic qualification
+            { path: 'qualifications/create/:email', component: CreateQualificationComponent }, // Create an academic qualification
             { path: 'qualifications/:id/edit', component: EditQualificationComponent }, // Edit an academic qualification
             { path: 'qualifications/:id/delete', component: DeleteQualificationComponent }, // Delete an academic qualification
             { path: 'qualifications/:id/detail', component: QualificationDetailComponent }, // View academic qualification details
@@ -149,8 +167,9 @@ export const routes: Routes = [
             { path: 'users', component: UserListComponent },
             { path: 'users/create', component: CreateQualificationComponent }, 
             { path: 'users/:email/edit', component: EditProfileComponent }, 
-            { path: 'users/:email/delete', component: DeteleAccountComponent }, 
             { path: 'users/:email/detail', component: UserProfileComponent },
+            { path: 'users/:email/delete', component: DeteleAccountComponent }, 
+            
 
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' }     // default route for the LayoutComponent
         ]

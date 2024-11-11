@@ -35,8 +35,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end"
                                 aria-labelledby="navbarScrollingDropdown">
-                                <li><a class="dropdown-item" [ngClass]="{'active': isActive('signup')}"
-                                        (click)="setActive('signup')" [routerLink]="['/sign-up']">Profile</a></li>
+                                <li><a class="dropdown-item" [routerLink]="['/users', userEmail, 'detail']">Profile</a></li>
                                 <li><a class="dropdown-item" href="#">Settings</a></li>
                                 <li>
                                     <hr class="dropdown-divider">

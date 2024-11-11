@@ -1,4 +1,4 @@
-export class RegistrationTypeResponse {
+export class LevelResponseModel {
     id: string
     name: string
     dues: number
@@ -10,7 +10,7 @@ export class RegistrationTypeResponse {
     }
 }
 
-export class RegistrationTypeModel {
+export class LevelModel {
     name: string
     dues: number
 

@@ -1,0 +1,55 @@
+<div class="container">
+    <h1 class="header">Trainings</h1>
+    <div *ngIf="paginatedData && paginatedData.length > 0; else noTrainings">
+        <!-- Controls Section -->
+        <div class="controls-section">
+            <!-- Dropdown for selecting page size -->
+            <div class="page-size">
+                <label for="pageSize"><b>Select Page Size:</b></label>
+                <select [(ngModel)]="pageSize" (change)="onPageSizeChange()">
+                    <option *ngFor="let size of pageSizes" [value]="size">{{size}}</option>
+                </select>
+            </div>
+
+            <!-- Pagination controls -->
+            <div class="pagination-controls">
+                <button class="btn btn-primary" (click)="previousPage()" [disabled]="pageNumber === 1">Previous</button>
+                <span><b>{{ pageNumber }}</b></span>
+                <button class="btn btn-primary" (click)="nextPage()"
+                    [disabled]="(pageNumber * pageSize) >= totalTrainings">Next</button>
+            </div>
+        </div>
+
+        <table id="example" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Training Title</th>
+                    <th>Training Category</th>
+                    <th>Training Status</th>
+                    <th>Training Fee</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of paginatedData; let i = index">
+                    <td>{{ (pageNumber - 1) * pageSize + i + 1 }}</td>
+                    <td>{{ item.title}}</td>
+                    <td>{{ trainingCategoryMap[item.category] }}</td>
+                    <td>{{ trainingStatusMap[item.status] }}</td>
+                    <td>{{ item.fee }}</td>
+                    <td>
+                        <button class="btn btn-primary" [routerLink]="['/trainings', item.id]">Detail</button>
+                        <button class="btn btn-danger" [routerLink]="['/trainings', item.id, 'delete']">Delete</button>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <ng-template #noTrainings>
+        <p class="no-trainings-message">
+            <b>You have no training at the moment.</b>
+        </p>
+    </ng-template>
+</div>

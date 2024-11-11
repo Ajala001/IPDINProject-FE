@@ -47,7 +47,7 @@
                     <td>{{ item.createdAt | date:'medium'}}</td>
                     <td>
                         <button class="btn btn-primary" [routerLink]="['/payments', item.paymentRef]">Detail</button>
-                        <button class="btn btn-danger" [routerLink]="['/payments', item.paymentRef, 'delete']">Delete</button>
+                        <button class="btn btn-danger" *ngIf="isAdmin" [routerLink]="['/payments', item.paymentRef, 'delete']">Delete</button>
                     </td>
                 </tr>
             </tbody>

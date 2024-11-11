@@ -1,14 +1,9 @@
 import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
-import { TrainingServiceService } from '../../../services/training_service/training-service.service';
-import { ExaminationService } from '../../../services/examination_service/examination.service';
-import { RegistrationTypeService } from '../../../services/registrationType_service/registration-type.service';
 import { PaymentServiceService } from '../../../services/payment_service/payment-service.service';
 import { PaymentModel } from '../../../models/classes/payment';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { pagedResponse } from '../../../models/interfaces/pagedResponse';
-import { ExaminationResponseModel } from '../../../models/classes/examination';
 import { apiResponse } from '../../../models/interfaces/apiResponse';
 
 @Component({

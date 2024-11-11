@@ -23,8 +23,8 @@
 
       <div class="card-body text-center">
         <button class="btn btn-primary mx-2" [routerLink]="['/examinations']">Back</button>
-        <button class="btn btn-primary mx-2" [routerLink]="['/examinations', exam.id, 'edit']">Edit</button>
-        <button class="btn btn-primary mx-2" [routerLink]="['/payments/initiate', exam.id]" [queryParams]="{ reason: 'Examination' }">
+        <button class="btn btn-primary mx-2" *ngIf="isAdmin" [routerLink]="['/examinations', exam.id, 'edit']">Edit</button>
+        <button class="btn btn-primary mx-2" *ngIf="!isAdmin" [routerLink]="['/payments/initiate', exam.id]" [queryParams]="{ reason: 'Examination' }">
           Proceed to Payment
         </button>
       </div>

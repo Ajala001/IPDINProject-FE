@@ -5,6 +5,7 @@ import { TrainingResponseModel } from '../../../models/classes/training';
 import { apiResponse } from '../../../models/interfaces/apiResponse';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../../services/auth_service/auth.service';
 
 @Component({
   selector: 'app-training-detail',
@@ -14,13 +15,19 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './training-detail.component.css'
 })
 export class TrainingDetailComponent {
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) {
+    this.checkUserRole();
+  }
 
   trainingService = inject(TrainingServiceService)
   router = inject(Router)
   trainingId: string | null = null;
   training!: TrainingResponseModel
  
+  isAdmin: boolean = false;
+  authService = inject(AuthService)
+  userDetails: any;
+  role: string = "";
 
   ngOnInit(): void {
     this.trainingId = this.route.snapshot.paramMap.get('id');
@@ -50,5 +57,11 @@ export class TrainingDetailComponent {
           this.training = response.data
       }
     })
+  }
+
+  checkUserRole() {
+    this.userDetails = this.authService.getUserDetailsFromToken();
+    const role = this.userDetails["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+    this.isAdmin = role === 'Admin';
   }
 }

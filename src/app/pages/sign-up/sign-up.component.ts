@@ -6,8 +6,10 @@ import { CommonModule } from '@angular/common';
 import { AcademicQualificationModel } from '../../models/classes/academicQualification';
 import { apiResponse } from '../../models/interfaces/apiResponse';
 import { FormsModule } from '@angular/forms';
-import { RegistrationTypeService } from '../../services/registrationType_service/registration-type.service';
-import { RegistrationTypeResponse } from '../../models/classes/registrationType';
+import { LevelService } from '../../services/level_service/level.service';
+import { LevelResponseModel } from '../../models/classes/level';
+
+
 
 
 
@@ -34,7 +36,7 @@ export class SignUpComponent implements OnInit {
   }
 
   authService = inject(AuthService)
-  registrationTypeService = inject(RegistrationTypeService)
+  levelService = inject(LevelService)
   signUpObj: SignUpModel = new SignUpModel();
   qualificationObj: AcademicQualificationModel = new AcademicQualificationModel();
 
@@ -46,7 +48,7 @@ export class SignUpComponent implements OnInit {
   ];
 
   years: number[] = [];
-  registarationTypes: RegistrationTypeResponse[] = []
+  levels: LevelResponseModel[] = []
 
 
   ngOnInit(): void {
@@ -56,7 +58,7 @@ export class SignUpComponent implements OnInit {
       this.years.push(year);
     }
 
-    this.getAllRegistrationTypes();
+    this.getLevels();
   }
 
   stepperCompletionValue: number = 11;
@@ -95,6 +97,7 @@ export class SignUpComponent implements OnInit {
       return;
     }
     this.signUpObj.gender = Number(this.signUpObj.gender);
+    console.log(this.signUpObj);
     this.authService.signUp(this.signUpObj).subscribe((response: apiResponse) => {
       if (response.isSuccessful) {
         alert(response.message)
@@ -138,11 +141,11 @@ export class SignUpComponent implements OnInit {
   }
 
 
-getAllRegistrationTypes(){
-  this.registrationTypeService.getRegistrationTypes().subscribe((res: apiResponse)=>{
+getLevels(){
+  this.levelService.getLevels().subscribe((res: apiResponse)=>{
     if (res.isSuccessful) {
       alert(res.message)
-      this.registarationTypes = res.data
+      this.levels = res.data
     }else
     {
       alert(res.message)

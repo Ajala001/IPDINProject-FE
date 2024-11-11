@@ -6,6 +6,7 @@ import { pagedResponse } from '../../../models/interfaces/pagedResponse';
 import { SearchQueryModel } from '../../../models/classes/searchQuery';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../../services/auth_service/auth.service';
 
 @Component({
   selector: 'app-training-list',
@@ -16,6 +17,11 @@ import { FormsModule } from '@angular/forms';
 })
 export class TrainingListComponent {
 
+  isAdmin: boolean = false;
+  authService = inject(AuthService)
+  userDetails: any;
+  role: string = "";
+  
   trainingService = inject(TrainingServiceService);
   router = inject(Router);
 
@@ -25,6 +31,10 @@ export class TrainingListComponent {
   pageNumber: number = 1; // Default page number
   paginatedData: TrainingResponseModel[] = [];
   isSearchMode: boolean = false;
+
+  constructor(){
+    this.checkUserRole();
+  }
 
   ngOnInit() {
     this.getTrainings(); // Fetch the initial set of training on component initialization
@@ -116,6 +126,12 @@ export class TrainingListComponent {
       // If search query is empty, fetch all courses
       this.getTrainings();
     }
+  }
+  
+  checkUserRole() {
+    this.userDetails = this.authService.getUserDetailsFromToken();
+    const role = this.userDetails["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+    this.isAdmin = role === 'Admin';
   }
 }
 

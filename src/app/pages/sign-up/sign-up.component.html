@@ -117,10 +117,10 @@
                                     placeholder="Year of Experience" required>
                             </div>
                             <div class="input_box">
-                                <label for="registrationTypeId">Registration Type</label>
-                                <select [(ngModel)]="signUpObj.registrationTypeId" name="registrationTypeId" required>
-                                    <option value="" disabled selected>Select Type</option>
-                                    <option *ngFor="let type of registarationTypes" [value]="type.id">{{ type.name }}</option>
+                                <label for="registrationTypeId">Level</label>
+                                <select [(ngModel)]="signUpObj.levelId" name="registrationTypeId" required>
+                                    <option value="" disabled selected>Select Level</option>
+                                    <option *ngFor="let level of levels" [value]="level.id">{{ level.name }}</option>
                                 </select>
                             </div>
                         </div>

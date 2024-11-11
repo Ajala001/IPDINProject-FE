@@ -1,0 +1,56 @@
+<div class="container">
+    <h1 class="header">Applications</h1>
+    
+    <div *ngIf="paginatedData && paginatedData.length > 0; else noApplications">
+
+        <!-- Controls Section -->
+    <div class="controls-section">
+        <!-- Dropdown for selecting page size -->
+        <div class="page-size">
+            <label for="pageSize"><b>Select Page Size:</b></label>
+            <select [(ngModel)]="pageSize" (change)="onPageSizeChange()">
+                <option *ngFor="let size of pageSizes" [value]="size">{{size}}</option>
+            </select>
+        </div>
+
+        <!-- Pagination controls -->
+        <div class="pagination-controls">
+            <button class="btn btn-primary" (click)="previousPage()" [disabled]="pageNumber === 1">Previous</button>
+            <span><b>{{ pageNumber }}</b></span>
+            <button class="btn btn-primary" (click)="nextPage()" [disabled]="(pageNumber * pageSize) >= totalApplications">Next</button>
+        </div>
+    </div>
+  
+    <table id="example" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Sr No</th>
+                <th>Applicant Fullname</th>
+                <th>Application Purpose</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of paginatedData; let i = index">
+                <td>{{ (pageNumber - 1) * pageSize + i + 1 }}</td>
+                <td>{{ item.applicantfullName }}</td>
+                <td>{{ item.applicationPurpose }}</td>
+                <td>{{ item.date }}</td>
+                <td>
+                  <button class="btn btn-primary" [routerLink]="['/applications', item.id]">Detail</button>
+                  <button class="btn btn-danger" [routerLink]="['/applications', item.id, 'delete']">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    
+    <ng-template #noApplications>
+        <p class="no-applications-message">
+            <b>You have no Application sumbitted at the moment.</b>
+        </p>
+    </ng-template>
+  </div>
+  
+  
+

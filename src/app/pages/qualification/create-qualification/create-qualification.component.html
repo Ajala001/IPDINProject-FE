@@ -1,1 +1,30 @@
-<p>create-qualification works!</p>
+<div class="academic-qualification-form">
+    <h2>Add Academic Qualification</h2>
+    <form (ngSubmit)="addQualification(userEmail)">
+      <div class="form-group">
+        <label for="degree">Degree:</label>
+        <input type="text" id="degree" [(ngModel)]="qualificationObj.degree" name="degree" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="fieldOfStudy">Field of Study:</label>
+        <input type="text" id="fieldOfStudy" [(ngModel)]="qualificationObj.fieldOfStudy" name="fieldOfStudy" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="institution">Institution:</label>
+        <input type="text" id="institution" [(ngModel)]="qualificationObj.institution" name="institution" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="yearAttained">Year Attained:</label>
+        <select id="yearAttained" [(ngModel)]="qualificationObj.yearAttained" name="yearAttained" required>
+          <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+        </select>
+      </div>
+    
+      <button type="submit" class="btn submit-btn">Submit</button>
+      <button type="button" [routerLink]="['/users', userEmail, 'detail']" class="btn submit-btn">Back</button>
+    </form>
+  </div>
+  

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CourseResponseModel } from '../../../models/classes/course';
 import { apiResponse } from '../../../models/interfaces/apiResponse';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../services/auth_service/auth.service';
 
 @Component({
   selector: 'app-course-detail',
@@ -14,13 +15,19 @@ import { CommonModule } from '@angular/common';
 })
 export class CourseDetailComponent {
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) {
+    this.checkUserRole();
+  }
 
   courseService = inject(CourseServiceService)
   router = inject(Router)
   courseId: string | null = null;
   course!: CourseResponseModel
  
+  isAdmin: boolean = false;
+  authService = inject(AuthService)
+  userDetails: any;
+  role: string = "";
 
 
   courseStatusMap: { [key: number]: string } = {
@@ -42,5 +49,11 @@ export class CourseDetailComponent {
           this.course = response.data
       }
     })
+  }
+
+  checkUserRole() {
+    this.userDetails = this.authService.getUserDetailsFromToken();
+    const role = this.userDetails["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+    this.isAdmin = role === 'Admin';
   }
 }

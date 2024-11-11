@@ -6,6 +6,7 @@ import { Router, RouterLink } from '@angular/router';
 import { SearchQueryModel } from '../../../models/classes/searchQuery';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../services/auth_service/auth.service';
 
 @Component({
   selector: 'app-payment-list',
@@ -19,6 +20,10 @@ export class PaymentListComponent {
   paymentService = inject(PaymentServiceService);
   router = inject(Router);
 
+  isAdmin: boolean = false;
+  authService = inject(AuthService)
+  userDetails: any;
+  role: string = "";
 
   totalPayments: number = 0;
   pageSizes: number[] = [3, 5, 10, 25, 50]; // Options for page size
@@ -27,6 +32,10 @@ export class PaymentListComponent {
   paginatedData: PaymentResponseModel[] = [];
   isSearchMode: boolean = false;
 
+  constructor(){
+    this.checkUserRole();
+  }
+  
   ngOnInit() {
     this.getPayments(); // Fetch the initial set of Payments on component initialization
   }
@@ -109,5 +118,11 @@ export class PaymentListComponent {
       // If search query is empty, fetch all courses
       this.getPayments();
     }
+  }
+
+  checkUserRole() {
+    this.userDetails = this.authService.getUserDetailsFromToken();
+    const role = this.userDetails["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+    this.isAdmin = role === 'Admin';
   }
 }

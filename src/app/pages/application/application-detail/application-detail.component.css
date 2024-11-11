@@ -1,68 +1,51 @@
 .parent {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f8f9fa;
-  }
-  
-  .container {
-    max-width: 600px;
-    margin: 20px;
-  }
-  
-  .card {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    transition: transform 0.3s ease;
-  }
-  
-  .card:hover {
-    transform: scale(1.02);
-  }
-  
-  h2 {
-    font-family: 'Merriweather', serif;
-    font-size: 24px;
-    color: #343a40;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .list-group-item {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    color: #495057;
-    padding: 12px;
-    border: none;
-    background-color: #f9f9f9;
-  }
-  
-  .list-group-item b {
-    color: #212529;
-  }
-  
-  .card-body {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 20px;
-  }
-  
-  .card-link {
-    font-family: 'Merriweather', serif;
-    font-size: 16px;
-    color: #007bff;
-    text-decoration: none;
-    transition: color 0.2s ease-in-out;
-  }
-  
-  .card-link:hover {
-    color: #0056b3;
-  }
-  
-  .card-body a:first-child {
-    margin-right: auto;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #1a1f36; /* Dark blue background */
+}
+
+.container {
+  max-width: 600px;
+  width: 100%;
+}
+
+.card {
+  background-color: #23395d; /* Darker blue for card background */
+  color: #ffffff; /* White text for contrast */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #ffffff;
+  padding-bottom: 10px;
+}
+
+.list-group-item {
+  background-color: #23395d; /* Match card background */
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.card-body {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+
+.card-link {
+  color: #4fa1d6; /* Lighter blue for links */
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.card-link:hover {
+  color: #87ceeb; /* Brighter blue on hover */
+}

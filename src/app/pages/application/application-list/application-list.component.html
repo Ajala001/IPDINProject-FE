@@ -45,7 +45,7 @@
                 <td>{{ item.date }}</td>
                 <td>
                   <button class="btn btn-primary" [routerLink]="['/applications', item.id]">Detail</button>
-                  <button class="btn btn-danger" [routerLink]="['/applications', item.id, 'delete']">Delete</button>
+                  <button class="btn btn-danger" *ngIf="isAdmin" [routerLink]="['/applications', item.id, 'delete']">Delete</button>
                 </td>
             </tr>
         </tbody>

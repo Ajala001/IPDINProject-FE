@@ -1,0 +1,57 @@
+<div class="container">
+    <h1 class="header">Results</h1>
+    <div *ngIf="paginatedData && paginatedData.length > 0; else noCourses">
+        <!-- Controls Section -->
+        <div class="controls-section">
+            <!-- Dropdown for selecting page size -->
+            <div class="page-size">
+                <label for="pageSize"><b>Select Page Size:</b></label>
+                <select [(ngModel)]="pageSize" (change)="onPageSizeChange()">
+                    <option *ngFor="let size of pageSizes" [value]="size">{{size}}</option>
+                </select>
+            </div>
+
+
+            <!-- Pagination controls -->
+            <div class="pagination-controls">
+                <button class="btn btn-primary" (click)="previousPage()" [disabled]="pageNumber === 1">Previous</button>
+                <span><b>{{ pageNumber }}</b></span>
+                <button class="btn btn-primary" (click)="nextPage()"
+                    [disabled]="(pageNumber * pageSize) >= totalCourses">Next</button>
+            </div>
+        </div>
+        <table id="example" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Fullname</th>
+                    <th>Exam Title</th>
+                    <th>Total Score</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of paginatedData; let i = index">
+                    <td>{{ (pageNumber - 1) * pageSize + i + 1 }}</td>
+                    <td>{{ item.fullName }}</td>
+                    <td>{{ item.examTitle }}</td>
+                    <td>{{ item.totalScore }}</td>
+                    <td>
+                        <button class="btn btn-primary" [routerLink]="['/results', item.id]">Detail</button>
+                        <button class="btn btn-danger" *ngIf="isAdmin" [routerLink]="['/results', item.id, 'delete']">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <ng-template #noCourses>
+        <p class="no-courses-message">
+            <b>No Results available at the moment.</b>
+        </p>
+    </ng-template>
+
+</div>
+
+

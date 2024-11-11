@@ -4,6 +4,7 @@ import { ApplicationServiceService } from '../../../services/application_service
 import { ApplicationResponseModel } from '../../../models/classes/application';
 import { apiResponse } from '../../../models/interfaces/apiResponse';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../services/auth_service/auth.service';
 
 @Component({
   selector: 'app-application-detail',
@@ -13,10 +14,16 @@ import { CommonModule } from '@angular/common';
   styleUrl: './application-detail.component.css'
 })
 export class ApplicationDetailComponent {
+  constructor(private route: ActivatedRoute) {
+    this.checkUserRole();
+  }
 
-  constructor(private route: ActivatedRoute) {}
-
+  isAdmin: boolean = false;
   applicationService = inject(ApplicationServiceService)
+  authService = inject(AuthService)
+  userDetails: any;
+  role: string = "";
+  
   router = inject(Router)
   applicationId: string | null = null;
   application!: ApplicationResponseModel
@@ -39,5 +46,20 @@ export class ApplicationDetailComponent {
           this.application = response.data
       }
     })
+  }
+
+  acceptApplication(id: string){
+    this.applicationService.acceptApplication(id).subscribe((response: apiResponse) =>{
+      if(response.isSuccessful){
+        alert(response.message)
+        this.router.navigate(['/applications']);
+      }
+    })
+  }
+
+  checkUserRole() {
+    this.userDetails = this.authService.getUserDetailsFromToken();
+    const role = this.userDetails["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+    this.isAdmin = role === 'Admin';
   }
 }

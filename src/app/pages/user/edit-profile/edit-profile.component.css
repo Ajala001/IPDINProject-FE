@@ -1,84 +1,177 @@
+/* General body styling */
+.newbody {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f6f9; /* Light gray background */
+    color: #333; /* Darker text color for readability */
+    margin: 0;
+    padding: 0;
+    line-height: 1.4; /* Reduced line-height for tighter spacing */
+}
+
+/* App body and parent container */
+.app-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh; /* Reduced min-height */
+}
+
 .parent {
     display: flex;
     justify-content: center;
-    padding: 20px;
-}
-
-.profile-container {
+    align-items: center;
     width: 100%;
-    max-width: 600px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    background-color: #f9f9f9;
 }
 
+/* Profile container */
+.profile-container {
+    background-color: #ffffff; /* White background for the card */
+    padding: 15px; /* Reduced padding */
+    border-radius: 8px; /* Slightly reduced border radius */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Reduced shadow for less depth */
+    max-width: 800px;
+    width: 100%;
+    margin: auto;
+}
+
+/* Profile header section */
 .profile-header {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px; /* Reduced margin */
 }
 
 .profile-pic {
-    width: 100px;
-    height: 100px;
     border-radius: 50%;
+    width: 90px; /* Reduced size */
+    height: 90px; /* Reduced size */
     object-fit: cover;
-    border: 2px solid #007bff;
+    border: 3px solid darkblue; /* Dark blue border for profile picture */
+    margin-bottom: 10px; /* Reduced margin */
 }
 
 .full-name {
-    font-size: 24px;
-    margin: 10px 0;
+    font-size: 22px; /* Reduced font size */
+    font-weight: bold;
+    color: darkblue; /* Dark blue for name */
+    margin: 5px 0; /* Reduced margin */
 }
 
 .membership-number {
-    font-size: 16px;
-    color: #555;
+    font-size: 12px; /* Reduced font size */
+    color: #666; /* Lighter text for subtle info */
 }
 
-.profile-info, .profile-experience, .profile-qualifications {
-    margin-bottom: 20px;
+/* Form labels */
+label {
+    display: block;
+    font-weight: bold;
+    color: darkblue; /* Dark blue for labels */
+    margin-bottom: 3px; /* Reduced margin */
+}
+
+/* Form inputs */
+input[type="text"],
+input[type="date"],
+input[type="number"],
+input[type="file"] {
+    width: 100%;
+    padding: 8px; /* Reduced padding */
+    margin-bottom: 10px; /* Reduced margin between fields */
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Slightly reduced border radius */
+    box-sizing: border-box;
+    font-size: 12px; /* Reduced font size */
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+input[type="file"]:focus {
+    border-color: darkblue; /* Dark blue on focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 128, 0.2);
+}
+
+/* File input upload section */
+.profile-pic-upload {
+    margin: 10px 0; /* Reduced margin */
+}
+
+/* Profile info section */
+.profile-info, .profile-experience {
+    margin-bottom: 15px; /* Reduced margin */
 }
 
 h2 {
-    margin-bottom: 10px;
-    font-size: 20px;
-    color: #333;
+    color: darkblue;
+    margin-bottom: 10px; /* Reduced margin */
+    font-size: 20px; /* Reduced font size */
+    border-bottom: 2px solid darkblue;
+    display: inline-block;
+    padding-bottom: 3px; /* Reduced padding */
 }
 
+/* Form groups */
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 10px; /* Reduced margin */
 }
 
-.form-group label {
-    display: block;
+/* Buttons */
+.btn-register {
+    background-color: darkblue;
+    color: white;
+    border: none;
+    padding: 10px 20px; /* Reduced padding */
+    font-size: 14px; /* Reduced font size */
     font-weight: bold;
-    margin-bottom: 5px;
+    border-radius: 4px; /* Slightly reduced border radius */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 5px; /* Reduced margin */
 }
 
-.form-group input[type="text"], 
-.form-group input[type="number"], 
-.form-group input[type="date"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.btn-register:hover {
+    background-color: #004080; /* Darker blue on hover */
 }
 
+/* Back button styling */
+button[routerLink] {
+    background-color: #f0f0f0;
+    color: darkblue;
+    padding: 10px 20px; /* Reduced padding */
+    border-radius: 4px; /* Slightly reduced border radius */
+    font-weight: bold;
+    text-decoration: none;
+    border: 1px solid darkblue;
+    margin: 5px; /* Reduced margin */
+}
+
+button[routerLink]:hover {
+    background-color: darkblue;
+    color: white;
+}
+
+/* Center text */
 .text-center {
     text-align: center;
 }
 
-.btn-register {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-}
+/* Responsive design */
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 10px; /* Reduced padding */
+    }
+    
+    .full-name {
+        font-size: 20px; /* Reduced font size */
+    }
 
-.btn-register:hover {
-    background-color: #0056b3;
+    .profile-pic {
+        width: 80px; /* Reduced size */
+        height: 80px; /* Reduced size */
+    }
+    
+    .btn-register {
+        padding: 8px 15px; /* Reduced padding */
+    }
 }

@@ -1,0 +1,43 @@
+<div class="newbody">
+    <div class="parent">
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card upload-card shadow-lg">
+                        <div class="card-header text-center text-white">
+                            <h5 class="mb-0">Upload Results</h5>
+                        </div>
+                        <div class="card-body">
+                            <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+                                <!-- Exam Selection Field -->
+                                <div class="mb-4">
+                                    <label for="selectExam" class="form-label">Select Exam</label>
+                                    <select class="form-select" id="selectExam" formControlName="selectedExam">
+                                        <option *ngFor="let exam of examinations" [ngValue]="exam.id">{{ exam.examTitle }}</option>
+                                    </select>
+                                    
+                                    <small class="form-text text-muted">Choose the exam for which you are uploading
+                                        results.</small>
+                                </div>
+
+                                <!-- File Upload Field -->
+                                <div class="mb-4">
+                                    <label for="uploadFile" class="form-label">Select Excel File</label>
+                                    <label class="file-label" for="uploadFile">{{ selectedFileName }}</label>
+                                    <input type="file" class="file-input form-control" id="uploadFile"
+                                        (change)="onFileChange($event)" accept=".xlsx, .xls">
+                                    <small class="form-text text-muted">Supported formats: .xlsx, .xls</small>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary btn-upload">Upload</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

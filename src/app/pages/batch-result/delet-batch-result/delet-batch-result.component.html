@@ -1,0 +1,22 @@
+<div class="parent">
+    <div class="container">
+        <div *ngIf="batchResult" class="card confirm-delete-card">
+            <h2 class="card-title">Confirm Deletion</h2>
+            <p class="warning-text">Are you sure you want to delete the following Batch Result?</p>
+            <img src="assets/images/wepik-simple-monocolor-learny-school-logo-20241111155629TSpN.png" 
+                 class="card-img-top course-image" alt="Course-image">
+            <ul class="list-group list-group-flush details-list">
+                <li class="list-group-item"><b>Exam Title: </b> {{ batchResult.examTitle }}</li>
+                <li class="list-group-item"><b>Upload Date: </b> {{ batchResult.uploadDate }}</li>
+                <li class="list-group-item"><b>Num of Uploaded Result: </b> {{ batchResult.numberOfUploadedResults }}</li>
+            </ul>
+            <div class="card-body">
+                <div class="button-container">
+                    <button (click)="confirmDelete()" class="btn btn-danger action-button">Delete Batch</button>
+                    <button (click)="cancelDelete()" class="btn btn-secondary action-button">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

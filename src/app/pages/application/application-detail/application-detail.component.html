@@ -10,10 +10,10 @@
           </ul>
           <div class="card-body">
             <a [routerLink]="['/applications']" class="card-link">Back</a>
-            <a [routerLink]="['/applications', application.id, 'edit']" class="card-link">Edit</a>
+            <a (click)="acceptApplication(application.id)" *ngIf="isAdmin" class="card-link">Accept</a>
+            <a [routerLink]="['/applications/reject', application.id]" *ngIf="isAdmin" class="card-link">Reject</a>
           </div>
         </div>
       </div>
 </div>
 
-  

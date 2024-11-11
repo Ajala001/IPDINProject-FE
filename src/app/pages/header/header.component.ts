@@ -44,14 +44,13 @@ export class HeaderComponent {
 
   userDetails: any;
   fullName: string = "";
+  userEmail: string = "";
 
   constructor(){
     this.userDetails = this.authService.getUserDetailsFromToken();
     if(this.userDetails){
       this.fullName = this.userDetails["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
+      this.userEmail = this.userDetails["NameIdentifier"]
     }
   }
-  
- 
-
 }

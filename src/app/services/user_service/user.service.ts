@@ -28,8 +28,8 @@ export class UserService {
     return this.http.get<apiResponse>(`${environment.apiUrl}${apiEndpoints.getUserByEmailUrl(email)}`);
   }
 
-  updateUser(email: string, updateRequest: UserUpdateModel): Observable<apiResponse> {
-    return this.http.put<apiResponse>(`${environment.apiUrl}${apiEndpoints.updateUserUrl(email)}`, updateRequest);
+  updateUser(email: string, formData: FormData): Observable<apiResponse> {
+    return this.http.put<apiResponse>(`${environment.apiUrl}${apiEndpoints.updateUserUrl(email)}`, formData);
   }
 
   deleteUser(email: string): Observable<apiResponse> {

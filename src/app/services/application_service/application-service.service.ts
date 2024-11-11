@@ -30,6 +30,16 @@ export class ApplicationServiceService {
     return this.http.get<pagedResponse>(environment.apiUrl + apiEndpoints.getApplicationsUrl, { params: queryParams })
   }
 
+  getUserApplications(params: { [key: string]: any }) : Observable<pagedResponse>{
+    let queryParams = new HttpParams(); 
+    for (const key in params) {
+      if (params.hasOwnProperty(key)) {
+        queryParams = queryParams.append(key, params[key]);
+      }
+    }
+    return this.http.get<pagedResponse>(environment.apiUrl + apiEndpoints.getUserApplicationsUrl, { params: queryParams })
+  }
+
   getApplicationById(applicationId: string): Observable<apiResponse>{
     return this.http.get<apiResponse>(`${environment.apiUrl}${apiEndpoints.getApplicationByIdUrl(applicationId)}`);
   }
@@ -51,7 +61,7 @@ export class ApplicationServiceService {
   }
 
   rejectApplication(applicationId: string, rejectionReason: ApplicationRejectionModel): Observable<apiResponse>{
-    return this.http.post<apiResponse>(`${environment.apiUrl}${apiEndpoints.acceptApplicationUrl(applicationId)}`, rejectionReason);
+    return this.http.post<apiResponse>(`${environment.apiUrl}${apiEndpoints.rejectApplicationUrl(applicationId)}`, rejectionReason);
   }
 
   searchApplications(params: { [key: string]: any }): Observable<pagedResponse> {

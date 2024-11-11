@@ -20,8 +20,8 @@
       
       <div class="card-body text-center">
         <button class="btn btn-outline-primary mx-2" [routerLink]="['/trainings']">Back</button>
-        <button class="btn btn-outline-warning mx-2" [routerLink]="['/trainings', training.id, 'edit']">Edit</button>
-        <button class="btn btn-outline-success mx-2" [routerLink]="['/payments/initiate', training.id]" [queryParams]="{ reason: 'Training' }">Proceed to Payment</button>
+        <button class="btn btn-outline-warning mx-2" *ngIf="isAdmin" [routerLink]="['/trainings', training.id, 'edit']">Edit</button>
+        <button class="btn btn-outline-success mx-2" *ngIf="!isAdmin" [routerLink]="['/payments/initiate', training.id]" [queryParams]="{ reason: 'Training' }">Proceed to Payment</button>
       </div>
     </div>
   </div>

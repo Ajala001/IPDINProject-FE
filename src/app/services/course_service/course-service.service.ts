@@ -44,14 +44,12 @@ export class CourseServiceService {
 
   searchCourses(params: { [key: string]: any }): Observable<pagedResponse> {
     let queryParams = new HttpParams();
-
     // Create query parameters
     for (const key in params) {
         if (params.hasOwnProperty(key)) {
             queryParams = queryParams.append(key, params[key].toString());
         }
     }
-
     return this.http.get<pagedResponse>(`${environment.apiUrl}${apiEndpoints.searchCoursesUrl}`, { params: queryParams });
   }
 }

@@ -1,11 +1,18 @@
 <div class="parent">
     <div class="profile-container">
+        <!-- Profile Header -->
         <div *ngIf="user" class="profile-header">
-            <img [src]="user.profilePic" alt="Profile Picture" class="profile-pic">
-            <h1 class="full-name">{{ user.fullName }}</h1>
-            <p class="membership-number">Membership Number: {{ user.membershipNumber }}</p>
+            <div class="profile-header-content">
+                <img [src]="user.profilePic || 'default-image-path.jpg'" alt="Profile Picture" class="profile-pic">
+                <div class="profile-info">
+                    <h1 class="full-name">{{ user.fullName }}</h1>
+                    <p class="membership-number">Membership Number: {{ user.membershipNumber }}</p>
+                    <p class="membership-number">Membership Level: {{ user.level }}</p>
+                </div>
+            </div>
         </div>
 
+        <!-- Personal Information Section -->
         <div *ngIf="user" class="profile-info">
             <h2>Personal Information</h2>
             <p><strong>Email:</strong> {{ user.email }}</p>
@@ -19,20 +26,29 @@
             <p><strong>Expiring Date:</strong> {{ user.expiringDate | date }}</p>
         </div>
 
+        <!-- Experience Section -->
         <div *ngIf="user" class="profile-experience">
             <h2>Experience</h2>
             <p><strong>Years of Experience:</strong> {{ user.yearsOfExperience }}</p>
             <p><strong>Name of Current Driving School:</strong> {{ user.nameOfCurrentDrivingSchool }}</p>
         </div>
 
+        <!-- Edit and Back Buttons -->
+        <div class="profile-buttons">
+            <button class="btn edit-btn" [routerLink]="['/users', user.email, 'edit']">Edit</button>
+            <button class="btn back-btn" [routerLink]="'/dashboard'">Back</button>
+        </div>
+
+        <!-- Academic Qualifications Section -->
         <div *ngIf="user" class="profile-qualifications">
             <h2>Academic Qualifications</h2>
             <ul>
                 <li *ngFor="let qualification of user.academicQualifications">
-                    <strong>Degree:</strong> {{ qualification.degree }}<br />
+                    <strong>Degree:</strong> {{ qualification.degree }} <br />
                     <strong>Field of Study:</strong> {{ qualification.fieldOfStudy }}
                 </li>
             </ul>
+            <button class="btn add-qualification-btn" (click)="navigateToAddQualification()">Add Qualification</button>
         </div>
     </div>
 </div>

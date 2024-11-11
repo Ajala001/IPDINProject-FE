@@ -1,45 +1,113 @@
+/* Parent container for the profile */
 .parent {
     display: flex;
     justify-content: center;
-    padding: 20px;
+    padding: 20px; /* Add padding for spacing */
+    background-color: #f4f4f4; /* Light gray background for contrast */
 }
 
+/* Profile container */
 .profile-container {
-    width: 100%;
-    max-width: 600px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #ffffff; /* White background for the profile */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    padding: 30px; /* Internal padding */
+    width: 100%; /* Full width */
+    max-width: 800px; /* Max width for larger screens */
 }
 
+/* Profile header styling */
 .profile-header {
-    text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Space below the header */
 }
 
+.profile-header-content {
+    display: flex; /* Use Flexbox for side-by-side layout */
+    align-items: center; /* Align items vertically */
+    justify-content: space-between; /* Space between image and text */
+}
+
+/* Profile picture styling */
 .profile-pic {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #007bff;
+    border-radius: 50%; /* Circular profile picture */
+    width: 150px; /* Enlarged size for profile picture */
+    height: 150px; /* Enlarged size for profile picture */
+    object-fit: cover; /* Ensure the image covers the area */
+    border: 2px solid darkblue; /* Dark blue border */
+    margin-right: 20px; /* Space between the picture and the profile info */
 }
 
+/* Full name styling */
 .full-name {
-    font-size: 24px;
-    margin: 10px 0;
+    font-size: 30px; /* Larger font size */
+    font-weight: bold;
+    color: darkblue; /* Dark blue color for names */
+    margin: 10px 0; /* Space above and below the name */
 }
 
+/* Membership information styling */
 .membership-number {
-    font-size: 16px;
-    color: #555;
+    color: black; /* Gray color for membership details */
+    font-weight: 500; /* Medium weight for subtle emphasis */
 }
 
-.profile-info, .profile-experience, .profile-qualifications {
-    margin-bottom: 20px;
+/* Profile information section */
+.profile-info,
+.profile-experience,
+.profile-qualifications {
+    margin-top: 20px; /* Space above each section */
+    padding: 15px; /* Internal padding */
+    border: 1px solid #e0e0e0; /* Light gray border */
+    border-radius: 6px; /* Rounded corners */
+    background-color: #f9f9f9; /* Slightly darker background */
 }
 
+/* Section headers */
 h2 {
-    margin-bottom: 10px;
+    color: darkblue; /* Dark blue for section headings */
+    border-bottom: 2px solid darkblue; /* Underline effect */
+    padding-bottom: 10px; /* Space below heading */
+}
+
+/* Button styling */
+.btn {
+    padding: 10px 20px; /* Padding for buttons */
+    margin: 10px; /* Space around buttons */
+    background-color: darkblue; /* Dark blue background */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    border-radius: 6px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size for buttons */
+    font-weight: 600; /* Bold text */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+}
+
+/* Hover effects for buttons */
+.btn:hover {
+    background-color: #00509e; /* Lighter blue on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Add qualification button styling */
+.add-qualification-btn {
+    background-color: darkblue; /* Changed to dark blue */
+}
+
+.add-qualification-btn:hover {
+    background-color: #00509e; /* Darker blue on hover */
+}
+
+/* List styling for qualifications */
+ul {
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+}
+
+li {
+    margin-bottom: 10px; /* Space below each qualification */
+    padding: 10px; /* Padding for each list item */
+    border: 1px solid #e0e0e0; /* Light gray border */
+    border-radius: 6px; /* Rounded corners */
+    background-color: #ffffff; /* White background for qualifications */
 }

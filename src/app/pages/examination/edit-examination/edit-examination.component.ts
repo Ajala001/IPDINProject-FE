@@ -41,6 +41,7 @@ export class EditExaminationComponent implements OnInit {
     examTime: '',
     examYear: 0,
     fee: '',
+    status: 0,
     courses: [] // This will store the courses assigned to this exam
   };
 

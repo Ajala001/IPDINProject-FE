@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UserService } from '../../../services/user_service/user.service';
 import { UserResponseModel, UserUpdateModel } from '../../../models/interfaces/userUpdate';
 import { CommonModule } from '@angular/common';
@@ -8,23 +8,41 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-edit-profile',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './edit-profile.component.html',
   styleUrl: './edit-profile.component.css'
 })
 export class EditProfileComponent {
-
   route = inject(ActivatedRoute);
   userService = inject(UserService);
   router = inject(Router);
   userEmail: string | null = null;
-  userProfile!: UserResponseModel
+  
+  userProfile: UserResponseModel = {
+    id: '',
+    fullName: '',
+    membershipNumber: '',
+    email: '',
+    gender: 0,
+    dateOfBirth: '',
+    profilePic: '',
+    address: '',
+    localGovt: '',
+    level: '',
+    stateOfOrigin: '',
+    driverLicenseNo: '',
+    yearIssued: 0,
+    expiringDate: '',
+    yearsOfExperience: 0,
+    nameOfCurrentDrivingSchool: '',
+    academicQualifications: []
+  };
 
   user: UserUpdateModel = {
     phoneNumber: '', 
     dateOfBirth: '', 
     profilePic: null, 
-    streetNo: 0, 
+    streetNo: '', 
     streetName: '',
     city: '',
     stateOfResidence: '',
@@ -55,7 +73,7 @@ export class EditProfileComponent {
             phoneNumber: '',
             dateOfBirth: this.userProfile.dateOfBirth || '',
             profilePic: null, 
-            streetNo: 0,
+            streetNo: '',
             streetName:'',
             city: '',
             stateOfResidence: '',
@@ -86,19 +104,39 @@ export class EditProfileComponent {
 
   updateUser(): void {
     if (this.userEmail && this.userProfile) {
-      console.log(this.userProfile)
-      if (confirm(`Are you sure you want to update your profile: ${this.userProfile.email}?`)) {
-        this.userService.updateUser(this.userEmail, this.user).subscribe({
-          next: () => {
-            alert('Profile updated successfully!');
-            this.router.navigate(['/users']);
-          },
-          error: (error) => {
-            alert('An error occurred while updating your profile.');
-            console.error('Update error:', error);
-          },
-        });
-      }
+        console.log(this.userProfile);
+        console.log(this.user);
+        if (confirm(`Are you sure you want to update your profile: ${this.userProfile.email}?`)) {
+            const formData = new FormData();
+            formData.append('phoneNumber', this.user.phoneNumber);
+            formData.append('dateOfBirth', this.user.dateOfBirth);
+            if (this.user.profilePic) {
+                formData.append('profilePic', this.user.profilePic);
+            }
+            formData.append('streetNo', this.user.streetNo);
+            formData.append('streetName', this.user.streetName);
+            formData.append('city', this.user.city);
+            formData.append('stateOfResidence', this.user.stateOfResidence);
+            formData.append('localGovt', this.user.localGovt);
+            formData.append('stateOfOrigin', this.user.stateOfOrigin);
+            formData.append('country', this.user.country);
+            formData.append('driverLicenseNo', this.user.driverLicenseNo);
+            formData.append('yearIssued', this.user.yearIssued.toString());
+            formData.append('expiringDate', this.user.expiringDate);
+            formData.append('yearsOfExperience', this.user.yearsOfExperience.toString());
+            formData.append('nameOfCurrentDrivingSchool', this.user.nameOfCurrentDrivingSchool);
+
+            this.userService.updateUser(this.userEmail, formData).subscribe({
+                next: () => {
+                    alert('Profile updated successfully!');
+                    this.router.navigateByUrl(`users/${this.userEmail}/detail`);
+                },
+                error: (error) => {
+                    alert('An error occurred while updating your profile.');
+                    console.error('Update error:', error);
+                },
+            });
+        }
     }
   }
 }

@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { pagedResponse } from '../../../models/interfaces/pagedResponse';
 import { CourseSearchModel } from '../../../models/classes/courseSearch';
+import { AuthService } from '../../../services/auth_service/auth.service';
 
 @Component({
   selector: 'app-course-list',
@@ -19,6 +20,14 @@ export class CourseListComponent implements OnInit {
   cousreService = inject(CourseServiceService);
   router = inject(Router);
 
+  isAdmin: boolean = false;
+  authService = inject(AuthService)
+  userDetails: any;
+  role: string = "";
+
+  constructor(){
+    this.checkUserRole();
+  }
 
   totalCourses: number = 0;
   pageSizes: number[] = [3, 5, 10, 25, 50]; // Options for page size
@@ -111,6 +120,12 @@ export class CourseListComponent implements OnInit {
       // If search query is empty, fetch all courses
       this.getCourses();
     }
+  }
+
+  checkUserRole() {
+    this.userDetails = this.authService.getUserDetailsFromToken();
+    const role = this.userDetails["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+    this.isAdmin = role === 'Admin';
   }
 }
 

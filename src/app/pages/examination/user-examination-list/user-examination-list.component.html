@@ -1,0 +1,60 @@
+<div class="container">
+    <h1 class="header">Examinations</h1>
+    <div *ngIf="paginatedData && paginatedData.length > 0; else noExaminations">
+
+        <!-- Controls Section -->
+    <div class="controls-section">
+        <!-- Dropdown for selecting page size -->
+        <div class="page-size">
+            <label for="pageSize"><b>Select Page Size:</b></label>
+            <select [(ngModel)]="pageSize" (change)="onPageSizeChange()">
+                <option *ngFor="let size of pageSizes" [value]="size">{{size}}</option>
+            </select>
+        </div>
+  
+        <!-- Pagination controls -->
+        <div class="pagination-controls">
+            <button class="btn btn-primary" (click)="previousPage()" [disabled]="pageNumber === 1">Previous</button>
+            <span><b>{{ pageNumber }}</b></span>
+            <button class="btn btn-primary" (click)="nextPage()" [disabled]="(pageNumber * pageSize) >= totalExams">Next</button>
+        </div>
+    </div>
+
+  
+    <table id="example" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Sr No</th>
+                <th>Examination Title</th>
+                <th>Examination Date</th>
+                <th>Examination Time</th>
+                <th>Examination Fee</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of paginatedData; let i = index">
+                <td>{{ (pageNumber - 1) * pageSize + i + 1 }}</td>
+                <td>{{ item.examTitle}}</td>
+                <td>{{ item.examDate }}</td>
+                <td>{{ item.examTime }}</td>
+                <td>{{ item.fee }}</td>
+                <td>
+                  <button class="btn btn-primary" [routerLink]="['/examinations', item.id]">Detail</button>
+                  <button class="btn btn-danger"  [routerLink]="['/examinations', item.id, 'delete']">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <ng-template #noExaminations>
+        <p class="no-examinations-message">
+            <b>You have no examinations at the moment.</b>
+        </p>
+    </ng-template>
+    
+  </div>
+  
+  
+  

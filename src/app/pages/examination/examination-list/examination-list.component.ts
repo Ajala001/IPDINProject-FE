@@ -6,6 +6,7 @@ import { pagedResponse } from '../../../models/interfaces/pagedResponse';
 import { ExaminationSearchmodel } from '../../../models/classes/examinationSearch';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../services/auth_service/auth.service';
 
 @Component({
   selector: 'app-examination-list',
@@ -19,6 +20,10 @@ export class ExaminationListComponent {
   examinationService = inject(ExaminationService);
   router = inject(Router);
 
+  isAdmin: boolean = false;
+  authService = inject(AuthService)
+  userDetails: any;
+  role: string = "";
 
   totalExams: number = 0;
   pageSizes: number[] = [3, 5, 10, 25, 50]; // Options for page size
@@ -26,6 +31,10 @@ export class ExaminationListComponent {
   pageNumber: number = 1; // Default page number
   paginatedData: ExaminationResponseModel[] = [];
   isSearchMode: boolean = false;
+
+  constructor(){
+    this.checkUserRole();
+  }
 
   ngOnInit() {
     this.getExaminations(); // Fetch the initial set of examinations on component initialization
@@ -99,5 +108,11 @@ export class ExaminationListComponent {
       // If search query is empty, fetch all examinations
       this.getExaminations();
     }
+  }
+
+  checkUserRole() {
+    this.userDetails = this.authService.getUserDetailsFromToken();
+    const role = this.userDetails["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+    this.isAdmin = role === 'Admin';
   }
 }

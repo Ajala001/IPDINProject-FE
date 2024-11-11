@@ -11,7 +11,7 @@
           </ul>
           <div class="card-body">
             <a [routerLink]="['/courses']" class="card-link">Back</a>
-            <a [routerLink]="['/courses', course.id, 'edit']" class="card-link">Edit</a>
+            <a [routerLink]="['/courses', course.id, 'edit']" *ngIf="isAdmin" class="card-link">Edit</a>
           </div>
         </div>
       </div>

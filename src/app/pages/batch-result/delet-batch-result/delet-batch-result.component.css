@@ -1,0 +1,96 @@
+/* Container Styling */
+.parent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+}
+
+/* Card Styling */
+.confirm-delete-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    background-color: #ffffff;
+}
+
+.confirm-delete-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-title {
+    font-family: 'Merriweather', serif;
+    color: #2c3e50;
+    font-size: 1.8em;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.warning-text {
+    color: #e74c3c;
+    text-align: center;
+    font-size: 1em;
+    padding: 0 20px;
+}
+
+/* Image Styling */
+.course-image {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    object-fit: cover;
+}
+
+/* List Styling */
+.details-list .list-group-item {
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+    color: #34495e;
+    background-color: transparent;
+    border: none;
+    padding: 12px 20px;
+}
+
+/* Button Styling */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.action-button {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+.btn-secondary {
+    background-color: #95a5a6;
+    color: #fff;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #7f8c8d;
+}

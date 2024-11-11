@@ -2,7 +2,7 @@ export interface UserUpdateModel {
     phoneNumber: string
     dateOfBirth: string
     profilePic: File | null
-    streetNo: number
+    streetNo: string
     streetName: string
     city: string
     stateOfResidence: string
@@ -28,6 +28,7 @@ export interface UserUpdateModel {
     profilePic: string;
     address: string;
     localGovt: string;
+    level: string
     stateOfOrigin: string;
     driverLicenseNo: string;
     yearIssued: number;

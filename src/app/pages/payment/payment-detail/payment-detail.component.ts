@@ -4,6 +4,7 @@ import { PaymentServiceService } from '../../../services/payment_service/payment
 import { PaymentResponseModel } from '../../../models/classes/payment';
 import { apiResponse } from '../../../models/interfaces/apiResponse';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../services/auth_service/auth.service';
 
 @Component({
   selector: 'app-payment-detail',
@@ -14,13 +15,20 @@ import { CommonModule } from '@angular/common';
 })
 export class PaymentDetailComponent {
   
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) {
+    this.checkUserRole();
+  }
 
   paymentService = inject(PaymentServiceService)
   router = inject(Router)
   paymentRef: string | null = null;
   payment!: PaymentResponseModel
  
+  
+  isAdmin: boolean = false;
+  authService = inject(AuthService)
+  userDetails: any;
+  role: string = "";
 
   ngOnInit(): void {
     this.paymentRef = this.route.snapshot.paramMap.get('refNo');
@@ -38,6 +46,12 @@ export class PaymentDetailComponent {
           this.payment = response.data
       }
     })
+  }
+
+  checkUserRole() {
+    this.userDetails = this.authService.getUserDetailsFromToken();
+    const role = this.userDetails["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+    this.isAdmin = role === 'Admin';
   }
 }
 

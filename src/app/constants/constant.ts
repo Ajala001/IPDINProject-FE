@@ -11,6 +11,7 @@ export const apiEndpoints =
     createApplicationUrl: '/applications',
     getApplicationsUrl: '/applications',
     searchApplicationsUrl: '/applications/search',
+    getUserApplicationsUrl: '/applications/user',
     getApplicationByIdUrl: (id: string) => `/applications/${id}`,
     updateApplicationUrl(id: string) : string {
       return `/applications/${id}`
@@ -19,6 +20,14 @@ export const apiEndpoints =
     downloadApplicationSlipUrl: (id: string) => `/applications/download-applicationSlip/${id}`,
     acceptApplicationUrl: (id: string) => `/applications/accept/${id}`,
     rejectApplicationUrl: (id: string) => `/applications/reject/${id}`,
+
+
+    //BatchResult
+    getBatchResultsUrl: '/batchResults',
+    searchBatchResultsUrl: '/batchResults/search',
+    uploadBatchResultUrl: (examId: string) => `/batchResults/uploadResult/${examId}`,
+    getBatchResultByIdUrl: (batchId: string) => `/batchResults/${batchId}`,
+    deleteBatchResultUrl: (batchId: string) => `/batchResults/${batchId}`,
 
     //Course
     createCourseUrl: '/courses',
@@ -34,6 +43,7 @@ export const apiEndpoints =
     createExaminationUrl: '/examinations',
     getExaminationsUrl: '/examinations',
     searchExaminationUrl: '/examinations/search',
+    getUserExaminationsUrl: '/examinations/user',
     getExaminationByIdUrl: (id: string) => `/examinations/${id}`,
     updateExaminationUrl: (id: string) => `/examinations/${id}`,
     deleteExaminationUrl: (id: string) => `/examinations/${id}`,
@@ -43,6 +53,7 @@ export const apiEndpoints =
     initiatePaymentUrl: '/payments/initiatePayment',
     verifyPaymentUrl: '/payments/verify',
     searchPaymentsUrl: '/payments/search',
+    getUserPaymentsUrl: '/payments/user',
     getPaymentsByRefNoUrl: (refNo: string) => `/payments/${refNo}`,
     deletePaymentUrl: (refNo: string) => `/payments/${refNo}`,
     updatePaymentUrl: (refNo: string) => `/payments/${refNo}`,
@@ -62,23 +73,25 @@ export const apiEndpoints =
     deleteLevelUrl: (id: string) => `/levels/${id}`,
 
     //Result
-    getResultsUrl: '/results',
-    uploadResultUrl: '/results/uploadResult',
-    getStudentResultUrl: (memNo: string) => `/registrationTypes/${memNo}`,
-    UpdateStudentResultUrl: (memNo: string) => `/registrationTypes/${memNo}`,
-    deleteStudentResultUrl: (memNo: string) => `/registrationTypes/${memNo}`,
+    // getResultsUrl: '/results',
+    searchResultsUrl: '/results/search',
+    getStudentResultsUrl: (memNo: string) => `/results/member/${memNo}`,
+    getResultsByBatchUrl: (batchId: string) => `/results/batch/${batchId}`,
+    UpdateStudentResultUrl: (memNo: string) => `/results/${memNo}`,
+    deleteStudentResultUrl: (memNo: string) => `/results/${memNo}`,
 
     //Roles
     createRoleUrl: '/roles',
     getRolesUrl: '/roles',
     getRoleByNameUrl: (name: string) => `/roles/${name}`,
     updateRoleUrl: (name: string) => `/roles/${name}`,
-    deleteRoleUrl: (name: string) => `/registrationTypes/${name}`,
+    deleteRoleUrl: (name: string) => `/roles/${name}`,
 
     //Training
     createTrainingUrl: '/trainings',
     getTrainingsUrl: '/trainings',
     searchtrainingUrl: '/trainings/search',
+    getUserTrainingsUrl: '/trainings/user',
     getTrainingByIdUrl: (id: string) => `/trainings/${id}`,
     updateTrainingUrl: (id: string) => `/trainings/${id}`,
     deleteTrainingUrl: (id: string) => `/trainings/${id}`,

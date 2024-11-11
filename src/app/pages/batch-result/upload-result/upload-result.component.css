@@ -1,0 +1,84 @@
+.newbody {
+    background-color: #f8f9fa; /* Light background for contrast */
+    padding: 20px;
+    min-height: 100vh; /* Full viewport height */
+}
+
+.parent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    max-width: 800px; /* Increased width of the card */
+    width: 100%; /* Ensures the container takes full width up to max-width */
+}
+
+.upload-card {
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Ensure content does not overflow */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.card-header {
+    font-family: 'Merriweather', sans-serif; /* Use specified font */
+    font-size: 1.5rem; /* Increased font size for header */
+    background-color: darkblue;
+}
+
+.card-body {
+    padding: 20px; /* Add padding for the body */
+}
+
+.form-label {
+    font-weight: bold; /* Make labels stand out */
+    margin-bottom: 8px; /* Spacing below the labels */
+}
+
+.form-select,
+.file-input {
+    border: 1px solid #ced4da; /* Light border */
+    border-radius: 4px; /* Slightly rounded corners */
+    transition: border-color 0.3s; /* Smooth border color transition */
+}
+
+.form-select:focus,
+.file-input:focus {
+    border-color: darkblue; /* Change border color on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Focus shadow effect */
+}
+
+.file-label {
+    display: block; /* Block display for label */
+    margin-bottom: 8px; /* Spacing below the label */
+    padding: 10px;
+    background-color: #e9ecef; /* Light background for file label */
+    border: 1px dashed darkblue; /* Dashed border for file label */
+    border-radius: 4px; /* Rounded corners for file label */
+    text-align: center; /* Center the text */
+}
+
+.file-label:hover {
+    background-color: #d6d8db; /* Darken on hover */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.btn-upload {
+    padding: 10px; /* Padding for button */
+    border-radius: 4px; /* Rounded corners */
+    font-weight: bold; /* Bold text for buttons */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
+    background-color: darkblue;
+}
+
+.btn-upload:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.form-text {
+    margin-top: 5px; /* Space above helper text */
+    font-size: 0.9rem; /* Slightly smaller font for helper text */
+    color: #6c757d; /* Muted text color */
+}

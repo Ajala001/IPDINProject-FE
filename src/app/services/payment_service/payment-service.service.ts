@@ -34,6 +34,16 @@ export class PaymentServiceService {
     return this.http.get<pagedResponse>(environment.apiUrl + apiEndpoints.getPaymentsUrl, { params: queryParams })
   }
 
+  getUserPayments(params: { [key: string]: any }) : Observable<pagedResponse>{
+    let queryParams = new HttpParams(); 
+    for (const key in params) {
+      if (params.hasOwnProperty(key)) {
+        queryParams = queryParams.append(key, params[key]);
+      }
+    }
+    return this.http.get<pagedResponse>(environment.apiUrl + apiEndpoints.getUserPaymentsUrl, { params: queryParams })
+  }
+
   getPaymentByRefno(referenceNo: string): Observable<apiResponse>{
     return this.http.get<apiResponse>(`${environment.apiUrl}${apiEndpoints.getPaymentsByRefNoUrl(referenceNo)}`);
   }
