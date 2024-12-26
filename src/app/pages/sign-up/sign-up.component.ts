@@ -17,7 +17,7 @@ import { LevelResponseModel } from '../../models/classes/level';
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [FormsModule, RouterLink, CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.css'
 })
@@ -141,18 +141,14 @@ export class SignUpComponent implements OnInit {
   }
 
 
-getLevels(){
-  this.levelService.getLevels().subscribe((res: apiResponse)=>{
-    if (res.isSuccessful) {
-      alert(res.message)
-      this.levels = res.data
-    }else
-    {
-      alert(res.message)
-    }
-  });
-}
-
-
-
+  getLevels() {
+    this.levelService.getLevels().subscribe((res: apiResponse) => {
+      if (res.isSuccessful) {
+        alert(res.message)
+        this.levels = res.data
+      } else {
+        alert(res.message)
+      }
+    });
+  }
 }

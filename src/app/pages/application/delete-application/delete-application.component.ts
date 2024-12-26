@@ -46,7 +46,7 @@ export class DeleteApplicationComponent {
 
   confirmDelete(): void {
     if (this.applicationId) {
-      if (confirm(`Are you sure you want to delete ${this.application?.applicantfullName} application?`)) {
+      if (confirm(`Are you sure you want to delete ${this.application?.applicantFullName} application?`)) {
         this.applicationService.deleteApplicationById(this.applicationId).subscribe({
           next: () => {
             alert('Application deleted successfully!');

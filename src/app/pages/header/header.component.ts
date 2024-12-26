@@ -3,12 +3,11 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from '../../services/auth_service/auth.service';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from '../sidebars/sidebar/sidebar.component';
-import { DashboardComponent } from '../dashboard/dashboard.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, CommonModule, RouterOutlet, SidebarComponent, DashboardComponent, HeaderComponent],
+  imports: [RouterLink, CommonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })

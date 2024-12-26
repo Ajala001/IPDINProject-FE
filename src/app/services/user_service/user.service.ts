@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment';
 import { apiEndpoints } from '../../constants/constant';
 import { UserUpdateModel } from '../../models/interfaces/userUpdate';
 import { pagedResponse } from '../../models/interfaces/pagedResponse';
+import { AddAdminModel } from '../../models/classes/admin';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,10 @@ import { pagedResponse } from '../../models/interfaces/pagedResponse';
 export class UserService {
 
   constructor(private http: HttpClient) { }
+
+  addAdmin(adminUser: AddAdminModel) : Observable<apiResponse>{
+    return this.http.post<apiResponse>(environment.apiUrl + apiEndpoints.addAdmin, adminUser)
+  }
 
   getUsers(params: { [key: string]: any }) : Observable<pagedResponse>{
     let queryParams = new HttpParams(); 

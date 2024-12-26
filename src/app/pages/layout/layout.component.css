@@ -1,58 +1,92 @@
-/* Layout
-/* .layout {
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Layout Wrapper */
+.layout {
     display: flex;
     flex-direction: column;
-    height: 100vh; /* Full viewport height */
-*/
+    height: 100vh;
+    overflow: hidden;
+}
 
 /* Header */
 .header {
-    height: 60px; /* Adjust to match your header */
-    width: 100%; /* Full width of the viewport */
-    background-color: #f8f9fa; /* Example background color */
-    position: fixed; /* Fix the header at the top */
+    height: 60px;
+    width: 100%;
+    background-color: #f8f9fa;
+    position: fixed;
     top: 0;
     left: 0;
-    z-index: 1001; /* Make sure the header is above other elements */
+    z-index: 1001;
     display: flex;
-    align-items: center; /* Vertically center the content */
-    padding: 0 20px; /* Optional padding */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Main container */
+/* Main Container */
 .main-container {
     display: flex;
-    margin-top: -5px; /* Offset for the fixed header */
-    flex: 1; /* Allow the content to grow */
+    flex: 1;
+    margin-top: 60px; /* Match header height */
 }
 
 /* Sidebar */
 .side-nav {
     width: 280px;
     background-color: #f8f9fa;
-    position: fixed;
-    top: 60px; /* Sidebar starts below the header */
-    left: 0;
     height: calc(100vh - 60px); /* Full height minus header */
-    overflow-y: auto; /* Scroll if content overflows */
-    padding: 10px;
-    z-index: 1000; /* Ensure it's below the header but above the main content */
-}
-
-/* Main content */
-.main {
-    flex-grow: 1;
-    padding: 20px;
-    margin-left: 280px; /* Offset for the fixed sidebar */
     overflow-y: auto;
-    height: calc(100vh - 60px); /* Full height minus header */
+    position: fixed;
+    top: 60px; /* Match header height */
+    left: 0;
+    z-index: 1000;
+    transition: width 0.3s ease;
 }
 
+/* Collapsed Sidebar */
+.side-nav.collapsed {
+    width: 60px;
+}
 
-
-/* .main {
-    flex-grow: 1; /* Make content area grow to fill space 
+/* Main Content */
+.main {
+    flex: 1;
+    margin-left: 280px; /* Match sidebar width */
     padding: 20px;
-} */
+    height: calc(100vh - 60px); /* Full height minus header */
+    overflow-y: auto;
+    transition: margin-left 0.3s ease;
+}
 
+/* Collapsed Main Content */
+.main.collapsed {
+    margin-left: 60px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .side-nav {
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        height: auto;
+    }
+
+    .side-nav.collapsed {
+        width: 100%;
+    }
+
+    .main {
+        margin-left: 0;
+    }
+
+    .main.collapsed {
+        margin-left: 0;
+    }
+}

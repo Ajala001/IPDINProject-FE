@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #1a1f36; /* Dark blue background */
+  background-color: #1a1f36; /* Dark red background */
 }
 
 .container {
@@ -12,7 +12,7 @@
 }
 
 .card {
-  background-color: #23395d; /* Darker blue for card background */
+  background-color: #23395d; /* Darker red for card background */
   color: #ffffff; /* White text for contrast */
   border-radius: 10px;
   padding: 20px;
@@ -40,12 +40,12 @@
 }
 
 .card-link {
-  color: #4fa1d6; /* Lighter blue for links */
+  color: #4fa1d6; /* Lighter red for links */
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s ease;
 }
 
 .card-link:hover {
-  color: #87ceeb; /* Brighter blue on hover */
+  color: #87ceeb; /* Brighter red on hover */
 }

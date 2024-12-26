@@ -1,13 +1,19 @@
 <div class="layout">
+    <!-- Header -->
     <div class="header">
         <app-header></app-header>
     </div>
+    
+    <!-- Main Container -->
     <div class="main-container">
-        <div class="side-nav d-flex flex-column p-3">
+        <!-- Sidebar -->
+        <div class="side-nav">
             <app-sidebar></app-sidebar>
         </div>
+        
+        <!-- Main Content -->
         <div class="main">
-         <router-outlet></router-outlet>
+            <router-outlet></router-outlet>
         </div>
     </div>
 </div>

@@ -6,6 +6,7 @@ export const apiEndpoints =
     signOutUrl: '/auth/signOut',
     forgetPasswordUrl: '/auth/forgetPassword',
     resetPasswordUrl: '/auth/resetPassword',
+    changePasswordUrl: '/auth/changePassword',
 
     //Application
     createApplicationUrl: '/applications',
@@ -38,6 +39,9 @@ export const apiEndpoints =
       return `/courses/${id}`
     },
     deleteCourseUrl: (id: string) => `/courses/${id}`,
+
+    //Dashboard Stats
+    getDashboardStats: '/dashboard',
 
     //Examination
     createExaminationUrl: '/examinations',
@@ -73,8 +77,10 @@ export const apiEndpoints =
     deleteLevelUrl: (id: string) => `/levels/${id}`,
 
     //Result
-    // getResultsUrl: '/results',
+    getResultsUrl: (batchId: string) => `/results/batch/${batchId}`,
+    getResultByIdUrl: (id: string) => `/results/${id}`,
     searchResultsUrl: '/results/search',
+    downloadResultUrl: (id: string) => `/results/download/${id}`,
     getStudentResultsUrl: (memNo: string) => `/results/member/${memNo}`,
     getResultsByBatchUrl: (batchId: string) => `/results/batch/${batchId}`,
     UpdateStudentResultUrl: (memNo: string) => `/results/${memNo}`,
@@ -97,6 +103,7 @@ export const apiEndpoints =
     deleteTrainingUrl: (id: string) => `/trainings/${id}`,
 
     //User
+    addAdmin: '/users/admin',
     getUsersUrl: '/users',
     searchUsersUrl: '/users/search',
     getUserByEmailUrl: (email: string) => `/users/${email}`,

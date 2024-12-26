@@ -43,7 +43,7 @@ export class RejectApplicationComponent {
   
   confirmRejection(): void {
     if (this.applicationId) {
-      if (confirm(`Are you sure you want to reject ${this.application?.applicantfullName} application?`)) {
+      if (confirm(`Are you sure you want to reject ${this.application?.applicantFullName} application?`)) {
         this.applicationService.rejectApplication(this.applicationId, this.reasonForRejection).subscribe({
           next: () => {
             alert('Application rejection successfully!');

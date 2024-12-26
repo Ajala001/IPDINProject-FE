@@ -1,6 +1,6 @@
 /* Style the body for full-page background */
 .parent {
-    background-color: darkblue; /* Set page background color to blue */
+    background-color: darkred; /* Set page background color to red */
     margin: 0;
     height: 100vh; /* Full height */
     display: flex;
@@ -21,7 +21,7 @@
 .card {
     width: 80%; /* Make the card responsive */
     max-width: 500px; /* Maximum width */
-    padding: 10px; /* Reduced padding */
+    padding: 10px; /* reduced padding */
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add some shadow */
     background-color: white;

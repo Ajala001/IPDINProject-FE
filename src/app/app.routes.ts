@@ -4,7 +4,6 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { ForgetPasswordComponent } from './pages/forget-password/forget-password.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ConfirmationPageComponent } from './pages/confirmation-page/confirmation-page.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
@@ -52,6 +51,9 @@ import { UserPaymentListComponent } from './pages/payment/user-payment-list/user
 import { UserTrainingListComponent } from './pages/training/user-training-list/user-training-list.component';
 import { ResultListComponent } from './pages/result/result-list/result-list.component';
 import { BatchResultListComponent } from './pages/batch-result/batch-result-list/batch-result-list.component';
+import { AddAdminComponent } from './pages/user/add-admin/add-admin.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
+import { DefaultLayoutComponent } from './dashboard/src/app/layout';
 
 export const routes: Routes = [
     {
@@ -89,9 +91,10 @@ export const routes: Routes = [
     },
     {
         path: '',
-        component: LayoutComponent,
+        component: DefaultLayoutComponent,
         children: [
-            { path: 'dashboard', component: DashboardComponent },
+           
+            { path: 'change-password', component: ChangePasswordComponent },
             
             // Course Routes
             { path: 'courses', component: CourseListComponent }, // List all courses
@@ -127,10 +130,11 @@ export const routes: Routes = [
             
 
             // Result Routes
-            { path: 'results/:batchId', component: ResultListComponent }, // List all results
+            { path: 'results', component: ResultListComponent }, // List all results
             { path: 'results/:id/edit', component: EditResultComponent }, // Edit a result
+            { path: 'results/:id/detail', component: ResultDetailComponent }, // View result details
             { path: 'results/:id/delete', component: DeleteResultComponent }, // Delete a result
-            { path: 'results/:id', component: ResultDetailComponent }, // View result details
+            
 
 
             // Batch Result Routes
@@ -164,6 +168,7 @@ export const routes: Routes = [
             { path: 'qualifications/:id/detail', component: QualificationDetailComponent }, // View academic qualification details
 
             // User Routes
+            { path: 'users/add-admin', component: AddAdminComponent },
             { path: 'users', component: UserListComponent },
             { path: 'users/create', component: CreateQualificationComponent }, 
             { path: 'users/:email/edit', component: EditProfileComponent }, 
@@ -171,7 +176,7 @@ export const routes: Routes = [
             { path: 'users/:email/delete', component: DeteleAccountComponent }, 
             
 
-            { path: '', redirectTo: 'dashboard', pathMatch: 'full' }     // default route for the LayoutComponent
+             { path: '', redirectTo: 'dashboard', pathMatch: 'full' }     // default route for the LayoutComponent
         ]
     },
     { path: '**', redirectTo: 'home' }  // // Handle 404 Not Found

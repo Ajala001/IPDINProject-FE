@@ -24,7 +24,7 @@
   /* Card Title */
   .card h2 {
     font-size: 26px; /* Larger title font */
-    color: #003366; /* Dark blue color */
+    color: #003366; /* Dark red color */
     text-align: center; /* Centered title */
     margin-bottom: 20px; /* Space below the title */
     font-weight: bold; /* Bold title */
@@ -32,7 +32,7 @@
   
   /* Warning Text */
   .card p {
-    color: #dc3545; /* Red color for warning */
+    color: #dc3545; /* red color for warning */
     text-align: center; /* Centered warning text */
     font-weight: 600; /* Slightly heavier font weight */
     margin-bottom: 20px; /* Space below the warning */
@@ -61,7 +61,7 @@
   /* Course Section Title */
   .course-section-title {
     font-size: 20px; /* Slightly larger font for section title */
-    color: #003366; /* Dark blue color */
+    color: #003366; /* Dark red color */
     margin-bottom: 10px; /* Space below the title */
     font-weight: bold; /* Bold for emphasis */
   }

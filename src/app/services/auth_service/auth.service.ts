@@ -8,6 +8,7 @@ import { SignUpModel } from '../../models/classes/SignUp';
 import { SignInModel } from '../../models/classes/SignIn';
 import { ResetPasswordModel } from '../../models/classes/Reset-Password';
 import { jwtDecode } from 'jwt-decode';
+import { changePasswordModel } from '../../models/classes/ChangePasswordModel';
 
 
 
@@ -39,6 +40,10 @@ export class AuthService {
 
   resetPassword(resetPassReq: ResetPasswordModel): Observable<apiResponse> {
     return this.http.post<apiResponse>(environment.apiUrl + apiEndpoints.resetPasswordUrl, resetPassReq)
+  }
+
+  changePassword(changePassReq: changePasswordModel): Observable<apiResponse> {
+    return this.http.post<apiResponse>(environment.apiUrl + apiEndpoints.changePasswordUrl, changePassReq)
   }
 
 

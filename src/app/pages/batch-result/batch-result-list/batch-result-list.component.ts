@@ -41,11 +41,15 @@ export class BatchResultListComponent {
   }
 
   getBatchResults() {
+    debugger;
     const params = { pageSize: this.pageSize, pageNumber: this.pageNumber };
     this.batchResultService.getBatchResults(params).subscribe((response: pagedResponse) => {
       if (response.isSuccessful) {
         this.paginatedData = response.data;
+        console.log(response.data);
         this.totalCourses = response.totalRecords;
+        debugger;
+        debugger;
         this.router.navigateByUrl("batchResults");
       } else {
         alert(response.message);
@@ -106,6 +110,12 @@ export class BatchResultListComponent {
       this.getBatchResults();
     }
   }
+
+
+  // goToResults(batchId: string, examId: string) {
+  //   debugger;
+  //   this.router.navigate(['/results', batchId], { queryParams: { examId: examId } });
+  // }
 
   checkUserRole() {
     this.userDetails = this.authService.getUserDetailsFromToken();

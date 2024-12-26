@@ -1,6 +1,6 @@
 /* Style the body for full-page background */
 .parent {
-    background-color: darkblue; /* Set page background color to blue */
+    background-color: darkred; /* Set page background color to red */
     margin: 0;
     height: 100vh; /* Full height */
     display: flex;

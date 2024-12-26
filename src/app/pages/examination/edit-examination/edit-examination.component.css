@@ -65,7 +65,7 @@ button[type="submit"] {
 
 /* Update Button Hover Effect */
 button[type="submit"]:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3; /* Darker red on hover */
   transform: translateY(-2px); /* Lift effect on hover */
 }
 

@@ -37,7 +37,7 @@
                     <td>{{ item.examTitle }}</td>
                     <td>{{ item.totalScore }}</td>
                     <td>
-                        <button class="btn btn-primary" [routerLink]="['/results', item.id]">Detail</button>
+                        <button class="btn btn-primary" [routerLink]="['/results', item.id, 'detail']" [queryParams]="{ examId: exam.id}">Detail</button>
                         <button class="btn btn-danger" *ngIf="isAdmin" [routerLink]="['/results', item.id, 'delete']">Delete</button>
                     </td>
                 </tr>
@@ -45,7 +45,6 @@
         </table>
 
     </div>
-
     <ng-template #noCourses>
         <p class="no-courses-message">
             <b>No Results available at the moment.</b>

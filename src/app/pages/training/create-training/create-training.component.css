@@ -1,14 +1,14 @@
 .container.register {
     background-color: #e9ecef;
-    padding: 20px; /* Reduced padding */
+    padding: 20px; /* reduced padding */
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   }
   
   .register-left {
-    background-color: darkblue;
+    background-color: darkred;
     color: white;
-    padding: 15px; /* Reduced padding */
+    padding: 15px; /* reduced padding */
     border-radius: 10px 0 0 10px;
     text-align: center;
     position: relative;
@@ -17,23 +17,23 @@
   .register-left img {
     max-width: 100%;
     border-radius: 8px;
-    margin-bottom: 10px; /* Reduced space below image */
+    margin-bottom: 10px; /* reduced space below image */
   }
   
   .register-heading {
-    margin-bottom: 15px; /* Reduced margin below heading */
-    color: darkblue;
+    margin-bottom: 15px; /* reduced margin below heading */
+    color: darkred;
     font-weight: bold;
   }
   
   .form-group {
-    margin-bottom: 10px; /* Reduced margin between form groups */
+    margin-bottom: 10px; /* reduced margin between form groups */
   }
   
   .form-group input,
   .form-group select {
     width: 100%;
-    padding: 8px; /* Reduced padding inside inputs */
+    padding: 8px; /* reduced padding inside inputs */
     border-radius: 5px;
     border: 1px solid #ced4da;
     transition: border-color 0.3s ease;
@@ -45,21 +45,21 @@
   }
   
   .btn {
-    width: 180px; /* Reduced button width */
+    width: 180px; /* reduced button width */
     border-radius: 20px;
   }
   
   .form-check {
-    margin-bottom: 8px; /* Reduced space between checkbox items */
+    margin-bottom: 8px; /* reduced space between checkbox items */
   }
   
   .form-check-input {
-    margin-right: 8px; /* Reduced space between checkbox and label */
+    margin-right: 8px; /* reduced space between checkbox and label */
   }
   
   .form-check-label {
     font-weight: 500;
-    color: darkblue;
+    color: darkred;
   }
   
   input::placeholder {
@@ -67,11 +67,11 @@
   }
   
   .button {
-    background-color: darkblue;
+    background-color: darkred;
     color: #ffffff;
     border: none;
     border-radius: 5px;
-    padding: 8px 18px; /* Reduced padding inside button */
+    padding: 8px 18px; /* reduced padding inside button */
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -90,7 +90,7 @@
   
   label {
     font-weight: bold;
-    color: darkblue;
-    margin-bottom: 3px; /* Reduced spacing between label and input */
+    color: darkred;
+    margin-bottom: 3px; /* reduced spacing between label and input */
   }
   

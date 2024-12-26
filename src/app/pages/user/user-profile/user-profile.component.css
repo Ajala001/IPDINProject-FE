@@ -33,7 +33,7 @@
     width: 150px; /* Enlarged size for profile picture */
     height: 150px; /* Enlarged size for profile picture */
     object-fit: cover; /* Ensure the image covers the area */
-    border: 2px solid darkblue; /* Dark blue border */
+    border: 2px solid darkred; /* Dark red border */
     margin-right: 20px; /* Space between the picture and the profile info */
 }
 
@@ -41,7 +41,7 @@
 .full-name {
     font-size: 30px; /* Larger font size */
     font-weight: bold;
-    color: darkblue; /* Dark blue color for names */
+    color: darkred; /* Dark red color for names */
     margin: 10px 0; /* Space above and below the name */
 }
 
@@ -64,8 +64,8 @@
 
 /* Section headers */
 h2 {
-    color: darkblue; /* Dark blue for section headings */
-    border-bottom: 2px solid darkblue; /* Underline effect */
+    color: darkred; /* Dark red for section headings */
+    border-bottom: 2px solid darkred; /* Underline effect */
     padding-bottom: 10px; /* Space below heading */
 }
 
@@ -73,7 +73,7 @@ h2 {
 .btn {
     padding: 10px 20px; /* Padding for buttons */
     margin: 10px; /* Space around buttons */
-    background-color: darkblue; /* Dark blue background */
+    background-color: darkred; /* Dark red background */
     color: white; /* White text */
     border: none; /* Remove border */
     border-radius: 6px; /* Rounded corners */
@@ -85,17 +85,17 @@ h2 {
 
 /* Hover effects for buttons */
 .btn:hover {
-    background-color: #00509e; /* Lighter blue on hover */
+    background-color: #00509e; /* Lighter red on hover */
     transform: translateY(-2px); /* Slight lift on hover */
 }
 
 /* Add qualification button styling */
 .add-qualification-btn {
-    background-color: darkblue; /* Changed to dark blue */
+    background-color: darkred; /* Changed to dark red */
 }
 
 .add-qualification-btn:hover {
-    background-color: #00509e; /* Darker blue on hover */
+    background-color: #00509e; /* Darker red on hover */
 }
 
 /* List styling for qualifications */

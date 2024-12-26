@@ -1,7 +1,7 @@
 <div class="d-flex flex-column flex-shrink-0 p-3 bg-light sidebar" style="width: 280px;">
     <a class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
         <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
-        <span class="fs-5 fw-semibold" style="color: darkblue;">Member Dashboard</span>
+        <span class="fs-5 fw-semibold" style="color: darkred;">Member Dashboard</span>
     </a>
     <ul class="list-unstyled ps-0">
       <!-- Applications Management Section -->
@@ -17,40 +17,8 @@
         </div>
       </li>
 
-      <!-- Courses Management Section -->
-      <li class="mb-1">
-        <a class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#courses-collapse" aria-expanded="false">
-          Courses Management
-          <i class="bi bi-caret-down-fill ms-2"></i> <!-- Dropdown icon -->
-        </a>
-        <div class="collapse" id="courses-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/courses']" >View Available Courses</a></li>
-            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/courses/create']">Enroll in a Course</a></li>
-            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/courses/create']">My Courses</a></li>
-            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/courses/create']">Course Calendar</a></li>
-          </ul>
-        </div>
-      </li>
-
-      <!-- Payments Management Section -->
-      <li class="mb-1">
-        <a href="#" class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#payments-collapse" aria-expanded="false">
-          Payment Management
-          <i class="bi bi-caret-down-fill ms-2"></i> <!-- Dropdown icon -->
-        </a>
-        <div class="collapse" id="payments-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/courses/create']">Make a Payment</a></li>
-            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/payments-user']">Payment History</a></li>
-            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/courses/create']">Pending Payments</a></li>
-            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/courses/create']">Payment Receipts</a></li>
-          </ul>
-        </div>
-      </li>
-
-      <!-- Examinations Management Section -->
-      <li class="mb-1">
+       <!-- Examinations Management Section -->
+       <li class="mb-1">
         <a href="#" class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#examinations-collapse" aria-expanded="false">
           Examinations Management
           <i class="bi bi-caret-down-fill ms-2"></i> <!-- Dropdown icon -->
@@ -59,8 +27,6 @@
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <li class="mb-2"><a class="dropdown-item" [routerLink]="['/examinations']">Examinations</a></li>
             <li class="mb-2"><a class="dropdown-item" [routerLink]="['/examinations-user']">My Examinations</a></li>
-            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/courses/create']">Examination Results</a></li>
-            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/courses/create']">Exam Schedule</a></li>
           </ul>
         </div>
       </li>
@@ -75,32 +41,41 @@
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <li class="mb-2"><a class="dropdown-item" [routerLink]="['/trainings']">Trainings</a></li>
             <li class="mb-2"><a class="dropdown-item" [routerLink]="['/trainings-user']">My Training</a></li>
-            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/courses/create']">Training Schedule</a></li>
-            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/courses/create']">Certificates</a></li>
           </ul>
         </div>
       </li>
 
-      <!-- Results Management Section -->
-      <li class="mb-1">
+       <!-- Results Management Section -->
+       <li class="mb-1">
         <a href="#" class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#results-collapse" aria-expanded="false">
           Results Management
           <i class="bi bi-caret-down-fill ms-2"></i> <!-- Dropdown icon -->
         </a>
         <div class="collapse" id="results-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/courses/create']">View Exam Results</a></li>
-            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/courses/create']">View Training Results</a></li>
-            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/courses/create']">Download Certificates</a></li>
+            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/results']" [queryParams]="{ membershipNum: membershipNumber}">My Results</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <!-- Payments Management Section -->
+      <li class="mb-1">
+        <a href="#" class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#payments-collapse" aria-expanded="false">
+          Payment Management
+          <i class="bi bi-caret-down-fill ms-2"></i> <!-- Dropdown icon -->
+        </a>
+        <div class="collapse" id="payments-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/payments-user']">Payment History</a></li>
           </ul>
         </div>
       </li>
 
       <!-- Acount  Management Section -->
-      <li class="mb-1">
+      <!-- <li class="mb-1">
         <a href="#" class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#accounts-collapse" aria-expanded="false">
           Accounts Management
-          <i class="bi bi-caret-down-fill ms-2"></i> <!-- Dropdown icon -->
+          <i class="bi bi-caret-down-fill ms-2"></i> 
         </a>
         <div class="collapse" id="accounts-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -109,6 +84,6 @@
             <li class="mb-2"><a class="dropdown-item" [routerLink]="['/courses/create']">Download Certificates</a></li>
           </ul>
         </div>
-      </li>
+      </li> -->
     </ul>
 </div>

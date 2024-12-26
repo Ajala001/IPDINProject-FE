@@ -42,7 +42,7 @@ export class InitiatePaymentComponent implements OnInit {
         if (response.isSuccessful) {
           this.authorizationUrl = response.data;
           if (this.authorizationUrl) {
-            window.location.href = this.authorizationUrl;     // Redirect the user to the payment page
+            window.location.href = this.authorizationUrl;     // redirect the user to the payment page
           } else {
             alert('Authorization URL is not available.'); // Handle the case when URL is not available
           }

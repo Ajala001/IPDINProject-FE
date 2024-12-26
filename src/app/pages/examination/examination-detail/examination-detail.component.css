@@ -23,7 +23,7 @@ body {
 
 /* Card Title */
 .card-title {
-  background-color: darkblue; /* Dark blue background */
+  background-color: darkred; /* Dark red background */
   color: #ffffff; /* White text for contrast */
 }
 
@@ -37,7 +37,7 @@ body {
 .list-group-item {
   font-size: 16px; /* Standard font size */
   border: none; /* Remove borders for a cleaner look */
-  color: darkblue;
+  color: darkred;
 }
 
 /* Course Section */
@@ -60,17 +60,17 @@ body {
 .course-item {
   padding: 8px; /* Padding for course items */
   border-bottom: 1px solid #e9ecef; /* Light border for separation */
-  color: darkblue;
+  color: darkred;
 }
 
 /* Button Styles */
 .btn {
-  background-color: #003366; /* Dark blue button */
+  background-color: #003366; /* Dark red button */
   color: white; /* White text */
   border-radius: 5px; /* Rounded button corners */
   transition: background-color 0.3s ease; /* Smooth transition */
 }
 
 .btn:hover {
-  background-color: #002244; /* Darker blue on hover */
+  background-color: #002244; /* Darker red on hover */
 }

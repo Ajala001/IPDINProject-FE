@@ -1,87 +1,75 @@
-/* Change background color to blue for the dropdown */
-.dropdown-menu-dark {
-    background-color: #007bff !important; 
-    border-color: #0056b3; 
-}
-
-.dropdown-menu-dark .dropdown-item {
-    color: white;
-}
-
-.dropdown-menu-dark .dropdown-item:hover {
-    background-color: #0056b3;
-    color: white;
-}
-
-.nav-link.active {
-    background-color: #0d6efd; 
-    color: #fff; 
-}
-
-.dropdown-item.active {
-    background-color: #0d6efd; 
-    color: #fff; 
-}
-.navbar-nav .nav-link.dropdown-toggle {
-    font-weight: bold; 
-    font-size: 1.1rem; 
-    color: white;
-    padding-left: 10px; 
-}
-/* .username-spacing {
-    margin-left: -50px; 
-} */
-
-/* Ensure the dropdown toggle aligns items properly */
-.username-spacing {
-    display: flex;
-    align-items: center; /* Vertically center items */
-}
-
-/* Add space between username and image */
-.user-image {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%; /* Circular user image */
-    border: 2px solid #fff;
-    background-color: rgb(11, 107, 185);
-    margin-left: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff; /* Text color in the user image */
-    font-size: 16px; /* Adjust font size */
-    font-weight: bold;
-}
-.user {
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-}
 .navbar-dark-custom {
-    background-color: darkblue; /* Dark blue color */
+    background-color: darkred;
+    width: 100%; /* Full width */
+    position: fixed; /* Keep it at the top of the page */
+    top: 0;
+    left: 0;
+    z-index: 1030; /* Higher stacking order */
+    padding: 0.5rem 1.5rem; /* Slightly larger padding */
 }
+
+.navbar-brand img {
+    width: 30px; /* Slightly larger logo */
+    height: 25px;
+}
+
+.navbar-brand b {
+    font-size: 1.2rem; /* Increase brand font size */
+}
+
 .navbar-nav .nav-link {
-    color: white; /* Text color for links */
-    position: relative; /* Needed for positioning the pseudo-element */
-    background-color: transparent; /* Remove any background color */
+    padding: 0.5rem 1rem; /* Slightly larger padding for links */
+    font-size: 1rem; /* Increase font size */
+    color: white;
 }
 
 .navbar-nav .nav-link.active::after {
-    content: ''; /* Required for pseudo-element */
+    content: '';
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 2px; /* Thickness of the underline */
-    background-color: white; /* Color of the underline */
-    border-radius: 2px; /* Optional: rounded corners for the underline */
+    height: 2px;
+    background-color: white;
+    border-radius: 2px;
 }
 
-.navbar-nav .nav-link.active {
-    color: white; /* Ensure the text color remains white */
+.navbar-toggler {
+    padding: 0.5rem 1rem; /* Slightly larger padding for the toggler */
 }
 
-.navbar-nav .nav-link:not(.active):hover {
-    color: #ccc; /* Optional: Color on hover for non-active links */
+.dropdown-menu-dark {
+    background-color: #007bff !important;
+    border-color: #0056b3;
+}
+
+.dropdown-menu-dark .dropdown-item {
+    color: white;
+    font-size: 1rem; /* Larger dropdown items */
+}
+
+.user-name .nav-link {
+    font-size: 1rem; /* Slightly larger font size for the username */
+}
+
+.user {
+    display: flex;
+    align-items: center; /* Align image and name vertically */
+    gap: 5px; /* Reduce spacing between the image and name */
+}
+
+.user-image img {
+    width: 35px; /* Slightly larger user image */
+    height: 35px;
+    border-radius: 50%; /* Circular user image */
+    border: 2px solid #fff; /* White border */
+    background-color: rgb(86, 88, 89);
+}
+
+.user-name {
+    font-family: 'Merriweather', serif;
+    font-size: 1rem; /* Adjust the size */
+    font-weight: 600; /* Semi-bold for a striking look */
+    color: white; /* Keep text visible */
+    margin: 0; /* Remove any extra margin */
 }

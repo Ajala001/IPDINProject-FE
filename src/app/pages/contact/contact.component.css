@@ -37,7 +37,7 @@ input {
 .contact-sec {
   align-items: center;
   display: flex;
-  background-color:lightblue;
+  background-color:lightred;
 }
 
 .contact-sec .contact-ul li,

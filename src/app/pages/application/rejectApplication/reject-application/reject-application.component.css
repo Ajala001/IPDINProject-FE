@@ -22,11 +22,11 @@ body {
 h2 {
     font-size: 24px;
     margin-bottom: 20px;
-    color: #23395d; /* Dark blue color for heading */
+    color: #23395d; /* Dark red color for heading */
 }
 
 .warning-text {
-    color: red; /* Red text for warning */
+    color: red; /* red text for warning */
     margin-bottom: 15px; /* Spacing below the warning text */
 }
 
@@ -43,7 +43,7 @@ textarea {
 }
 
 textarea:focus {
-    border-color: #ff4d4d; /* Red border on focus for rejection context */
+    border-color: #ff4d4d; /* red border on focus for rejection context */
 }
 
 .button-group {

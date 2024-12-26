@@ -6,7 +6,7 @@
 }
 
 .register-left {
-  background-color: darkblue; /* Dark blue */
+  background-color: darkred; /* Dark red */
   color: white;
   padding: 20px;
   border-radius: 10px 0 0 10px;
@@ -22,7 +22,7 @@
 
 .register-heading {
   margin-bottom: 20px;
-  color: darkblue; /* Dark blue for heading */
+  color: darkred; /* Dark red for heading */
   font-weight: bold;
 }
 
@@ -46,7 +46,7 @@
 /* Label styling for better visibility */
 .form-check-label {
   font-weight: 500; /* Slightly bolder labels */
-  color: darkblue; /* Dark blue text */
+  color: darkred; /* Dark red text */
 }
 
 input::placeholder {
@@ -61,12 +61,12 @@ input::placeholder {
 }
 label {
   font-weight: bold; /* Bold labels for emphasis */
-  color: darkblue; /* Dark blue for labels */
+  color: darkred; /* Dark red for labels */
   margin-bottom: 5px; /* Spacing between label and input */
 }
 
 .button {
-  background-color: darkblue; /* Dark blue background */
+  background-color: darkred; /* Dark red background */
   color: #ffffff; /* White text */
   border: none; /* No border */
   border-radius: 5px; /* Slightly rounded corners */
@@ -77,7 +77,7 @@ label {
 }
 
 .button:hover {
-  background-color: #00509e; /* Lighter blue on hover */
+  background-color: #00509e; /* Lighter red on hover */
   color: #ffffff; /* Keep text white on hover */
 }
 

@@ -11,13 +11,13 @@
 }
 
 .sidebar a {
-    color: darkblue; /* Dark blue text */
+    color: darkred; /* Dark red text */
     font-weight: 600;
     text-decoration: none;
 }
 
 .sidebar a:hover {
-    background-color: darkblue; /* Change background on hover */
+    background-color: darkred; /* Change background on hover */
     color: white; /* Change text color on hover */
     padding-left: 10px; /* Smooth animation on hover */
     transition: 0.2s ease-in-out; /* Smooth hover transition */
@@ -37,7 +37,7 @@
 }
 
 .btn-toggle:hover {
-    color: darkblue; /* Hover color */
+    color: darkred; /* Hover color */
     background-color: #e9ecef; /* Light background on hover */
 }
 
@@ -59,11 +59,11 @@
 
 .collapse ul a {
     padding-left: 30px;
-    color: darkblue; /* Dark blue links */
+    color: darkred; /* Dark red links */
 }
 
 .collapse ul a:hover {
     color: white;
-    background-color: darkblue; /* Bootstrap primary blue */
+    background-color: darkred; /* Bootstrap primary red */
 }
 

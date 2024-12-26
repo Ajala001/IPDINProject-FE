@@ -1,1 +1,65 @@
-<p>result-detail works!</p>
+<div class="parent">
+    <div class="container">
+        <header>
+            <h1>THE FEDERAL POLYTECHNIC, ILARO</h1>
+            <h2>Statement of Examination Results</h2>
+            <p>{{exam.examTitle}} {{exam.examYear}}</p>
+        </header>
+
+        <section class="student-info">
+            <div class="student-details">
+                <p><strong>Student's Name:</strong> {{result.fullName}}</p>
+                <p><strong>Membership No:</strong> {{result.membershipNumber}}</p>
+                <p><strong>Mobile:</strong> {{result.phoneNumber}}</p>
+                <p><strong>Email:</strong> {{result.email}}</p>
+            </div>
+            <div class="student-image">
+                <img [src]="result.profilePic || 'default-image-path.jpg'" alt="Profile Picture" class="profile-pic">
+            </div>
+        </section>
+
+        <section class="result-details">
+            <table>
+                <thead>
+                    <tr>
+                        <th>SN</th>
+                        <th>Code</th>
+                        <th>Title</th>
+                        <th>Unit</th>
+                        <th>Status</th>
+                        <th>Grade</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let course of exam.courses; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ course.courseCode }}</td>
+                        <td>{{ course.courseTitle }}</td>
+                        <td>{{ course.courseUnit }}</td>
+                        <td>{{ course.status }}</td>
+                        <td>{{ calculateGrade(parsedBreakdown[course.courseCode]).grade }}</td>
+                        <td>{{ parsedBreakdown[course.courseCode] || 'N/A' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="summary">
+            <div class="summary-item"><strong>Units Attempted:</strong> {{totalUnits}}</div>
+            <div class="summary-item"><strong>Weight Grade Points:</strong> {{totalGradePoints}}</div>
+            <div class="summary-item"><strong>GPA:</strong> {{ getOverallGPA() | number:'1.2-2' }}</div>
+            <div class="summary-item"><strong>Units Outstanding:</strong> 0</div>
+        </section>
+
+        <footer>
+            <h3>Registrar</h3>
+            <p><strong>Warning:</strong> Any alteration renders this result invalid.</p>
+        </footer>
+    </div>
+
+    <div class="buttons-container">
+        <button class="download-btn" (click)="onDownloadClick(result.id)">Download</button>
+        <button class="back-btn" (click)="goBack(result.batchId)">Back</button>
+    </div>
+</div>

@@ -18,13 +18,14 @@ export class MemberNavbarComponent {
 
   
   userDetails: any;
-  fullName: string = "";
+  membershipNumber: string = "";
   userEmail: string = "";
 
   constructor(){
     this.userDetails = this.authService.getUserDetailsFromToken();
     if(this.userDetails){
       this.userEmail = this.userDetails["NameIdentifier"]
+      this.membershipNumber = this.userDetails["MembershipNum"]
     }
   }
 }

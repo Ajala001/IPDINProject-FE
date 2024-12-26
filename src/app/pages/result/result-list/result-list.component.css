@@ -7,9 +7,9 @@
   }
   
   .header {
-    background-color: darkblue; /* Dark blue background */
+    background-color: darkred; /* Dark red background */
     color: white; /* White text color */
-    padding: 6px; /* Reduced padding */
+    padding: 6px; /* reduced padding */
     text-align: center; /* Center text */
     font-weight: bold; /* Bold text */
     font-size: 18px; /* Slightly smaller font size */
@@ -97,7 +97,7 @@
   }
   
   .table th, .table td {
-    padding: 8px 10px; /* Reduced padding */
+    padding: 8px 10px; /* reduced padding */
     text-align: left;
     border-bottom: 1px solid #ddd;
     font-size: 14px; /* Slightly smaller font size */
@@ -114,7 +114,7 @@
     text-align: center;
     font-size: 1.5rem;
     color: red; /* Choose a color that suits your design */
-    background-color: darkblue; /* Light background to match the text color */
+    background-color: darkred; /* Light background to match the text color */
     border: 1px solid #ffccbc; /* Optional: to give it a bordered appearance */
     padding: 20px;
     margin-top: 20px;

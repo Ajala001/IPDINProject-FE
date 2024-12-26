@@ -41,9 +41,9 @@
                     <td>{{ (pageNumber - 1) * pageSize + i + 1 }}</td>
                     <td>{{ item.examTitle }}</td>
                     <td>{{ item.uploadDate }}</td>
-                    <td>{{ item.numberOfUploadedResults }}</td>
+                    <td>{{ item.totalStudents}} Results </td>
                     <td>
-                        <button class="btn btn-primary" [routerLink]="['/results', item.id]">Detail</button>
+                        <button class="btn btn-primary" [routerLink]="['/results']" [queryParams]="{ batchId: item.id, examId: item.examId}">Detail</button>
                         <button class="btn btn-danger" *ngIf="isAdmin" [routerLink]="['/batchResults', item.id, 'delete']">Delete</button>
                     </td>
                 </tr>

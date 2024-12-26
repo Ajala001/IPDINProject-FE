@@ -11,7 +11,7 @@ export class ApplicationModel {
 
 export interface ApplicationResponseModel {
     id: string;
-    applicantfullName: string;
+    applicantFullName: string;
     applicationPurpose: string;
     date: string;
     status: 0
