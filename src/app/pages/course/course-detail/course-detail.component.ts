@@ -7,11 +7,10 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../services/auth_service/auth.service';
 
 @Component({
-  selector: 'app-course-detail',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './course-detail.component.html',
-  styleUrl: './course-detail.component.css'
+    selector: 'app-course-detail',
+    imports: [CommonModule, RouterModule],
+    templateUrl: './course-detail.component.html',
+    styleUrl: './course-detail.component.css'
 })
 export class CourseDetailComponent {
 

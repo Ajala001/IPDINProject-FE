@@ -1,260 +1,305 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
-* {
-    margin: 0;
-    padding: 0;
+/* General Page Layout */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f7f9fc;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navbar-dark-custom {
+  background-color: darkblue; /* Dark blue color */
+  position: fixed; /* Make navbar fixed */
+  top: 0;
+  left: 0;
+  width: 100%; /* Make it span the full width */
+  z-index: 1000; /* Ensure it's on top of other elements */
+}
+
+.nav-link.active {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+/* Link styling */
+.navbar-nav .nav-link {
+  color: white;
+  position: relative;
+  background-color: transparent;
+}
+
+.navbar-nav .nav-link.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+.navbar-nav .nav-link.active {
+  color: white;
+}
+
+.navbar-nav .nav-link:not(.active):hover {
+  color: #ccc;
+}
+
+/* class="d-inline-block align-text-top" */
+.image {
+border-radius: 50%; /* Circular profile picture */
+width: 40px; /* Enlarged size for profile picture */
+height: 40px; /* Enlarged size for profile picture */
+object-fit: cover; /* Ensure the image covers the area */
+border: 2px solid darkblue; /* Dark red border */
+}
+
+/* Progress Bar Section */
+#progress-bar-container {
+  position: relative;
+  background: linear-gradient(rgba(0, 0, 139, 0.5), rgba(0, 0, 139, 0.5)), url("C:/Users/THINKPAD_PC/Desktop/IPDINProj-FE/IPDINProject/src/assets/images/pexels-tim-samuel-5834947.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%; /* Ensure full width */
+  min-height: 100vh; /* Ensure the section covers the entire viewport height */
+}
+
+
+/* Steps List */
+.steps-list {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  list-style: none;
+  padding-top: 60px
+}
+
+.step {
+  font-size: 16px;
+  font-weight: 600;
+  color: #888;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.step.active {
+  color: #007bff;
+}
+
+.step-inner {
+  padding: 10px 20px;
+  background-color: #f0f3f7;
+  border-radius: 20px;
+}
+
+.step.active .step-inner {
+  background-color: darkblue;
+  color: white;
+}
+
+.header {
+  display: flex; /* Use Flexbox for side-by-side layout */
+  align-items: center; /* Align items vertically */
+  justify-content: space-between; /* Space between image and text */
+}
+
+.logo {
+  border-radius: 50%; /* Circular profile picture */
+  width: 130px; /* Enlarged size for profile picture */
+  height: 130px; /* Enlarged size for profile picture */
+  object-fit: cover; /* Ensure the image covers the area */
+  border: 2px solid darkblue; /* Dark red border */
+  margin-right: 20px; /* Space between the picture and the profile info */
+}
+                    
+.hr {
+  border: 2px solid darkblue;
+}
+/* Form Container */
+.form-container {
+  max-width: 850px;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  margin: 30px auto;
+}
+
+/* Form Group Wrapper for Input Fields */
+.form-group-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Form Group Styling */
+.form-group {
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: darkblue;
+  outline: none;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
+/* Action Buttons Styling */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-outline-success {
+  border: 2px solid darkblue;
+  color: darkblue;
+}
+
+.btn-outline-success:hover {
+  background-color: darkblue;
+  color: white;
+}
+
+.btn-success {
+  background-color: darkblue;
+  color: white;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+
+/* Button Container for Qualification Section */
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.action-buttons .btn-sm {
+  font-size: 12px;
+  padding: 6px 12px;
+}
+
+/* Qualification Table */
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+table th {
+  background-color: #f0f3f7;
+}
+
+/* Form Fields Inside Table */
+table td input,
+table td select {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .form-container {
+    padding: 15px;
   }
-  
-  #progress-bar-container {
-    position: relative;
-    width: 90%;
-    margin: auto;
-    height: 100%;
-    margin-top: 65px;
+
+  .steps-list {
+    flex-direction: column;
+    align-items: center;
   }
-  
-  #progress-bar-container ul {
-    padding-top: 15px;
-    z-index: 999;
-    position: absolute;
-    width: 100%;
-    margin-top: -40px;
+
+  .step {
+    margin-bottom: 15px;
   }
-  
-  #progress-bar-container li {
-    list-style: none;
-    float: left;
-    width: 33%;
-    text-align: center;
-    color: #aaa;
-    text-transform: uppercase;
-    font-size: 11px;
-    cursor: pointer;
-    font-weight: 700;
-    transition: all ease 0.2s;
-    vertical-align: bottom;
-    height: 60px;
-    position: relative;
+
+  /* Stack form fields on smaller screens */
+  .form-group-wrapper {
+    flex-direction: column;
   }
-  
-  #progress-bar-container li.active,
-  #progress-bar-container li:hover {
-    color: #444;
+
+  /* Adjust table for mobile view */
+  table th, table td {
+    font-size: 14px;
+    padding: 8px;
   }
-  
-  #progress-bar-container li::before {
-    content: " ";
-    display: block;
-    margin: auto;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: 2px solid #aaa;
-    transition: all ease 0.3s;
+
+  /* Adjust the size of action buttons on small screens */
+  .action-buttons .btn-sm {
+    font-size: 10px;
+    padding: 4px 8px;
   }
-  
-  #progress-bar-container li.active::before,
-  #progress-bar-container li:hover::before {
-    border: 2px solid #fff;
-    background-color: crimson;
-  }
-  
-  #progress-bar-container li::after {
-    content: " ";
-    display: block;
-    width: 6px;
-    height: 6px;
-    background-color: #777;
-    margin: auto;
-    border: 7px solid #fff;
-    border-radius: 50%;
-    margin-top: 23px;
-    box-shadow: 0 2px 13px -1px rgba(0, 0, 0, 0.2);
-    transition: all ease 0.25s;
-  }
-  
-  #progress-bar-container li:hover::after {
-    background: #555;
-  }
-  
-  #progress-bar-container li.active::after {
-    background: #207893;
-  }
-  
-  #progress-bar-container #line {
-    width: 80%;
-    margin: auto;
-    background-color: #eee;
-    height: 6px;
-    position: absolute;
-    left: 10%;
-    top: 50px;
-    z-index: 1;
-    border-radius: 50px;
-    transition: all ease 0.75s;
-  }
-  
-  #progress-bar-container #line-progress {
-    content: " ";
-    width: 8%;
-    height: 100%;
-    background-color: #207893;
-    background: linear-gradient(to right, #207893 0%, #2ea3b7 100%);
-    position: absolute;
-    z-index: 2;
-    border-radius: 50px;
-    transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.25);
-  }
-  
-  #progress-content-section {
-    position: relative;
-    top: 45px;
-    width: 90%;
-    margin: auto;
-    background: #f3f3f3;
-    border-radius: 4px;
-  }
-  
-  #progress-content-section .section-content {
-    padding: 30px 40px;
-    text-align: center;
-  }
-  
-  .section-content h2 {
-    font-size: 17px;
-    text-transform: uppercase;
-    color: #333;
-    letter-spacing: 1px;
-  }
-  
-  .section-content p {
+
+  /* Increase font size on smaller screens for clarity */
+  .form-group input,
+  .form-group select {
     font-size: 16px;
-    line-height: 1.8rem;
-    color: #777;
+    padding: 10px;
   }
-  
-  .section-content {
-    display: none;
-    animation: FadeInUp 0.7s ease 1 forwards;
-    transform: translateY(15px);
-    opacity: 0;
-  }
-  
-  .section-content.active {
-    display: block;
-    opacity: 1;
-    padding: 100px;
-    padding-bottom: 70px;
-    margin-bottom: 100px;
-  }
-  
-  @keyframes FadeInUp {
-    0% {
-      transform: translateY(15px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0px);
-      opacity: 1;
-    }
-  }
-  
-  /* Step one form */
-  
-  
-  .user_details {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .input_box {
-    width: calc(33.33% - 20px); /* Three fields per row */
-    margin-bottom: 10px; /* Adjusted margin */
-  }
-  
-  .input_box label {
-    font-weight: 500;
-    margin-bottom: 5px;
-    display: block;
-  }
-  
-  .input_box label::after {
-    content: " *";
-    color: red;
-  }
-  
-  .input_box input,
-  .input_box select {
-    width: 100%;
-    height: 35px; /* reduced height */
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    font-size: 14px; /* Smaller font size */
-    padding-left: 10px; /* reduced padding */
-    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
-    background-color: #f6f8fa;
-    font-family: 'Poppins', sans-serif;
-  }
-  
-  .gender {
-    margin-top: 20px;
-  }
-  
-  .gender label {
-    font-weight: 500;
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .gender select {
-    width: 100%;
-    height: 35px; /* Consistent height */
-    border: none;
-    border-radius: 5px;
-    padding-left: 10px;
-    font-size: 14px; /* Consistent font size */
-    background-color: #f6f8fa;
-    font-family: 'Poppins', sans-serif;
-  }
-  .input_box {
-    position: relative;
-    margin-bottom: 1rem;
-  }
-  
-  .password-container {
-    position: relative;
-  }
-  
-  input[type="password"], input[type="text"] {
-    width: 100%;
-    padding: 0.5rem;
-    padding-right: 2.5rem; /* Space for the icon */
-    box-sizing: border-box;
-  }
-  
-  .toggle-password {
-    position: absolute;
-    top: 50%;
-    right: 0.5rem;
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: #888; /* Adjust color as needed */
-  }
-  
-  .icon-eye, .icon-eye-slash {
-    font-size: 1rem; /* Adjust icon size as needed */
-  }
-  
-  .icon-eye::before {
-    content: "\f06e"; /* Example Unicode for eye icon */
-    font-family: 'Font Awesome 5 Free'; /* Adjust to your icon font */
-    font-weight: 900; /* Adjust based on font */
-  }
-  
-  .icon-eye-slash::before {
-    content: "\f070"; /* Example Unicode for eye-slash icon */
-    font-family: 'Font Awesome 5 Free'; /* Adjust to your icon font */
-    font-weight: 900; /* Adjust based on font */
-  }
-  
+}

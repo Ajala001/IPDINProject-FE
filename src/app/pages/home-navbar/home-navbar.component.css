@@ -1,13 +1,19 @@
 .navbar-dark-custom {
-    background-color: darkred; /* Dark red color */
+    background-color:  #122c5a; /* Dark blue color */
     position: fixed; /* Make navbar fixed */
     top: 0;
     left: 0;
     width: 100%; /* Make it span the full width */
     z-index: 1000; /* Ensure it's on top of other elements */
 }
-
-/* Apply padding to the main content to avoid overlap with the fixed navbar */
+/* class="d-inline-block align-text-top" */
+.image {
+  border-radius: 50%; /* Circular profile picture */
+  width: 40px; /* Enlarged size for profile picture */
+  height: 40px; /* Enlarged size for profile picture */
+  object-fit: cover; /* Ensure the image covers the area */
+  border: 2px solid darkblue; /* Dark red border */
+}
 
 
 /* Dropdown menu styles */

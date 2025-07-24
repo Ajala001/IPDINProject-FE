@@ -6,11 +6,10 @@ import { ApplicationRejectionModel } from '../../../../models/interfaces/applica
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-reject-application',
-  standalone: true,
-  imports: [FormsModule],
-  templateUrl: './reject-application.component.html',
-  styleUrl: './reject-application.component.css'
+    selector: 'app-reject-application',
+    imports: [FormsModule],
+    templateUrl: './reject-application.component.html',
+    styleUrl: './reject-application.component.css'
 })
 export class RejectApplicationComponent {
 

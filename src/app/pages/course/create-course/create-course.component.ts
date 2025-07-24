@@ -7,11 +7,10 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-create-course',
-  standalone: true,
-  imports: [FormsModule, CommonModule],
-  templateUrl: './create-course.component.html',
-  styleUrl: './create-course.component.css'
+    selector: 'app-create-course',
+    imports: [FormsModule, CommonModule],
+    templateUrl: './create-course.component.html',
+    styleUrl: './create-course.component.css'
 })
 export class CreateCourseComponent {
 

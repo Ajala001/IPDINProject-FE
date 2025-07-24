@@ -13,7 +13,7 @@
 
       <!-- Add a section for the courses -->
       <div class="course-section">
-        <h3 class="course-section-title" style="color: darkred;"><b>Exam Courses</b></h3>
+        <h3 class="course-section-title" style="color: darkblue;"><b>Exam Courses</b></h3>
         <ul class="course-list">
           <li class="course-item" *ngFor="let course of exam.courses">
             {{ course.courseTitle }} - {{course.courseCode}}
@@ -24,8 +24,8 @@
       <div class="card-body text-center">
         <button class="btn btn-primary mx-2" [routerLink]="['/examinations']">Back</button>
         <button class="btn btn-primary mx-2" *ngIf="isAdmin" [routerLink]="['/examinations', exam.id, 'edit']">Edit</button>
-        <button class="btn btn-primary mx-2" *ngIf="!isAdmin" [routerLink]="['/payments/initiate', exam.id]" [queryParams]="{ reason: 'Examination' }">
-          Proceed to Payment
+        <button class="btn btn-primary mx-2" *ngIf="!isAdmin" [routerLink]="['/applications', exam.id, 'create']" [queryParams]="{ paymentType: 'Examination' }">
+          Apply
         </button>
       </div>
     </div>

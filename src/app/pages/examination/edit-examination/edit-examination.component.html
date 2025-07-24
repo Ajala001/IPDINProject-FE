@@ -20,7 +20,7 @@
 
     <div class="form-group">
         <label for="fee">Fee:</label>
-        <input id="fee" type="text" [(ngModel)]="examResponse.fee" name="fee" required />
+        <input id="fee" type="text" [(ngModel)]="exam.fee" name="fee" required />
     </div>
 
     <div class="form-group">
@@ -28,7 +28,7 @@
         <div *ngFor="let course of allCourses" class="course-checkbox">
             <input type="checkbox" 
             [value]="course.id"
-                   [checked]="exam.courses.includes(course.id)"
+                   [checked]="exam.selectedCourses.includes(course.id)"
                    (change)="toggleCourseSelection(course.id, $event)" />
             {{ course.courseTitle }}
         </div>

@@ -6,11 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-delete-examination',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './delete-examination.component.html',
-  styleUrl: './delete-examination.component.css'
+    selector: 'app-delete-examination',
+    imports: [CommonModule, RouterModule],
+    templateUrl: './delete-examination.component.html',
+    styleUrl: './delete-examination.component.css'
 })
 export class DeleteExaminationComponent {
 

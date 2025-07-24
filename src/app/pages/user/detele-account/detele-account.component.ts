@@ -6,11 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-detele-account',
-  standalone: true,
-  imports: [FormsModule, CommonModule],
-  templateUrl: './detele-account.component.html',
-  styleUrl: './detele-account.component.css'
+    selector: 'app-detele-account',
+    imports: [FormsModule, CommonModule],
+    templateUrl: './detele-account.component.html',
+    styleUrl: './detele-account.component.css'
 })
 export class DeteleAccountComponent {
 

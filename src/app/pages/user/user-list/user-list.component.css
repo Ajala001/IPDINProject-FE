@@ -1,125 +1,144 @@
-.container {
-    margin-top: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+.user-container {
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 1200px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+mat-toolbar {
+  border-radius: 10px 10px 0 0;
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin: 18px 0;
+
+  .control-item {
+    flex: 1 1 160px;
+    min-width: 140px;
   }
-  
-  .header {
-    background-color: darkred; /* Dark red background */
-    color: white; /* White text color */
-    padding: 6px; /* reduced padding */
-    text-align: center; /* Center text */
-    font-weight: bold; /* Bold text */
-    font-size: 18px; /* Slightly smaller font size */
-    margin: -5px -5px 10px -5px; /* Adjusted margin */
-    border-radius: 5px 5px 0 0; /* Rounded corners at the top */
+
+  .search-field {
+    flex: 1 1 200px;
+    max-width: 300px;
+
+    input.mat-input-element {
+      font-size: 0.9rem;
+    }
   }
-  
-  
-  .controls-section {
-    display: flex;
-    justify-content: space-between; /* Spread items across the row */
-    align-items: center; /* Vertically center items */
-    margin-bottom: 15px; /* Space below the controls section */
-  }
-  
-  .label {
-    font-weight: bold;
-    margin-right: 5px;
-    font-size: 14px; /* Slightly smaller font size */
-  }
-  
-  .page-size {
-    display: flex;
-    align-items: center;
-  }
-  
-  select {
-    padding: 5px; /* Increased padding for better appearance */
-    border-radius: 3px;
-    border: 1px solid #ccc;
-    margin-left: 5px; /* Space between label and select */
-    font-size: 14px; /* Slightly smaller font size */
-  }
-  
-  .filter-section {
-    display: flex;
-    align-items: center; /* Align filter elements vertically */
-  }
-  
-  .filter-section label {
-    margin-right: 5px;
-  }
-  
-  .filter-section input {
-    padding: 5px; /* Increased padding for better appearance */
-    border-radius: 3px;
-    border: 1px solid #ccc;
-    font-size: 14px; /* Consistent font size */
-    width: 200px; /* Fixed width for consistency */
-  }
-  
-  .pagination-controls {
+
+  .pagination-buttons {
     display: flex;
     align-items: center;
+    font-size: 0.95rem;
+    gap: 8px;
+
+    button {
+      width: 32px;
+      height: 32px;
+    }
   }
-  
-  .pagination-controls button {
-    margin-left: 10px; /* Spacing between buttons */
+}
+
+/* Table container for horizontal scroll on small devices */
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 8px;
+}
+
+.full-width-table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+
+  th.mat-header-cell {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    padding: 10px 14px;
+    color: #555;
   }
-  
-  button {
-    padding: 5px 10px;
-    margin: 0 3px;
-    border: none;
-    border-radius: 3px;
-    
-    color: white;
-    cursor: pointer;
-    font-size: 10px; /* Slightly smaller font size */
-    transition: background-color 0.3s;
+
+  td.mat-cell {
+    padding: 12px 14px;
+    background-color: #f9f9f9;
+    vertical-align: middle;
+    font-size: 0.92rem;
   }
-  
-  button:disabled {
-    background-color: #ccc; /* Grey out disabled buttons */
-    cursor: not-allowed;
+
+  tr.mat-row:hover td.mat-cell {
+    background-color: #f1f7ff;
   }
-  
-  button:hover:not(:disabled) {
-    background-color: #0056b3; /* Darken button on hover */
+
+  .avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
   }
-  
-  .table {
+}
+
+.no-results {
+  text-align: center;
+  margin-top: 30px;
+  color: #888;
+  font-size: 1.1rem;
+
+  mat-icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+    color: #ccc;
+  }
+}
+
+/* 🔁 Responsive Breakpoints */
+
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pagination-buttons {
+    align-self: center;
+  }
+
+  mat-toolbar {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-container {
+    padding: 15px;
+  }
+
+  .controls {
+    gap: 12px;
+  }
+
+  .search-field {
     width: 100%;
-    border-collapse: collapse;
+    max-width: 100%;
   }
-  
-  .table th, .table td {
-    padding: 8px 10px; /* reduced padding */
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    font-size: 14px; /* Slightly smaller font size */
+
+  .pagination-buttons span {
+    font-size: 0.9rem;
   }
-  
-  .table th {
-    background-color: #f2f2f2; /* Light grey background for headers */
+
+  .avatar {
+    width: 24px;
+    height: 24px;
   }
-  
-  .table tbody tr:hover {
-    background-color: #f9f9f9; /* Light grey on hover */
-  }
-  
-  
-  .no-users-message {
-    text-align: center;
-    font-size: 1.5rem;
-    color: red; /* Choose a color that suits your design */
-    background-color: darkred; /* Light background to match the text color */
-    border: 1px solid #ffccbc; /* Optional: to give it a bordered appearance */
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 8px;
-    font-weight: bold;
-  }
+}

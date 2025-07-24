@@ -1,59 +1,106 @@
-import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { combineLatest } from 'rxjs';
 import { PaymentServiceService } from '../../../services/payment_service/payment-service.service';
 import { PaymentModel } from '../../../models/classes/payment';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
 import { apiResponse } from '../../../models/interfaces/apiResponse';
+import { PaymentType, PaymentTypeLabelMap } from '../../../models/enums/paymentType';
+import { NotificationService } from '../../../shared/notification.service';
 
 @Component({
   selector: 'app-initiate-payment',
-  standalone: true,
-  imports: [FormsModule, CommonModule],
   templateUrl: './initiate-payment.component.html',
-  styleUrl: './initiate-payment.component.css'
+  styleUrls: ['./initiate-payment.component.css']
 })
 export class InitiatePaymentComponent implements OnInit {
-  paymentReason: string = ''; 
-  selectedItemId: string = '';
+  serviceId: string | null = null;
+  paymentType: string | null = null;
   authorizationUrl: string | null = null;
-  router = inject(Router)
+  paymentTypeNumber?: number;
+  token: string | null = null;
 
-  constructor(
-    private paymentService: PaymentServiceService, 
-    private route: ActivatedRoute
-  ) {}
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private paymentService = inject(PaymentServiceService);
+  private notifier = inject(NotificationService)
+
 
   ngOnInit(): void {
-    this.paymentReason = this.route.snapshot.queryParamMap.get('reason') || '';
-    this.selectedItemId = this.route.snapshot.paramMap.get('id') || '';
-    this.initiatePayment();
+    // Combine paramMap and queryParamMap to handle all route data at once
+    combineLatest([this.route.paramMap, this.route.queryParamMap]).subscribe({
+      next: ([params, queryParams]) => {
+        this.serviceId = params.get('id') || null;
+        this.paymentType = queryParams.get('paymentType') || null;
+        this.token = queryParams.get('token') || null;
+
+        if (!this.serviceId) {
+          console.error('Service ID is missing.');
+          return;
+        }
+
+        if (!this.paymentType) {
+          console.error('Payment type is missing.');
+          return;
+        }
+
+        debugger;
+
+        this.paymentTypeNumber = this.getPaymentTypeNumber(this.paymentType);
+
+        if (this.paymentTypeNumber === undefined) {
+          console.error(`Invalid payment type: ${this.paymentType}`);
+          return;
+        }
+
+        this.initiatePayment();
+      },
+      error: err => {
+        console.error('Failed to get route parameters', err);
+      }
+    });
   }
 
-  initiatePayment(): void {
+  private getPaymentTypeNumber(type: string): PaymentType | undefined {
+    const entry = Object.entries(PaymentTypeLabelMap).find(
+      ([, label]) => label.toLowerCase() === type.toLowerCase()
+    );
+    return entry ? Number(entry[0]) as PaymentType : undefined;
+  }
+
+  private initiatePayment(): void {
+    if (!this.serviceId || this.paymentTypeNumber === undefined) {
+      this.notifier.show('Cannot initiate payment: missing required parameters.');
+      return;
+    }
+
     const paymentData: PaymentModel = {
-      reasonForPayment: this.paymentReason,
-      entityId: this.selectedItemId
+      serviceId: this.serviceId,
+      paymentType: this.paymentTypeNumber
     };
 
-    // Call the payment service to initiate payment
-    this.paymentService.initiatePayment(paymentData).subscribe({
+    this.paymentService.initiatePayment(paymentData, this.token ?? '').subscribe({
       next: (response: apiResponse) => {
-        if (response.isSuccessful) {
+        if (response.isSuccessful && response.data) {
           this.authorizationUrl = response.data;
+
           if (this.authorizationUrl) {
-            window.location.href = this.authorizationUrl;     // redirect the user to the payment page
+            window.location.href = this.authorizationUrl;
           } else {
-            alert('Authorization URL is not available.'); // Handle the case when URL is not available
+            alert('Authorization URL is not available.');
           }
         } else {
-          alert(response.message); // Show error message if payment initiation failed
+          this.notifier.show(response.message || 'Payment initiation failed.');
+          this.router.navigateByUrl('dashboard');
         }
       },
       error: (err) => {
-        console.error('Payment initiation error', err);
-        alert('Failed to initiate payment. Please try again later.'); // Show a user-friendly error message in case of failure
-        this.router.navigateByUrl("dashboard");
+
+        const backendMessage =
+          err.error?.message ||
+          err.message ||
+          'Failed to initiate payment. Please try again later.';
+          this.notifier.show(backendMessage);
+        this.router.navigateByUrl('dashboard');
       }
     });
   }

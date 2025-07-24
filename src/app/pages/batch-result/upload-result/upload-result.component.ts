@@ -8,11 +8,10 @@ import { CommonModule } from '@angular/common';
 import { BatchResultService } from '../../../services/batch-result_service/batch-result.service';
 
 @Component({
-  selector: 'app-upload-result',
-  standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
-  templateUrl: './upload-result.component.html',
-  styleUrl: './upload-result.component.css'
+    selector: 'app-upload-result',
+    imports: [ReactiveFormsModule, CommonModule],
+    templateUrl: './upload-result.component.html',
+    styleUrl: './upload-result.component.css'
 })
 export class UploadResultComponent {
 

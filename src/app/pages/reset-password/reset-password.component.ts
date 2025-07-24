@@ -6,11 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { ResetPasswordModel } from '../../models/classes/Reset-Password';
 
 @Component({
-  selector: 'app-reset-password',
-  standalone: true,
-  imports: [FormsModule],
-  templateUrl: './reset-password.component.html',
-  styleUrl: './reset-password.component.css'
+    selector: 'app-reset-password',
+    imports: [FormsModule],
+    templateUrl: './reset-password.component.html',
+    styleUrl: './reset-password.component.css'
 })
 export class ResetPasswordComponent implements OnInit{
 

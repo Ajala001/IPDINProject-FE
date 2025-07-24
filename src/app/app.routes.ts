@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
-import { LayoutComponent } from './pages/layout/layout.component';
 import { ForgetPasswordComponent } from './pages/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ConfirmationPageComponent } from './pages/confirmation-page/confirmation-page.component';
@@ -53,7 +52,12 @@ import { ResultListComponent } from './pages/result/result-list/result-list.comp
 import { BatchResultListComponent } from './pages/batch-result/batch-result-list/batch-result-list.component';
 import { AddAdminComponent } from './pages/user/add-admin/add-admin.component';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
-import { DefaultLayoutComponent } from './dashboard/src/app/layout';
+import { LayoutComponent } from './pages/layout/layout.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ServicesComponent } from './pages/service/service-list/services.component';
+import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
+import { ServiceDetailComponent } from './pages/service/service-detail/service-detail.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     {
@@ -76,6 +80,10 @@ export const routes: Routes = [
     {
         path: 'sign-in',
         component: SignInComponent
+    }, 
+    {
+        path: 'layout',
+        component: LayoutComponent
     },
     {
         path: 'forget-password',
@@ -91,89 +99,88 @@ export const routes: Routes = [
     },
     {
         path: '',
-        component: DefaultLayoutComponent,
+        component: LayoutComponent,
         children: [
            
+            { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] },
             { path: 'change-password', component: ChangePasswordComponent },
+
+            // AccessDenied Routes - 403
+            { path: 'access-denied', component: AccessDeniedComponent},
             
             // Course Routes
-            { path: 'courses', component: CourseListComponent }, // List all courses
-            { path: 'courses/create', component: CreateCourseComponent }, // Create a new course
-            { path: 'courses/:id/edit', component: EditCourseComponent }, // Edit a course
+            { path: 'courses', component: CourseListComponent, canActivate: [authGuard] }, // List all courses
+            { path: 'courses/create', component: CreateCourseComponent, canActivate: [authGuard] }, // Create a new course
+            { path: 'courses/:id/edit', component: EditCourseComponent, canActivate: [authGuard] }, // Edit a course
             { path: 'courses/:id/delete', component: DeleteCourseComponent }, // Delete a course
-            { path: 'courses/:id', component: CourseDetailComponent }, // View course details
+            { path: 'courses/:id', component: CourseDetailComponent, canActivate: [authGuard] }, // View course details
 
             // AppApplication Routes
-            { path: 'applications', component: ApplicationListComponent }, // List all applications
-            { path: 'applications-user', component: UserApplicationListComponent }, // List user all applications
-            { path: 'applications/create', component: CreateApplicationComponent }, // Create an application
-            { path: 'applications/:id', component: ApplicationDetailComponent }, // View application details
-            { path: 'applications/:id/delete', component: DeleteApplicationComponent }, // Delete an application
-            { path: 'applications/reject/:id', component: RejectApplicationComponent},
+            { path: 'applications', component: ApplicationListComponent, canActivate: [authGuard] }, // List all applications
+            { path: 'applications/:id/create', component: CreateApplicationComponent, canActivate: [authGuard] },
+            { path: 'applications-user', component: UserApplicationListComponent, canActivate: [authGuard] }, // List user all applications
+            { path: 'applications/:id/detail', component: ApplicationDetailComponent, canActivate: [authGuard] }, // View application details
+            { path: 'applications/:id/delete', component: DeleteApplicationComponent, canActivate: [authGuard] }, // Delete an application
+            { path: 'applications/reject/:id', component: RejectApplicationComponent, canActivate: [authGuard]},
            
 
             // Examination Routes
-            { path: 'examinations', component: ExaminationListComponent }, // List all examinations
-            { path: 'examinations-user', component: UserExaminationListComponent }, // List all examinations
-            { path: 'examinations/create', component: CreateExaminationComponent }, // Create an examination
-            { path: 'examinations/:id/edit', component: EditExaminationComponent }, // Edit an examination
-            { path: 'examinations/:id/delete', component: DeleteExaminationComponent }, // Delete an examination
-            { path: 'examinations/:id', component: ExaminationDetailComponent }, // View examination details
+            { path: 'examinations', component: ExaminationListComponent, canActivate: [authGuard] }, // List all examinations
+            { path: 'examinations-user', component: UserExaminationListComponent, canActivate: [authGuard] }, // List all examinations
+            { path: 'examinations/create', component: CreateExaminationComponent, canActivate: [authGuard] }, // Create an examination
+            { path: 'examinations/:id/edit', component: EditExaminationComponent, canActivate: [authGuard] }, // Edit an examination
+            { path: 'examinations/:id/delete', component: DeleteExaminationComponent, canActivate: [authGuard] }, // Delete an examination
+            { path: 'examinations/:id', component: ExaminationDetailComponent, canActivate: [authGuard] }, // View examination details
 
             // Payment Routes
-            { path: 'payments', component: PaymentListComponent }, // List all payments
-            { path: 'payments-user', component: UserPaymentListComponent }, // List all payments
-            { path: 'payments/initiate/:id', component: InitiatePaymentComponent }, // Initiate a payment
-            { path: 'payments/verify', component: VerifyPaymentComponent },
-            { path: 'payments/:refNo', component: PaymentDetailComponent }, // View payment details
-            { path: 'payments/:refNo/delete', component: DeletePaymentComponent }, // Delete a payment
+            { path: 'payments', component: PaymentListComponent, canActivate: [authGuard] }, // List all payments
+            { path: 'payments-user', component: UserPaymentListComponent, canActivate: [authGuard] }, // List all payments
+            { path: 'payments/initiate/:id', component: InitiatePaymentComponent, canActivate: [authGuard] }, // Initiate a payment
+            { path: 'payments/verify', component: VerifyPaymentComponent, canActivate: [authGuard] },
+            { path: 'payments/:refNo', component: PaymentDetailComponent, canActivate: [authGuard] }, // View payment details
+            { path: 'payments/:refNo/delete', component: DeletePaymentComponent, canActivate: [authGuard] }, // Delete a payment
             
 
             // Result Routes
-            { path: 'results', component: ResultListComponent }, // List all results
-            { path: 'results/:id/edit', component: EditResultComponent }, // Edit a result
-            { path: 'results/:id/detail', component: ResultDetailComponent }, // View result details
-            { path: 'results/:id/delete', component: DeleteResultComponent }, // Delete a result
-            
+            { path: 'results', component: ResultListComponent, canActivate: [authGuard] }, // List all results
+            { path: 'results/:id/edit', component: EditResultComponent, canActivate: [authGuard] }, // Edit a result
+            { path: 'results/:id/detail', component: ResultDetailComponent, canActivate: [authGuard] }, // View result details
+            { path: 'results/:id/delete', component: DeleteResultComponent, canActivate: [authGuard] }, // Delete a result
 
+            // Services Routes
+             { path: 'services', component: ServicesComponent, canActivate: [authGuard] }, // List all results
+             { path: 'services/:id/detail', component: ServiceDetailComponent, canActivate: [authGuard] },
 
             // Batch Result Routes
-            { path: 'batchResults', component: BatchResultListComponent }, // List all results
-            { path: 'batchResults/upload', component: UploadResultComponent }, // Create a result
-            { path: 'batchResults/:id/edit', component: EditResultComponent }, // Edit a result
-            { path: 'batchResults/:id/delete', component: DeleteResultComponent }, // Delete a result
-            { path: 'batchResults/:id', component: ResultDetailComponent }, // View result details
+            { path: 'batchResults', component: BatchResultListComponent, canActivate: [authGuard] }, // List all results
+            { path: 'batchResults/upload', component: UploadResultComponent, canActivate: [authGuard] }, // Create a result
+            { path: 'batchResults/:id/edit', component: EditResultComponent, canActivate: [authGuard] }, // Edit a result
+            { path: 'batchResults/:id/delete', component: DeleteResultComponent, canActivate: [authGuard] }, // Delete a result
+            { path: 'batchResults/:id', component: ResultDetailComponent, canActivate: [authGuard] }, // View result details
 
 
             // Training Routes
-            { path: 'trainings', component: TrainingListComponent }, // List all trainings
-            { path: 'trainings-user', component: UserTrainingListComponent }, // List all trainings
-            { path: 'trainings/create', component: CreateTrainingComponent }, // Create a training
-            { path: 'trainings/:id/edit', component: EditTrainingComponent }, // Edit a training
-            { path: 'trainings/:id/delete', component: DeleteTrainingComponent }, // Delete a training
-            { path: 'trainings/:id', component: TrainingDetailComponent }, // View training details
-
-            // RegistrationType Routes
-            // { path: 'registration-types', component: RegistrationTypeListComponent }, // List all registration types
-            // { path: 'registration-types/create', component: CreateRegistrationTypeComponent }, // Create a registration type
-            // { path: 'registration-types/:id/edit', component: EditRegistrationTypeComponent }, // Edit a registration type
-            // { path: 'registration-types/:id/delete', component: DeleteRegistrationTypeComponent }, // Delete a registration type
-            // { path: 'registration-types/:id', component: RegistrationTypeDetailComponent }, // View registration type details
+            { path: 'trainings', component: TrainingListComponent,canActivate: [authGuard] }, // List all trainings
+            { path: 'trainings-user', component: UserTrainingListComponent, canActivate: [authGuard] }, // List all trainings
+            { path: 'trainings/create', component: CreateTrainingComponent, canActivate: [authGuard] }, // Create a training
+            { path: 'trainings/:id/edit', component: EditTrainingComponent, canActivate: [authGuard] }, // Edit a training
+            { path: 'trainings/:id/delete', component: DeleteTrainingComponent, canActivate: [authGuard] }, // Delete a training
+            { path: 'trainings/:id', component: TrainingDetailComponent, canActivate: [authGuard] }, // View training details
 
             // AcademicQualification Routes
-            { path: 'qualifications', component: QualificationListComponent }, // List all academic qualifications
-            { path: 'qualifications/create/:email', component: CreateQualificationComponent }, // Create an academic qualification
-            { path: 'qualifications/:id/edit', component: EditQualificationComponent }, // Edit an academic qualification
-            { path: 'qualifications/:id/delete', component: DeleteQualificationComponent }, // Delete an academic qualification
-            { path: 'qualifications/:id/detail', component: QualificationDetailComponent }, // View academic qualification details
+            { path: 'qualifications', component: QualificationListComponent, canActivate: [authGuard] }, // List all academic qualifications
+            { path: 'qualifications/create/:email', component: CreateQualificationComponent, canActivate: [authGuard] }, // Create an academic qualification
+            { path: 'qualifications/:id/edit', component: EditQualificationComponent, canActivate: [authGuard] }, // Edit an academic qualification
+            { path: 'qualifications/:id/delete', component: DeleteQualificationComponent, canActivate: [authGuard] }, // Delete an academic qualification
+            { path: 'qualifications/:id/detail', component: QualificationDetailComponent, canActivate: [authGuard] }, // View academic qualification details
 
             // User Routes
-            { path: 'users/add-admin', component: AddAdminComponent },
-            { path: 'users', component: UserListComponent },
-            { path: 'users/create', component: CreateQualificationComponent }, 
-            { path: 'users/:email/edit', component: EditProfileComponent }, 
-            { path: 'users/:email/detail', component: UserProfileComponent },
-            { path: 'users/:email/delete', component: DeteleAccountComponent }, 
+            { path: 'users/add-admin', component: AddAdminComponent, canActivate: [authGuard] },
+            { path: 'users', component: UserListComponent, canActivate: [authGuard] },
+            { path: 'users/create', component: CreateQualificationComponent, canActivate: [authGuard] }, 
+            { path: 'users/:email/edit', component: EditProfileComponent, canActivate: [authGuard] }, 
+            { path: 'users/:email/detail', component: UserProfileComponent, canActivate: [authGuard] },
+            { path: 'users/:email/delete', component: DeteleAccountComponent, canActivate: [authGuard] }, 
             
 
              { path: '', redirectTo: 'dashboard', pathMatch: 'full' }     // default route for the LayoutComponent

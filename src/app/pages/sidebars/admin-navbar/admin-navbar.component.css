@@ -1,82 +1,153 @@
-
-   .sidebar {
-    height: 100vh; 
-    position: fixed; 
-    top: 60px;
-    height: calc(100vh - 60px); 
+/* Sidebar container */
+.sidebar {
+    position: fixed;
+    top: 60px; /* height of header */
     left: 0;
-    overflow-x: hidden; 
-    padding-top: 20px;
-    background-color: #f8f9fa; 
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1); 
-}
-
-.sidebar a {
-    color: darkred; 
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.sidebar a:hover {
-    background-color: darkred; 
-    color: white; 
-    padding-left: 10px; 
-    transition: 0.2s ease-in-out; 
-}
-
-.btn-toggle {
+    height: calc(100vh - 60px);
+    width: 260px;
+    background-color: #1a202c; /* Darker background for a sleek look */
+    padding: 20px 15px;
+    overflow-y: auto;
+    transition: width 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+  }
+  
+  /* Collapsed sidebar */
+  .sidebar.collapsed {
+    width: 60px;
+    opacity: 0.9;
+  }
+  
+  /* Sidebar button toggle */
+  .btn-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    font-weight: bold;
     width: 100%;
     text-align: left;
-    padding: 10px;
-    color: #333; 
-    font-weight: 600;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+    padding: 12px 15px;
     display: flex;
-    justify-content: space-between; 
-}
-
-.btn-toggle:hover {
-    color: darkred; 
-    background-color: #e9ecef; 
-}
-
-.btn-toggle-nav a {
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+    border-radius: 6px;
+  }
+  
+  .btn-toggle:hover {
+    background: #003366;
+    color: #fff;
+  }
+  
+  /* Sidebar submenu */
+  .submenu {
     padding-left: 20px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
+    opacity: 0; /* Start collapsed */
+    max-height: 0; /* Ensure it starts collapsed */
+    transform: translateY(-20px); /* Optional: For a smoother transition */
+    position: relative;
+    z-index: 90; /* Ensure submenu is on top of other elements */
+  }
+  
+  /* Show submenu items with a fade-in effect */
+  .submenu.show {
+    opacity: 1;
+    max-height: 500px; /* Adjust to fit content size */
+    transform: translateY(0); /* Bring it into view */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Only animate opacity and transform */
+  }
+  
+  /* Submenu item links */
+  .submenu a {
+    display: block;
+    padding: 8px 15px;
+    color: #b0bec5;
+    text-decoration: none;
     font-size: 14px;
-    color: #495057;
+    border-radius: 6px;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  .submenu a:hover {
+    background-color: #003366;
+    color: #fff;
+  }
+  
+  /* Rotate caret icon when section is expanded */
+  .rotate {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+  }
+  
+  /* Hide text when sidebar is collapsed */
+  .sidebar.collapsed .btn-toggle span,
+  .sidebar.collapsed .submenu a span {
+    display: none;
+  }
+  
+  /* Shrink icons when sidebar is collapsed */
+  .sidebar.collapsed .btn-toggle,
+  .sidebar.collapsed .submenu a {
+    justify-content: center;
+    padding-left: 0; /* Centers icons when collapsed */
+    transition: transform 0.3s ease, margin 0.3s ease;
+  }
+  
+  /* Added smooth hover effect on buttons */
+  .btn-toggle:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .submenu a:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Dashboard item specific styles */
+.sidebar .dashboard-link {
+  background-color: #0d253f;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  transition: background 0.3s ease;
 }
 
-.collapse ul {
-    background-color: #f8f9fa;
+.sidebar .dashboard-link:hover {
+  background-color: #003366;
 }
 
-.bi-caret-down-fill {
-    margin-left: auto;
-    font-size: 1rem; 
-    color: white;
+/* Dashboard link text and icon */
+.sidebar .dashboard-link a {
+  color: #fff;
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 6px;
 }
 
-.collapse ul a {
-    padding-left: 30px;
-    color: darkred; 
+/* Active route highlight */
+.sidebar .dashboard-link a.active {
+  background-color: #003366;
+  font-weight: bold;
 }
 
-.collapse ul a:hover {
-    color: white;
-    background-color: darkred; 
+/* When sidebar is collapsed */
+.sidebar.collapsed .dashboard-link {
+  justify-content: center;
+  padding-left: 0;
 }
 
-.dashboard-title {
-    color: darkred; 
-    transition: color 0.3s ease; 
+.sidebar.collapsed .dashboard-link span {
+  display: none;
 }
 
-.dashboard-title:hover {
-    color: white; 
+.sidebar.collapsed .dashboard-link a {
+  justify-content: center;
+  padding-left: 0;
 }
 
-
-
-
+  

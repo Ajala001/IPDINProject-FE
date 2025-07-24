@@ -3,29 +3,41 @@ import { PaymentServiceService } from '../../../services/payment_service/payment
 import { PaymentResponseModel } from '../../../models/classes/payment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../services/auth_service/auth.service';
 
 @Component({
   selector: 'app-delete-payment',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './delete-payment.component.html',
   styleUrl: './delete-payment.component.css'
 })
 export class DeletePaymentComponent {
-  
+
   paymentRef: string | null = null;
   payment: PaymentResponseModel | null = null;
   paymentService = inject(PaymentServiceService)
   router = inject(Router);
   route = inject(ActivatedRoute);
 
+  isAdmin: boolean = false;
+  authService = inject(AuthService)
+  userDetails: any;
+  role: string = "";
+
   paymentStatusMap: { [key: number]: string } = {
     1: 'Successful',
     2: 'Failed',
   };
 
+  checkUserRole() {
+    this.userDetails = this.authService.getUserDetailsFromToken();
+    const role = this.userDetails["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+    this.isAdmin = role === 'Admin';
+  }
 
   ngOnInit(): void {
+    this.checkUserRole();
+    
     this.paymentRef = this.route.snapshot.paramMap.get('refNo');
 
     if (this.paymentRef) {
@@ -47,7 +59,10 @@ export class DeletePaymentComponent {
         this.paymentService.deletePayment(this.paymentRef).subscribe({
           next: () => {
             alert('Payment deleted successfully!');
-            this.router.navigate(['/payments']);
+            if(this.isAdmin){
+              this.router.navigate(['/payments']);
+            }
+            this.router.navigate(['/payments-user'])
           },
           error: (error) => {
             alert('An error occurred while deleting the payment.');
@@ -59,6 +74,9 @@ export class DeletePaymentComponent {
   }
 
   cancelDelete(): void {
-    this.router.navigate(['/payments']); // Navigate back to the payments list
+    if(this.isAdmin){
+      this.router.navigate(['/payments']);
+    }
+    this.router.navigate(['/payments-user']) // Navigate back to the payments list
   }
 }

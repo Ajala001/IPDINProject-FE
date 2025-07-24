@@ -29,11 +29,12 @@
               }
             ],
             "styles": [
+              "src/custom-theme.scss",
               "src/styles.css",
               "./node_modules/bootstrap/dist/css/bootstrap.css",
               "./node_modules/bootstrap-icons/font/bootstrap-icons.css",
-             "./node_modules/@fortawesome/fontawesome-free/css/all.min.css",
-             "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+              "./node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
@@ -70,7 +71,10 @@
               "buildTarget": "IPDINProject:build:production"
             },
             "development": {
-              "buildTarget": "IPDINProject:build:development"
+              "buildTarget": "IPDINProject:build:development",
+              "sslKey": "ssl/server.key",
+              "sslCert": "ssl/server.crt",
+              "port": 4200
             }
           },
           "defaultConfiguration": "development"
@@ -93,6 +97,7 @@
               }
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.css"
             ],
             "scripts": []

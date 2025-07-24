@@ -1,16 +1,15 @@
 import { Component, inject } from '@angular/core';
 import { TrainingResponseModel } from '../../../models/classes/training';
 import { TrainingServiceService } from '../../../services/training_service/training-service.service';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-delete-training',
-  standalone: true,
-  imports: [FormsModule, CommonModule, RouterLink],
-  templateUrl: './delete-training.component.html',
-  styleUrl: './delete-training.component.css'
+    selector: 'app-delete-training',
+    imports: [FormsModule, CommonModule],
+    templateUrl: './delete-training.component.html',
+    styleUrl: './delete-training.component.css'
 })
 export class DeleteTrainingComponent {
   trainingId: string | null = null;

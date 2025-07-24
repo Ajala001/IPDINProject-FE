@@ -1,0 +1,139 @@
+/* Base container to center content */
+.container {
+  position: fixed;
+  top: 0;
+  left: 250px;
+  width: calc(100vw - 250px);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e9ecef;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Card styling */
+.service-card {
+  background-color: #003366;
+  color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 500px;
+  padding: 30px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Header styles */
+.page-header {
+  font-size: 26px;
+  font-weight: 600;
+  margin: 0;
+  color: wheat;
+}
+
+.page-subtext {
+  font-size: 15px;
+  color: #d1d1d1;
+  margin: 0;
+}
+
+/* Service details */
+.service-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 10px;
+  color: wheat;
+}
+
+.service-description {
+  font-size: 15px;
+  color: #cccccc;
+  margin: 0;
+}
+
+/* Additional service info box */
+.service-info {
+  background-color: #ffffff;
+  color: #212529;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  font-size: 14px;
+}
+
+.service-info div {
+  margin-bottom: 8px;
+}
+
+.service-info ul {
+  padding-left: 16px;
+  margin: 0;
+  list-style: disc;
+}
+
+/* Button group layout */
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 110px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+/* Pay button */
+.btn.pay {
+  background-color: #198754;
+  color: #ffffff;
+}
+
+.btn.pay:hover {
+  background-color: #157347;
+}
+
+/* Cancel button */
+.btn.cancel {
+  background-color: #dc3545;
+  color: #ffffff;
+}
+
+.btn.cancel:hover {
+  background-color: #bb2d3b;
+}
+
+/* Loading and error states */
+.loading-msg,
+.error-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  background: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.error-message {
+  color: #dc3545;
+  border: 1px solid #dc3545;
+}

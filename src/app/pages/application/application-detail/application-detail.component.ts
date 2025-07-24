@@ -7,11 +7,10 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../services/auth_service/auth.service';
 
 @Component({
-  selector: 'app-application-detail',
-  standalone: true,
-  imports: [CommonModule, RouterLink],
-  templateUrl: './application-detail.component.html',
-  styleUrl: './application-detail.component.css'
+    selector: 'app-application-detail',
+    imports: [CommonModule, RouterLink],
+    templateUrl: './application-detail.component.html',
+    styleUrl: './application-detail.component.css'
 })
 export class ApplicationDetailComponent {
   constructor(private route: ActivatedRoute) {

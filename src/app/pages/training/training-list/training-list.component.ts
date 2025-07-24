@@ -9,11 +9,10 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../services/auth_service/auth.service';
 
 @Component({
-  selector: 'app-training-list',
-  standalone: true,
-  imports: [CommonModule, RouterLink, FormsModule],
-  templateUrl: './training-list.component.html',
-  styleUrl: './training-list.component.css'
+    selector: 'app-training-list',
+    imports: [CommonModule, RouterLink, FormsModule],
+    templateUrl: './training-list.component.html',
+    styleUrl: './training-list.component.css'
 })
 export class TrainingListComponent {
 

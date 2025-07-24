@@ -5,11 +5,10 @@ import { CourseResponseModel } from '../../../models/classes/course';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-delete-course',
-  standalone: true,
-  imports: [RouterModule, CommonModule],
-  templateUrl: './delete-course.component.html',
-  styleUrl: './delete-course.component.css'
+    selector: 'app-delete-course',
+    imports: [RouterModule, CommonModule],
+    templateUrl: './delete-course.component.html',
+    styleUrl: './delete-course.component.css'
 })
 export class DeleteCourseComponent {
   courseId: string | null = null;

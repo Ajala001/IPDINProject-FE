@@ -10,10 +10,10 @@
               <li class="list-group-item"><b>Payment RefNumber: </b> {{ payment.paymentRef }}</li>
               <li class="list-group-item"><b>Amount Paid: </b> {{ payment.amount }}</li>
               <li class="list-group-item"><b>Payment Status: </b> {{ paymentStatusMap[payment.status] }}</li>
-              <li class="list-group-item"><b>Payment Date: </b> {{ payment.createdAt | date:'medium' }}</li>
+              <li class="list-group-item"><b>Payment Date: </b> {{ payment.createdAt }}</li>
           </ul>
           <div class="card-body d-flex justify-content-between">
-              <a [routerLink]="['/payments']" class="btn btn-secondary">Back</a>
+              <a [routerLink]="isAdmin ? '/payments' : '/payments-user'" class="btn btn-secondary">Back</a>
               <a [routerLink]="['/payments', payment.paymentRef, 'delete']" class="btn btn-danger">Delete</a>
           </div>
       </div>

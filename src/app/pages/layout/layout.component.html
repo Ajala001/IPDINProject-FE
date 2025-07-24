@@ -1,19 +1,11 @@
-<div class="layout">
-    <!-- Header -->
-    <div class="header">
-        <app-header></app-header>
-    </div>
-    
-    <!-- Main Container -->
-    <div class="main-container">
-        <!-- Sidebar -->
-        <div class="side-nav">
-            <app-sidebar></app-sidebar>
-        </div>
-        
-        <!-- Main Content -->
-        <div class="main">
-            <router-outlet></router-outlet>
-        </div>
-    </div>
+<app-header (toggleSidebar)="toggleSidebar()"></app-header>
+
+<div class="layout-wrapper">
+  <!-- Sidebar -->
+  <app-admin-navbar [isSidebarOpen]="isSidebarOpen"></app-admin-navbar>
+
+  <!-- Main Content -->
+  <div class="main-content" [class.sidebar-collapsed]="!isSidebarOpen">
+    <router-outlet></router-outlet>
+  </div>
 </div>

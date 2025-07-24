@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark navbar-dark-custom">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24"
-                class="d-inline-block align-text-top">
+            <img src="assets/images/driving logo.png" alt="logo-image" class="image">
             <b> IPDIN</b>
+
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
             aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,24 +23,11 @@
                     <a class="nav-link" [ngClass]="{'active': isActive('contact')}" (click)="setActive('contact')"
                     (click)="scrollTo('contact-us-section')">Contact</a>
                 </li>
-                <!-- Dropdown menu with improved design -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false"  (click)="setActive('Options')">
-                        Options
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarScrollingDropdown">
-                        <li><a class="dropdown-item" [ngClass]="{'active': isActive('signup')}"
-                                (click)="setActive('signup')" [routerLink]="['/sign-up']">Sign Up</a></li>
-                        <li><a class="dropdown-item" [ngClass]="{'active': isActive('signup')}"
-                                (click)="setActive('signup')" href="#">Another Action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" [ngClass]="{'active': isActive('signup')}"
-                                (click)="setActive('signup')" href="#">Something else here</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{'active': isActive('team')}" (click)="setActive('team')"
+                    (click)="scrollTo('team-section')">Team</a>
                 </li>
+                <!-- Dropdown menu with improved design -->
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled Link</a>
                 </li>

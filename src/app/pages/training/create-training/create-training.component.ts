@@ -7,11 +7,10 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-create-training',
-  standalone: true,
-  imports: [FormsModule, CommonModule],
-  templateUrl: './create-training.component.html',
-  styleUrl: './create-training.component.css'
+    selector: 'app-create-training',
+    imports: [FormsModule, CommonModule],
+    templateUrl: './create-training.component.html',
+    styleUrl: './create-training.component.css'
 })
 export class CreateTrainingComponent {
 
@@ -23,9 +22,9 @@ export class CreateTrainingComponent {
   trainingStatus = [
     { id: 1, label: 'Scheduled' },
     { id: 2, label: 'Upcoming' },
-    { id: 2, label: 'Ongoing' },
-    { id: 2, label: 'Completed' },
-    { id: 2, label: 'Cancelled' }
+    { id: 3, label: 'Ongoing' },
+    { id: 4, label: 'Completed' },
+    { id: 5, label: 'Cancelled' }
   ];
 
 

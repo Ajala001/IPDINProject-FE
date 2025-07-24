@@ -1,75 +1,116 @@
-.navbar-dark-custom {
-    background-color: darkred;
-    width: 100%; /* Full width */
-    position: fixed; /* Keep it at the top of the page */
+/* Header container */
+.header {
+    position: fixed;
     top: 0;
     left: 0;
-    z-index: 1030; /* Higher stacking order */
-    padding: 0.5rem 1.5rem; /* Slightly larger padding */
-}
-
-.navbar-brand img {
-    width: 30px; /* Slightly larger logo */
-    height: 25px;
-}
-
-.navbar-brand b {
-    font-size: 1.2rem; /* Increase brand font size */
-}
-
-.navbar-nav .nav-link {
-    padding: 0.5rem 1rem; /* Slightly larger padding for links */
-    font-size: 1rem; /* Increase font size */
-    color: white;
-}
-
-.navbar-nav .nav-link.active::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 2px;
-    background-color: white;
-    border-radius: 2px;
-}
-
-.navbar-toggler {
-    padding: 0.5rem 1rem; /* Slightly larger padding for the toggler */
-}
-
-.dropdown-menu-dark {
-    background-color: #007bff !important;
-    border-color: #0056b3;
-}
-
-.dropdown-menu-dark .dropdown-item {
-    color: white;
-    font-size: 1rem; /* Larger dropdown items */
-}
-
-.user-name .nav-link {
-    font-size: 1rem; /* Slightly larger font size for the username */
-}
-
-.user {
+    right: 0;
+    height: 60px;
+    background: #003366;
+    color: #fff;
+    z-index: 1000;
     display: flex;
-    align-items: center; /* Align image and name vertically */
-    gap: 5px; /* Reduce spacing between the image and name */
-}
-
-.user-image img {
-    width: 35px; /* Slightly larger user image */
-    height: 35px;
-    border-radius: 50%; /* Circular user image */
-    border: 2px solid #fff; /* White border */
-    background-color: rgb(86, 88, 89);
-}
-
-.user-name {
-    font-family: 'Merriweather', serif;
-    font-size: 1rem; /* Adjust the size */
-    font-weight: 600; /* Semi-bold for a striking look */
-    color: white; /* Keep text visible */
-    margin: 0; /* Remove any extra margin */
-}
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Toggle icon */
+  .sidebar-toggle {
+    font-size: 22px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  /* User section */
+  .user-menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    color: #fff;
+    transition: color 0.2s ease;
+  }
+  
+  .user-menu:hover {
+    color: #dce3f1;
+  }
+  
+  /* Profile picture */
+  .profile-pic {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    transition: border-color 0.2s;
+  }
+  
+  .user-menu i {
+    font-size: 14px;
+  }
+  
+  /* Dropdown container */
+  .dropdown {
+    position: absolute;
+    top: 110%;
+    right: 0;
+    background: #ffffff;
+    border-radius: 8px;
+    min-width: 180px;
+    padding: 8px 0;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    animation: dropdownFade 0.25s ease-in-out;
+    transition: all 0.3s;
+    overflow: hidden;
+    z-index: 2000;
+  }
+  
+  /* Dropdown animation */
+  @keyframes dropdownFade {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Dropdown list items */
+  .dropdown li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .dropdown a,
+  .dropdown li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  
+  .dropdown a:hover,
+  .dropdown li:hover {
+    background-color: #f5f8fa;
+    color: #003366;
+  }
+  
+  /* Optional: add icons to dropdown items */
+  .dropdown li i {
+    font-size: 16px;
+    color: #003366;
+  }
+  

@@ -6,7 +6,7 @@
   }
   
   .register-left {
-    background-color: darkred;
+    background-color: darkblue;
     color: white;
     padding: 15px; /* reduced padding */
     border-radius: 10px 0 0 10px;
@@ -22,7 +22,7 @@
   
   .register-heading {
     margin-bottom: 15px; /* reduced margin below heading */
-    color: darkred;
+    color: darkblue;
     font-weight: bold;
   }
   
@@ -59,7 +59,7 @@
   
   .form-check-label {
     font-weight: 500;
-    color: darkred;
+    color: darkblue;
   }
   
   input::placeholder {
@@ -67,7 +67,7 @@
   }
   
   .button {
-    background-color: darkred;
+    background-color: darkblue;
     color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -90,7 +90,7 @@
   
   label {
     font-weight: bold;
-    color: darkred;
+    color: darkblue;
     margin-bottom: 3px; /* reduced spacing between label and input */
   }
   

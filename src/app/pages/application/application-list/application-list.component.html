@@ -35,16 +35,17 @@
                 <th>Applicant Fullname</th>
                 <th>Application Purpose</th>
                 <th>Date</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let item of paginatedData; let i = index">
                 <td>{{ (pageNumber - 1) * pageSize + i + 1 }}</td>
                 <td>{{ item.applicantFullName }}</td>
-                <td>{{ item.applicationPurpose }}</td>
+                <td>{{ item.appliedFor }}</td>
                 <td>{{ item.date }}</td>
                 <td>
-                  <button class="btn btn-primary" [routerLink]="['/applications', item.id]">Detail</button>
+                  <button class="btn btn-primary" [routerLink]="['/applications', item.id, 'detail']">Detail</button>
                   <button class="btn btn-danger" *ngIf="isAdmin" [routerLink]="['/applications', item.id, 'delete']">Delete</button>
                 </td>
             </tr>

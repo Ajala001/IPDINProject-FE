@@ -10,11 +10,10 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-create-examination',
-  standalone: true,
-  imports: [FormsModule, CommonModule],
-  templateUrl: './create-examination.component.html',
-  styleUrl: './create-examination.component.css'
+    selector: 'app-create-examination',
+    imports: [FormsModule, CommonModule],
+    templateUrl: './create-examination.component.html',
+    styleUrl: './create-examination.component.css'
 })
 export class CreateExaminationComponent implements OnInit{
 Math: any;

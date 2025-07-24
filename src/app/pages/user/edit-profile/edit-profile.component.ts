@@ -6,11 +6,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-edit-profile',
-  standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
-  templateUrl: './edit-profile.component.html',
-  styleUrl: './edit-profile.component.css'
+    selector: 'app-edit-profile',
+    imports: [CommonModule, FormsModule, RouterModule],
+    templateUrl: './edit-profile.component.html',
+    styleUrl: './edit-profile.component.css'
 })
 export class EditProfileComponent {
   route = inject(ActivatedRoute);

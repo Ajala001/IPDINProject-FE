@@ -11,9 +11,9 @@ export interface BatchResultResponseDto {
 export interface StudentResultResponseDto {
     id: string; 
     batchId: string;
+    examId: string;
     email: string;
     fullName: string;
-    examTitle: string;
     phoneNumber: string;
     profilePic: string;
     membershipNumber: string

@@ -1,10 +1,10 @@
 export class ApplicationModel {
-    applicationId: string
-    applicationType: string
+    serviceId: string | null
+    isTraining: boolean
 
     constructor() {
-        this.applicationId = "",
-            this.applicationType = ""
+        this.serviceId = "",
+        this.isTraining = false
     }
 }
 
@@ -12,8 +12,10 @@ export class ApplicationModel {
 export interface ApplicationResponseModel {
     id: string;
     applicantFullName: string;
-    applicationPurpose: string;
+    applicationFee: string
+    appliedFor: string;
     date: string;
+    hasPaid: string
     status: 0
 }
 

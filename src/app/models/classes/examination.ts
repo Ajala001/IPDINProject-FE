@@ -23,6 +23,7 @@ export interface ExaminationResponseModel {
   examTime: string;    
   examYear: number;    
   fee: string;  
+  applicationFee: string;
   status: number;      
   courses: CourseResponseModel[];
 }

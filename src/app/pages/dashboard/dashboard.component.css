@@ -1,0 +1,34 @@
+body {
+  background: linear-gradient(to right, #f1f2f6, #dfe4ea);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.dashboard-title {
+  font-weight: 600;
+  font-size: 1.9rem;
+  color: #2f3542;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  transition: 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+}
+
+.badge {
+  font-size: 0.85rem;
+  padding: 0.45em 0.75em;
+  border-radius: 8px;
+}
+

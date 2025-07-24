@@ -7,11 +7,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-user-application-list',
-  standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
-  templateUrl: './user-application-list.component.html',
-  styleUrl: './user-application-list.component.css'
+    selector: 'app-user-application-list',
+    imports: [CommonModule, RouterModule, FormsModule],
+    templateUrl: './user-application-list.component.html',
+    styleUrl: './user-application-list.component.css'
 })
 export class UserApplicationListComponent implements OnInit{
 

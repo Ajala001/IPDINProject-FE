@@ -48,7 +48,7 @@
                     <td>
                         <button class="btn btn-primary" [routerLink]="['/trainings', item.id]">Detail</button>
                         <button class="btn btn-danger" *ngIf="isAdmin" [routerLink]="['/trainings', item.id, 'delete']">Delete</button>
-                        <button class="btn btn-primary" *ngIf="item.status === 1 || item.status === 2 && !isAdmin" [routerLink]="['/trainings', item.id]">Apply</button>
+                        <button class="btn btn-primary mx-2" *ngIf="item.status === 1 || item.status === 2 && !isAdmin"  [routerLink]="['/applications', item.id, 'create']" [queryParams]="{ paymentType: 'Examination' }">Apply</button>
                     </td>
                 </tr>
             </tbody>

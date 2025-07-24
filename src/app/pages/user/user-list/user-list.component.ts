@@ -6,38 +6,49 @@ import { pagedResponse } from '../../../models/interfaces/pagedResponse';
 import { SearchQueryModel } from '../../../models/classes/searchQuery';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-user-list',
-  standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink, MatIconModule, MatDividerModule, MatToolbarModule, 
+    MatFormFieldModule, MatSelectModule, MatInputModule, MatButtonModule, MatTableModule
+  ],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'
 })
 export class UserListComponent {
-
   userService = inject(UserService);
   router = inject(Router);
 
-
   totalUsers: number = 0;
-  pageSizes: number[] = [3, 5, 10, 25, 50]; // Options for page size
-  pageSize: number = 3;  // Default page size
-  pageNumber: number = 1; // Default page number
+  pageSizes: number[] = [3, 5, 10, 25, 50];
+  pageSize: number = 3;
+  pageNumber: number = 1;
   paginatedData: UserResponseModel[] = [];
-  isSearchMode: boolean = false;
+  params: SearchQueryModel = new SearchQueryModel(); // Ensure it's declared early
+  genderMap: { [key: number]: string } = {
+    1: 'Male',
+    2: 'Female',
+    3: 'Other'
+  };
 
   ngOnInit() {
-    this.getUsers(); // Fetch the initial set of users on component initialization
+    this.getUsers();
   }
 
   getUsers() {
-    const params = { pageSize: this.pageSize, pageNumber: this.pageNumber };
-    this.userService.getUsers(params).subscribe((response: pagedResponse) => {
+    const query = { pageSize: this.pageSize, pageNumber: this.pageNumber };
+    this.userService.getUsers(query).subscribe((response: pagedResponse) => {
       if (response.isSuccessful) {
         this.paginatedData = response.data;
         this.totalUsers = response.totalRecords;
-        this.router.navigateByUrl("users");
       } else {
         alert(response.message);
         this.router.navigateByUrl("dashboard");
@@ -45,66 +56,46 @@ export class UserListComponent {
     });
   }
 
-  genderMap: { [key: number]: string } = {
-    1: 'Male',
-    2: 'Female',
-    3: 'Other'
-  };
+ searchUsers() {
+  this.params.pageSize = this.pageSize;
+  this.params.pageNumber = this.pageNumber;
+
+  debugger;
+  if (this.params.searchQuery && this.params.searchQuery.trim() !== "") {
+    this.userService.searchUsers(this.params).subscribe((response: pagedResponse) => {
+      if (response.isSuccessful) {
+        this.paginatedData = response.data;
+        this.totalUsers = response.totalRecords;
+      } else {
+        debugger;
+        // Show "no match" message without navigating away
+        this.paginatedData = [];
+        this.totalUsers = 0;
+        alert(response.message); // Optional: replace with snackbar or styled message
+      }
+    });
+  } else {
+    this.getUsers();
+  }
+}
 
 
-  // Adjust page size and decide whether to search or get all users
   onPageSizeChange() {
-    this.pageNumber = 1; // Reset to the first page when page size changes
-
-    // Check if the search query exists; if it does, search. If not, get all courses
-    if (this.params.searchQuery && this.params.searchQuery.trim() !== "") {
-      this.searchUsers();  // Search if there is a search query
-    } else {
-      this.getUsers();     // Otherwise, fetch all courses
-    }
+    this.pageNumber = 1;
+    this.searchUsers(); // Handles both search & non-search logic
   }
 
   nextPage() {
-    if (this.pageNumber * this.pageSize < this.totalUsers) { 
+    if (this.pageNumber * this.pageSize < this.totalUsers) {
       this.pageNumber++;
-      if (this.params.searchQuery && this.params.searchQuery.trim() !== "") {
-        this.searchUsers();  // Fetch search results if in search mode
-      } else {
-        this.getUsers();     // Otherwise, fetch all courses
-      }
+      this.searchUsers();
     }
   }
 
   previousPage() {
     if (this.pageNumber > 1) {
       this.pageNumber--;
-      if (this.params.searchQuery && this.params.searchQuery.trim() !== "") {
-        this.searchUsers();  // Fetch search results if in search mode
-      } else {
-        this.getUsers();     // Otherwise, fetch all courses
-      }
-    }
-  }
-
-
-  params: SearchQueryModel = new SearchQueryModel
-  searchUsers() {
-    this.params.pageNumber = this.pageNumber;
-    this.params.pageSize = this.pageSize;
-
-    if (this.params.searchQuery && this.params.searchQuery.trim() !== "") {
-      this.userService.searchUsers(this.params).subscribe((response: pagedResponse) => {
-        if (response.isSuccessful) {
-          this.paginatedData = response.data;
-          this.totalUsers = response.totalRecords;
-        } else {
-          alert(response.message);
-          this.router.navigateByUrl("dashboard"); // Navigate to dashboard on error
-        }
-      });
-    } else {
-      // If search query is empty, fetch all courses
-      this.getUsers();
+      this.searchUsers();
     }
   }
 }

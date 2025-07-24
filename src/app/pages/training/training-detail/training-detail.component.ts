@@ -8,11 +8,10 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../services/auth_service/auth.service';
 
 @Component({
-  selector: 'app-training-detail',
-  standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
-  templateUrl: './training-detail.component.html',
-  styleUrl: './training-detail.component.css'
+    selector: 'app-training-detail',
+    imports: [CommonModule, FormsModule, RouterModule],
+    templateUrl: './training-detail.component.html',
+    styleUrl: './training-detail.component.css'
 })
 export class TrainingDetailComponent {
   constructor(private route: ActivatedRoute) {

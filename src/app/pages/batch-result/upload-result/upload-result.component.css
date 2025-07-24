@@ -24,7 +24,7 @@
 .card-header {
     font-family: 'Merriweather', sans-serif; /* Use specified font */
     font-size: 1.5rem; /* Increased font size for header */
-    background-color: darkred;
+    background-color: darkblue;
 }
 
 .card-body {
@@ -45,7 +45,7 @@
 
 .form-select:focus,
 .file-input:focus {
-    border-color: darkred; /* Change border color on focus */
+    border-color: darkblue; /* Change border color on focus */
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Focus shadow effect */
 }
 
@@ -54,7 +54,7 @@
     margin-bottom: 8px; /* Spacing below the label */
     padding: 10px;
     background-color: #e9ecef; /* Light background for file label */
-    border: 1px dashed darkred; /* Dashed border for file label */
+    border: 1px dashed darkblue; /* Dashed border for file label */
     border-radius: 4px; /* Rounded corners for file label */
     text-align: center; /* Center the text */
 }
@@ -69,7 +69,7 @@
     border-radius: 4px; /* Rounded corners */
     font-weight: bold; /* Bold text for buttons */
     transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
-    background-color: darkred;
+    background-color: darkblue;
 }
 
 .btn-upload:hover {

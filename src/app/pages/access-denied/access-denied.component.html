@@ -1,0 +1,30 @@
+<div class="access-denied-container">
+  <div class="card">
+    <h1 class="title">🚫 Access Denied</h1>
+    <p class="subtitle">Access restricted due to unpaid account dues.</p>
+
+    <div class="user-info">
+      <div class="info-row"><span class="label">Name:</span> <span class="value">Ajala AbdulBaasit</span></div>
+      <div class="info-row"><span class="label">Email:</span> <span class="value">ajalagmail.com</span></div>
+      <div class="info-row"><span class="label">Address:</span> <span class="value">Adigbe, Abeokuta, OgunState</span></div>
+    </div>
+
+    <div class="amount-due">
+      <span class="label">Amount Due:</span>
+      <strong class="value">#2,000</strong>
+    </div>
+
+    <div class="buttons">
+      <button class="btn primary" (click)="payNow()">Pay Now</button>
+      <button class="btn secondary" (click)="goBack()">Back to Dashboard</button>
+    </div>
+
+    <p class="support">
+      Need help? <a [routerLink]="['/support']">Contact support</a>
+    </p>
+  </div>
+</div>
+
+
+<!--  -->
+<!-- {{ amountDue | currency }} -->

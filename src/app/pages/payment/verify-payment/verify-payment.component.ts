@@ -6,11 +6,10 @@ import { CommonModule } from '@angular/common';
 import { apiResponse } from '../../../models/interfaces/apiResponse';
 
 @Component({
-  selector: 'app-verify-payment',
-  standalone: true,
-  imports: [CommonModule, RouterLink],
-  templateUrl: './verify-payment.component.html',
-  styleUrl: './verify-payment.component.css'
+    selector: 'app-verify-payment',
+    imports: [CommonModule],
+    templateUrl: './verify-payment.component.html',
+    styleUrl: './verify-payment.component.css'
 })
 export class VerifyPaymentComponent implements OnInit {
   verifyingPayment: boolean = true;

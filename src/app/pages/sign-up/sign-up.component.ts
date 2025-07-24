@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth_service/auth.service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 import { SignUpModel } from '../../models/classes/SignUp';
 import { CommonModule } from '@angular/common';
 import { AcademicQualificationModel } from '../../models/classes/academicQualification';
@@ -8,6 +8,7 @@ import { apiResponse } from '../../models/interfaces/apiResponse';
 import { FormsModule } from '@angular/forms';
 import { LevelService } from '../../services/level_service/level.service';
 import { LevelResponseModel } from '../../models/classes/level';
+import { HeaderComponent } from "../header/header.component";
 
 
 
@@ -15,13 +16,22 @@ import { LevelResponseModel } from '../../models/classes/level';
 
 
 @Component({
-  selector: 'app-sign-up',
-  standalone: true,
-  imports: [FormsModule, CommonModule],
-  templateUrl: './sign-up.component.html',
-  styleUrl: './sign-up.component.css'
+    selector: 'app-sign-up',
+    imports: [FormsModule, CommonModule, RouterModule],
+    templateUrl: './sign-up.component.html',
+    styleUrl: './sign-up.component.css'
 })
 export class SignUpComponent implements OnInit {
+  activeLink: string = 'sign-up'; // Default active link
+
+  setActive(link: string): void {
+    console.log('Setting active link to:', link);
+    this.activeLink = link;
+  }
+
+  isActive(link: string): boolean {
+    return this.activeLink === link;
+  }
 
   stepsList: any[] = [
     { stepName: "Basic Details", isComplete: false },
@@ -30,6 +40,8 @@ export class SignUpComponent implements OnInit {
   ];
 
   activeStep: any = this.stepsList[0];
+  showIntro: boolean = true; 
+
 
   setActiveStep(step: any) {
     this.activeStep = step;
@@ -37,6 +49,7 @@ export class SignUpComponent implements OnInit {
 
   authService = inject(AuthService)
   levelService = inject(LevelService)
+  router = inject(Router)
   signUpObj: SignUpModel = new SignUpModel();
   qualificationObj: AcademicQualificationModel = new AcademicQualificationModel();
 
@@ -77,6 +90,14 @@ export class SignUpComponent implements OnInit {
     this.stepperCompletionValue = 101
   }
 
+  gotoPreviousStep() {
+    const currentIndex = this.stepsList.indexOf(this.activeStep);
+    if (currentIndex > 0) {
+      this.activeStep = this.stepsList[currentIndex - 1];
+    }
+  }
+
+
   showPassword1: boolean = false;
   showPassword2: boolean = false;
 
@@ -101,6 +122,7 @@ export class SignUpComponent implements OnInit {
     this.authService.signUp(this.signUpObj).subscribe((response: apiResponse) => {
       if (response.isSuccessful) {
         alert(response.message)
+        this.router.navigateByUrl("sign-in");
         console.log('User registered successfully:', response);
         console.log('Form Submitted:', this.signUpObj);
       } else {
@@ -144,7 +166,6 @@ export class SignUpComponent implements OnInit {
   getLevels() {
     this.levelService.getLevels().subscribe((res: apiResponse) => {
       if (res.isSuccessful) {
-        alert(res.message)
         this.levels = res.data
       } else {
         alert(res.message)

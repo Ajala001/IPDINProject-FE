@@ -1,23 +1,23 @@
 import { Component } from '@angular/core';
-import { SidebarComponent } from '../sidebars/sidebar/sidebar.component';
 import { HeaderComponent } from "../header/header.component";
+import { AdminNavbarComponent } from "../sidebars/admin-navbar/admin-navbar.component";
 import { RouterOutlet } from '@angular/router';
 
 
 
+
 @Component({
-  selector: 'app-layout',
-  standalone: true,
-  imports: [HeaderComponent, SidebarComponent, RouterOutlet],
-  templateUrl: './layout.component.html',
-  styleUrl: './layout.component.css'
+    selector: 'app-layout',
+    imports: [HeaderComponent, AdminNavbarComponent, RouterOutlet],
+    templateUrl: './layout.component.html',
+    styleUrl: './layout.component.css'
 })
 export class LayoutComponent {
 
-  isSidebarCollapsed = false;
+  isSidebarOpen = true;
 
   toggleSidebar() {
-    this.isSidebarCollapsed = !this.isSidebarCollapsed;
+    this.isSidebarOpen = !this.isSidebarOpen;
   }
 }
 

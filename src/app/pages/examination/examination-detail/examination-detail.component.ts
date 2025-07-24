@@ -8,11 +8,10 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../services/auth_service/auth.service';
 
 @Component({
-  selector: 'app-examination-detail',
-  standalone: true,
-  imports: [FormsModule, RouterModule, CommonModule],
-  templateUrl: './examination-detail.component.html',
-  styleUrl: './examination-detail.component.css'
+    selector: 'app-examination-detail',
+    imports: [FormsModule, RouterModule, CommonModule],
+    templateUrl: './examination-detail.component.html',
+    styleUrl: './examination-detail.component.css'
 })
 export class ExaminationDetailComponent {
 

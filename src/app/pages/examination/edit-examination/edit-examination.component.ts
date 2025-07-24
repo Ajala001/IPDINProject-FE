@@ -9,11 +9,10 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-edit-examination',
-  standalone: true,
-  imports: [FormsModule, CommonModule],
-  templateUrl: './edit-examination.component.html',
-  styleUrl: './edit-examination.component.css'
+    selector: 'app-edit-examination',
+    imports: [FormsModule, CommonModule],
+    templateUrl: './edit-examination.component.html',
+    styleUrl: './edit-examination.component.css'
 })
 export class EditExaminationComponent implements OnInit {
 
@@ -41,6 +40,7 @@ export class EditExaminationComponent implements OnInit {
     examTime: '',
     examYear: 0,
     fee: '',
+    applicationFee: '',
     status: 0,
     courses: [] // This will store the courses assigned to this exam
   };
@@ -50,7 +50,7 @@ export class EditExaminationComponent implements OnInit {
     examDateAndTime: '',
     examYear: 0,
     fee: 0,
-    courses: [] // This will store selected course IDs
+    selectedCourses: [] // This will store selected course IDs
   };
 
 
@@ -78,8 +78,8 @@ export class EditExaminationComponent implements OnInit {
                 examTitle: this.examResponse.examTitle,
                 examDateAndTime: this.formatDateAndTime(examDateAndTime),
                 examYear: this.examResponse.examYear,
-                fee: 0,
-                courses: this.examResponse.courses.map(course => course.id), // Store selected course IDs
+                fee: this.cleanCurrency(this.examResponse.fee),
+                selectedCourses: this.examResponse.courses.map(course => course.id), // Store selected course IDs
               };
             },
             error: (error) => {
@@ -101,36 +101,27 @@ export class EditExaminationComponent implements OnInit {
     const target = event.target as HTMLInputElement; // Type assertion
     const isChecked = target.checked; // Now you can safely access 'checked'
 
-    const index = this.exam.courses.indexOf(courseId);
-    console.log('Toggling course:', courseId, 'Current courses:', this.exam.courses);
+    const index = this.exam.selectedCourses.indexOf(courseId);
+    console.log('Toggling course:', courseId, 'Current courses:', this.exam.selectedCourses);
 
     if (isChecked) {
         // Add the course if it's not already selected
         if (index === -1) {
-            this.exam.courses.push(courseId);
-            console.log('Course added:', this.exam.courses);
+            this.exam.selectedCourses.push(courseId);
+            console.log('Course added:', this.exam.selectedCourses);
         }
     } else {
         // Remove the course if it's already selected
         if (index !== -1) {
-            this.exam.courses.splice(index, 1);
-            console.log('Course removed:', this.exam.courses);
+            this.exam.selectedCourses.splice(index, 1);
+            console.log('Course removed:', this.exam.selectedCourses);
         }
     }
 }
 
-
-
-
-
 updateExamination(): void {
   if (this.examId && this.exam) {
       if (confirm(`Are you sure you want to update the examination: ${this.exam.examTitle}?`)) {
-          this.exam.fee = Number(this.examResponse.fee);
-          
-          // Make sure to log the selected courses before the API call
-          console.log('Selected course IDs:', this.exam.courses);
-          
           // Send the update request with the exam object, which includes the checked course IDs
           this.examService.updateExaminationById(this.examId, this.exam).subscribe({
               next: () => {
@@ -159,4 +150,13 @@ updateExamination(): void {
     // Format as YYYY-MM-DDTHH:MM
     return `${year}-${month}-${day}T${hours}:${minutes}`;
   }
+
+  cleanCurrency(value: string): number {
+    if (!value) return 0;
+    // Remove commas and currency symbols like ₦, $, #
+    const cleaned = value.replace(/[₦#$,]/g, '').trim();
+    const parsed = parseFloat(cleaned);
+    return isNaN(parsed) ? 0 : parsed;
+  }
+  
 }

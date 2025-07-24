@@ -7,11 +7,10 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-create-qualification',
-  standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule],
-  templateUrl: './create-qualification.component.html',
-  styleUrl: './create-qualification.component.css'
+    selector: 'app-create-qualification',
+    imports: [FormsModule, CommonModule, RouterModule],
+    templateUrl: './create-qualification.component.html',
+    styleUrl: './create-qualification.component.css'
 })
 export class CreateQualificationComponent implements OnInit{
 

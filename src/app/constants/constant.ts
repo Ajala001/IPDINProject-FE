@@ -7,6 +7,8 @@ export const apiEndpoints =
     forgetPasswordUrl: '/auth/forgetPassword',
     resetPasswordUrl: '/auth/resetPassword',
     changePasswordUrl: '/auth/changePassword',
+    refreshToken: '/auth/refresh',
+    revokeToken: (userEmail: string) => `/auth/revoke/admin/${userEmail}`,
 
     //Application
     createApplicationUrl: '/applications',
@@ -58,6 +60,7 @@ export const apiEndpoints =
     verifyPaymentUrl: '/payments/verify',
     searchPaymentsUrl: '/payments/search',
     getUserPaymentsUrl: '/payments/user',
+    getPaymentDetails: (token: string) => `/payments/details?token=${token}`,
     getPaymentsByRefNoUrl: (refNo: string) => `/payments/${refNo}`,
     deletePaymentUrl: (refNo: string) => `/payments/${refNo}`,
     updatePaymentUrl: (refNo: string) => `/payments/${refNo}`,
@@ -81,7 +84,7 @@ export const apiEndpoints =
     getResultByIdUrl: (id: string) => `/results/${id}`,
     searchResultsUrl: '/results/search',
     downloadResultUrl: (id: string) => `/results/download/${id}`,
-    getStudentResultsUrl: (memNo: string) => `/results/member/${memNo}`,
+    getStudentResultsUrl: (memNo: string) => `/results/member/${encodeURIComponent(memNo)}`,
     getResultsByBatchUrl: (batchId: string) => `/results/batch/${batchId}`,
     UpdateStudentResultUrl: (memNo: string) => `/results/${memNo}`,
     deleteStudentResultUrl: (memNo: string) => `/results/${memNo}`,

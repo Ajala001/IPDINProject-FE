@@ -3,5 +3,5 @@ export interface ExaminationUpdateModel {
     examYear: number
     fee: number
     examDateAndTime: string,
-    courses: string[]
+    selectedCourses: string[]
   }

@@ -44,7 +44,7 @@
                     <td>{{ item.payerFullName }}</td>
                     <td>{{ item.paymentFor }}</td>
                     <td>{{ item.paymentRef }}</td>
-                    <td>{{ item.createdAt | date:'medium'}}</td>
+                    <td>{{ item.createdAt }}</td>
                     <td>
                         <button class="btn btn-primary" [routerLink]="['/payments', item.paymentRef]">Detail</button>
                         <button class="btn btn-danger" *ngIf="isAdmin" [routerLink]="['/payments', item.paymentRef, 'delete']">Delete</button>

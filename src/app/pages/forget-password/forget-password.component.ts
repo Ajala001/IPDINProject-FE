@@ -5,11 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-forget-password',
-  standalone: true,
-  imports: [FormsModule, CommonModule],
-  templateUrl: './forget-password.component.html',
-  styleUrl: './forget-password.component.css'
+    selector: 'app-forget-password',
+    imports: [FormsModule, CommonModule],
+    templateUrl: './forget-password.component.html',
+    styleUrl: './forget-password.component.css'
 })
 
 

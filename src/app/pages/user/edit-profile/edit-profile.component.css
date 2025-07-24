@@ -45,14 +45,14 @@
     width: 90px; /* reduced size */
     height: 90px; /* reduced size */
     object-fit: cover;
-    border: 3px solid darkred; /* Dark red border for profile picture */
+    border: 3px solid darkblue; /* Dark red border for profile picture */
     margin-bottom: 10px; /* reduced margin */
 }
 
 .full-name {
     font-size: 22px; /* reduced font size */
     font-weight: bold;
-    color: darkred; /* Dark red for name */
+    color: darkblue; /* Dark red for name */
     margin: 5px 0; /* reduced margin */
 }
 
@@ -65,7 +65,7 @@
 label {
     display: block;
     font-weight: bold;
-    color: darkred; /* Dark red for labels */
+    color: darkblue; /* Dark red for labels */
     margin-bottom: 3px; /* reduced margin */
 }
 
@@ -87,7 +87,7 @@ input[type="text"]:focus,
 input[type="date"]:focus,
 input[type="number"]:focus,
 input[type="file"]:focus {
-    border-color: darkred; /* Dark red on focus */
+    border-color: darkblue; /* Dark red on focus */
     outline: none;
     box-shadow: 0 0 5px rgba(0, 0, 128, 0.2);
 }
@@ -103,10 +103,10 @@ input[type="file"]:focus {
 }
 
 h2 {
-    color: darkred;
+    color: darkblue;
     margin-bottom: 10px; /* reduced margin */
     font-size: 20px; /* reduced font size */
-    border-bottom: 2px solid darkred;
+    border-bottom: 2px solid darkblue;
     display: inline-block;
     padding-bottom: 3px; /* reduced padding */
 }
@@ -118,7 +118,7 @@ h2 {
 
 /* Buttons */
 .btn-register {
-    background-color: darkred;
+    background-color: darkblue;
     color: white;
     border: none;
     padding: 10px 20px; /* reduced padding */
@@ -137,17 +137,17 @@ h2 {
 /* Back button styling */
 button[routerLink] {
     background-color: #f0f0f0;
-    color: darkred;
+    color: darkblue;
     padding: 10px 20px; /* reduced padding */
     border-radius: 4px; /* Slightly reduced border radius */
     font-weight: bold;
     text-decoration: none;
-    border: 1px solid darkred;
+    border: 1px solid darkblue;
     margin: 5px; /* reduced margin */
 }
 
 button[routerLink]:hover {
-    background-color: darkred;
+    background-color: darkblue;
     color: white;
 }
 

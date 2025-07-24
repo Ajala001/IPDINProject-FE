@@ -12,11 +12,10 @@ import { ExaminationResponseModel } from '../../../models/classes/examination';
 import { apiResponse } from '../../../models/interfaces/apiResponse';
 
 @Component({
-  selector: 'app-result-list',
-  standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
-  templateUrl: './result-list.component.html',
-  styleUrl: './result-list.component.css'
+    selector: 'app-result-list',
+    imports: [CommonModule, FormsModule, RouterModule],
+    templateUrl: './result-list.component.html',
+    styleUrl: './result-list.component.css'
 })
 export class ResultListComponent implements OnInit {
   resultService = inject(ResultServiceService);
@@ -45,15 +44,17 @@ export class ResultListComponent implements OnInit {
   }
 
   ngOnInit() {
+    debugger;
     this.route.queryParams.subscribe(params => {
       this.batchId = params['batchId'];
       this.examId = params['examId'];
-      this.membershipNumber = params['membershipNumber'];
+      debugger;
+      this.membershipNumber = params['membershipNum'];
     });
 
     if (this.batchId && this.examId) {
       this.getBatchResults();
-      this.getExamById();
+      this.getExamById(this.examId);
     }
 
     if (this.membershipNumber) {
@@ -99,34 +100,47 @@ export class ResultListComponent implements OnInit {
       this.router.navigateByUrl("dashboard");
       return;
     }
-
+  
     const params = { pageSize: this.pageSize, pageNumber: this.pageNumber };
+  
     this.resultService.getStudentResults(this.membershipNumber, params).subscribe({
       next: (response: pagedResponse) => {
-        if (response.isSuccessful) {
-          this.paginatedData = response.data;
-          this.totalCourses = response.totalRecords;
+        if (response?.isSuccessful) {
+          this.paginatedData = response.data || [];
+          this.totalCourses = response.totalRecords || 0;
           console.log("Student Results:", response);
+  
+          // Ensure examId is valid before assigning it and calling getExamById
+          if (Array.isArray(response.data) && response.data.length > 0 && typeof response.data[0]?.examId === "string") {
+            this.examId = response.data[0].examId;
+            this.getExamById(this.examId!);
+          } else {
+            console.warn("No valid examId found in the response.");
+          }
         } else {
-          alert(response.message);
+          alert(response?.message || "An error occurred while fetching results.");
           this.router.navigateByUrl("dashboard");
         }
       },
       error: (err) => {
         console.error("Error fetching student results:", err);
-        alert("An error occurred while fetching student results.");
+        alert("An error occurred while fetching student results. Please try again.");
       }
     });
   }
+  
+  
+  
+  
 
-  getExamById() {
-    if (!this.examId) {
+  getExamById(examId: string) {
+    if (!examId) {
       alert("Exam ID is required.");
       this.router.navigateByUrl("dashboard");
       return;
     }
 
-    this.examService.getExaminationById(this.examId).subscribe({
+    this.examService.getExaminationById(examId).subscribe({
       next: (response: apiResponse) => {
         if (response.isSuccessful) {
           this.exam = response.data;

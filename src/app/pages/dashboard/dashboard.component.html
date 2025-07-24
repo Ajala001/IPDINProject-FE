@@ -1,0 +1,76 @@
+<div class="container-fluid p-4">
+  <h2 class="mb-4 dashboard-title">🚗 Welcome to Your Driving School Portal <small class="text-muted fs-6">({{ today }})</small></h2>
+
+  <!-- Stats Cards -->
+  <div class="row g-4 mb-4">
+    <div class="col-md-3" *ngFor="let card of [
+      {label: 'Total Students', value: stats.students, icon: 'bi-people-fill', color: 'primary'},
+      {label: 'Instructors', value: stats.instructors, icon: 'bi-person-badge-fill', color: 'info'},
+      {label: 'Upcoming Sessions', value: stats.upcomingSessions, icon: 'bi-calendar-event-fill', color: 'warning'},
+      {label: 'Passed Tests', value: stats.passedTests, icon: 'bi-check-circle-fill', color: 'success'}
+    ]">
+      <div class="glass-card shadow-sm p-3 d-flex justify-content-between align-items-center">
+        <div>
+          <p class="text-muted mb-1">{{ card.label }}</p>
+          <h3 class="fw-bold text-{{ card.color }}">{{ card.value }}</h3>
+        </div>
+        <i class="bi {{ card.icon }} fs-2 text-{{ card.color }}"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sessions Chart -->
+  <div class="row mb-5">
+    <div class="col-12">
+      <div class="glass-card shadow-sm p-4">
+        <h5 class="mb-3">📊 Monthly Driving Sessions</h5>
+        <canvas id="sessionChart" height="100"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bookings Table -->
+  <div class="row">
+    <div class="col-12">
+      <div class="glass-card shadow-sm p-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h5 class="mb-0">🧾 Recent Bookings</h5>
+          <button class="btn btn-outline-primary btn-sm">View All</button>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-hover align-middle">
+            <thead class="table-light">
+              <tr>
+                <th>#</th>
+                <th>Student</th>
+                <th>Instructor</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let booking of recentBookings; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ booking.student }}</td>
+                <td>{{ booking.instructor }}</td>
+                <td>{{ booking.date }}</td>
+                <td>{{ booking.time }}</td>
+                <td>
+                  <span class="badge"
+                    [ngClass]="{
+                      'bg-success': booking.status === 'Completed',
+                      'bg-warning': booking.status === 'Scheduled',
+                      'bg-danger': booking.status === 'Cancelled'
+                    }">
+                    {{ booking.status }}
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,48 +1,20 @@
-<nav class="navbar navbar-expand-lg navbar-dark navbar-dark-custom">
-    <div class="d-flex justify-content-between w-100">
-        <a class="navbar-brand" href="#">
-            <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="">
-            <b>IPDIN</b>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-            aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarScroll">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" [ngClass]="{'active': isActive('home')}" (click)="setActive('home')"
-                        href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" [ngClass]="{'active': isActive('link')}" (click)="setActive('link')"
-                        href="#">Link</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                    <div class="user">
-                        <div class="user-image">
-                            <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="">
-                        </div>
-                        <div class="user-name">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <b>{{ fullName }}</b>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end"
-                                aria-labelledby="navbarScrollingDropdown">
-                                <li><a class="dropdown-item" [routerLink]="['/users', userEmail, 'detail']">Profile</a></li>
-                                <li><a class="dropdown-item" [routerLink]="['/change-password']">Change Password</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" (click)="signOut()">Sign Out</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
+
+<!-- admin-navbar.component.html -->
+<nav class="header">
+    <button class="sidebar-toggle" (click)="toggleSidebar.emit()">☰</button>
+  
+    <div class="user-menu" (click)="toggleDropdown()">
+      <img [src]="user.profilePic" class="profile-pic" />
+      <span>{{ user.fullName }}</span>
+      <i class="bi bi-chevron-down"></i>
+  
+      <ul class="dropdown" *ngIf="isDropdownOpen">
+        <li><i class="bi bi-person-circle"></i><a [routerLink]="['/users',user.email,'detail']" >Profile</a></li>
+        <li><i class="bi bi-gear"></i><a href="#">Settings</a></li>
+        <li><i class="bi bi-box-arrow-right"></i><a (click)="signOut()">Logout</a></li>
+      </ul>
     </div>
-</nav>
+  </nav>
+  
+  
+  

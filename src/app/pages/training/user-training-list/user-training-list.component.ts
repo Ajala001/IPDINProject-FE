@@ -7,11 +7,10 @@ import { TrainingResponseModel } from '../../../models/classes/training';
 import { pagedResponse } from '../../../models/interfaces/pagedResponse';
 
 @Component({
-  selector: 'app-user-training-list',
-  standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
-  templateUrl: './user-training-list.component.html',
-  styleUrl: './user-training-list.component.css'
+    selector: 'app-user-training-list',
+    imports: [CommonModule, FormsModule, RouterModule],
+    templateUrl: './user-training-list.component.html',
+    styleUrl: './user-training-list.component.css'
 })
 export class UserTrainingListComponent {
   

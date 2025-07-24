@@ -6,11 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-delet-batch-result',
-  standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule],
-  templateUrl: './delet-batch-result.component.html',
-  styleUrl: './delet-batch-result.component.css'
+    selector: 'app-delet-batch-result',
+    imports: [FormsModule, CommonModule, RouterModule],
+    templateUrl: './delet-batch-result.component.html',
+    styleUrl: './delet-batch-result.component.css'
 })
 export class DeletBatchResultComponent {
 

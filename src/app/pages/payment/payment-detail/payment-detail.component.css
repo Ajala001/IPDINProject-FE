@@ -9,7 +9,7 @@
 }
 
 .card-header {
-  border-bottom: 1px solid darkred; /* Red border under the header */
+  border-bottom: 1px solid darkblue; /* Red border under the header */
 }
 
 .list-group-item {
@@ -20,6 +20,6 @@
   width: 48%; /* Button width for even spacing */
 }
 .bg-dark-red {
-  background-color: darkred !important; /* Dark red color */
+  background-color: darkblue !important; /* Dark red color */
 }
 

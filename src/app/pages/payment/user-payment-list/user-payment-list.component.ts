@@ -7,11 +7,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-user-payment-list',
-  standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
-  templateUrl: './user-payment-list.component.html',
-  styleUrl: './user-payment-list.component.css'
+    selector: 'app-user-payment-list',
+    imports: [CommonModule, RouterModule, FormsModule],
+    templateUrl: './user-payment-list.component.html',
+    styleUrl: './user-payment-list.component.css'
 })
 export class UserPaymentListComponent {
   paymentService = inject(PaymentServiceService);

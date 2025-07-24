@@ -6,11 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-edit-training',
-  standalone: true,
-  imports: [FormsModule, CommonModule, RouterLink],
-  templateUrl: './edit-training.component.html',
-  styleUrl: './edit-training.component.css'
+    selector: 'app-edit-training',
+    imports: [FormsModule, CommonModule],
+    templateUrl: './edit-training.component.html',
+    styleUrl: './edit-training.component.css'
 })
 export class EditTrainingComponent {
   route = inject(ActivatedRoute);

@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { apiEndpoints } from '../../constants/constant';
-import { apiResponse } from '../../models/interfaces/apiResponse';
+import { apiResponse, ApiResponse } from '../../models/interfaces/apiResponse';
 import { Observable } from 'rxjs';
 import { SignUpModel } from '../../models/classes/SignUp';
 import { SignInModel } from '../../models/classes/SignIn';
 import { ResetPasswordModel } from '../../models/classes/Reset-Password';
 import { jwtDecode } from 'jwt-decode';
 import { changePasswordModel } from '../../models/classes/ChangePasswordModel';
+import { authResponse } from '../../models/interfaces/authResponse';
 
 
 
@@ -20,13 +21,12 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-
   signUp(signUpReq: SignUpModel): Observable<apiResponse> {
     return this.http.post<apiResponse>(environment.apiUrl + apiEndpoints.signUpUrl, signUpReq)
   }
 
-  signIn(signInReq: SignInModel): Observable<apiResponse> {
-    return this.http.post<apiResponse>(environment.apiUrl + apiEndpoints.signInUrl, signInReq)
+  signIn(signInReq: SignInModel): Observable<ApiResponse<authResponse>> {
+    return this.http.post<ApiResponse<authResponse>>(environment.apiUrl + apiEndpoints.signInUrl, signInReq)
   }
 
   signOut() {
@@ -52,6 +52,19 @@ export class AuthService {
   getToken(): string | null {
     return localStorage.getItem(this.tokenKey);
   }
+
+  isLoggedIn(): boolean {
+  const token = this.getToken();
+  if (!token) return false;
+
+  try {
+    const { exp } = jwtDecode<{ exp: number }>(token);
+    return Date.now() < exp * 1000;
+  } catch {
+    return false;
+  }
+}
+
 
   getUserDetailsFromToken(): any {
     const token = this.getToken();

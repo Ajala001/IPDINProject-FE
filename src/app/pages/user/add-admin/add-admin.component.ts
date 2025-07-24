@@ -7,15 +7,25 @@ import { UserService } from '../../../services/user_service/user.service';
 import { apiResponse } from '../../../models/interfaces/apiResponse';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-add-admin',
-  standalone: true,
-  imports: [FormsModule, CommonModule],
-  templateUrl: './add-admin.component.html',
-  styleUrl: './add-admin.component.css'
+    selector: 'app-add-admin',
+    imports: [FormsModule, CommonModule, RouterLink],
+    templateUrl: './add-admin.component.html',
+    styleUrl: './add-admin.component.css'
 })
 export class AddAdminComponent {
+  activeLink: string = 'users/add-admin'; // Default active link
+
+  setActive(link: string): void {
+    console.log('Setting active link to:', link);
+    this.activeLink = link;
+  }
+
+  isActive(link: string): boolean {
+    return this.activeLink === link;
+  }
 
   stepsList: any[] = [
     { stepName: "Basic Details", isComplete: false },
@@ -24,6 +34,7 @@ export class AddAdminComponent {
   ];
 
   activeStep: any = this.stepsList[0];
+  basicDetailsFields: any;
 
   setActiveStep(step: any) {
     this.activeStep = step;
@@ -43,6 +54,13 @@ export class AddAdminComponent {
     currentStep.isComplete = true;
     this.activeStep = this.stepsList[2]
     this.stepperCompletionValue = 101
+  }
+
+  gotoPreviousStep() {
+    const currentIndex = this.stepsList.indexOf(this.activeStep);
+    if (currentIndex > 0) {
+      this.activeStep = this.stepsList[currentIndex - 1];
+    }
   }
 
 

@@ -9,11 +9,10 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../services/auth_service/auth.service';
 
 @Component({
-  selector: 'app-examination-list',
-  standalone: true,
-  imports: [FormsModule, CommonModule, RouterLink],
-  templateUrl: './examination-list.component.html',
-  styleUrl: './examination-list.component.css'
+    selector: 'app-examination-list',
+    imports: [FormsModule, CommonModule, RouterLink],
+    templateUrl: './examination-list.component.html',
+    styleUrl: './examination-list.component.css'
 })
 export class ExaminationListComponent {
 

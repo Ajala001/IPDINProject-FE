@@ -6,11 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-edit-course',
-  standalone: true,
-  imports: [FormsModule, RouterModule, CommonModule],
-  templateUrl: './edit-course.component.html',
-  styleUrl: './edit-course.component.css'
+    selector: 'app-edit-course',
+    imports: [FormsModule, RouterModule, CommonModule],
+    templateUrl: './edit-course.component.html',
+    styleUrl: './edit-course.component.css'
 })
 export class EditCourseComponent implements OnInit {
   route = inject(ActivatedRoute);

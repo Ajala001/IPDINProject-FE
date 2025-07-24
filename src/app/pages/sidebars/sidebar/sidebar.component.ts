@@ -5,11 +5,10 @@ import { MemberNavbarComponent } from '../member-navbar/member-navbar.component'
 import { AuthService } from '../../../services/auth_service/auth.service';
 
 @Component({
-  selector: 'app-sidebar',
-  standalone: true,
-  imports: [AdminNavbarComponent, MemberNavbarComponent, CommonModule],
-  templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.css'
+    selector: 'app-sidebar',
+    imports: [AdminNavbarComponent, MemberNavbarComponent, CommonModule],
+    templateUrl: './sidebar.component.html',
+    styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent{
 

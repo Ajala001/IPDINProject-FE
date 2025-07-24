@@ -7,11 +7,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-user-examination-list',
-  standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
-  templateUrl: './user-examination-list.component.html',
-  styleUrl: './user-examination-list.component.css'
+    selector: 'app-user-examination-list',
+    imports: [CommonModule, FormsModule, RouterModule],
+    templateUrl: './user-examination-list.component.html',
+    styleUrl: './user-examination-list.component.css'
 })
 export class UserExaminationListComponent {
 

@@ -1,196 +1,274 @@
-<div class="progress-wrapper">
-    <div id="progress-bar-container">
-        <ul>
-            <li class="step step01" (click)="setActiveStep(step)"
-                [ngClass]="step.stepName == activeStep.stepName ? 'active' : ''" *ngFor="let step of stepsList">
-                <div class="step-inner">{{step.stepName}}</div>
-            </li>
-        </ul>
-        <div id="line">
-            <div id="line-progress" [style.width.%]="stepperCompletionValue">
-            </div>
-            <div id="progress-content-section">
-                <div class="section-content active" *ngIf="activeStep.stepName == 'Basic Details'">
-                    <div class="container-fluid">
-                        <div class="user_details">
-                            <div class="input_box">
-                                <label for="lastName">Last Name</label>
-                                <input type="text" [(ngModel)]="signUpObj.lastName" name="lastName"
-                                    placeholder="Enter your last name" required>
-                            </div>
-                            <div class="input_box">
-                                <label for="firstName">First Name</label>
-                                <input type="text" [(ngModel)]="signUpObj.firstName" name="firstName"
-                                    placeholder="Enter your first name" required>
-                            </div>
-                            <div class="input_box">
-                                <label for="email">Email</label>
-                                <input type="email" [(ngModel)]="signUpObj.email" name="email"
-                                    placeholder="Enter your email" required>
-                            </div>
-                            <div class="input_box">
-                                <label for="phoneNumber">Phone Number</label>
-                                <input type="tel" [(ngModel)]="signUpObj.phoneNumber" name="phoneNumber"
-                                    placeholder="Enter your phone number" required>
-                            </div>
-                            <div class="input_box"><label for="password">Password</label>
-                                <div class="password-container"><input [type]="showPassword1 ? 'text' : 'password'"
-                                        [(ngModel)]="signUpObj.password" name="password"
-                                        placeholder="Enter your password" required id="password">
-                                    <span class="toggle-password" (click)="togglePasswordVisibility1()">
-                                        <i [class]="showPassword1 ? 'fas fa-eye' : 'fas fa-eye-slash'"></i>
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="input_box">
-                                <label for="confirmPassword">Confirm Password</label>
-                                <div class="password-container"><input [type]="showPassword2 ? 'text' : 'password'"
-                                    [(ngModel)]="signUpObj.confirmPassword" name="confirmPassword"
-                                    placeholder="Enter your password" required id="confirmPassword">
-                                <span class="toggle-password" (click)="togglePasswordVisibility2()">
-                                    <i [class]="showPassword2 ? 'fas fa-eye' : 'fas fa-eye-slash'"></i>
-                                </span>
-                            </div>
-                            </div>
-                            <div class="input_box">
-                                <label for="stateOfResidence">State Of Residence</label>
-                                <input type="text" [(ngModel)]="signUpObj.stateOfResidence" name="stateOfResidence"
-                                    placeholder="Enter the state you reside" required>
-                            </div>
-                            <div class="input_box">
-                                <label for="country">Country</label>
-                                <input type="text" [(ngModel)]="signUpObj.country" name="country"
-                                    placeholder="Enter the country you reside" required>
-                            </div>
-                            <div class="input_box">
-                                <label for="dateOfBirth">Date Of Birth</label>
-                                <input type="date" [(ngModel)]="signUpObj.dateOfBirth" name="dateOfBirth"
-                                    placeholder="your date of birth" required>
-                            </div>
-                        </div>
-                        <div class="gender">
-                            <label for="gender">Gender</label>
-                            <select  [(ngModel)]="signUpObj.gender" name="gender" required>
-                                <option value="Select your gender" disabled selected>Select your gender</option>
-                                <option *ngFor="let option of genderOptions" [value]="option.id">{{ option.label }}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 text-end">
-                                <button class="btn btn-success" (click)="gotoStep2()">Next</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Step 2 -->
-                <div class="section-content active" *ngIf="activeStep.stepName == 'Driver Details'">
-                    <div class="container-fluid">
-                        <div class="user_details">
-                            <div class="input_box">
-                                <label for="driverLicenseNo">Driver Licence Number</label>
-                                <input type="text" [(ngModel)]="signUpObj.driverLicenseNo" name="driverLicenseNo"
-                                    placeholder="Enter your driver licence number" required>
-                            </div>
-                            <div class="input_box">
-                                <label for="yearIssued">Year Issued</label>
-                                <select [(ngModel)]="signUpObj.yearIssued" name="yearIssued" required>
-                                    <option value="" disabled selected>Select Year</option>
-                                    <option *ngFor="let year of years" [value]="year">{{ year }}</option>
-                                </select>
-                            </div>
-                            <div class="input_box">
-                                <label for="expiringDate">Expiring Date</label>
-                                <input type="date" [(ngModel)]="signUpObj.expiringDate" name="expiringDate"
-                                    placeholder="What date is it expiring" required>
-                            </div>
-                            <div class="input_box">
-                                <label for="nameOfCurrentDrivingSchool">Current Driving School</label>
-                                <input type="tel" [(ngModel)]="signUpObj.nameOfCurrentDrivingSchool"
-                                    name="nameOfCurrentDrivingSchool" placeholder="What is your current driving school"
-                                    required>
-                            </div>
-                            <div class="input_box">
-                                <label for="yearsOfExperience">Years Of Experience</label>
-                                <input type="number" [(ngModel)]="signUpObj.yearsOfExperience" name="yearsOfExperience"
-                                    placeholder="Year of Experience" required>
-                            </div>
-                            <div class="input_box">
-                                <label for="registrationTypeId">Level</label>
-                                <select [(ngModel)]="signUpObj.levelId" name="registrationTypeId" required>
-                                    <option value="" disabled selected>Select Level</option>
-                                    <option *ngFor="let level of levels" [value]="level.id">{{ level.name }}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 text-end">
-                                <button class="btn btn-success" (click)="gotoStep3()">Next</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Step 3 -->
-                <div class="section-content active" *ngIf="activeStep.stepName == 'Qualification'">
-                    <div class="container-fluid">
-                        <div class="user_details">
-                            <div class="row">
-                                <div class="col-12 text-top">
-                                    <button class="btn btn-success" (click)="addQualification()">Add</button>
-                                </div>
-                            </div>
-                            <table class="table ">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Degree</th>
-                                        <th scope="col">Field Of Study</th>
-                                        <th scope="col">Institution</th>
-                                        <th scope="col">Year Attained</th>
-                                        <th scope="col">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let qualification of signUpObj.academicQualifications; let i = index">
-                                        <td>
-                                            <input type="text" [(ngModel)]="qualification.degree" class="form-control"
-                                                placeholder="Degree" required />
-                                        </td>
-                                        <td>
-                                            <input type="text" [(ngModel)]="qualification.fieldOfStudy"
-                                                class="form-control" placeholder="Field of Study" required />
-                                        </td>
-                                        <td>
-                                            <input type="text" [(ngModel)]="qualification.institution"
-                                                class="form-control" placeholder="Institution" required />
-                                        </td>
-                                        <td>
-                                            <select class="form-select" [(ngModel)]="qualification.yearAttained"
-                                                required>
-                                                <option value="" disabled selected>Select Year</option>
-                                                <option *ngFor="let year of years" [value]="year">{{ year }}</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <button class="btn btn-primary btn-sm me-1"
-                                                    (click)="saveQualification(i)">Save</button>
-                                                <button class="btn btn-danger btn-sm"
-                                                    (click)="deleteQualification(i)">Delete</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 text-end">
-                                <button class="btn btn-success" (click)="signUp()">SignUp</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<nav class="navbar navbar-expand-lg navbar-dark navbar-dark-custom">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="assets/images/driving logo.png" alt="logo-image" class="image">
+            <b> IPDIN</b>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+            aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{'active': isActive('home')}" (click)="setActive('home')"
+                    [routerLink]="['/home']">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{'active': isActive('news')}" (click)="setActive('news')">News</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{'active': isActive('sign-in')}" (click)="setActive('sign-in')"
+                    [routerLink]="['/sign-in']">Sign In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{'active': isActive('sign-up')}" (click)="setActive('sign-up')">Sign Up</a>
+                </li>
+            </ul>
         </div>
     </div>
-</div>
+</nav>
+
+
+<div *ngIf="showIntro" class="intro-wrapper">
+    <div class="overlay">
+      <div class="intro-content container text-center">
+        <div class="header">
+            <img src="assets/images/driving logo.png" alt="Institute Logo" class="intro-logo" class="logo"/>
+  
+            <h2 class="intro-title">Welcome to the Institute of Professional Drivers’ Instructors</h2>
+        </div>
+        <hr class="hr" style="size: 200;">
+
+        <p class="intro-subtitle">Please review the membership categories before proceeding with your registration.</p>
+  
+        <div class="membership-levels">
+          <div class="level-card">
+            <h4>1. Affiliate</h4>
+            <p>Candidates of the institute's professional training or students of institutions offering professional instruction programmes.</p>
+          </div>
+  
+          <div class="level-card">
+            <h4>2. Technician</h4>
+            <p>Individuals with practical/vocational skills, minimum educational qualification (FSLC/JSSC/BECE/WAEC/NECO), and a technical/technician certificate from the institute.</p>
+          </div>
+  
+          <div class="level-card">
+            <h4>3. Member</h4>
+            <p>Holders of tertiary education (minimum NCE/ND) and a professional diploma in driving instruction from an accredited institution or the institute. This includes degree holders in Transport disciplines.</p>
+          </div>
+  
+          <div class="level-card">
+            <h4>4. Fellow</h4>
+            <p>Must have been a member for at least 10 years, with proven integrity and financial commitment to the institute.</p>
+          </div>
+  
+          <div class="level-card">
+            <h4>5. Honorary Fellow</h4>
+            <p>Individuals who have significantly contributed to driver education and road safety in Nigeria. Appointed by the Council of the Institute based on integrity and commitment.</p>
+          </div>
+        </div>
+  
+        <p class="note mt-4">
+          <strong>Note:</strong> Monthly dues vary depending on the level you register for.
+        </p>
+  
+        <button class="btn btn-primary btn-lg mt-4" (click)="showIntro = false">Proceed to Register</button>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  <div *ngIf="!showIntro" class="progress-wrapper">
+    <div id="progress-bar-container">
+      <ul class="steps-list">
+        <li *ngFor="let step of stepsList" class="step" (click)="setActiveStep(step)" [ngClass]="{ 'active': step.stepName === activeStep.stepName }">
+          <div class="step-inner">{{ step.stepName }}</div>
+        </li>
+      </ul>
+  
+      <div id="progress-content-section">
+        <!-- Step 1: Basic Details -->
+        <div *ngIf="activeStep.stepName === 'Basic Details'" class="section-content active">
+          <div class="form-container">
+            <!-- First Name and Last Name -->
+            <div class="form-group-wrapper">
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" [(ngModel)]="signUpObj.lastName" name="lastName" placeholder="Enter your last name" required>
+              </div>
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" [(ngModel)]="signUpObj.firstName" name="firstName" placeholder="Enter your first name" required>
+              </div>
+            </div>
+  
+            <!-- Email and Phone Number -->
+            <div class="form-group-wrapper">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" [(ngModel)]="signUpObj.email" name="email" placeholder="Enter your email" required>
+              </div>
+              <div class="form-group">
+                <label for="phoneNumber">Phone Number</label>
+                <input type="tel" [(ngModel)]="signUpObj.phoneNumber" name="phoneNumber" placeholder="Enter your phone number" required>
+              </div>
+            </div>
+  
+            <!-- Password and Confirm Password -->
+            <div class="form-group-wrapper">
+              <div class="form-group password-group">
+                <label for="password">Password</label>
+                <div class="password-container">
+                  <input [type]="showPassword1 ? 'text' : 'password'" [(ngModel)]="signUpObj.password" name="password" placeholder="Enter your password" required>
+                  <span class="toggle-password" (click)="togglePasswordVisibility1()">
+                    <i [class]="showPassword1 ? 'fas fa-eye' : 'fas fa-eye-slash'"></i>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group password-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <div class="password-container">
+                  <input [type]="showPassword2 ? 'text' : 'password'" [(ngModel)]="signUpObj.confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                  <span class="toggle-password" (click)="togglePasswordVisibility2()">
+                    <i [class]="showPassword2 ? 'fas fa-eye' : 'fas fa-eye-slash'"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+  
+            <!-- State of Residence and Country -->
+            <div class="form-group-wrapper">
+              <div class="form-group">
+                <label for="stateOfResidence">State Of Residence</label>
+                <input type="text" [(ngModel)]="signUpObj.stateOfResidence" name="stateOfResidence" placeholder="Enter your state" required>
+              </div>
+              <div class="form-group">
+                <label for="country">Country</label>
+                <input type="text" [(ngModel)]="signUpObj.country" name="country" placeholder="Enter your country" required>
+              </div>
+            </div>
+  
+            <!-- Date of Birth and Gender -->
+            <div class="form-group-wrapper">
+              <div class="form-group">
+                <label for="dateOfBirth">Date Of Birth</label>
+                <input type="date" [(ngModel)]="signUpObj.dateOfBirth" name="dateOfBirth" placeholder="Your date of birth" required>
+              </div>
+              <div class="form-group">
+                <label for="gender">Gender</label>
+                <select [(ngModel)]="signUpObj.gender" name="gender" required>
+                  <option value="" disabled selected>Select your gender</option>
+                  <option *ngFor="let option of genderOptions" [value]="option.id">{{ option.label }}</option>
+                </select>
+              </div>
+            </div>
+  
+            <!-- Navigation Buttons -->
+            <div class="form-actions">
+              <button class="btn btn-outline-secondary btn-sm mt-4" (click)="showIntro = true">Back</button>
+              <button class="btn btn-primary btn-sm mt-4" (click)="gotoStep2()">Next</button>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Step 2: Driver Details -->
+        <div *ngIf="activeStep.stepName === 'Driver Details'" class="section-content active" style="background-image: url('path_to_image.jpg'); background-size: cover; background-position: center;">
+          <div class="form-container">
+            <!-- Driver License No. and Year Issued -->
+            <div class="form-group-wrapper">
+              <div class="form-group">
+                <label for="driverLicenseNo">Driver Licence Number</label>
+                <input type="text" [(ngModel)]="signUpObj.driverLicenseNo" name="driverLicenseNo" placeholder="Enter your driver license number" required>
+              </div>
+              <div class="form-group">
+                <label for="yearIssued">Year Issued</label>
+                <select [(ngModel)]="signUpObj.yearIssued" name="yearIssued" required>
+                  <option value="" disabled selected>Select Year</option>
+                  <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+                </select>
+              </div>
+            </div>
+  
+            <!-- Expiring Date and Driving School -->
+            <div class="form-group-wrapper">
+              <div class="form-group">
+                <label for="expiringDate">Expiring Date</label>
+                <input type="date" [(ngModel)]="signUpObj.expiringDate" name="expiringDate" placeholder="What date is it expiring" required>
+              </div>
+              <div class="form-group">
+                <label for="nameOfCurrentDrivingSchool">Current Driving School</label>
+                <input type="text" [(ngModel)]="signUpObj.nameOfCurrentDrivingSchool" name="nameOfCurrentDrivingSchool" placeholder="Your current driving school" required>
+              </div>
+            </div>
+  
+            <!-- Years of Experience and Level -->
+            <div class="form-group-wrapper">
+              <div class="form-group">
+                <label for="yearsOfExperience">Years Of Experience</label>
+                <input type="number" [(ngModel)]="signUpObj.yearsOfExperience" name="yearsOfExperience" placeholder="Years of experience" required>
+              </div>
+              <div class="form-group">
+                <label for="levelId">Level</label>
+                <select [(ngModel)]="signUpObj.levelId" name="levelId" required>
+                  <option value="" disabled selected>Select Level</option>
+                  <option *ngFor="let level of levels" [value]="level.id">{{ level.name }}</option>
+                </select>
+              </div>
+            </div>
+  
+            <!-- Navigation Buttons -->
+            <div class="form-actions">
+              <button class="btn btn-outline-secondary btn-sm" (click)="gotoPreviousStep()">Back</button>
+              <button class="btn btn-primary" (click)="gotoStep3()">Next</button>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Step 3: Qualifications -->
+        <div *ngIf="activeStep.stepName === 'Qualification'" class="section-content active" style="background-image: url('path_to_image.jpg'); background-size: cover; background-position: center;">
+          <div class="form-container">
+            <button class="btn btn-outline-success mb-4" (click)="addQualification()">Add Qualification</button>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Degree</th>
+                  <th>Field Of Study</th>
+                  <th>Institution</th>
+                  <th>Year Attained</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let qualification of signUpObj.academicQualifications; let i = index">
+                  <td><input type="text" [(ngModel)]="qualification.degree" class="form-control" placeholder="Degree" required /></td>
+                  <td><input type="text" [(ngModel)]="qualification.fieldOfStudy" class="form-control" placeholder="Field of Study" required /></td>
+                  <td><input type="text" [(ngModel)]="qualification.institution" class="form-control" placeholder="Institution" required /></td>
+                  <td>
+                    <select class="form-control" [(ngModel)]="qualification.yearAttained" required>
+                      <option value="" disabled selected>Select Year</option>
+                      <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+                    </select>
+                  </td>
+                  <td>
+                    <div class="action-buttons">
+                      <button class="btn btn-primary btn-sm" (click)="saveQualification(i)">Save</button> ||
+                      <button class="btn btn-danger btn-sm" (click)="deleteQualification(i)">Delete</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+  
+            <div class="form-actions">
+              <button class="btn btn-outline-secondary" (click)="gotoPreviousStep()">Back</button>
+              <button class="btn btn-success" (click)="signUp()">Sign Up</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

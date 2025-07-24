@@ -4,24 +4,33 @@
       <div class="card-header bg-primary text-white text-center" style="border-radius: 12px 12px 0 0;">
         <h2 class="card-title mb-0">Training Details</h2>
       </div>
-      <img src="assets/images/pexels-brettjordan-917832.jpg" class="card-img-top course-image mt-3 mx-auto" alt="Course-image" style="border-radius: 8px; max-height: 300px; object-fit: cover;">
-      
+      <img src="assets/images/pexels-brettjordan-917832.jpg" class="card-img-top course-image mt-3 mx-auto"
+        alt="Course-image" style="border-radius: 8px; max-height: 300px; object-fit: cover;">
+
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><b>Training Title: </b>{{ training.title }}</li>
-        <li class="list-group-item"><b>Training Starting Date And Time: </b>{{ training.startingDateAndTime | date:'medium' }}</li>
-        <li class="list-group-item"><b>Training Ending Date And Time: </b>{{ training.endingDateAndTime | date:'medium' }}</li>
-        <li class="list-group-item"><b>Training Registration Deadline: </b>{{ training.registrationDeadline | date:'medium' }}</li>
+        <li class="list-group-item"><b>Training Starting Date And Time: </b>{{ training.startingDateAndTime |
+          date:'medium' }}</li>
+        <li class="list-group-item"><b>Training Ending Date And Time: </b>{{ training.endingDateAndTime | date:'medium'
+          }}</li>
+        <li class="list-group-item"><b>Training Registration Deadline: </b>{{ training.registrationDeadline |
+          date:'medium' }}</li>
         <li class="list-group-item"><b>Training Duration: </b>{{ training.duration }} Days</li>
         <li class="list-group-item"><b>Training Fee: </b>{{ training.fee}}</li>
         <li class="list-group-item"><b>Training Capacity: </b>{{ training.capacity }} participants</li>
         <li class="list-group-item"><b>Training Category: </b>{{ trainingCategoryMap[training.category] }}</li>
         <li class="list-group-item"><b>Training Status: </b>{{ trainingStatusMap[training.status] }}</li>
       </ul>
-      
+
       <div class="card-body text-center">
         <button class="btn btn-outline-primary mx-2" [routerLink]="['/trainings']">Back</button>
-        <button class="btn btn-outline-warning mx-2" *ngIf="isAdmin" [routerLink]="['/trainings', training.id, 'edit']">Edit</button>
-        <button class="btn btn-outline-success mx-2" *ngIf="!isAdmin" [routerLink]="['/payments/initiate', training.id]" [queryParams]="{ reason: 'Training' }">Proceed to Payment</button>
+        <button class="btn btn-outline-warning mx-2" *ngIf="isAdmin"
+          [routerLink]="['/trainings', training.id, 'edit']">Edit</button>
+        <button class="btn btn-primary mx-2" *ngIf="!isAdmin" [routerLink]="['/applications', training.id, 'create']"
+          [queryParams]="{ paymentType: 'Training' }">
+          Apply
+        </button>
+
       </div>
     </div>
   </div>

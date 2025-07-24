@@ -3,10 +3,10 @@ import { ApplicationResponseModel } from '../../../models/classes/application';
 import { ApplicationServiceService } from '../../../services/application_service/application-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../services/auth_service/auth.service';
 
 @Component({
   selector: 'app-delete-application',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './delete-application.component.html',
   styleUrl: './delete-application.component.css'
@@ -26,8 +26,15 @@ export class DeleteApplicationComponent {
     3: 'Rejected',
   };
 
+  isAdmin: boolean = false;
+  authService = inject(AuthService)
+  userDetails: any;
+  role: string = "";
 
   ngOnInit(): void {
+
+    this.checkUserRole();
+
     this.applicationId = this.route.snapshot.paramMap.get('id');
 
     // Fetch the course details using the course ID
@@ -50,7 +57,10 @@ export class DeleteApplicationComponent {
         this.applicationService.deleteApplicationById(this.applicationId).subscribe({
           next: () => {
             alert('Application deleted successfully!');
-            this.router.navigate(['/applications']);
+            if(this.isAdmin){
+              this.router.navigate(['/applications']);
+            }
+            this.router.navigate(['/applications-user'])
           },
           error: (error) => {
             alert('An error occurred while deleting the application.');
@@ -62,6 +72,16 @@ export class DeleteApplicationComponent {
   }
 
   cancelDelete(): void {
-    this.router.navigate(['/applications']); // Navigate back to the applications list
+    if(this.isAdmin){
+      this.router.navigate(['/applications']);
+    }
+    this.router.navigate(['/applications-user']) // Navigate back to the applications list
   }
+
+  checkUserRole() {
+    this.userDetails = this.authService.getUserDetailsFromToken();
+    const role = this.userDetails["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+    this.isAdmin = role === 'Admin';
+  }
+
 }

@@ -1,10 +1,10 @@
 export class PaymentModel {
-    entityId: string
-    reasonForPayment: string
+    serviceId: string
+    paymentType: number
 
     constructor(){
-        this.entityId = "";
-        this.reasonForPayment = "";
+        this.serviceId = "";
+        this.paymentType = 0;
     }
   }
 

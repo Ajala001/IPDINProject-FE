@@ -1,0 +1,58 @@
+<div class="container" *ngIf="!isLoading && !errorMessage">
+  <div class="service-card">
+    <h1 class="page-header">Service Summary</h1>
+    <p class="page-subtext">Review your service details below before proceeding.</p>
+
+    <!-- Conditional Title -->
+    <div class="service-title">
+      {{ isTraining ? training.title : exam.examTitle }}
+    </div>
+
+    <!-- Conditional Description -->
+    <p class="service-description">
+      {{ isTraining ? training.description : 'Official examination service details.' }}
+    </p>
+
+    <!-- Service Info Box -->
+    <div class="service-info">
+      <!-- Training Details -->
+      <ng-container *ngIf="isTraining; else examInfo">
+        <div><strong>Fee:</strong> {{ training.fee }}</div>
+        <div><strong>Start:</strong> {{ training.startingDateAndTime }}</div>
+        <div><strong>End:</strong> {{ training.endingDateAndTime }}</div>
+        <div><strong>Deadline:</strong> {{ training.registrationDeadline }}</div>
+        <div><strong>Duration:</strong> {{ training.duration }} hours</div>
+        <div><strong>Capacity:</strong> {{ training.capacity }}</div>
+      </ng-container>
+
+      <!-- Exam Details -->
+      <ng-template #examInfo>
+        <div><strong>Date:</strong> {{ exam.examDate }} at {{ exam.examTime }}</div>
+        <div><strong>Year:</strong> {{ exam.examYear }}</div>
+        <div><strong>Fee:</strong> {{ exam.fee }}</div>
+        <div><strong>Application Fee:</strong> {{ exam.applicationFee }}</div>
+        <div><strong>Courses:</strong></div>
+        <ul>
+          <li *ngFor="let course of exam.courses">
+            {{ course.courseCode }} - {{ course.courseTitle }}
+          </li>
+        </ul>
+      </ng-template>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="button-group">
+      <button class="btn cancel" (click)="onCancel()">Cancel</button>
+      <button class="btn pay" (click)="onPayNow()">Proceed to Pay</button>
+    </div>
+  </div>
+</div>
+
+<!-- Loading & Error -->
+<div *ngIf="isLoading" class="loading-msg">
+  Loading service details...
+</div>
+
+<div *ngIf="errorMessage" class="error-message">
+  {{ errorMessage }}
+</div>

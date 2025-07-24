@@ -9,11 +9,10 @@ import { pagedResponse } from '../../../models/interfaces/pagedResponse';
 import { SearchQueryModel } from '../../../models/classes/searchQuery';
 
 @Component({
-  selector: 'app-batch-result-list',
-  standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule],
-  templateUrl: './batch-result-list.component.html',
-  styleUrl: './batch-result-list.component.css'
+    selector: 'app-batch-result-list',
+    imports: [FormsModule, CommonModule, RouterModule],
+    templateUrl: './batch-result-list.component.html',
+    styleUrl: './batch-result-list.component.css'
 })
 export class BatchResultListComponent {
 

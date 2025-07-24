@@ -1,9 +1,9 @@
 <div class="parent">
-    <div class="container">
+    <div class="container" id="result">
         <header>
             <h1>THE FEDERAL POLYTECHNIC, ILARO</h1>
             <h2>Statement of Examination Results</h2>
-            <p>{{exam.examTitle}} {{exam.examYear}}</p>
+            <!-- <p>{{exam.examTitle}} {{exam.examYear}}</p> -->
         </header>
 
         <section class="student-info">
@@ -14,8 +14,9 @@
                 <p><strong>Email:</strong> {{result.email}}</p>
             </div>
             <div class="student-image">
-                <img [src]="result.profilePic || 'default-image-path.jpg'" alt="Profile Picture" class="profile-pic">
-            </div>
+                <img [src]="result.profilePic || 'assets/images/default-profile.jpg'" alt="Profile Picture"
+                     class="profile-pic">
+            </div>          
         </section>
 
         <section class="result-details">
@@ -59,7 +60,7 @@
     </div>
 
     <div class="buttons-container">
-        <button class="download-btn" (click)="onDownloadClick(result.id)">Download</button>
-        <button class="back-btn" (click)="goBack(result.batchId)">Back</button>
+        <button class="download-btn" (click)="downloadResult()">Download</button>
+        <button class="back-btn" (click)="goBack(result.batchId, result.membershipNumber)">Back</button>
     </div>
 </div>

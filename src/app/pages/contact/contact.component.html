@@ -1,67 +1,90 @@
+<div class="page-container">
+  <section class="contact-sec sec-pad">
+    <div class="container">
+      <div class="section-title text-center">
+        Contact Us
+      </div>
+      <p class="text-center" style="max-width: 700px; margin: 0 auto 40px; font-size: 16px;">
+        We'd love to hear from you! Whether you have a question about services, pricing, need support, or anything else—our team is ready to answer all your questions.
+      </p>
 
+      <ul class="contact-ul text-center">
+        <li><i class="fas fa-map-marker-alt"></i> 123 Business Street, Abeokuta, Nigeria</li>
+        <li><i class="fas fa-envelope"></i> contactexample.com</li>
+        <li><i class="fas fa-phone"></i> +234 800 000 0000</li>
+      </ul>
 
-  <div class="page-container">
-    <section class="contact-sec sec-pad">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="contact-detail">
-                <h1 class="section-title">Contact us</h1>
-      
-                <ul class="contact-ul">
-                  <li><i class="fa fa-location-dot"></i> 91, Ram Nagar, Ram Mandir, Delhi</li>
-      
-                  <li>
-                    <i class="fa fa-phone"></i>
-                    <a href="tel:08510004495"><b>0255000XXXX</b></a>,
-                    <a href="tel:08510005495"><b>0251600XXXX</b></a>
-                  </li>
-      
-                  <li>
-                    <i class="fa-solid fa-envelope"></i>
-                    <a href="mailto:pardeepkumar4bjp@gmail.com"><b> demounknowngmail.com</b></a>
-                  </li>
-                </ul>
-      
-                <span>
-                  <a href="#" class="fb"><i class="fa-brands fa-facebook"></i></a>
-                  <a href="#" class="insta"><i class="fa-brands fa-instagram"></i></a>
-                  <a href="#" class="twitter"><i class="fa-brands fa-twitter"></i></a>
-                </span>
+      <div class="row align-items-stretch mt-5">
+        <!-- Image Section -->
+        <div class="col-md-6 image-box d-flex align-items-stretch">
+          <img src="assets/images/man-making-plans-renovate-house-using-laptop-smartphone.jpg" alt="Contact support" class="contact-img w-100 h-100" style="object-fit: cover;" />
+        </div>
+
+        <!-- Form Section -->
+        <div class="col-md-6 d-flex align-items-stretch">
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contFrm w-100">
+            
+
+            <div class="form-header">
+              <h2 class="form-title">Send Us a Message</h2>
+              <img src="assets/images/person-working-desk-vintage-90-s-style-office.jpg" alt="Email Icon" class="image" />
+             
+            </div>
+            
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <input type="text" formControlName="name" placeholder="Your Name" class="inptFld" />
+                <div *ngIf="f['name'].touched && f['name'].invalid" class="error-message">
+                  <small *ngIf="f['name'].errors?.['required']">Name is required.</small>
+                  <small *ngIf="f['name'].errors?.['minlength']">Name must be at least 3 characters.</small>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <input type="email" formControlName="email" placeholder="Email Address" class="inptFld" />
+                <div *ngIf="f['email'].touched && f['email'].invalid" class="error-message">
+                  <small *ngIf="f['email'].errors?.['required']">Email is required.</small>
+                  <small *ngIf="f['email'].errors?.['email']">Enter a valid email.</small>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <input type="tel" formControlName="phone" placeholder="Phone Number" class="inptFld" />
+                <div *ngIf="f['phone'].touched && f['phone'].invalid" class="error-message">
+                  <small *ngIf="f['phone'].errors?.['required']">Phone number is required.</small>
+                  <small *ngIf="f['phone'].errors?.['pattern']">Must be 10 digits.</small>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <input type="text" formControlName="subject" placeholder="Subject" class="inptFld" />
+                <div *ngIf="f['subject'].touched && f['subject'].invalid" class="error-message">
+                  <small *ngIf="f['subject'].errors?.['required']">Subject is required.</small>
+                </div>
+              </div>
+              <div class="col-12">
+                <textarea formControlName="message" placeholder="Your Message..." class="inptFld"></textarea>
+                <div *ngIf="f['message'].touched && f['message'].invalid" class="error-message">
+                  <small *ngIf="f['message'].errors?.['required']">Message is required.</small>
+                  <small *ngIf="f['message'].errors?.['minlength']">At least 10 characters.</small>
+                </div>
+              </div>
+
+              <!-- Upload Document -->
+              <div class="col-12">
+                <label for="document" style="margin-bottom: 8px; display: block; font-weight: 500; color: #003366;">Upload Document (optional)</label>
+                <input type="file" id="document" class="inptFld" />
+              </div>
+
+              <div class="col-12">
+                <button type="submit" [disabled]="contactForm.invalid" class="inptBtn">Send Message</button>
               </div>
             </div>
-      
-            <div class="col-md-6">
-              <form action="#" class="contFrm" method="POST">
-                <div class="row g-3" >
-                  <div class="col-sm-6">
-                    <input type="text" name="name" placeholder="Your Name" class="inptFld" required />
-                  </div>
-      
-                  <div class="col-sm-6">
-                    <input type="email" name="email" placeholder="Email Address" class="inptFld" required />
-                  </div>
-      
-                  <div class="col-sm-6">
-                    <input type="tel" name="phone" placeholder="Phone Number" class="inptFld" required />
-                  </div>
-      
-                  <div class="col-sm-6">
-                    <input type="text" name="sub" placeholder="Subject" class="inptFld" required />
-                  </div>
-      
-                  <div class="col-12">
-                    <textarea class="inptFld" rows="" cols="" placeholder="Your Message..." required></textarea>
-                  </div>
-      
-                  <div class="col-12">
-                    <input type="submit" name="submit" value="SUBMIT" class="inptBtn" />
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
+          </form>
         </div>
-      </section>
-  </div>
-  
+      </div>
+
+      <!-- Google Map Embed -->
+      <div class="row map-row mt-5">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.314855224491!2d3.367466115370597!3d7.160576894832364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103a4b3533b8d8d1%3A0xc56a3ab8c9f20a2a!2sAbeokuta%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1713701494173" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+</div>

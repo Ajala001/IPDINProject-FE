@@ -8,11 +8,10 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../services/auth_service/auth.service';
 
 @Component({
-  selector: 'app-application-list',
-  standalone: true,
-  imports: [FormsModule, CommonModule, RouterLink],
-  templateUrl: './application-list.component.html',
-  styleUrl: './application-list.component.css'
+    selector: 'app-application-list',
+    imports: [FormsModule, CommonModule, RouterLink],
+    templateUrl: './application-list.component.html',
+    styleUrl: './application-list.component.css'
 })
 export class ApplicationListComponent implements OnInit{
   applicationService = inject(ApplicationServiceService);

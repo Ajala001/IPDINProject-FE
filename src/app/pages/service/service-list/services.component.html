@@ -1,0 +1,48 @@
+<div class="dashboard-container">
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input
+        type="text"
+        placeholder="Search services..."
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="onSearch($event)"
+      />
+    </div>
+  
+    <!-- Services Table -->
+    <table class="services-table">
+      <thead>
+        <tr>
+          <th>Service Name</th>
+          <th>Service Fee</th>
+          <th>Application Fee</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let service of displayedServices">
+          <td>{{ service.name }}</td>
+          <td>{{ service.fee }}</td>
+          <td>{{ service.applicationFee }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Pagination Controls -->
+    <div class="pagination">
+      <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+        Previous
+      </button>
+      <span>Page {{ currentPage }}</span>
+      <button
+        (click)="changePage(currentPage + 1)"
+        [disabled]="currentPage * itemsPerPage >= parsedServices.length"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+
+  <div>
+    <strong>For more details of the services <a [routerLink]="['/examinations']">click here</a> or <a [routerLink]="['/trainings']">here</a></strong>
+  </div>
+  

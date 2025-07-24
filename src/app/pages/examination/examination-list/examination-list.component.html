@@ -49,7 +49,7 @@
                 <td>
                   <button class="btn btn-primary" [routerLink]="['/examinations', item.id]">Detail</button>
                   <button class="btn btn-danger" *ngIf="isAdmin" [routerLink]="['/examinations', item.id, 'delete']">Delete</button>
-                  <button class="btn btn-primary" *ngIf="item.status === 1 || item.status === 2 && !isAdmin" [routerLink]="['/examinations', item.id]">Apply</button>
+                  <button class="btn btn-primary" *ngIf="item.status === 1 || item.status === 2 && !isAdmin" [routerLink]="['/applications', item.id, 'create']" [queryParams]="{ isTraining: false }">Apply</button>
                 </td>
             </tr>
         </tbody>

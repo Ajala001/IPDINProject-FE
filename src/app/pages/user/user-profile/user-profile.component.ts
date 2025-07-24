@@ -8,11 +8,10 @@ import { CommonModule } from '@angular/common';
 
 
 @Component({
-  selector: 'app-user-profile',
-  standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule],
-  templateUrl: './user-profile.component.html',
-  styleUrl: './user-profile.component.css'
+    selector: 'app-user-profile',
+    imports: [FormsModule, CommonModule, RouterModule],
+    templateUrl: './user-profile.component.html',
+    styleUrl: './user-profile.component.css'
 })
 export class UserProfileComponent {
   

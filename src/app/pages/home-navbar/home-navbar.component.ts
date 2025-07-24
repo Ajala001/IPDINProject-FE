@@ -3,11 +3,10 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-home-navbar',
-  standalone: true,
-  imports: [RouterLink, CommonModule],
-  templateUrl: './home-navbar.component.html',
-  styleUrl: './home-navbar.component.css'
+    selector: 'app-home-navbar',
+    imports: [RouterLink, CommonModule],
+    templateUrl: './home-navbar.component.html',
+    styleUrl: './home-navbar.component.css'
 })
 export class HomeNavbarComponent {
   activeLink: string = 'home'; // Default active link

@@ -7,11 +7,10 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../services/auth_service/auth.service';
 
 @Component({
-  selector: 'app-payment-detail',
-  standalone: true,
-  imports: [CommonModule, RouterLink],
-  templateUrl: './payment-detail.component.html',
-  styleUrl: './payment-detail.component.css'
+    selector: 'app-payment-detail',
+    imports: [CommonModule, RouterLink],
+    templateUrl: './payment-detail.component.html',
+    styleUrl: './payment-detail.component.css'
 })
 export class PaymentDetailComponent {
   
@@ -32,8 +31,19 @@ export class PaymentDetailComponent {
 
   ngOnInit(): void {
     this.paymentRef = this.route.snapshot.paramMap.get('refNo');
-    this.getPaymentByRefno(this.paymentRef!);
+  
+    this.route.queryParams.subscribe(params => {
+      const token = params['token'];
+      if (token) {
+        this.fetchPaymentDetails(token);
+      }
+    });
+  
+    if (this.paymentRef) {
+      this.getPaymentByRefno(this.paymentRef);
+    }
   }
+  
 
   paymentStatusMap: { [key: number]: string } = {
     1: 'Successful',
@@ -42,6 +52,14 @@ export class PaymentDetailComponent {
 
   getPaymentByRefno(refNo: string){
     this.paymentService.getPaymentByRefno(refNo).subscribe((response: apiResponse) =>{
+      if(response.isSuccessful){
+          this.payment = response.data
+      }
+    })
+  }
+
+  fetchPaymentDetails(token: string): void {
+    this.paymentService.getPaymentDetails(token).subscribe((response: apiResponse) =>{
       if(response.isSuccessful){
           this.payment = response.data
       }

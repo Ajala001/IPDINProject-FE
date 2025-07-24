@@ -9,11 +9,10 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../services/auth_service/auth.service';
 
 @Component({
-  selector: 'app-payment-list',
-  standalone: true,
-  imports: [FormsModule, CommonModule, RouterLink],
-  templateUrl: './payment-list.component.html',
-  styleUrl: './payment-list.component.css'
+    selector: 'app-payment-list',
+    imports: [FormsModule, CommonModule, RouterLink],
+    templateUrl: './payment-list.component.html',
+    styleUrl: './payment-list.component.css'
 })
 export class PaymentListComponent {
 

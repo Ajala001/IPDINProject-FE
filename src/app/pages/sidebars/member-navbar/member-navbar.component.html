@@ -1,89 +1,29 @@
-<div class="d-flex flex-column flex-shrink-0 p-3 bg-light sidebar" style="width: 280px;">
-    <a class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-        <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
-        <span class="fs-5 fw-semibold" style="color: darkred;">Member Dashboard</span>
-    </a>
-    <ul class="list-unstyled ps-0">
-      <!-- Applications Management Section -->
-      <li class="mb-1">
-        <a class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#applications-collapse" aria-expanded="false">
-          Applications Management
-          <i class="bi bi-caret-down-fill ms-2"></i> <!-- Dropdown icon -->
-        </a>
-        <div class="collapse" id="applications-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/applications-user']">My Applications</a></li>
-          </ul>
-        </div>
-      </li>
+<button class="sidebar-toggle d-md-none" (click)="toggleSidebar()">☰</button>
 
-       <!-- Examinations Management Section -->
-       <li class="mb-1">
-        <a href="#" class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#examinations-collapse" aria-expanded="false">
-          Examinations Management
-          <i class="bi bi-caret-down-fill ms-2"></i> <!-- Dropdown icon -->
-        </a>
-        <div class="collapse" id="examinations-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/examinations']">Examinations</a></li>
-            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/examinations-user']">My Examinations</a></li>
-          </ul>
-        </div>
-      </li>
+<div class="sidebar" [class.open]="isSidebarOpen">
+  <a class="d-flex align-items-center mb-4 text-dark text-decoration-none border-bottom pb-3">
+    <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+    <span [routerLink]="['/member/dashboard']" class="fs-5 fw-semibold dashboard-title">Member Dashboard</span>
+  </a>
 
-      <!-- Training Management Section -->
-      <li class="mb-1">
-        <a href="#" class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#training-collapse" aria-expanded="false">
-          Training Management
-          <i class="bi bi-caret-down-fill ms-2"></i> <!-- Dropdown icon -->
-        </a>
-        <div class="collapse" id="training-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/trainings']">Trainings</a></li>
-            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/trainings-user']">My Training</a></li>
-          </ul>
-        </div>
-      </li>
-
-       <!-- Results Management Section -->
-       <li class="mb-1">
-        <a href="#" class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#results-collapse" aria-expanded="false">
-          Results Management
-          <i class="bi bi-caret-down-fill ms-2"></i> <!-- Dropdown icon -->
-        </a>
-        <div class="collapse" id="results-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/results']" [queryParams]="{ membershipNum: membershipNumber}">My Results</a></li>
-          </ul>
-        </div>
-      </li>
-
-      <!-- Payments Management Section -->
-      <li class="mb-1">
-        <a href="#" class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#payments-collapse" aria-expanded="false">
-          Payment Management
-          <i class="bi bi-caret-down-fill ms-2"></i> <!-- Dropdown icon -->
-        </a>
-        <div class="collapse" id="payments-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/payments-user']">Payment History</a></li>
-          </ul>
-        </div>
-      </li>
-
-      <!-- Acount  Management Section -->
-      <!-- <li class="mb-1">
-        <a href="#" class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#accounts-collapse" aria-expanded="false">
-          Accounts Management
-          <i class="bi bi-caret-down-fill ms-2"></i> 
-        </a>
-        <div class="collapse" id="accounts-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/users', userEmail, 'detail']">My Profile</a></li>
-            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/courses/create']">View Training Results</a></li>
-            <li class="mb-2"><a class="dropdown-item" [routerLink]="['/courses/create']">Download Certificates</a></li>
-          </ul>
-        </div>
-      </li> -->
-    </ul>
+  <ul class="nav flex-column">
+    <li class="nav-item" *ngFor="let section of sidebarSections">
+      <a class="btn btn-toggle d-flex align-items-center"
+         data-bs-toggle="collapse"
+         [attr.data-bs-target]="'#' + section.id"
+         aria-expanded="false">
+        <i class="{{ section.icon }} me-2"></i> {{ section.title }}
+        <i class="bi bi-caret-down-fill ms-auto dropdown-icon"></i>
+      </a>
+      <div class="collapse" [id]="section.id">
+        <ul class="btn-toggle-nav list-unstyled fw-normal small ps-3">
+          <li *ngFor="let link of section.links">
+            <a class="dropdown-item" [routerLink]="[link.route]">
+              <i class="{{ link.icon }} me-2"></i> {{ link.label }}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
 </div>

@@ -10,11 +10,10 @@ import { CourseSearchModel } from '../../../models/classes/courseSearch';
 import { AuthService } from '../../../services/auth_service/auth.service';
 
 @Component({
-  selector: 'app-course-list',
-  standalone: true,
-  imports: [FormsModule, CommonModule, RouterLink],
-  templateUrl: './course-list.component.html',
-  styleUrl: './course-list.component.css'
+    selector: 'app-course-list',
+    imports: [FormsModule, CommonModule, RouterLink],
+    templateUrl: './course-list.component.html',
+    styleUrl: './course-list.component.css'
 })
 export class CourseListComponent implements OnInit {
   cousreService = inject(CourseServiceService);

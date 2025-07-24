@@ -1,0 +1,6 @@
+<div class="snackbar-container" [ngClass]="data.type">
+    <span class="icon">{{ getIcon(data.type) }}</span>
+    <span class="message">{{ data.message }}</span>
+    <span class="close" (click)="dismiss()">✖</span>
+  </div>
+  
