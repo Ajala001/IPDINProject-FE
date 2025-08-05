@@ -1,0 +1,139 @@
+<!-- profile-update.component.html -->
+<div class="profile-update-wrapper">
+  <div class="profile-update-container">
+
+    <!-- Header -->
+    <section class="profile-header" *ngIf="userProfile">
+      <img
+        [src]="userProfile.profilePic || 'assets/images/default-profile.jpg'"
+        alt="Profile Picture"
+        class="profile-pic"
+      />
+      <h1 class="full-name">{{ userProfile.fullName }}</h1>
+      <p class="membership-number">Membership No: {{ userProfile.membershipNumber }}</p>
+    </section>
+
+    <!-- Upload -->
+    <section class="profile-pic-upload">
+      <label for="profilePic">Update Profile Picture</label>
+      <input type="file" id="profilePic" (change)="onFileSelected($event)" accept="image/*" />
+    </section>
+
+    <!-- Personal Info -->
+    <section class="profile-section" *ngIf="user">
+      <fieldset>
+        <legend>Personal Information</legend>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Date of Birth</label>
+            <input type="date" [(ngModel)]="user.dateOfBirth" />
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="text" [(ngModel)]="user.phoneNumber" placeholder="Enter phone number" />
+          </div>
+        </div>
+
+        <div class="static-info">
+          <p><strong>Email:</strong> {{ userProfile.email }}</p>
+          <p><strong>Gender:</strong> {{ genderMap[userProfile.gender] }}</p>
+        </div>
+      </fieldset>
+    </section>
+
+    <!-- Address Info -->
+    <section class="profile-section" *ngIf="user">
+      <fieldset>
+        <legend>Address Information</legend>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Street Number</label>
+            <input type="text" [(ngModel)]="user.streetNo" placeholder="Enter street number" />
+          </div>
+          <div class="form-group">
+            <label>Street Name</label>
+            <input type="text" [(ngModel)]="user.streetName" placeholder="Enter street name" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>City</label>
+            <input type="text" [(ngModel)]="user.city" placeholder="Enter city" />
+          </div>
+          <div class="form-group">
+            <label>State of Residence</label>
+            <input type="text" [(ngModel)]="user.stateOfResidence" placeholder="Enter state" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Local Government</label>
+            <input type="text" [(ngModel)]="user.localGovt" placeholder="Enter LGA" />
+          </div>
+          <div class="form-group">
+            <label>State of Origin</label>
+            <input type="text" [(ngModel)]="user.stateOfOrigin" placeholder="Enter state of origin" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Country</label>
+            <input type="text" [(ngModel)]="user.country" placeholder="Enter country" />
+          </div>
+        </div>
+
+        <div class="static-info">
+          <p><strong>Address:</strong> {{ userProfile.address }}</p>
+        </div>
+      </fieldset>
+    </section>
+
+    <!-- License Info -->
+    <section class="profile-section" *ngIf="user">
+      <fieldset>
+        <legend>Driver License Information</legend>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Driver License No</label>
+            <input type="text" [(ngModel)]="user.driverLicenseNo" placeholder="Enter license number" />
+          </div>
+          <div class="form-group">
+            <label>Year Issued</label>
+            <input type="number" [(ngModel)]="user.yearIssued" placeholder="Enter year issued" />
+          </div>
+          <div class="form-group">
+            <label>Expiring Date</label>
+            <input type="date" [(ngModel)]="user.expiringDate" />
+          </div>
+        </div>
+      </fieldset>
+    </section>
+
+    <!-- Experience Info -->
+    <section class="profile-section" *ngIf="user">
+      <fieldset>
+        <legend>Driving Experience</legend>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Years of Experience</label>
+            <input type="number" [(ngModel)]="user.yearsOfExperience" placeholder="Enter years of experience" />
+          </div>
+          <div class="form-group">
+            <label>Current Driving School</label>
+            <input type="text" [(ngModel)]="user.nameOfCurrentDrivingSchool" placeholder="Enter school name" />
+          </div>
+        </div>
+      </fieldset>
+    </section>
+
+    <!-- Action Buttons -->
+    <div class="button-group">
+      <button class="btn-primary" (click)="updateUser()">Update</button>
+      <button class="btn-secondary" [routerLink]="['/users', userProfile.email, 'detail']">Back</button>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,110 @@
+<div class="container-fluid p-4">
+
+  <!-- Header: Title + Date -->
+  <div class="dashboard-header d-flex justify-content-between align-items-center mb-4">
+    <h2 class="dashboard-title text-success fw-bold mb-0">🚘 Admin Dashboard</h2>
+    <div class="text-end">
+      <p class="mb-0 text-muted">Today is:</p>
+      <h6 class="mb-0 text-dark fw-semibold">{{ today }}</h6>
+    </div>
+  </div>
+
+  <!-- Stat Cards -->
+  <div class="row g-4 mb-4 text-center">
+    <div
+      class="col-md-3 col-sm-6"
+      *ngFor="let card of [
+        {label: 'Total Students', value: stats.students, icon: 'bi-people-fill', color: 'success'},
+        {label: 'Instructors', value: stats.instructors, icon: 'bi-person-badge-fill', color: 'dark'},
+        {label: 'Upcoming Trainings', value: stats.trainings, icon: 'bi-calendar-event-fill', color: 'success'},
+        {label: 'Completed Exams', value: stats.completedExams, icon: 'bi-clipboard-check-fill', color: 'dark'}
+      ]"
+    >
+      <div class="glass-card p-4 shadow-sm d-flex flex-column align-items-center">
+        <i class="bi {{ card.icon }} fs-1 text-{{ card.color }} mb-2"></i>
+        <h4 class="fw-bold text-{{ card.color }}">{{ card.value }}</h4>
+        <p class="text-muted mb-0">{{ card.label }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="glass-card p-4 mb-4">
+    <h5 class="mb-3 text-dark fw-semibold">⚡ Quick Actions</h5>
+    <div class="d-flex flex-wrap gap-3">
+      <button class="btn btn-outline-success"><i class="bi bi-plus-circle"></i> Add Student</button>
+      <button class="btn btn-outline-dark"><i class="bi bi-person-plus"></i> Add Instructor</button>
+      <button class="btn btn-outline-success"><i class="bi bi-calendar-plus"></i> Schedule Training</button>
+      <button class="btn btn-outline-dark"><i class="bi bi-pencil-square"></i> Schedule Exam</button>
+      <button class="btn btn-outline-success"><i class="bi bi-megaphone"></i> Create Seminar</button>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <div class="glass-card p-4 shadow-sm">
+        <h6 class="text-success mb-3">📊 Monthly Sessions</h6>
+        <canvas #sessionChartRef height="150"></canvas>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="glass-card p-4 shadow-sm">
+        <h6 class="text-success mb-3">💰 Revenue (Monthly)</h6>
+        <canvas #revenueChartRef height="150"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Upcoming Events -->
+  <div class="glass-card p-4 mb-4">
+    <h5 class="mb-3 text-dark fw-semibold">📅 Upcoming Events</h5>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let event of upcomingEvents">
+        <div>
+          <strong>{{ event.title }}</strong> <small class="text-muted">({{ event.type }})</small>
+        </div>
+        <span class="badge bg-success">{{ event.date }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Recent Registrations -->
+  <div class="glass-card p-4 mb-4">
+    <h5 class="mb-3 text-dark fw-semibold">🧾 Latest Registered Students</h5>
+    <div class="table-responsive">
+      <table class="table table-hover align-middle">
+        <thead class="table-light text-center">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Registered On</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody class="text-center">
+          <tr *ngFor="let student of latestStudents; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.registeredDate }}</td>
+            <td>
+              <span class="badge bg-success" *ngIf="student.status === 'Active'">Active</span>
+              <span class="badge bg-warning text-dark" *ngIf="student.status === 'Pending'">Pending</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Notifications -->
+  <div class="glass-card p-4 mb-4">
+    <h5 class="mb-3 text-dark fw-semibold">🔔 Notifications</h5>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let note of notifications">
+        <i class="bi bi-info-circle text-success me-2"></i> {{ note.message }}
+      </li>
+    </ul>
+  </div>
+
+</div>

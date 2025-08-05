@@ -1,0 +1,58 @@
+<div class="profile-wrapper">
+  <div class="profile-container">
+    <!-- Profile Header -->
+    <div *ngIf="user" class="profile-header">
+      <div class="header-content">
+        <img [src]="user.profilePic || 'assets/images/default-profile.jpg'" alt="Profile Picture" class="profile-pic" />
+        <div class="user-details">
+          <h1>{{ user.fullName }}</h1>
+          <p><span>Membership No:</span> {{ user.membershipNumber }}</p>
+          <p><span>Level:</span> {{ user.level }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Personal Information -->
+    <section *ngIf="user" class="profile-section">
+      <h2>Personal Information</h2>
+      <div class="info-grid">
+        <p><span>Email:</span> {{ user.email }}</p>
+        <p><span>Gender:</span> {{ genderMap[user.gender] }}</p>
+        <p><span>Date of Birth:</span> {{ user.dateOfBirth | date }}</p>
+        <p><span>Address:</span> {{ user.address }}</p>
+        <p><span>Local Government:</span> {{ user.localGovt }}</p>
+        <p><span>State of Origin:</span> {{ user.stateOfOrigin }}</p>
+        <p><span>Driver License No:</span> {{ user.driverLicenseNo }}</p>
+        <p><span>Year Issued:</span> {{ user.yearIssued }}</p>
+        <p><span>Expiring Date:</span> {{ user.expiringDate | date }}</p>
+      </div>
+    </section>
+
+    <!-- Driving Experience -->
+    <section *ngIf="user" class="profile-section">
+      <h2>Driving Experience</h2>
+      <div class="info-grid">
+        <p><span>Years of Experience:</span> {{ user.yearsOfExperience }}</p>
+        <p><span>Current Driving School:</span> {{ user.nameOfCurrentDrivingSchool }}</p>
+      </div>
+    </section>
+
+    <!-- Academic Qualifications -->
+    <section *ngIf="user" class="profile-section">
+      <h2>Academic Qualifications</h2>
+      <ul class="qualification-list">
+        <li *ngFor="let qualification of user.academicQualifications">
+          <p><strong>Degree:</strong> {{ qualification.degree }}</p>
+          <p><strong>Field of Study:</strong> {{ qualification.fieldOfStudy }}</p>
+        </li>
+      </ul>
+      <button class="btn add-btn" (click)="navigateToAddQualification()">Add Qualification</button>
+    </section>
+
+    <!-- Action Buttons -->
+    <div class="button-group">
+      <button class="btn" [routerLink]="['/users', user.email, 'edit']">Edit Profile</button>
+      <button class="btn secondary" [routerLink]="'/dashboard'">Back to Dashboard</button>
+    </div>
+  </div>
+</div>

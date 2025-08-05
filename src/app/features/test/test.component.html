@@ -1,0 +1,87 @@
+<div class="container-fluid p-4">
+  <!-- Title -->
+  <div class="mb-4 text-center">
+    <h2 class="dashboard-title text-success fw-bold">
+      🚘 Welcome to Your Driving School Portal
+    </h2>
+    <p class="text-muted fst-italic">Today's Date: <strong class="text-dark">{{ today }}</strong></p>
+  </div>
+
+  <!-- Stats Cards -->
+  <div class="row g-4 mb-5 text-center">
+    <div
+      class="col-md-3 col-sm-6"
+      *ngFor="let card of [
+        {label: 'Total Students', value: stats.students, icon: 'bi-people-fill', color: 'success'},
+        {label: 'Instructors', value: stats.instructors, icon: 'bi-person-badge-fill', color: 'dark'},
+        {label: 'Upcoming Trainings', value: stats.trainings, icon: 'bi-calendar-event-fill', color: 'success'},
+        {label: 'Completed Exams', value: stats.completedExams, icon: 'bi-clipboard-check-fill', color: 'dark'}
+      ]"
+    >
+      <div class="glass-card p-4 shadow-sm d-flex flex-column align-items-center">
+        <i class="bi {{ card.icon }} fs-1 text-{{ card.color }} mb-2"></i>
+        <h4 class="fw-bold text-{{ card.color }}">{{ card.value }}</h4>
+        <p class="text-muted mb-0">{{ card.label }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Monthly Activities Chart -->
+  <div class="row mb-5">
+    <div class="col-12">
+      <div class="glass-card shadow-sm p-4">
+        <h5 class="text-success mb-4 text-center fw-semibold">📊 Monthly Sessions Overview</h5>
+        <canvas id="sessionChart" height="120"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Bookings Table -->
+  <div class="row">
+    <div class="col-12">
+      <div class="glass-card shadow-sm p-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h5 class="text-dark mb-0">🧾 Recent Bookings</h5>
+          <button class="btn btn-success btn-sm">View All</button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-hover align-middle">
+            <thead class="table-light text-center">
+              <tr>
+                <th>#</th>
+                <th>Student</th>
+                <th>Instructor</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              <tr *ngFor="let booking of recentBookings; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ booking.student }}</td>
+                <td>{{ booking.instructor }}</td>
+                <td>{{ booking.type }}</td>
+                <td>{{ booking.date }}</td>
+                <td>{{ booking.time }}</td>
+                <td>
+                  <span class="badge px-3 py-2"
+                        [ngClass]="{
+                          'bg-success': booking.status === 'Completed',
+                          'bg-warning text-dark': booking.status === 'Scheduled',
+                          'bg-danger': booking.status === 'Cancelled'
+                        }">
+                    {{ booking.status }}
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

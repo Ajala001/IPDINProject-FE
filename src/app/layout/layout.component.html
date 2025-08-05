@@ -1,0 +1,12 @@
+<app-home-navbar (toggleSidebar)="toggleSidebar()"></app-home-navbar>
+
+<div class="layout-wrapper">
+  <!-- Sidebar -->
+  <app-admin-navbar [isSidebarOpen]="isSidebarOpen"></app-admin-navbar>
+
+  <!-- Main Content -->
+  <div class="main-content" [class.sidebar-collapsed]="!isSidebarOpen">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+ 

@@ -1,0 +1,54 @@
+body {
+  background: linear-gradient(to right, #ffffff, #e8f5e9); /* white to soft green */
+  font-family: 'Segoe UI', sans-serif;
+  color: #212529;
+}
+
+/* Title Styling */
+.dashboard-title {
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+}
+
+/* Card Glass Effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 16px;
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Styling */
+.table th,
+.table td {
+  vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f2fff3;
+}
+
+/* Badge Styling */
+.badge {
+  font-size: 0.9rem;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.badge.bg-success {
+  background-color: #28a745 !important;
+}
+
+.badge.bg-warning {
+  background-color: #ffc107 !important;
+}
+
+.badge.bg-danger {
+  background-color: #dc3545 !important;
+}

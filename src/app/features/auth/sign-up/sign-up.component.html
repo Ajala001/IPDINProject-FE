@@ -1,0 +1,236 @@
+<app-home-navbar></app-home-navbar>
+
+<div *ngIf="showIntro" class="intro-wrapper">
+  <section class="intro-section container">
+    <header class="intro-header">
+      <img src="assets/images/driving logo.png" alt="Institute Logo" class="intro-logo" />
+      <h1 class="intro-title">Institute of Professional Drivers’ Instructors</h1>
+      <p class="intro-subtitle">Review the membership categories before proceeding with registration.</p>
+    </header>
+
+    <section class="membership-grid">
+      <article class="membership-card">
+        <h2>Affiliate</h2>
+        <p>Students or trainees enrolled in the Institute’s professional training or related programs.</p>
+      </article>
+
+      <article class="membership-card">
+        <h2>Technician</h2>
+        <p>Practically skilled individuals with basic academic credentials and an institute-issued certificate.</p>
+      </article>
+
+      <article class="membership-card">
+        <h2>Member</h2>
+        <p>Tertiary graduates (minimum NCE/ND) with a professional driving instruction diploma.</p>
+      </article>
+
+      <article class="membership-card">
+        <h2>Fellow</h2>
+        <p>Members for at least 10 years with a history of integrity and financial commitment.</p>
+      </article>
+
+      <article class="membership-card">
+        <h2>Honorary Fellow</h2>
+        <p>Distinguished contributors to road safety and driver education, appointed by the Council.</p>
+      </article>
+    </section>
+
+    <footer class="intro-footer">
+      <div class="note">
+        <strong>Note:</strong> Monthly dues vary by membership level.
+      </div>
+      <button class="btn-register" (click)="showIntro = false">Proceed to Register</button>
+    </footer>
+  </section>
+</div>
+
+<div *ngIf="!showIntro" class="registration-container">
+  <div class="registration-card">
+
+    <!-- Step 1: Basic Details -->
+    <form *ngIf="currentStep === 1" (ngSubmit)="nextStep(basicForm)" #basicForm="ngForm" novalidate>
+      <h2>Basic Details</h2>
+
+      <div class="form-row">
+        <div class="input-field">
+          <input type="text" [(ngModel)]="signUpObj.firstName" name="firstName" #firstName="ngModel" required />
+          <label>First Name</label>
+          <div class="error" *ngIf="firstName.invalid && firstName.touched">First name is required</div>
+        </div>
+        <div class="input-field">
+          <input type="text" [(ngModel)]="signUpObj.lastName" name="lastName" #lastName="ngModel" required />
+          <label>Last Name</label>
+          <div class="error" *ngIf="lastName.invalid && lastName.touched">Last name is required</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="input-field">
+          <input type="email" [(ngModel)]="signUpObj.email" name="email" #email="ngModel" required />
+          <label>Email</label>
+          <div class="error" *ngIf="email.invalid && email.touched">Valid email is required</div>
+        </div>
+        <div class="input-field">
+          <input type="text" [(ngModel)]="signUpObj.phoneNumber" name="phoneNumber" #phone="ngModel" required />
+          <label>Phone Number</label>
+          <div class="error" *ngIf="phone.invalid && phone.touched">Phone number is required</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="input-field">
+          <input [type]="showPassword1 ? 'text' : 'password'" [(ngModel)]="signUpObj.password" name="password" #password="ngModel" required minlength="6" />
+          <label>Password</label>
+          <span class="toggle-eye" (click)="togglePasswordVisibility1()">👁</span>
+          <div class="error" *ngIf="password.invalid && password.touched">Password is required (min 6 characters)</div>
+        </div>
+        <div class="input-field">
+          <input [type]="showPassword2 ? 'text' : 'password'" [(ngModel)]="signUpObj.confirmPassword" name="confirmPassword" #confirmPassword="ngModel" required />
+          <label>Confirm Password</label>
+          <span class="toggle-eye" (click)="togglePasswordVisibility2()">👁</span>
+          <div class="error" *ngIf="confirmPassword.invalid && confirmPassword.touched">Confirm your password</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="input-field">
+          <select [(ngModel)]="signUpObj.gender" name="gender" #gender="ngModel" required>
+            <option [value]="0" disabled selected>Select Gender</option>
+            <option *ngFor="let g of genderOptions" [value]="g.id">{{ g.label }}</option>
+          </select>
+          <label>Gender</label>
+          <div class="error" *ngIf="gender.invalid && gender.touched">Gender is required</div>
+        </div>
+        <div class="input-field">
+          <input type="date" [(ngModel)]="signUpObj.dateOfBirth" name="dateOfBirth" #dob="ngModel" required />
+          <label>Date of Birth</label>
+          <div class="error" *ngIf="dob.invalid && dob.touched">Date of Birth is required</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="input-field">
+          <input type="text" [(ngModel)]="signUpObj.stateOfResidence" name="stateOfResidence" #state="ngModel" required />
+          <label>State of Residence</label>
+          <div class="error" *ngIf="state.invalid && state.touched">State is required</div>
+        </div>
+        <div class="input-field">
+          <input type="text" [(ngModel)]="signUpObj.country" name="country" #country="ngModel" required />
+          <label>Country</label>
+          <div class="error" *ngIf="country.invalid && country.touched">Country is required</div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-login">Next</button>
+    </form>
+
+    <!-- Step 2: Driver Details -->
+    <form *ngIf="currentStep === 2" (ngSubmit)="nextStep(driverForm)" #driverForm="ngForm" novalidate>
+      <h2>Driver Details</h2>
+
+      <div class="form-row">
+        <div class="input-field">
+          <input type="text" [(ngModel)]="signUpObj.driverLicenseNo" name="driverLicenseNo" #dl="ngModel" required />
+          <label>Driver License Number</label>
+          <div class="error" *ngIf="dl.invalid && dl.touched">License number is required</div>
+        </div>
+        <div class="input-field">
+          <input type="number" [(ngModel)]="signUpObj.yearIssued" name="yearIssued" #yearIssued="ngModel" required />
+          <label>Year Issued</label>
+          <div class="error" *ngIf="yearIssued.invalid && yearIssued.touched">Year Issued is required</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="input-field">
+          <input type="date" [(ngModel)]="signUpObj.expiringDate" name="expiringDate" #expDate="ngModel" required />
+          <label>License Expiring Date</label>
+          <div class="error" *ngIf="expDate.invalid && expDate.touched">Expiring Date is required</div>
+        </div>
+        <div class="input-field">
+          <input type="number" [(ngModel)]="signUpObj.yearsOfExperience" name="yearsOfExperience" #exp="ngModel" required />
+          <label>Years of Experience</label>
+          <div class="error" *ngIf="exp.invalid && exp.touched">Years of experience is required</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="input-field">
+          <input type="text" [(ngModel)]="signUpObj.nameOfCurrentDrivingSchool" name="schoolName" #school="ngModel" required />
+          <label>Current Driving School</label>
+          <div class="error" *ngIf="school.invalid && school.touched">School name is required</div>
+        </div>
+        <div class="input-field">
+          <select [(ngModel)]="signUpObj.levelId" name="levelId" #level="ngModel" required>
+            <option [value]="''" disabled selected>Select Level</option>
+            <option *ngFor="let level of levels" [value]="level.id">{{ level.name }}</option>
+          </select>
+          <label>Level</label>
+          <div class="error" *ngIf="level.invalid && level.touched">Level is required</div>
+        </div>
+      </div>
+
+      <div class="step-buttons">
+        <button type="button" class="btn-login" (click)="prevStep()">Back</button>
+        <button type="submit" class="btn-login">Next</button>
+      </div>
+    </form>
+
+    <!-- Step 3: Qualification Details -->
+    <form *ngIf="currentStep === 3" (ngSubmit)="nextStep(qualificationForm)" #qualificationForm="ngForm" novalidate>
+      <h2>Qualification Details</h2>
+
+      <div *ngFor="let qualification of signUpObj.academicQualifications; let i = index" class="qualification-block">
+        <div class="form-row">
+          <div class="input-field">
+            <input type="text" [(ngModel)]="qualification.degree" name="degree{{i}}" required #deg="ngModel" />
+            <label>Degree</label>
+            <div class="error" *ngIf="deg.invalid && deg.touched">Degree is required</div>
+          </div>
+          <div class="input-field">
+            <input type="text" [(ngModel)]="qualification.fieldOfStudy" name="field{{i}}" required #field="ngModel" />
+            <label>Field of Study</label>
+            <div class="error" *ngIf="field.invalid && field.touched">Field of study is required</div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="input-field">
+            <input type="text" [(ngModel)]="qualification.institution" name="institution{{i}}" required #inst="ngModel" />
+            <label>Institution</label>
+            <div class="error" *ngIf="inst.invalid && inst.touched">Institution is required</div>
+          </div>
+          <div class="input-field">
+            <input type="number" [(ngModel)]="qualification.yearAttained" name="yearAttained{{i}}" required #year="ngModel" />
+            <label>Year Attained</label>
+            <div class="error" *ngIf="year.invalid && year.touched">Year attained is required</div>
+          </div>
+        </div>
+
+        <button type="button" class="btn-delete" (click)="removeQualification(i)">Delete</button>
+        <hr />
+      </div>
+
+      <button type="button" class="btn-login" (click)="addQualification()">+ Add Qualification</button>
+
+      <div class="step-buttons">
+        <button type="button" class="btn-login" (click)="prevStep()">Back</button>
+        <button type="submit" class="btn-login">Next</button>
+      </div>
+    </form>
+
+    <!-- Step 4: Confirm & Submit -->
+    <form *ngIf="currentStep === 4" (ngSubmit)="submitRegistration()">
+      <h2>Confirm & Submit</h2>
+      <p>Please review your information before submitting.</p>
+
+      <div class="step-buttons">
+        <button type="button" class="btn-login" (click)="prevStep()">Back</button>
+        <button type="submit" class="btn-login">Submit</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+  

@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+/* General Page Layout */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f7f9fc;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navbar-dark-custom {
+  background-color: darkblue; /* Dark blue color */
+  position: fixed; /* Make navbar fixed */
+  top: 0;
+  left: 0;
+  width: 100%; /* Make it span the full width */
+  z-index: 1000; /* Ensure it's on top of other elements */
+}
+
+.nav-link.active {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+/* Link styling */
+.navbar-nav .nav-link {
+  color: white;
+  position: relative;
+  background-color: transparent;
+}
+
+.navbar-nav .nav-link.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+.navbar-nav .nav-link.active {
+  color: white;
+}
+
+.navbar-nav .nav-link:not(.active):hover {
+  color: #ccc;
+}
+
+/* class="d-inline-block align-text-top" */
+.image {
+border-radius: 50%; /* Circular profile picture */
+width: 40px; /* Enlarged size for profile picture */
+height: 40px; /* Enlarged size for profile picture */
+object-fit: cover; /* Ensure the image covers the area */
+border: 2px solid darkblue; /* Dark red border */
+}
+
+/* Progress Bar Section */
+#progress-bar-container {
+  position: relative;
+  background: linear-gradient(rgba(0, 0, 139, 0.5), rgba(0, 0, 139, 0.5)), url("/assets/images/pexels-tim-samuel-5834947.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%; /* Ensure full width */
+  min-height: 100vh; /* Ensure the section covers the entire viewport height */
+}
+
+
+/* Steps List */
+.steps-list {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  list-style: none;
+  padding-top: 60px
+}
+
+.step {
+  font-size: 16px;
+  font-weight: 600;
+  color: #888;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.step.active {
+  color: #007bff;
+}
+
+.step-inner {
+  padding: 10px 20px;
+  background-color: #f0f3f7;
+  border-radius: 20px;
+}
+
+.step.active .step-inner {
+  background-color: darkblue;
+  color: white;
+}
+
+.header {
+  display: flex; /* Use Flexbox for side-by-side layout */
+  align-items: center; /* Align items vertically */
+  justify-content: space-between; /* Space between image and text */
+}
+
+.logo {
+  border-radius: 50%; /* Circular profile picture */
+  width: 130px; /* Enlarged size for profile picture */
+  height: 130px; /* Enlarged size for profile picture */
+  object-fit: cover; /* Ensure the image covers the area */
+  border: 2px solid darkblue; /* Dark red border */
+  margin-right: 20px; /* Space between the picture and the profile info */
+}
+                    
+.hr {
+  border: 2px solid darkblue;
+}
+/* Form Container */
+.form-container {
+  max-width: 850px;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  margin: 30px auto;
+}
+
+/* Form Group Wrapper for Input Fields */
+.form-group-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Form Group Styling */
+.form-group {
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: darkblue;
+  outline: none;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
+/* Action Buttons Styling */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-outline-success {
+  border: 2px solid darkblue;
+  color: darkblue;
+}
+
+.btn-outline-success:hover {
+  background-color: darkblue;
+  color: white;
+}
+
+.btn-success {
+  background-color: darkblue;
+  color: white;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+
+/* Button Container for Qualification Section */
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.action-buttons .btn-sm {
+  font-size: 12px;
+  padding: 6px 12px;
+}
+
+/* Qualification Table */
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+table th {
+  background-color: #f0f3f7;
+}
+
+/* Form Fields Inside Table */
+table td input,
+table td select {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .form-container {
+    padding: 15px;
+  }
+
+  .steps-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .step {
+    margin-bottom: 15px;
+  }
+
+  /* Stack form fields on smaller screens */
+  .form-group-wrapper {
+    flex-direction: column;
+  }
+
+  /* Adjust table for mobile view */
+  table th, table td {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  /* Adjust the size of action buttons on small screens */
+  .action-buttons .btn-sm {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+
+  /* Increase font size on smaller screens for clarity */
+  .form-group input,
+  .form-group select {
+    font-size: 16px;
+    padding: 10px;
+  }
+}

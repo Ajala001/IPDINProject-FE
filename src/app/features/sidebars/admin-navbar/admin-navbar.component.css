@@ -1,0 +1,124 @@
+.sidebar {
+  position: fixed;
+  top: 55px; /* header height */
+  left: 0;
+  height: calc(100vh - 55px);
+  width: 260px;
+  background-color: #121212; /* black background */
+  padding: 20px 15px;
+  overflow-y: auto;
+  transition: width 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.4);
+  z-index: 100;
+}
+
+/* Collapsed sidebar */
+.sidebar.collapsed {
+  width: 60px;
+  opacity: 0.95;
+}
+
+/* Sidebar links and toggle buttons */
+.btn-toggle {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-weight: 500;
+  width: 100%;
+  text-align: left;
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.btn-toggle:hover {
+  background-color: #1b5e20; /* deep green */
+}
+
+/* Sidebar submenu */
+.submenu {
+  padding-left: 20px;
+  overflow: hidden;
+  opacity: 0;
+  max-height: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.submenu.show {
+  opacity: 1;
+  max-height: 500px;
+  transform: translateY(0);
+}
+
+.submenu a {
+  display: block;
+  padding: 8px 15px;
+  color: #e0e0e0;
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: 6px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.submenu a:hover {
+  background-color: #1b5e20;
+  color: #ffffff;
+}
+
+/* Rotate caret icon when section is open */
+.rotate {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+/* Collapse sidebar text and center icons */
+.sidebar.collapsed .btn-toggle span,
+.sidebar.collapsed .submenu a span,
+.sidebar.collapsed .dashboard-link span {
+  display: none;
+}
+
+.sidebar.collapsed .btn-toggle,
+.sidebar.collapsed .submenu a,
+.sidebar.collapsed .dashboard-link,
+.sidebar.collapsed .dashboard-link a {
+  justify-content: center;
+  padding-left: 0;
+}
+
+/* Focus styling */
+.btn-toggle:focus,
+.submenu a:focus {
+  outline: none;
+  box-shadow: 0 0 5px #1b5e20;
+}
+
+/* Dashboard link styles */
+.sidebar .dashboard-link {
+  background-color: #1b5e20;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  transition: background 0.3s ease;
+}
+
+.sidebar .dashboard-link:hover {
+  background-color: #2e7d32; /* lighter green */
+}
+
+.sidebar .dashboard-link a {
+  color: #ffffff;
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.sidebar .dashboard-link a.active {
+  background-color: #2e7d32;
+  font-weight: bold;
+}

@@ -1,0 +1,89 @@
+<app-home-navbar></app-home-navbar>
+<div class="page-container">
+  <section class="contact-sec sec-pad">
+    <div class="container">
+      <div class="section-title text-center">
+        Contact Us
+      </div>
+      <p class="intro text-center">
+        We'd love to hear from you! Whether you have a question about our services, need support, or just want to say hello—our team is ready to help.
+      </p>
+
+      <ul class="contact-ul text-center">
+        <li><i class="fas fa-map-marker-alt"></i> 123 Business Street, Abeokuta, Nigeria</li>
+        <li><i class="fas fa-envelope"></i> infopdianigeria.org</li>
+        <li><i class="fas fa-phone"></i> +234 800 000 0000</li>
+      </ul>
+
+      <div class="row align-items-stretch mt-5">
+        <!-- Image Section -->
+        <div class="col-md-6 image-box d-flex align-items-stretch">
+          <img src="assets/images/david-emrich-LcSpQ36Q2us-unsplash.jpg" alt="Contact Support" class="contact-img w-100 h-100" />
+        </div>
+
+        <!-- Form Section -->
+        <div class="col-md-6 d-flex align-items-stretch">
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contFrm w-100">
+            <div class="form-header">
+              <h2 class="form-title">Send Us a Message</h2>
+              <img src="assets/images/person-working-desk-vintage-90-s-style-office.jpg" alt="Support" class="image" />
+            </div>
+
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <input type="text" formControlName="name" placeholder="Your Name" class="inptFld" />
+                <div *ngIf="f['name'].touched && f['name'].invalid" class="error-message">
+                  <small *ngIf="f['name'].errors?.['required']">Name is required.</small>
+                  <small *ngIf="f['name'].errors?.['minlength']">Name must be at least 3 characters.</small>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <input type="email" formControlName="email" placeholder="Email Address" class="inptFld" />
+                <div *ngIf="f['email'].touched && f['email'].invalid" class="error-message">
+                  <small *ngIf="f['email'].errors?.['required']">Email is required.</small>
+                  <small *ngIf="f['email'].errors?.['email']">Enter a valid email.</small>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <input type="tel" formControlName="phone" placeholder="Phone Number" class="inptFld" />
+                <div *ngIf="f['phone'].touched && f['phone'].invalid" class="error-message">
+                  <small *ngIf="f['phone'].errors?.['required']">Phone number is required.</small>
+                  <small *ngIf="f['phone'].errors?.['pattern']">Must be a valid number.</small>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <input type="text" formControlName="subject" placeholder="Subject" class="inptFld" />
+                <div *ngIf="f['subject'].touched && f['subject'].invalid" class="error-message">
+                  <small *ngIf="f['subject'].errors?.['required']">Subject is required.</small>
+                </div>
+              </div>
+              <div class="col-12">
+                <textarea formControlName="message" placeholder="Your Message..." class="inptFld"></textarea>
+                <div *ngIf="f['message'].touched && f['message'].invalid" class="error-message">
+                  <small *ngIf="f['message'].errors?.['required']">Message is required.</small>
+                  <small *ngIf="f['message'].errors?.['minlength']">At least 10 characters.</small>
+                </div>
+              </div>
+
+              <!-- Upload -->
+              <div class="col-12">
+                <label for="document">Upload Document (optional)</label>
+                <input type="file" id="document" class="inptFld" />
+              </div>
+
+              <div class="col-12">
+                <button type="submit" [disabled]="contactForm.invalid" class="inptBtn">Send Message</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Google Map -->
+      <div class="row map-row mt-5">
+        <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="350" style="border:0;" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+</div>
+<app-footer></app-footer>

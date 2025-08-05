@@ -1,0 +1,45 @@
+<nav>
+  <div class="nav-left">
+    <!-- Sidebar Toggle only visible when user is logged in -->
+    <button *ngIf="user" class="sidebar-toggle" (click)="toggleSidebar.emit()">☰</button>
+
+    <a class="navbar-brand" routerLink="/">
+      <img src="assets/images/driving logo.png" alt="logo-image" class="image" />
+      <b class="brand-name">PDIAN-NIGERIA</b>
+    </a>
+  </div>
+
+  <ul class="nav-links" *ngIf="!user">
+    <li><a class="nav-link" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
+    <li><a class="nav-link" routerLink="/about" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">About</a></li>
+    <li><a class="nav-link" routerLink="/team" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Team</a></li>
+    <li><a class="nav-link" routerLink="/news" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">News</a></li>
+    <li><a class="nav-link" routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Contact</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <!-- Search input: only shown if user is not logged in -->
+    <input *ngIf="!user" type="text" placeholder="Search..." class="nav-search" />
+
+    <!-- Not Logged In -->
+    <ng-container *ngIf="!user">
+      <a class="btn contact-btn" routerLink="/auth/sign-up" routerLinkActive="active">Sign Up</a>
+      <a class="btn login-btn" routerLink="/auth/sign-in" routerLinkActive="active">Sign In</a>
+    </ng-container>
+
+    <!-- Logged In -->
+    <ng-container *ngIf="user">
+      <div class="user-menu" (click)="toggleDropdown()">
+        <img [src]="user.profilePic" class="profile-pic" />
+        <span class="username">{{ user.fullName }}</span>
+        <i class="bi bi-chevron-down"></i>
+
+        <ul class="dropdown" *ngIf="isDropdownOpen">
+          <li><i class="bi bi-person-circle"></i><a [routerLink]="['/users', user.email, 'detail']">Profile</a></li>
+          <li><i class="bi bi-gear"></i><a href="#">Settings</a></li>
+          <li><i class="bi bi-box-arrow-right"></i><a (click)="signOut()">Logout</a></li>
+        </ul>
+      </div>
+    </ng-container>
+  </div>
+</nav>

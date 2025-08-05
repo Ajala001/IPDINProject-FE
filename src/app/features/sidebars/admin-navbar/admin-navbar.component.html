@@ -1,0 +1,37 @@
+<nav class="sidebar" [class.collapsed]="!isSidebarOpen" role="navigation" aria-label="Main sidebar">
+  <ul class="nav flex-column">
+
+    <!-- Dashboard Link -->
+    <li class="dashboard-link">
+      <a [routerLink]="'/dashboard'" routerLinkActive="active" class="d-flex align-items-center" aria-current="page">
+        <i class="bi bi-speedometer2 me-2" aria-hidden="true"></i>
+        <span *ngIf="isSidebarOpen">Dashboard</span>
+      </a>
+    </li>
+
+    <!-- Sidebar Sections -->
+    <li *ngFor="let section of sidebarSections" class="nav-item">
+
+      <!-- Section Toggle Button -->
+      <button class="btn-toggle" type="button" (click)="toggleCollapse(section.id)"
+        [attr.aria-expanded]="isSectionOpen(section.id)" [attr.aria-controls]="'submenu-' + section.id"
+        [attr.id]="'toggle-' + section.id">
+        <i class="{{ section.icon }} me-2" aria-hidden="true"></i>
+        <span *ngIf="isSidebarOpen">{{ section.title }}</span>
+        <i class="bi bi-caret-down-fill ms-auto" [class.rotate]="isSectionOpen(section.id)" aria-hidden="true"></i>
+      </button>
+
+      <!-- Submenu Links -->
+      <ul class="submenu" [class.show]="isSectionOpen(section.id)" [attr.id]="'submenu-' + section.id"
+        [attr.aria-labelledby]="'toggle-' + section.id" role="menu">
+        <li *ngFor="let link of section.links" role="none">
+          <a [routerLink]="link.route" routerLinkActive="active" role="menuitem" class="d-flex align-items-center">
+            <i class="{{ link.icon }} me-2" aria-hidden="true"></i>
+            <span *ngIf="isSidebarOpen">{{ link.label }}</span>
+          </a>
+        </li>
+      </ul>
+
+    </li>
+  </ul>
+</nav>

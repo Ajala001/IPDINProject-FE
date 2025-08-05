@@ -1,0 +1,35 @@
+<app-home-navbar></app-home-navbar>
+<div class="login-card-container">
+  <div class="login-card">
+    <form (submit)="signIn()">
+      <h2>Sign In</h2>
+
+      <div class="input-field">
+        <input type="text" [(ngModel)]="signInObj.membershipNumber" name="membershipNumber" required />
+        <label>Membership Number</label>
+      </div>
+
+      <div class="input-field password-field">
+        <input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="signInObj.password" name="password" required />
+        <span class="toggle-password" (click)="togglePasswordVisibility1()">
+          {{ showPassword ? 'Hide' : 'Show' }}
+        </span>
+        <label>Password</label>
+      </div>
+
+      <div class="remember-forgot">
+        <label>
+          <input type="checkbox" [(ngModel)]="signInObj.rememberMe" name="rememberMe" />
+          Remember me
+        </label>
+        <a [routerLink]="['/forget-password']">Forgot Password?</a>
+      </div>
+
+      <button type="submit" class="btn-login">Login</button>
+
+      <div class="signup-link">
+        Don't have an account? <a (click)="signUp()">Sign Up</a>
+      </div>
+    </form>
+  </div>
+</div>

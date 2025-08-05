@@ -1,0 +1,25 @@
+<app-home-navbar></app-home-navbar>
+<section class="team-section">
+  <div class="container">
+    <h2 class="section-title">Meet The Team</h2>
+    <p class="section-subtitle">Our certified professionals are shaping safer and smarter drivers across Nigeria.</p>
+
+    <div class="team-wrapper">
+      <!-- Repeatable Instructor Card -->
+      <div class="team-card" *ngFor="let instructor of instructors" data-aos="fade-up">
+        <div class="avatar">
+          <img [src]="instructor.image" [alt]="instructor.name">
+        </div>
+        <div class="info">
+          <h4>{{ instructor.name }}</h4>
+          <p class="role">{{ instructor.role }}</p>
+          <!-- <p class="bio">{{ instructor.bio }}</p> -->
+          <div class="social-links">
+            <a *ngFor="let icon of instructor.socials" href="#" class="social-icon"><i [class]="icon"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>
