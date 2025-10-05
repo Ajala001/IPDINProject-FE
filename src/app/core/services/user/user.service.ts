@@ -1,25 +1,43 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { apiEndpoints } from '../../constants/constant';
 import { AddAdminModel } from '../../../shared/models/classes/admin';
-import { apiResponse } from '../../../shared/models/interfaces/apiResponse';
+import { ApiResponse, apiResponse } from '../../../shared/models/interfaces/apiResponse';
 import { environment } from '../../../../environments/environment';
 import { pagedResponse } from '../../../shared/models/interfaces/pagedResponse';
+import { UserResponseModel } from '../../../shared/models/interfaces/userUpdate';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  private userImageSource = new BehaviorSubject<string | null>(null);
+  userImage$ = this.userImageSource.asObservable();
 
-  addAdmin(adminUser: AddAdminModel) : Observable<apiResponse>{
+  constructor(private http: HttpClient) {}
+  initializeUserImage(email: string) {
+    this.getUserByEmail(email).subscribe({
+      next: (response: ApiResponse<UserResponseModel>) => {
+        if (response.isSuccessful && response.data?.profilePic) {
+          this.userImageSource.next(response.data.profilePic);
+        }
+      },
+      error: (err) => console.error('Failed to load user image:', err)
+    });
+  }
+
+  updateUserImage(newImageUrl: string) {
+    this.userImageSource.next(newImageUrl);
+  }
+
+  addAdmin(adminUser: AddAdminModel): Observable<apiResponse> {
     return this.http.post<apiResponse>(environment.apiUrl + apiEndpoints.addAdmin, adminUser)
   }
 
-  getUsers(params: { [key: string]: any }) : Observable<pagedResponse>{
-    let queryParams = new HttpParams(); 
+  getUsers(params: { [key: string]: any }): Observable<pagedResponse> {
+    let queryParams = new HttpParams();
     for (const key in params) {
       if (params.hasOwnProperty(key)) {
         queryParams = queryParams.append(key, params[key]);
@@ -32,9 +50,13 @@ export class UserService {
     return this.http.get<apiResponse>(`${environment.apiUrl}${apiEndpoints.getUserByEmailUrl(email)}`);
   }
 
-  updateUser(email: string, formData: FormData): Observable<apiResponse> {
-    return this.http.put<apiResponse>(`${environment.apiUrl}${apiEndpoints.updateUserUrl(email)}`, formData);
+  updateUser(email: string, formData: FormData): Observable<ApiResponse<UserResponseModel>> {
+    return this.http.put<ApiResponse<UserResponseModel>>(
+      `${environment.apiUrl}${apiEndpoints.updateUserUrl(email)}`,
+      formData
+    );
   }
+
 
   deleteUser(email: string): Observable<apiResponse> {
     return this.http.delete<apiResponse>(`${environment.apiUrl}${apiEndpoints.deleteUserUrl(email)}`);
@@ -43,9 +65,9 @@ export class UserService {
   searchUsers(params: { [key: string]: any }): Observable<pagedResponse> {
     let queryParams = new HttpParams();
     for (const key in params) {
-        if (params.hasOwnProperty(key)) {
-            queryParams = queryParams.append(key, params[key].toString());
-        }
+      if (params.hasOwnProperty(key)) {
+        queryParams = queryParams.append(key, params[key].toString());
+      }
     }
     return this.http.get<pagedResponse>(`${environment.apiUrl}${apiEndpoints.searchUsersUrl}`, { params: queryParams });
   }

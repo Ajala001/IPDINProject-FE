@@ -30,7 +30,7 @@
     <!-- Logged In -->
     <ng-container *ngIf="user">
       <div class="user-menu" (click)="toggleDropdown()">
-        <img [src]="user.profilePic" class="profile-pic" />
+        <img [src]="userImage" class="profile-pic" />
         <span class="username">{{ user.fullName }}</span>
         <i class="bi bi-chevron-down"></i>
 

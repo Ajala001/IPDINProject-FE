@@ -4,19 +4,21 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../../../core/services/user/user.service';
 import { UserResponseModel, UserUpdateModel } from '../../../shared/models/interfaces/userUpdate';
+import { NotificationService } from '../../../shared/services/notification/notification.service';
 
 @Component({
-    selector: 'app-edit-profile',
-    imports: [CommonModule, FormsModule, RouterModule],
-    templateUrl: './edit-profile.component.html',
-    styleUrl: './edit-profile.component.css'
+  selector: 'app-edit-profile',
+  imports: [CommonModule, FormsModule, RouterModule],
+  templateUrl: './edit-profile.component.html',
+  styleUrl: './edit-profile.component.css'
 })
 export class EditProfileComponent {
   route = inject(ActivatedRoute);
+  notify = inject(NotificationService)
   userService = inject(UserService);
   router = inject(Router);
   userEmail: string | null = null;
-  
+
   userProfile: UserResponseModel = {
     id: '',
     fullName: '',
@@ -38,10 +40,10 @@ export class EditProfileComponent {
   };
 
   user: UserUpdateModel = {
-    phoneNumber: '', 
-    dateOfBirth: '', 
-    profilePic: null, 
-    streetNo: '', 
+    phoneNumber: '',
+    dateOfBirth: '',
+    profilePic: null,
+    streetNo: '',
     streetName: '',
     city: '',
     stateOfResidence: '',
@@ -49,12 +51,12 @@ export class EditProfileComponent {
     stateOfOrigin: '',
     country: '',
     driverLicenseNo: '',
-    yearIssued: 0, 
+    yearIssued: 0,
     expiringDate: '',
-    yearsOfExperience: 0, 
+    yearsOfExperience: 0,
     nameOfCurrentDrivingSchool: ''
   };
-  
+
   genderMap: { [key: number]: string } = {
     1: 'Male',
     2: 'Female',
@@ -71,9 +73,9 @@ export class EditProfileComponent {
           this.user = {
             phoneNumber: '',
             dateOfBirth: this.userProfile.dateOfBirth || '',
-            profilePic: null, 
+            profilePic: null,
             streetNo: '',
-            streetName:'',
+            streetName: '',
             city: '',
             stateOfResidence: '',
             localGovt: this.userProfile.localGovt || '',
@@ -93,7 +95,7 @@ export class EditProfileComponent {
       });
     }
   }
-  
+
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
@@ -103,39 +105,45 @@ export class EditProfileComponent {
 
   updateUser(): void {
     if (this.userEmail && this.userProfile) {
-        console.log(this.userProfile);
-        console.log(this.user);
-        if (confirm(`Are you sure you want to update your profile: ${this.userProfile.email}?`)) {
-            const formData = new FormData();
-            formData.append('phoneNumber', this.user.phoneNumber);
-            formData.append('dateOfBirth', this.user.dateOfBirth);
-            if (this.user.profilePic) {
-                formData.append('profilePic', this.user.profilePic);
-            }
-            formData.append('streetNo', this.user.streetNo);
-            formData.append('streetName', this.user.streetName);
-            formData.append('city', this.user.city);
-            formData.append('stateOfResidence', this.user.stateOfResidence);
-            formData.append('localGovt', this.user.localGovt);
-            formData.append('stateOfOrigin', this.user.stateOfOrigin);
-            formData.append('country', this.user.country);
-            formData.append('driverLicenseNo', this.user.driverLicenseNo);
-            formData.append('yearIssued', this.user.yearIssued.toString());
-            formData.append('expiringDate', this.user.expiringDate);
-            formData.append('yearsOfExperience', this.user.yearsOfExperience.toString());
-            formData.append('nameOfCurrentDrivingSchool', this.user.nameOfCurrentDrivingSchool);
-
-            this.userService.updateUser(this.userEmail, formData).subscribe({
-                next: () => {
-                    alert('Profile updated successfully!');
-                    this.router.navigateByUrl(`users/${this.userEmail}/detail`);
-                },
-                error: (error) => {
-                    alert('An error occurred while updating your profile.');
-                    console.error('Update error:', error);
-                },
-            });
+      console.log(this.userProfile);
+      console.log(this.user);
+      if (confirm(`Are you sure you want to update your profile: ${this.userProfile.email}?`)) {
+        const formData = new FormData();
+        formData.append('phoneNumber', this.user.phoneNumber);
+        formData.append('dateOfBirth', this.user.dateOfBirth);
+        if (this.user.profilePic) {
+          formData.append('profilePic', this.user.profilePic);
         }
+        formData.append('streetNo', this.user.streetNo);
+        formData.append('streetName', this.user.streetName);
+        formData.append('city', this.user.city);
+        formData.append('stateOfResidence', this.user.stateOfResidence);
+        formData.append('localGovt', this.user.localGovt);
+        formData.append('stateOfOrigin', this.user.stateOfOrigin);
+        formData.append('country', this.user.country);
+        formData.append('driverLicenseNo', this.user.driverLicenseNo);
+        formData.append('yearIssued', this.user.yearIssued.toString());
+        formData.append('expiringDate', this.user.expiringDate);
+        formData.append('yearsOfExperience', this.user.yearsOfExperience.toString());
+        formData.append('nameOfCurrentDrivingSchool', this.user.nameOfCurrentDrivingSchool);
+
+        this.userService.updateUser(this.userEmail, formData).subscribe({
+          next: (response) => {
+            this.notify.show(response.message || 'Profile updated successfully!', 'info');
+
+            const newImageUrl = response.data?.profilePic;
+            if (newImageUrl) {
+              this.userService.updateUserImage(newImageUrl);
+            }
+
+            this.router.navigateByUrl(`users/${this.userEmail}/detail`);
+          },
+          error: (error) => {
+            this.notify.show('An error occurred while updating your profile.', 'error');
+            console.error('Update error:', error);
+          },
+        });
+      }
     }
   }
 }

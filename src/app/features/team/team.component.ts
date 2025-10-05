@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import Aos from 'aos';
-import { HeaderComponent } from "../header/header.component";
 import { HomeNavbarComponent } from '../home-navbar/home-navbar.component';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from '../../shared/services/footer/footer.component';

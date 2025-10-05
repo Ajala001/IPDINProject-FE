@@ -19,6 +19,8 @@ export class HomeNavbarComponent {
   @Output() toggleSidebar = new EventEmitter<void>();
   user: User | null = null;
   isDropdownOpen = false;
+  userEmail: string = "";
+  userImage: string | null = null;
 
   // === Constructor ===
   constructor(
@@ -32,11 +34,20 @@ export class HomeNavbarComponent {
       this.user = user;
     });
 
+    
     // Load user details from token
     const userDetails = this.authService.getUserDetailsFromToken();
     if (userDetails?.NameIdentifier) {
-      this.fetchUserByEmail(userDetails.NameIdentifier);
+      this.userEmail = userDetails.NameIdentifier;
+      this.fetchUserByEmail(this.userEmail);
     }
+  }
+  
+
+  ngOnInit(): void {
+    this.userService.userImage$.subscribe(image => {
+      this.userImage = image;
+    });
   }
 
   // === Event Handlers ===
@@ -54,7 +65,7 @@ export class HomeNavbarComponent {
       },
       error: () => {
         this.notifier.show('Sign-out failed. Please try again.', 'error');
-      },
+      },                  
     });
   }
 
@@ -63,6 +74,7 @@ export class HomeNavbarComponent {
     this.userService.getUserByEmail(email).subscribe((response: apiResponse) => {
       if (response.isSuccessful) {
         this.user = response.data;
+        this.userService.initializeUserImage(email);
         this.authService.setUser(response.data); // Sync user in AuthService
       }
     });

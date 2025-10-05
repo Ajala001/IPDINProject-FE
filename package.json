@@ -36,7 +36,7 @@
     "html2canvas": "^1.4.1",
     "jquery": "^3.7.1",
     "jquery-selectric": "^0.2.0",
-    "jspdf": "^2.5.2",
+    "jspdf": "^3.0.3",
     "jwt-decode": "^4.0.0",
     "ng2-charts": "^8.0.0",
     "ngx-scrollbar": "^16.1.1",

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from '../features/header/header.component';
 import { AdminNavbarComponent } from '../features/sidebars/admin-navbar/admin-navbar.component';
 import { HomeNavbarComponent } from '../features/home-navbar/home-navbar.component';
 
