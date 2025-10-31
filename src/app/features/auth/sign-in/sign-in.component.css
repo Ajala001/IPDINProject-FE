@@ -23,6 +23,10 @@ body, html {
   background-color: #ffffff;
 }
 
+span{
+  color: red;
+}
+
 .login-card {
   width: 100%;
   max-width: 400px;
@@ -114,6 +118,12 @@ h2 {
 
 .remember-forgot a:hover {
   text-decoration: underline;
+}
+
+.error-text{
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
 }
 
 .btn-login {

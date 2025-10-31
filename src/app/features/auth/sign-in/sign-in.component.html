@@ -5,25 +5,43 @@
       <h2>Sign In</h2>
 
       <div class="input-field">
-        <input type="text" [(ngModel)]="signInObj.membershipNumber" name="membershipNumber" required />
-        <label>Membership Number</label>
+        <input type="text" [(ngModel)]="signInObj.identifier" name="identifier" id="identifier" required
+          #identifier="ngModel" autocomplete="username" />
+        <label for="identifier">Email or Membership Number <span>*</span></label>
+
+        <div *ngIf="identifier.invalid && identifier.touched" class="error-text">
+          Email or Membership Number is required.
+        </div>
       </div>
+
 
       <div class="input-field password-field">
-        <input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="signInObj.password" name="password" required />
-        <span class="toggle-password" (click)="togglePasswordVisibility1()">
+        <input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="signInObj.password" name="password"
+          id="password" required #password="ngModel" autocomplete="current-password" />
+        <label for="password">Password <span>*</span></label>
+
+        <span class="toggle-password" role="button" tabindex="0" (click)="togglePasswordVisibility1()">
           {{ showPassword ? 'Hide' : 'Show' }}
         </span>
-        <label>Password</label>
+
+        <div *ngIf="password.invalid && password.touched" class="error-text">
+          Password is required.
+        </div>
       </div>
 
+
       <div class="remember-forgot">
-        <label>
-          <input type="checkbox" [(ngModel)]="signInObj.rememberMe" name="rememberMe" />
+        <label class="remember-label">
+          <input type="checkbox" [(ngModel)]="signInObj.rememberMe" name="rememberMe" id="rememberMe" />
           Remember me
         </label>
-        <a [routerLink]="['/forget-password']">Forgot Password?</a>
+
+        <a [routerLink]="['/auth/forget-password']" class="forgot-link"
+          aria-label="Forgot your password? Click to reset it">
+          Forgot Password?
+        </a>
       </div>
+
 
       <button type="submit" class="btn-login">Login</button>
 

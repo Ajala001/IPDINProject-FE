@@ -1,8 +1,8 @@
 .sidebar {
   position: fixed;
-  top: 55px; /* header height */
+  top: 58px; /* header height */
   left: 0;
-  height: calc(100vh - 55px);
+  height: calc(100vh - 58px);
   width: 260px;
   background-color: #121212; /* black background */
   padding: 20px 15px;

@@ -7,10 +7,11 @@ import { authResponse } from '../../../shared/models/interfaces/authResponse';
 import { ApiResponse } from '../../../shared/models/interfaces/apiResponse';
 import { NotificationService } from '../../../shared/services/notification/notification.service';
 import { HomeNavbarComponent } from '../../home-navbar/home-navbar.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sign-in',
-  imports: [FormsModule, RouterLink, HomeNavbarComponent],
+  imports: [FormsModule, RouterLink, HomeNavbarComponent, CommonModule],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
 })
@@ -41,23 +42,21 @@ export class SignInComponent {
   signIn() {
     this.authService.signIn(this.signInObj).subscribe({
       next: (response: ApiResponse<authResponse>) => {
-        if (response.isSuccessful) {
-          if (response.data != null) {
-            localStorage.setItem('userToken', response.data.accessToken);
-  
-            this.notifier.show(response.message || 'Login successful!', 'success'); 
-            this.router.navigateByUrl(this.returnUrl);
-          }
+        if (response.isSuccessful && response.data) {
+          localStorage.setItem('userToken', response.data.accessToken);
+          this.notifier.show(response.message || 'Login successful!', 'success');
+
+          this.router.navigateByUrl(this.returnUrl);
         } else {
-          this.notifier.show(response.message || 'Login failed.', 'error'); 
-          this.router.navigateByUrl('/auth/sign-in');
+          this.notifier.show(response.message || 'Login failed.', 'error');
+          // Stay on the same page — don’t force re-navigation
         }
       },
       error: (err) => {
-        this.notifier.show('Login failed. Please try again.', 'error'); 
+        this.notifier.show('Login failed. Please try again.', 'error');
       }
     });
-  }  
+  }
 
   signUp() {
     this.router.navigateByUrl('/auth/sign-up');

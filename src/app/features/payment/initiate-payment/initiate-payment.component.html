@@ -1,44 +1,113 @@
-<!-- <form class="payment-form" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="reason">Reason for Payment</label>
-    <select [(ngModel)]="paymentReason" name="reason" (change)="onReasonChange()" class="form-control">
-      <option value="">Select Reason</option>
-      <option *ngFor="let reason of reasons" [value]="reason.value">
-        {{ reason.label }}
-      </option>
-    </select>
+<div class="page-wrap">
+  <div class="card">
+    <!-- Personalized User Info -->
+    <div class="user-header" *ngIf="user">
+      <h2 class="user-greeting">👋 Hello, {{ user.fullName || user.name }}</h2>
+      <p class="user-email">{{ user.email }}</p>
+    </div>
+
+    <h2 class="title">Make a Payment</h2>
+
+    <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()" novalidate>
+      <!-- Payment Type -->
+      <label class="label" for="paymentType">Payment Category</label>
+      <select
+        id="paymentType"
+        class="select"
+        formControlName="paymentType"
+        [disabled]="isLoading"
+      >
+        <option value="">-- choose category --</option>
+        <option *ngFor="let type of paymentCategories" [value]="type">
+          {{ type }}
+        </option>
+      </select>
+
+      <!-- Loading State -->
+      <div *ngIf="isLoading" class="loading">
+        <p>Loading available services, please wait...</p>
+      </div>
+
+      <!-- Service Selection -->
+      <div class="services" *ngIf="showServices && availableServices.length > 0">
+        <label class="label">Select Service</label>
+        <div class="service-list">
+          <label
+            class="service-item"
+            *ngFor="let s of availableServices"
+            [for]="s.id"
+          >
+            <input type="radio" [id]="s.id" formControlName="service" [value]="s.id" />
+            <div class="service-meta">
+              <div class="service-title">{{ s.name }}</div>
+              <div class="service-desc">Fee: ₦{{ s.amount | number }}</div>
+            </div>
+            <div class="service-price">₦{{ s.amount | number }}</div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Empty State -->
+      <div
+        class="no-services"
+        *ngIf="!isLoading && showServices && availableServices.length === 0"
+      >
+        <p>
+          There are no active
+          <strong>{{ paymentForm.value.paymentType }}</strong> services
+          available right now.
+        </p>
+        <p class="muted">
+          Please check back later or contact support for assistance.
+        </p>
+      </div>
+
+      <!-- Flat Amount Display -->
+      <div class="flat-amount" *ngIf="showAmount && !showServices">
+        <label class="label">Amount to Pay</label>
+        <div class="amount-box">₦{{ amount | number }}</div>
+      </div>
+
+      <!-- Summary -->
+      <div class="summary" *ngIf="paymentForm.valid">
+        <div class="summary-row">
+          <span>Category:</span>
+          <span>{{ paymentForm.value.paymentType }}</span>
+        </div>
+
+        <div class="summary-row" *ngIf="showServices && paymentForm.value.service">
+          <span>Selected Service:</span>
+          <span>{{ getSelectedServiceName() }}</span>
+        </div>
+
+        <div class="summary-row">
+          <span>Total Amount:</span>
+          <span>₦{{ showAmount ? amount : getSelectedServiceAmount() | number }}</span>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="actions">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="router.navigateByUrl('dashboard')"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="paymentForm.invalid || isLoading"
+        >
+          {{ isLoading ? 'Processing...' : 'Proceed to Pay' }}
+        </button>
+      </div>
+
+      <p class="note">
+        Please ensure all selections are correct before proceeding to payment.
+      </p>
+    </form>
   </div>
-
-  <div *ngIf="paymentReason === 'Training'" class="form-group">
-    <label for="training">Select Training</label>
-    <select [(ngModel)]="selectedItemId" name="training" class="form-control">
-      <option value="">Select Training</option>
-      <option *ngFor="let training of trainings" [value]="training.id">
-        {{ training.title }}
-      </option>
-    </select>
-  </div>
-
-  <div *ngIf="paymentReason === 'Examination'" class="form-group">
-    <label for="exam">Select Exam</label>
-    <select [(ngModel)]="selectedItemId" name="exam" class="form-control">
-      <option value="">Select Exam</option>
-      <option *ngFor="let exam of exams" [value]="exam.id">
-        {{ exam.examTitle }}
-      </option>
-    </select>
-  </div>
-
-  <div *ngIf="paymentReason === 'Dues'" class="form-group">
-    <label for="registrationType">Select Registration Type</label>
-    <select [(ngModel)]="selectedItemId" name="registrationType" class="form-control">
-      <option value="">Select Registration Type</option>
-      <option *ngFor="let regType of registrationTypes" [value]="regType.id">
-        {{ regType.name }}
-      </option>
-    </select>
-  </div>
-
-
-  <button type="submit" class="btn btn-primary">Initiate Payment</button>
-</form> -->
+</div>

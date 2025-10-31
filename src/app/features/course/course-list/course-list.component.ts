@@ -7,12 +7,13 @@ import { AuthService } from '../../../core/services/auth/auth.service';
 import { CourseResponseModel } from '../../../shared/models/classes/course';
 import { pagedResponse } from '../../../shared/models/interfaces/pagedResponse';
 import { CourseSearchModel } from '../../../shared/models/classes/courseSearch';
+import { ModalService } from '../../../shared/services/modal/modal.service';
 
 @Component({
     selector: 'app-course-list',
     imports: [FormsModule, CommonModule, RouterLink],
     templateUrl: './course-list.component.html',
-    styleUrl: './course-list.component.css'
+    styleUrls: ['./course-list.component.css']
 })
 export class CourseListComponent implements OnInit {
   cousreService = inject(CourseServiceService);
@@ -23,7 +24,7 @@ export class CourseListComponent implements OnInit {
   userDetails: any;
   role: string = "";
 
-  constructor(){
+  constructor(private modalService: ModalService){
     this.checkUserRole();
   }
 
@@ -99,7 +100,7 @@ export class CourseListComponent implements OnInit {
   }
 
 
-  params: CourseSearchModel = new CourseSearchModel
+  params: CourseSearchModel = new CourseSearchModel()
   searchCourses() {
     this.params.pageNumber = this.pageNumber;
     this.params.pageSize = this.pageSize;
@@ -120,11 +121,35 @@ export class CourseListComponent implements OnInit {
     }
   }
 
-  checkUserRole() {
-    this.userDetails = this.authService.getUserDetailsFromToken();
-    const role = this.userDetails["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
-    this.isAdmin = role === 'Admin';
+checkUserRole() {
+  this.userDetails = this.authService.getUserDetailsFromToken();
+  const role = this.userDetails["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+  this.isAdmin = role === 'Admin';
+}
+
+async deleteItem(courseId: string) {
+  console.log('item deleted')
+  debugger;
+  const confirmed = await this.modalService.open({
+    title: 'Delete Course',
+    message: 'Are you sure you want to delete this course?',
+    color: 'danger',
+    confirmText: 'Delete',
+    cancelText: 'Cancel'
+  });
+
+  if (confirmed) {
+    this.cousreService.deleteCourseById(courseId).subscribe({
+      next: (response) => {
+        if (response.isSuccessful) {
+          this.getCourses(); // Refresh after deletion
+        } else {
+          alert(response.message);
+        }
+      },
+      error: (err) => console.error(err)
+    });
   }
 }
 
-
+}

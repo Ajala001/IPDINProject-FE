@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AdminNavbarComponent } from '../features/sidebars/admin-navbar/admin-navbar.component';
 import { HomeNavbarComponent } from '../features/home-navbar/home-navbar.component';
+import { ConfirmModalComponent } from '../shared/components/confirm-modal/confirm-modal.component';
 
 
 
 
 @Component({
     selector: 'app-layout',
-    imports: [HomeNavbarComponent, AdminNavbarComponent, RouterOutlet],
+    imports: [HomeNavbarComponent, AdminNavbarComponent, RouterOutlet, ConfirmModalComponent],
     templateUrl: './layout.component.html',
     styleUrl: './layout.component.css'
 })

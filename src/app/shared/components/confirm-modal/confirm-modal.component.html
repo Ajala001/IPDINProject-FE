@@ -1,0 +1,20 @@
+<div class="modal-backdrop" *ngIf="show" (click)="onBackdropClick($event)" [@fadeAnimation]>
+    <div class="modal-card" [ngClass]="color" (click)="stopPropagation($event)" [@scaleAnimation]>
+
+        <div class="icon-container" [ngClass]="color">
+            <i class="bi" [ngClass]="icon"></i>
+        </div>
+
+        <h2 class="modal-title">{{ title }}</h2>
+        <p class="modal-message">{{ message }}</p>
+
+        <div class="modal-actions">
+            <button class="btn btn-outline-secondary" (click)="onCancel()">
+                {{ cancelText }}
+            </button>
+            <button class="btn" [ngClass]="'btn-' + color" (click)="onConfirm()">
+                {{ confirmText }}
+            </button>
+        </div>
+    </div>
+</div>

@@ -17,12 +17,12 @@ export const paymentRoutes: Routes = [
                     import('./user-payment-list/user-payment-list.component').then(m => m.UserPaymentListComponent),
             },
             {
-                path: 'initiate/:id',
+                path: 'initiate',
                 loadComponent: () =>
                     import('./initiate-payment/initiate-payment.component').then(m => m.InitiatePaymentComponent),
             },
             {
-                path: ':refNo/delete',
+                path: 'delete/:refNo',
                 loadComponent: () =>
                     import('./delete-payment/delete-payment.component').then(m => m.DeletePaymentComponent),
             },

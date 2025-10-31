@@ -1,10 +1,10 @@
 export class SignInModel {
-    membershipNumber: string
+    identifier: string
     password: string
     rememberMe: boolean
 
     constructor(){
-        this.membershipNumber = "",
+        this.identifier = ""
         this.password = "",
         this.rememberMe = false
     }

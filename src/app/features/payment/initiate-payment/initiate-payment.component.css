@@ -1,71 +1,231 @@
-/* Container Styling for the Form */
-.payment-form {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+:root {
+  --green: #147A2E;
+  --green-600: #0f5d21;
+  --black: #111111;
+  --muted: #6b6b6b;
+}
+
+/* Reset / base */
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Inter, Roboto, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+/* Page layout */
+.page-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: linear-gradient(180deg, #f7fff7 0%, #ffffff 100%);
+}
+
+/* Card */
+.card {
+  width: 100%;
+  max-width: 920px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(4, 20, 10, 0.08);
+  padding: 28px;
+  border: 1px solid rgba(20, 122, 46, 0.08);
+}
+
+/* Headings */
+.title {
+  margin: 0 0 12px 0;
+  color: var(--green-600);
+  font-size: 22px;
+  letter-spacing: 0.1px;
+}
+
+/* Form controls */
+.label {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  margin-bottom: 8px;
+}
+.select,
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  font-size: 14px;
+}
+
+/* Flat amount */
+.flat-amount {
+  margin-top: 6px;
+}
+.amount-box {
+  padding: 14px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, rgba(20, 122, 46, 0.06), rgba(20, 122, 46, 0.03));
+  color: var(--black);
+  font-weight: 700;
+}
+
+/* Services list */
+.services {
+  margin-top: 6px;
+}
+.service-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.service-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #f0f0f0;
+  transition: box-shadow 150ms ease, transform 150ms ease;
+  background: #fff;
+}
+.service-item:hover {
+  box-shadow: 0 6px 18px rgba(16, 64, 32, 0.04);
+  transform: translateY(-2px);
+}
+.service-item input {
+  transform: scale(1.1);
+}
+.service-meta {
+  flex: 1;
+}
+.service-title {
+  font-weight: 600;
+  color: var(--black);
+}
+.service-desc {
+  font-size: 13px;
+  color: var(--muted);
+}
+.service-price {
+  font-weight: 700;
+}
+
+/* Payment methods */
+.methods {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+.method {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid #efefef;
+}
+.method input {
+  transform: scale(1.05);
+}
+
+/* Summary box */
+.summary {
+  margin-top: 18px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #fcfff8;
+  border: 1px solid rgba(20, 122, 46, 0.06);
+}
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+.btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--green);
+  color: white;
+}
+.btn-primary:disabled {
+  background: rgba(20, 122, 46, 0.35);
+  cursor: not-allowed;
+}
+.btn-secondary {
+  background: white;
+  border: 1px solid #ddd;
+  color: var(--black);
+}
+
+.loading,
+.no-services {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(20, 122, 46, 0.08);
+  background: #f8fff8;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+.no-services strong {
+  color: var(--green-600);
+}
+
+.user-header {
+  margin-bottom: 16px;
+  text-align: left;
+  background: linear-gradient(90deg, rgba(20, 122, 46, 0.08), rgba(20, 122, 46, 0.02));
+  border-radius: 8px;
+  padding: 12px 16px;
+  border: 1px solid rgba(20, 122, 46, 0.1);
+}
+
+.user-greeting {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--green-600);
+}
+
+.user-email {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+
+
+/* Note / helper text */
+.note {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .card {
+    padding: 18px;
   }
-  
-  /* Style for Form Groups */
-  .form-group {
-    margin-bottom: 15px;
+  .service-item {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  /* Styling for Labels */
-  label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    display: block;
-    color: #333;
-  }
-  
-  /* Styling for Select Fields */
-  .form-control {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-    color: darkblue;
-  }
-  
-  /* Hover Effect for Select Fields */
-  .form-control:hover {
-    border-color: #999;
-  }
-  
-  /* Submit Button Styling */
-  .btn-primary {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Button Hover Effect */
-  .btn-primary:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Focus Effect for Form Controls */
-  .form-control:focus {
-    outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-  }
-  
-  /* Media Query for Mobile Devices */
-  @media (max-width: 768px) {
-    .payment-form {
-      padding: 15px;
-    }
-  }
-  
+}

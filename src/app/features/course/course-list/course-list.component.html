@@ -44,7 +44,7 @@
                     <td>{{ item.courseUnit }}</td>
                     <td>
                         <button class="btn btn-primary" [routerLink]="['/courses', item.id]">Detail</button>
-                        <button class="btn btn-danger" *ngIf="isAdmin" [routerLink]="['/courses', item.id, 'delete']">Delete</button>
+                        <button class="btn btn-danger" *ngIf="isAdmin" (click)="deleteItem(item.id)">Delete</button>
                     </td>
                 </tr>
             </tbody>

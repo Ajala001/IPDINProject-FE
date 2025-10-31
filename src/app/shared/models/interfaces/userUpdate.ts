@@ -48,3 +48,10 @@ export interface User {
   email: string;
   profilePic: string;
 }
+
+export interface DecodedUser {
+  name?: string;
+  fullName?: string;
+  email?: string;
+  sub?: string;
+}

@@ -153,11 +153,12 @@ export class SignUpComponent implements OnInit {
   
       this.authService.signUp(this.signUpObj).subscribe((response: apiResponse) => {
         if (response.isSuccessful) {
-          alert(response.message);
-          this.router.navigateByUrl("auth/sign-in");
-          console.log('User registered successfully:', response);
+          this.notifier.show(response.message);
+          this.router.navigate(['/auth/sign-in'], { 
+          queryParams: { returnUrl: '/payments/initiate' } 
+        });
         } else {
-          alert(response.message);
+          this.notifier.show(response.message, 'error');
         }
       });
     }
